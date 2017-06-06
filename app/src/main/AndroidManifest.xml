@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.nitin.desichain">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".BookandMedia"
+            android:label="@string/title_activity_bookand_media"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.nitin.desichain.MainActivity" />
+        </activity>
+        <activity
+            android:name=".Poojaitems"
+            android:label="@string/title_activity_poojaitems"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.nitin.desichain.MainActivity" />
+        </activity>
+        <activity
+            android:name=".HealthandFood"
+            android:label="@string/title_activity_healthand_food"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.nitin.desichain.MainActivity" />
+        </activity>
+        <activity
+            android:name=".Others"
+            android:label="@string/title_activity_others"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.nitin.desichain.MainActivity" />
+        </activity>
+        <activity
+            android:name=".Main2Activity"
+            android:label="@string/title_activity_main2"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".MyAccount"
+            android:label="@string/title_activity_my_account"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.nitin.desichain.MainActivity" />
+        </activity>
+        <activity
+            android:name=".MyReviews"
+            android:label="@string/title_activity_my_reviews"
+            android:parentActivityName=".MyAccount"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.nitin.desichain.MyAccount" />
+        </activity>
+        <activity
+            android:name=".MyOrders"
+            android:label="@string/title_activity_my_orders"
+            android:parentActivityName=".MyAccount"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.nitin.desichain.MyAccount" />
+        </activity>
+    </application>
+
+</manifest>

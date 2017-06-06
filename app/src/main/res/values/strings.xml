@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Desichain</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_personal_care">Personal Care</string>
+    <string name="title_activity_bookand_media">Book &amp; Media</string>
+    <string name="title_activity_poojaitems">Pooja Items</string>
+    <string name="title_activity_handicrafts">Handicrafts</string>
+    <string name="title_activity_healthand_food">Health &amp; Food</string>
+    <string name="title_activity_others">Others</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="title_activity_my_account">MyAccount</string>
+    <string name="title_activity_my_reviews">My Reviews</string>
+    <string name="title_activity_my_orders">My Orders</string>
+</resources>
