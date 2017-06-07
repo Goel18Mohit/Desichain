@@ -26,6 +26,7 @@
              android:id="@+id/others"
             android:icon="@mipmap/ic_drag_handle_black_24dp"
             android:title="Others"/>
+
         <item
             android:id="@+id/kath_putli"
             android:icon="@mipmap/ic_drag_handle_black_24dp"
@@ -34,6 +35,11 @@
             android:id="@+id/cow_panchgava_products"
             android:icon="@mipmap/ic_drag_handle_black_24dp"
             android:title="Cow Panchgava Products" />
+        <item
+            android:id="@+id/customer_service"
+            android:icon="@mipmap/ic_drag_handle_black_24dp"
+            android:title="Customer Service"
+            />
     </group>
 
     <item android:title="-------------------">
@@ -71,6 +77,8 @@
                 android:id="@+id/my_account"
                 android:icon="@mipmap/ic_drag_handle_black_24dp"
                 android:title="My Account" />
+
+
         </menu>
     </item>
     <item android:title="---------------------">
