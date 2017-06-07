@@ -11,6 +11,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.nitin.desichain.Utility.Utility;
+
 import java.util.ArrayList;
 
 public class BookandMedia extends AppCompatActivity
@@ -118,25 +120,8 @@ public class BookandMedia extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-        if(id==R.id.pooja_item){
-            Intent POOJA_ITEM=new Intent(BookandMedia.this,Poojaitems.class);
-            startActivity(POOJA_ITEM);
 
-        }
-
-        else if(id==R.id.health_and_food){
-            Intent HEALTH_AND_FOOD=new Intent(BookandMedia.this,HealthandFood.class);
-            startActivity(HEALTH_AND_FOOD);
-        }
-        else if(id==R.id.others){
-            Intent OTHERS=new Intent(BookandMedia.this,Others.class);
-            startActivity(OTHERS);
-        }
-        else if(id==R.id.my_account)
-        {
-            Intent MY_ACCOUNT=new Intent(BookandMedia.this,MyAccount.class);
-            startActivity(MY_ACCOUNT);
-        }
+        Utility.openIntent(this,id);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

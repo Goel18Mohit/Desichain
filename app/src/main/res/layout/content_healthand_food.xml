@@ -13,4 +13,10 @@
     tools:context="com.example.nitin.desichain.HealthandFood"
     tools:showIn="@layout/app_bar_healthand_food">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Health and Food Activity"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>
