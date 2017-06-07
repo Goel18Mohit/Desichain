@@ -2,8 +2,6 @@ package com.example.nitin.desichain.Utility;
 
 import android.content.Context;
 import android.content.Intent;
-import android.view.Menu;
-import android.view.View;
 import android.widget.Toast;
 
 import com.example.nitin.desichain.BookandMedia;
@@ -46,7 +44,7 @@ public class Utility {
             case R.id.my_cart:
                 mContext.startActivity(new Intent(mContext,MyCart.class));
                 break;
-            case R.id.my_order:
+            case R.id.my_orders:
                 mContext.startActivity(new Intent(mContext,MyOrders.class));
                 break;
             case R.id.my_account:
