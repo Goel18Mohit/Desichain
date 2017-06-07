@@ -12,6 +12,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.nitin.desichain.Utility.Utility;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -77,34 +79,7 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if(id==R.id.books_and_media){
-            Intent BOOKS_AND_MEDIA=new Intent(MainActivity.this,BookandMedia.class);
-            startActivity(BOOKS_AND_MEDIA);
-
-        }
-        else if(id==R.id.pooja_item){
-            Intent POOJA_ITEM=new Intent(MainActivity.this,Poojaitems.class);
-            startActivity(POOJA_ITEM);
-
-        }
-
-        else if(id==R.id.health_and_food){
-              Intent HEALTH_AND_FOOD=new Intent(MainActivity.this,HealthandFood.class);
-            startActivity(HEALTH_AND_FOOD);
-        }
-        else if(id==R.id.others){
-            Intent OTHERS=new Intent(MainActivity.this,Others.class);
-            startActivity(OTHERS);
-        }
-        else if(id==R.id.my_account)
-        {
-            Intent MY_ACCOUNT=new Intent(MainActivity.this,MyAccount.class);
-            startActivity(MY_ACCOUNT);
-        }
-        else if (id == R.id.customer_service){
-            startActivity(new Intent(MainActivity.this,CustomerService.class));
-        }
-
+        Utility.openIntent(this,id);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

@@ -13,4 +13,12 @@
     tools:context="com.example.nitin.desichain.Poojaitems"
     tools:showIn="@layout/app_bar_poojaitems">
 
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pooja Item Activity"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>

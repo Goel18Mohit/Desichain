@@ -16,4 +16,6 @@
     <string name="title_activity_my_reviews">My Reviews</string>
     <string name="title_activity_my_orders">My Orders</string>
     <string name="title_activity_my_cart">MyCart</string>
+    <string name="nav_help">Help Centre</string>
+    <string name="nav_legal">Legal</string>
 </resources>

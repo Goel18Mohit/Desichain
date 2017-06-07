@@ -3,10 +3,6 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/personal_care"
-            android:icon="@mipmap/ic_drag_handle_black_24dp"
-            android:title="Persnal care" />
-        <item
             android:id="@+id/books_and_media"
             android:icon="@mipmap/ic_drag_handle_black_24dp"
             android:title="Books and Media" />
@@ -14,10 +10,6 @@
             android:id="@+id/pooja_item"
             android:icon="@mipmap/ic_drag_handle_black_24dp"
             android:title="PoojaItem" />
-        <item
-            android:id="@+id/handicrafts"
-            android:icon="@mipmap/ic_drag_handle_black_24dp"
-            android:title="Handicrafts" />
         <item
             android:id="@+id/health_and_food"
             android:icon="@mipmap/ic_drag_handle_black_24dp"
@@ -35,69 +27,33 @@
             android:id="@+id/cow_panchgava_products"
             android:icon="@mipmap/ic_drag_handle_black_24dp"
             android:title="Cow Panchgava Products" />
-        <item
-            android:id="@+id/customer_service"
-            android:icon="@mipmap/ic_drag_handle_black_24dp"
-            android:title="Customer Service"
-            />
     </group>
 
-    <item android:title="-------------------">
-        <menu>
-            <item
-                android:id="@+id/nav_share"
-                android:icon="@mipmap/ic_drag_handle_black_24dp"
-                android:title="Offer Zone" />
-            <item
-                android:id="@+id/nav_send"
-                android:icon="@mipmap/ic_drag_handle_black_24dp"
-                android:title="Notifications" />
-        </menu>
-    </item>
 
     <item android:title="-------------------">
         <menu>
             <item
-                android:id="@+id/nav_share1"
-                android:icon="@mipmap/ic_drag_handle_black_24dp"
-                android:title="My Rewards" />
-            <item
-                android:id="@+id/nav_send1"
+                android:id="@+id/my_cart"
                 android:icon="@mipmap/ic_drag_handle_black_24dp"
                 android:title="My Cart" />
             <item
-                android:id="@+id/nav_share3"
-                android:icon="@mipmap/ic_drag_handle_black_24dp"
-                android:title="My Wishlist" />
-            <item
-                android:id="@+id/nav_send3"
+                android:id="@+id/my_order"
                 android:icon="@mipmap/ic_drag_handle_black_24dp"
                 android:title="My orders" />
             <item
                 android:id="@+id/my_account"
                 android:icon="@mipmap/ic_drag_handle_black_24dp"
                 android:title="My Account" />
-
-
         </menu>
     </item>
     <item android:title="---------------------">
         <menu>
             <item
-                android:id="@+id/nav_share6"
-                android:title="Gift Cards" />
+                android:id="@+id/help_centre"
+                android:title="@string/nav_help" />
             <item
-                android:id="@+id/nav_send6"
-                android:title="Stores" />
-            <item
-                android:id="@+id/nav_share7"
-                android:title="My Chats" />
-            <item
-                android:id="@+id/nav_send7"
-                android:title="Help Center" />
-            <item
-                android:id="@+id/nav_send9"
-                android:title="Legal" />
+                android:id="@+id/Legal"
+                android:title="@string/nav_legal" />
         </menu>
     </item>
 </menu>
