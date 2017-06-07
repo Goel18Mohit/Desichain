@@ -80,6 +80,9 @@
         <activity android:name=".HelpCentre"
             android:label="@string/title_activity_help_centre"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".MyCart"
+            android:label="My Cart"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>

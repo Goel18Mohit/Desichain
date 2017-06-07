@@ -2,8 +2,6 @@ package com.example.nitin.desichain.Utility;
 
 import android.content.Context;
 import android.content.Intent;
-import android.view.Menu;
-import android.view.View;
 import android.widget.Toast;
 
 import com.example.nitin.desichain.BookandMedia;
