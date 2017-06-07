@@ -63,7 +63,6 @@
             android:label="@string/title_activity_my_account"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
-
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.nitin.desichain.MainActivity" />
@@ -86,6 +85,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.nitin.desichain.MyAccount" />
         </activity>
+        <activity android:name=".CustomerService"></activity>
     </application>
 
 </manifest>
