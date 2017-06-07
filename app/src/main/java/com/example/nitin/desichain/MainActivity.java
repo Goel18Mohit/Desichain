@@ -101,8 +101,10 @@ public class MainActivity extends AppCompatActivity
             Intent MY_ACCOUNT=new Intent(MainActivity.this,MyAccount.class);
             startActivity(MY_ACCOUNT);
         }
-        else if (id == R.id.customer_service){
-            startActivity(new Intent(MainActivity.this,CustomerService.class));
+        else if(id==R.id.my_orders)
+        {
+            Intent MY_ORDERS=new Intent(MainActivity.this,MyOrders.class);
+            startActivity(MY_ORDERS);
         }
 
 

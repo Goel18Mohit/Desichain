@@ -70,7 +70,7 @@
                 android:icon="@mipmap/ic_drag_handle_black_24dp"
                 android:title="My Wishlist" />
             <item
-                android:id="@+id/nav_send3"
+                android:id="@+id/my_orders"
                 android:icon="@mipmap/ic_drag_handle_black_24dp"
                 android:title="My orders" />
             <item
