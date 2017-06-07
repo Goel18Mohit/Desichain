@@ -36,8 +36,10 @@
                 android:id="@+id/my_cart"
                 android:icon="@mipmap/ic_drag_handle_black_24dp"
                 android:title="My Cart" />
+           
             <item
-                android:id="@+id/my_order"
+                android:id="@+id/my_orders"
+
                 android:icon="@mipmap/ic_drag_handle_black_24dp"
                 android:title="My orders" />
             <item

@@ -11,6 +11,10 @@
     tools:context="com.example.nitin.desichain.MainActivity"
     tools:showIn="@layout/app_bar_main">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="hello world"/>
 
 
     <TextView
