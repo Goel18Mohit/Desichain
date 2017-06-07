@@ -85,7 +85,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.nitin.desichain.MyAccount" />
         </activity>
-        <activity android:name=".CustomerService"></activity>
     </application>
 
 </manifest>
