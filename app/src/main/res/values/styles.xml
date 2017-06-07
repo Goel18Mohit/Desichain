@@ -17,4 +17,11 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="Card_help_centre">
+
+        <item name="android:layout_margin">3dp</item>
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Title</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+    
 </resources>

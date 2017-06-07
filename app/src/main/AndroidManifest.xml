@@ -77,7 +77,9 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.nitin.desichain.MyAccount" />
         </activity>
-        <activity android:name=".HelpCentre"></activity>
+        <activity android:name=".HelpCentre"
+            android:label="@string/title_activity_help_centre"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

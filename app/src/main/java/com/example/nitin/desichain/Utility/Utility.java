@@ -46,7 +46,7 @@ public class Utility {
             case R.id.my_cart:
                 mContext.startActivity(new Intent(mContext,MyCart.class));
                 break;
-            case R.id.my_order:
+            case R.id.my_orders:
                 mContext.startActivity(new Intent(mContext,MyOrders.class));
                 break;
             case R.id.my_account:

@@ -39,6 +39,8 @@
            
             <item
                 android:id="@+id/my_orders"
+                android:title="My Order"
+                />
 
                 android:icon="@mipmap/ic_drag_handle_black_24dp"
                 android:title="My orders" />
