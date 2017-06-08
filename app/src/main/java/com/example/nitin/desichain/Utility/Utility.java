@@ -11,6 +11,7 @@ import com.example.nitin.desichain.MyAccount;
 import com.example.nitin.desichain.MyCart;
 import com.example.nitin.desichain.MyOrders;
 import com.example.nitin.desichain.Others;
+import com.example.nitin.desichain.Policy;
 import com.example.nitin.desichain.Poojaitems;
 import com.example.nitin.desichain.R;
 
@@ -53,9 +54,11 @@ public class Utility {
             case R.id.contact_us:
                 mContext.startActivity(new Intent(mContext,HelpCentre.class));
                 break;
-            case R.id.Legal:
-                Toast.makeText(mContext,"Legal option is selected",Toast.LENGTH_SHORT).show();
+            case R.id.policy:
+                mContext.startActivity(new Intent(mContext, Policy.class));
                 break;
+            case R.id.about_us:
+                Toast.makeText(mContext,"About us option is selected",Toast.LENGTH_SHORT).show();
         }
 
 
