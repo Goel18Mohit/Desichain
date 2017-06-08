@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.widget.Toast;
 
+import com.example.nitin.desichain.AboutUs;
 import com.example.nitin.desichain.BookandMedia;
 import com.example.nitin.desichain.HealthandFood;
 import com.example.nitin.desichain.HelpCentre;
@@ -58,7 +59,7 @@ public class Utility {
                 mContext.startActivity(new Intent(mContext, Policy.class));
                 break;
             case R.id.about_us:
-                Toast.makeText(mContext,"About us option is selected",Toast.LENGTH_SHORT).show();
+                    mContext.startActivity(new Intent(mContext, AboutUs.class));
         }
 
 
