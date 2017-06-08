@@ -17,7 +17,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity
             android:name=".BookandMedia"
@@ -77,12 +76,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.nitin.desichain.MyAccount" />
         </activity>
-        <activity android:name=".HelpCentre"
+        <activity
+            android:name=".HelpCentre"
             android:label="@string/title_activity_help_centre"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".MyCart"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".MyCart"
             android:label="My Cart"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".AboutUs"></activity>
     </application>
 
 </manifest>
