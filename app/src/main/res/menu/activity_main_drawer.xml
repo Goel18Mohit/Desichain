@@ -53,11 +53,15 @@
     <item android:title="---------------------">
         <menu>
             <item
-                android:id="@+id/help_centre"
-                android:title="@string/nav_help" />
+                android:id="@+id/contact_us"
+                android:title="@string/nav_contact_us" />
             <item
-                android:id="@+id/Legal"
-                android:title="@string/nav_legal" />
+                android:id="@+id/policy"
+                android:title="@string/nav_policy" />
+            <item
+                android:id="@+id/about_us"
+                android:title="@string/about_us"/>
+
         </menu>
     </item>
 </menu>
