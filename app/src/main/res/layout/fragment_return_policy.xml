@@ -8,14 +8,12 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="5dp">
+        android:orientation="vertical">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:padding="5dp"
         android:textSize="23sp"
         android:text="@string/ques1" />
 
@@ -33,7 +31,6 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_padding="5dp"
         android:layout_weight="1"
         android:textSize="23sp"
         android:text="@string/ques2" />
@@ -52,7 +49,6 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_padding="5dp"
             android:layout_weight="1"
             android:textSize="23sp"
             android:text="@string/ques3" />
@@ -71,7 +67,6 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_padding="5dp"
             android:layout_weight="1"
             android:textSize="23sp"
             android:text="@string/ques4" />
@@ -90,7 +85,6 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_padding="5dp"
             android:layout_weight="1"
             android:textSize="23sp"
             android:text="@string/ques5" />
@@ -109,7 +103,6 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_padding="5dp"
             android:layout_weight="1"
             android:textSize="23sp"
             android:text="@string/ques6" />
@@ -127,7 +120,6 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_padding="5dp"
             android:layout_weight="1"
             android:textSize="23sp"
             android:text="@string/ques7" />
@@ -145,7 +137,6 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_padding="5dp"
             android:layout_weight="1"
             android:textSize="23sp"
             android:text="@string/ques8" />

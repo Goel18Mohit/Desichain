@@ -8,6 +8,14 @@
     android:paddingStart="5dp"
     tools:context="com.example.nitin.desichain.Policy">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -41,6 +49,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="3"
+            android:id="@+id/shipping_policy"
             android:textSize="24sp"
             android:text="@string/nav_shipping_policy"/>
 
@@ -48,8 +57,14 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:id="@+id/shipping_policy1"
             android:src="@mipmap/ic_add_black_24dp"/>
     </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/shippingfragment"></FrameLayout>
 
 
     <LinearLayout
@@ -78,5 +93,6 @@
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:background="#C0C0C0"/>
-
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

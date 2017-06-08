@@ -85,6 +85,7 @@
             android:label="My Cart"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".AboutUs"></activity>
+        <activity android:name=".Policy"></activity>
     </application>
 
 </manifest>
