@@ -21,11 +21,9 @@
     <string name="returnPolicy">Return Policy</string>
     <string name="about_us">About Us</string>
     <string name="shipping">Shipping Policy</string>
-    <string name="nav_shipping_policy">Shipping Policy</string>
-    <string name="nav_return_policy">Return Policy</string>
+  
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="ques2">Q. What all items can I return?</string>
     <string name="ques3">Q. When are returns and refund not possible?</string>
     <string name="ques4">Q. Do I have to return a free gift when I return the product?</string>
@@ -44,6 +42,11 @@
     <string name="ans8">Yes, We at DesiChain strive hard to give an excellent shopping experience to our customers.   \nYour problem will be understood and required procedure will follow within 48 hours of the complaint.</string>
     <string name="dispute">\nAny dispute is subject to Delhi Jurisdiction.</string>
     <string name="aboutus"><u>About Us</u></string>
+
     <string name="customer_service">Customer Service</string>
     <string name="policy_label">Policy</string>
+
+    <string name="nav_return_policy">Return Policy</string>
+    <string name="nav_shipping_policy">Shipping Policy</string>
+
 </resources>

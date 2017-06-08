@@ -1,0 +1,573 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.nitin.desichain.ShippingPolicy">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:padding="5dp"
+            android:layout_height="match_parent">
+
+        <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+            android:layout_weight="1"
+        style="@style/PolicyQuestions"
+        android:text="Q. Can I change/ edit my delivery address?"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:textSize="12sp"
+        android:text="The Shipping Address can be asked for modification at Contact Us page. However, these changes can be made possible only before the order is dispatched from our side as mentioned in your Account’s ORDER STATUS."/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="5dp"
+            android:background="#C0C0C0"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        style="@style/PolicyQuestions"
+        android:text="Q. What are the Delivery Charges?"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:textSize="12sp"
+        android:text="Shipping is calculated on the total weight of the items you have added in your cart. Unlike other \nShopping Website’s models where Shipping charges are incurred per item irrespective of their weight (which may come out to be expensive), DesiChain follows weight­based Shipping module where no matter how many quantity and variety you have added in your cart, it will consider its total weight for the delivery process. At present, DesiChain has Rs. 50 as shipping charge for every one Kilogram (Kg) of the gross weight of the shipment.\n\nIn case of heavy parcels and Bulk Orders­ Shipping through Transport is preferred to save our customers money and it may take about 10­-15 days to get the product."/>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="5dp"
+            android:background="#C0C0C0"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        style="@style/PolicyQuestions"
+        android:text="Q. What is the estimated delivery time after I place an order?"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:textSize="12sp"
+        android:text="\n\nDesiChain has built up a wide logistics network involving all the major courier services in the Industry, having a wide range of services in almost all parts of India (Bharat). Depending on the Location and the nature of product(s), we try to deliver the product in between 4-­10 working days after your payment is done or confirmed for ‘Cash on Delivery’ (which does not include Sundays and public holidays). Following are the Shipping Logistics Partner DesiChain proudly works with:\n\n1)    FedEx Courier\n2)    The Professional Courier (TPC)\n3)    DTDC Courier\n4)    Shree Anjani Courier\n5)    Madhur Courier\n6)    TrackOn Courier\n7)    India Post (Registered Parcel) \n8)    Shree Maruti Courier\n9)    Shree Nandan Courier\n10)  First Flight Courier\n\nRefer the chart below for complete information of the same."/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_margin="10dp"
+            android:id="@+id/deliveryheadingtext"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:textSize="16sp"/>
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TableRow>
+                <TextView
+                    android:text="2-5 business days"
+                    android:background="@drawable/box"
+                    android:textStyle="bold"
+                    />
+                <TextView
+                    android:text="5-8 business days"
+                    android:background="@drawable/box"
+                    android:textStyle="bold"
+                    />
+                <TextView
+                    android:text="5-8 business days"
+                    android:background="@drawable/box"
+                    android:textStyle="bold"
+                    />
+                <TextView
+                    android:text="4-7 business days"
+                    android:background="@drawable/box"
+                    android:textStyle="bold"
+                    />
+                <TextView
+                    android:text="8-12 business days"
+                    android:background="@drawable/box"
+                    android:textStyle="bold"
+                    />
+            </TableRow>
+            <TableRow>
+                <TextView
+                    android:text="Delhi/ NCR"
+                    android:background="@drawable/box"
+                    />
+                <TextView
+                    android:text="Karnataka"
+                    android:background="@drawable/box"
+                    />
+                <TextView
+                    android:text="Bihar"
+                    android:background="@drawable/box"
+                    />
+                <TextView
+                    android:text="Maharashtra"
+                    android:background="@drawable/box"
+                    />
+                <TextView
+                    android:text="Assam"
+                    android:background="@drawable/box"
+                    />
+            </TableRow>
+            <TableRow>
+                <TextView
+                    android:text="Gurgaon"
+                    android:background="@drawable/box"
+                    />
+                <TextView
+                    android:text="Tamil Nadu"
+                    android:background="@drawable/box"
+                    />
+                <TextView
+                    android:text="West Bengal"
+                    android:background="@drawable/box"
+                    />
+                <TextView
+                    android:text="Madhya Pradesh"
+                    android:background="@drawable/box"
+                    />
+                <TextView
+                    android:text="Manipur"
+                    android:background="@drawable/box"
+                    />
+            </TableRow>
+            <TableRow>
+                <TextView
+                    android:text="Noida"
+                    android:background="@drawable/box"
+                    />
+                <TextView
+                    android:text="Andhra Pradesh"
+                    android:background="@drawable/box"
+                    />
+                <TextView
+                    android:text="Jharkand"
+                    android:background="@drawable/box"
+                    />
+                <TextView
+                    android:text="Chattisgarh"
+                    android:background="@drawable/box"
+                    />
+                <TextView
+                    android:text="Meghalaya"
+                    android:background="@drawable/box"
+                    />
+            </TableRow>
+            <TableRow>
+                <TextView
+                    android:text="Ghaziabad"
+                    android:background="@drawable/box"
+                    />
+                <TextView
+                    android:text="Kerala"
+                    android:background="@drawable/box"
+                    />
+                <TextView
+                    android:text="Odisha"
+                    android:background="@drawable/box"
+                    />
+                <TextView
+                    android:text="Haryana"
+                    android:background="@drawable/box"
+                    />
+                <TextView
+                    android:text="Tripura"
+                    android:background="@drawable/box"
+                    />
+            </TableRow>
+            <TableRow>
+                <TextView
+                    android:text="Faridabad"
+                    android:background="@drawable/box"
+                    />
+                <TextView
+                    android:text="Goa"
+                    android:background="@drawable/box"
+                    />
+                <TextView
+                    android:text="Jammu and Kashmir"
+                    android:background="@drawable/box"
+                    />
+                <TextView
+                    android:text="Punjab"
+                    android:background="@drawable/box"
+                    />
+                <TextView
+                    android:text="Mizoram"
+                    android:background="@drawable/box"
+                    />
+            </TableRow>
+            <TableRow>
+                <TextView
+                    android:text="Chandigarh"
+                    android:background="@drawable/box"
+                    />
+                <TextView
+                    android:text="Pondicherry"
+                    android:background="@drawable/box"
+                    />
+                <TextView
+                    android:text="Himachal Pradesh"
+                    android:background="@drawable/box"
+                    />
+                <TextView
+                    android:text="Uttar Pradesh"
+                    android:background="@drawable/box"
+                    />
+                <TextView
+                    android:text="Nagaland"
+                    android:background="@drawable/box"
+                    />
+            </TableRow>
+            <TableRow>
+                <TextView
+                    android:text=""
+                    android:background="@drawable/box"
+                    />
+                <TextView
+                    android:text="Telangana"
+                    android:background="@drawable/box"
+                    />
+                <TextView
+                    android:text="Uttarakhand"
+                    android:background="@drawable/box"
+                    />
+                <TextView
+                    android:text="Rajasthan"
+                    android:background="@drawable/box"
+                    />
+                <TextView
+                    android:text="Arunachal Pradesh"
+                    android:background="@drawable/box"
+                    />
+            </TableRow>
+            <TableRow>
+                <TextView
+                    android:text=""
+                    android:background="@drawable/box"
+                    />
+                <TextView
+                    android:text=""
+                    android:background="@drawable/box"
+                    />
+                <TextView
+                    android:text=""
+                    android:background="@drawable/box"
+                    />
+                <TextView
+                    android:text="Gujarat"
+                    android:background="@drawable/box"
+                    />
+                <TextView
+                    android:text="Andaman and Nicobar Island "
+                    android:background="@drawable/box"
+                    />
+            </TableRow>
+            <TableRow>
+                <TextView
+                    android:text=""
+                    android:background="@drawable/box"
+                    />
+                <TextView
+                    android:text=""
+                    android:background="@drawable/box"
+                    />
+                <TextView
+                    android:text=""
+                    android:background="@drawable/box"
+                    />
+                <TextView
+                    android:text="Daman and Diu"
+                    android:background="@drawable/box"
+                    />
+                <TextView
+                    android:text="Lakshwadeep"
+                    android:background="@drawable/box"
+                    />
+            </TableRow>
+            <TableRow>
+                <TextView
+                    android:text=""
+                    android:background="@drawable/box"
+                    />
+                <TextView
+                    android:text=""
+                    android:background="@drawable/box"
+                    />
+                <TextView
+                    android:text=""
+                    android:background="@drawable/box"
+                    />
+                <TextView
+                    android:text="Dadra and Nagar Haveli"
+                    android:background="@drawable/box"
+                    />
+                <TextView
+                    android:text="Sikkim"
+                    android:background="@drawable/box"
+                    />
+            </TableRow>
+
+        </TableLayout>
+    </HorizontalScrollView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:textSize="12sp"
+        android:layout_margin="10dp"
+        android:text="[ Business Days excludes Saturday, Sunday, Public Holidays and any other important festivals as announced. ]"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="5dp"
+            android:background="#C0C0C0"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        style="@style/PolicyQuestions"
+        android:text="Q. Which courier company will deliver my order? Is it possible to choose my preferred courier partner?"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:textSize="12sp"
+        android:text="\n\nCourier logistics partner is selected by DesiChain based on their serviceability and prompt service in a particular Pin Code.\nYes, you can suggest the name of your preferred delivery courier name in the “Special Notes” option on Shipping Address Page. We will try our best to follow them."/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="5dp"
+            android:background="#C0C0C0"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        style="@style/PolicyQuestions"
+        android:text="Q. Are there any hidden costs (Taxes, Octrois etc.) on products sold on DesiChain?"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:textSize="12sp"
+        android:text="There are NO hidden costs that you need to pay after you make a purchase on DesiChain. The
+
+Price on the invoice letter is the final and all­inclusive prices. Delivery charges are not hidden
+
+charges and are clearly mentioned earlier."/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="5dp"
+            android:background="#C0C0C0"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        style="@style/PolicyQuestions"
+        android:text="Q. Why does the delivery time vary for different regions?"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:textSize="12sp"
+        android:text="Delivery time is influenced by the product availability, geographical location of your region and
+
+the courier partner’s time to deliver."/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="5dp"
+            android:background="#C0C0C0"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        style="@style/PolicyQuestions"
+        android:text="Q. Why is the ‘Cash on Delivery’ (COD) option not available for my destination?"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:textSize="12sp"
+        android:text="Availability of COD depends on different basis like the availability of our courier partners to
+
+accept the amount as payment of delivery at that time. Our courier partners also have limits on
+
+cash amount payable on delivery depending on your location and your order value must have
+
+exceeded the same."/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="5dp"
+            android:background="#C0C0C0"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        style="@style/PolicyQuestions"
+        android:text="Q. Before accepting delivery, can I open and verify the contents of my package?"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:textSize="12sp"
+
+        android:text="Currently this facility is not available. You can open the package only after you have made the full payment to the delivery boy in case of ‘Cash-On-Delivery’ orders.
+
+
+
+However, if for some reason you are not satisfied with the product(s) you can Contact Us with your Order ID."/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="5dp"
+            android:background="#C0C0C0"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        style="@style/PolicyQuestions"
+        android:text="Q. How do I arrange a pick­up for my return?"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:textSize="12sp"
+        android:text="You can opt for a third party courier service to return the item purchased after contacting us on
+
+our email: orders@desichain.in and the later process that will initiate with it. Returning
+
+expenses are borne by the customer itself. Please refer to Return Policy for more accurate details
+
+regarding the same."/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="5dp"
+            android:background="#C0C0C0"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        style="@style/PolicyQuestions"
+        android:text="Q. Does DesiChain deliver items internationally?"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:textSize="12sp"
+
+        android:text="Yes, DesiChain does deliver items internationally. For International orders, you need to log in to
+
+DesiChain.com"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="5dp"
+            android:background="#C0C0C0"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        style="@style/PolicyQuestions"
+        android:text="Q. What do I do if my order is delivered to a wrong address?"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:textSize="12sp"
+        android:text="In the event that a non­delivery occurs on account of a mistake by you (i.e. wrong name or
+
+address provided by you) any extra cost incurred by us for redelivery shall be claimed from the
+
+buyer placing an order."/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="5dp"
+            android:background="#C0C0C0"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        style="@style/PolicyQuestions"
+        android:text="Q. What if the order is not delivered as per promised date?"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:textSize="12sp"
+        android:text="To know the current status of your order please log into your Account on DesiChain and go to ORDER STATUS section.
+
+ 
+
+If for some unforeseen reasons your order is not been delivered as per the promised date we will try to send you the revised and updated delivery date through email/ phone call. The unforeseen reasons are the ones which are beyond our control i.e. flood, fire, wars, acts of Nature and custom clearance or any cause."/>
+    
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:text="\n\n\nPlease contact us in case your order is not delivered in maximum 20­-25 working days, before
+
+filing a PayUMoney/ PayTm/ MobiKwik dispute."/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="5dp"
+            android:background="#C0C0C0"/>
+
+        </LinearLayout>
+    </ScrollView>
