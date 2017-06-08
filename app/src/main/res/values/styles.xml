@@ -23,5 +23,10 @@
         <item name="android:textAppearance">@style/TextAppearance.AppCompat.Title</item>
         <item name="android:textAlignment">center</item>
     </style>
+
+    <style name="PolicyQuestions">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
     
 </resources>

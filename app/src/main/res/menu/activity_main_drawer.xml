@@ -30,7 +30,7 @@
     </group>
 
 
-    <item android:title="-------------------">
+    <item android:title="">
         <menu>
             <item
                 android:id="@+id/my_cart"
@@ -50,7 +50,7 @@
                 android:title="My Account" />
         </menu>
     </item>
-    <item android:title="---------------------">
+    <item android:title="">
         <menu>
             <item
                 android:id="@+id/contact_us"

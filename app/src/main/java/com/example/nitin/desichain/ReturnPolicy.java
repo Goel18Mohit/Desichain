@@ -25,7 +25,7 @@ public class ReturnPolicy extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.activity_policy,container);
+        View view = inflater.inflate(R.layout.fragment_return_policy,container,false);
         text_ques1=(TextView)view.findViewById(R.id.ques1_return_policy);
         text_ques2=(TextView)view.findViewById(R.id.ques2_return_policy);
         text_ques3=(TextView)view.findViewById(R.id.ques3_return_policy);

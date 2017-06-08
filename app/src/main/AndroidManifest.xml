@@ -78,13 +78,34 @@
         </activity>
         <activity
             android:name=".HelpCentre"
-            android:label="@string/title_activity_help_centre"
+            android:label="Help Centre"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".MyCart"
             android:label="My Cart"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".AboutUs"></activity>
+            android:theme="@style/AppTheme.NoActionBar"
+            android:parentActivityName=".MainActivity">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"/>
+
+        </activity>
+        <activity android:name=".AboutUs"
+            android:label="About Us"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"/>
+        </activity>
+        <activity android:name=".Policy"
+            android:label="@string/policy_label"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"/>
+        </activity>
+
     </application>
 
 </manifest>
