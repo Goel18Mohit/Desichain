@@ -15,6 +15,10 @@
     <string name="title_activity_my_orders">My Orders</string>
     <string name="title_activity_my_cart">MyCart</string>
     <string name="title_activity_help_centre">Help Centre</string>
-    <string name="nav_help">Help Centre</string>
+    <string name="nav_contact_us">Contact Us</string>
     <string name="nav_legal">Legal</string>
+    <string name="nav_policy">Policy</string>
+    <string name="returnPolicy">Return Policy</string>
+    <string name="about_us">About Us</string>
+    <string name="shipping">Shipping Policy</string>
 </resources>

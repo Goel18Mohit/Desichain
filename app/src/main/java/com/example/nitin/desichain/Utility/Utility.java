@@ -50,7 +50,7 @@ public class Utility {
             case R.id.my_account:
                 mContext.startActivity(new Intent(mContext,MyAccount.class));
                 break;
-            case R.id.help_centre:
+            case R.id.contact_us:
                 mContext.startActivity(new Intent(mContext,HelpCentre.class));
                 break;
             case R.id.Legal:
