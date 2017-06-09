@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Policy extends AppCompatActivity implements View.OnClickListener {
 
@@ -54,7 +55,7 @@ public class Policy extends AppCompatActivity implements View.OnClickListener {
     @Override
     public void onClick(View v) {
 
-
+        Toast.makeText(this,"button clicked",Toast.LENGTH_SHORT).show();
         int id=v.getId();
         switch (id){
            case R.id.img_return_policy:
