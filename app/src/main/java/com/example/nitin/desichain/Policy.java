@@ -62,7 +62,7 @@ public class Policy extends AppCompatActivity implements View.OnClickListener {
                     if (RETURN_CLICKS == 0){
                         fragmentManager.beginTransaction().replace(R.id.fragment_return_policy,returnPolicy).commit();
                         RETURN_CLICKS =1;
-                        returnImage.setImageResource(R.mipmap.ic_drag_handle_black_24dp);
+                        returnImage.setImageResource(R.mipmap.ic_remove_black_24dp);
                     }
                     else if (RETURN_CLICKS == 1){
                         fragmentManager.beginTransaction().remove(returnPolicy).commit();
@@ -75,7 +75,7 @@ public class Policy extends AppCompatActivity implements View.OnClickListener {
                     if (CUSTOMER_CLICKS == 0){
                         fragmentManager.beginTransaction().replace(R.id.fragment_customer_Service,customerService).commit();
                         CUSTOMER_CLICKS=1;
-                        customerImage.setImageResource(R.mipmap.ic_drag_handle_black_24dp);
+                        customerImage.setImageResource(R.mipmap.ic_remove_black_24dp);
                     }
                     else{
                         fragmentManager.beginTransaction().remove(customerService).commit();
