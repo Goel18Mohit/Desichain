@@ -2,6 +2,7 @@ package com.example.nitin.desichain.Utility;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.widget.Toast;
 
 import com.example.nitin.desichain.AboutUs;
@@ -61,9 +62,45 @@ public class Utility {
             case R.id.about_us:
                     mContext.startActivity(new Intent(mContext, AboutUs.class));
         }
+    }
 
+    public static String getFbPageUrl(Context mContext){
 
+          String FACEBOOK_URL = "https://www.facebook.com/DesiChain.in/";
+          String FACEBOOK_PAGE_ID = "DesiChain.in";
 
+        PackageManager packageManager = mContext.getPackageManager();
+
+        try {
+            int versionCode = packageManager.getPackageInfo("com.facebook.katana",0).versionCode;
+            boolean activated =  packageManager.getApplicationInfo("com.facebook.katana", 0).enabled;
+            if (versionCode >= 3002850 && activated){
+                return "fb://facewebmodal/f?href="+FACEBOOK_URL;
+            }else {
+                return "fb://page/"+FACEBOOK_PAGE_ID;
+            }
+
+        } catch (PackageManager.NameNotFoundException e) {
+            return FACEBOOK_URL;
+        }
+    }
+
+    public static String getTwitterUrl(Context mContext){
+
+        String TWITTER_URL = "https://twitter.com/DesiChainindia";
+        String TWITTER_ID = "DesiChainindia";
+
+        try {
+            String pkgInfo = mContext.getPackageManager().getPackageInfo("com.twitter.android", 0).toString();
+            if (pkgInfo.equals("com.twitter.android")) {
+                return "twitter://user?user_id=" + TWITTER_ID;
+            }
+            else {
+                return TWITTER_URL;
+            }
+        } catch (PackageManager.NameNotFoundException e) {
+            return TWITTER_URL;
+        }
     }
 
 }
