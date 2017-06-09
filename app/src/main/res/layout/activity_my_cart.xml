@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/activity_my_cart"
     android:fitsSystemWindows="true"
     tools:context="com.example.nitin.desichain.MyCart">
 
@@ -43,6 +44,7 @@
                android:layout_width="0dp"
                android:background="#ff7400"
                android:text="CONTINUE"
+               android:id="@+id/myCartContinueBtn"
                android:textColor="#ffffff"
                android:layout_height="wrap_content"
                android:layout_weight="1"/>
