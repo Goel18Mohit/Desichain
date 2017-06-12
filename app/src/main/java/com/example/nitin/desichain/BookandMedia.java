@@ -1,8 +1,8 @@
 package com.example.nitin.desichain;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -10,23 +10,33 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.FrameLayout;
+import android.widget.ListView;
 
+import com.example.nitin.desichain.SubCategoryList.ShowCategoryAdapeter;
 import com.example.nitin.desichain.Utility.Utility;
 
 import java.util.ArrayList;
 
 public class BookandMedia extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener,ShowCategoryAdapeter.Itemclick {
        private ArrayList<String> Books=new ArrayList<>();
     private ArrayList<String> BhagavadGita=new ArrayList<>();
     private ArrayList<String> Paperback=new ArrayList<>();
     private ArrayList<String> Mediacategory=new ArrayList<>();
+    ListView BOOK_MEDIA_SUBCATEGORY;
+    FragmentManager fragmentManager;
+    SubSubCategory subSubCategory0;
+    SubSubCategory subSubCategory1;
+    SubSubCategory subSubCategory2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bookand_media);
         Toolbar toolbar= (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        fragmentManager=getSupportFragmentManager();
+        BOOK_MEDIA_SUBCATEGORY= (ListView) findViewById(R.id.book_media_listview);
         getSupportActionBar().setTitle("BOOKS & MEDIA");
         Books.add("Bhagavad-Gita As It Is");
         Books.add("Paperback/ Hardbound");
@@ -69,7 +79,11 @@ public class BookandMedia extends AppCompatActivity
         Mediacategory.add("Independent Cinema");
         Mediacategory.add("Kirtans/Bhajans");
         Mediacategory.add("Lectures/ Talks");
-
+        subSubCategory0=new SubSubCategory(BhagavadGita,this);
+        subSubCategory1=new SubSubCategory(Paperback,this);
+        subSubCategory2=new SubSubCategory(Mediacategory,this);
+        ShowCategoryAdapeter showCategory=new ShowCategoryAdapeter(Books,this);
+        BOOK_MEDIA_SUBCATEGORY.setAdapter(showCategory);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -126,5 +140,20 @@ public class BookandMedia extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void onItemClick(int position,FrameLayout id) {
+        switch (position){
+            case 0:
+                fragmentManager.beginTransaction().replace(id.getId(),subSubCategory0).commit();
+                break;
+            case 1:
+                fragmentManager.beginTransaction().replace(id.getId(),subSubCategory1).commit();
+                break;
+            case 2:fragmentManager.beginTransaction().replace(id.getId(),subSubCategory2).commit();
+                  break;
+        }
+
     }
 }
