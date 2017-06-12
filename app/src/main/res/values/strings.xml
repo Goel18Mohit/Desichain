@@ -50,4 +50,8 @@
     <string name="nav_return_policy">Return Policy</string>
     <string name="nav_shipping_policy">Shipping Policy</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_payment">Payment</string>
+
 </resources>
