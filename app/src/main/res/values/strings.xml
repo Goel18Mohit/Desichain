@@ -45,6 +45,7 @@
     <string name="customer_service">Customer Service</string>
     <string name="policy_label">Policy</string>
 
+    <string name="Rs">\u20B9</string>
     <string name="nav_return_policy">Return Policy</string>
     <string name="nav_shipping_policy">Shipping Policy</string>
 
