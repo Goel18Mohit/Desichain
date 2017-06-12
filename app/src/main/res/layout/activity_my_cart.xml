@@ -2,84 +2,172 @@
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_my_cart"
+    android:background="#E0E0E0"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
     tools:context="com.example.nitin.desichain.MyCart">
 
-    <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        card_view:cardElevation="10dp">
-
-        <LinearLayout
+        android:layout_height="match_parent">
+        <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/cardViewCheckout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="bottom"
+            card_view:cardElevation="10dp">
 
-            <include
-                layout="@layout/content_cart_delivery"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <include layout="@layout/content_cart_delivery" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#ff7400"
+                    android:clickable="true"
+                    android:id="@+id/checkoutLayout"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2"
+                        android:id="@+id/checkoutText"
+                        android:gravity="start"
+                        android:text="Checkout"
+                        android:textColor="#FFFFFF"
+                        android:textSize="16sp" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/rupeeSymbolCheckout"
+                        android:gravity="end"
+                        android:text="@string/Rs"
+                        android:textColor="#FFFFFF"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/costCheckout"
+                        android:text=" 1520"
+                        android:textColor="#FFFFFF"
+                        android:textSize="14sp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/imgCheckoutForward"
+                        android:layout_gravity="center"
+                        android:src="@mipmap/ic_arrow_forward_white_24dp" />
+
+                </LinearLayout>
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cardItemsCount"
+            android:layout_alignParentTop="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardElevation="10dp">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#ff7400"
-                android:orientation="horizontal"
-                android:padding="10dp">
-
+                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_margin="5dp"
-                    android:layout_weight="2"
-                    android:gravity="start"
-                    android:text="Checkout"
-                    android:textColor="#FFFFFF"
-                    android:textSize="14sp" />
-
+                    android:layout_weight="1"
+                    android:text="Items: "
+                    android:textAlignment="viewEnd"
+                    android:textStyle="bold" />
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:id="@+id/itemsCount"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
                     android:layout_margin="5dp"
-                    android:gravity="end"
-                    android:text="@string/Rs"
-                    android:textColor="#FFFFFF"
-                    android:textSize="14sp" />
+                    android:layout_weight="1"
+                    android:text="0" />
+            </LinearLayout>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:text=" 1520"
-                    android:textColor="#FFFFFF"
-                    android:textSize="14sp" />
+        </android.support.v7.widget.CardView>
 
-                <ImageView
-                    android:layout_width="wrap_content"
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/cardItemsCount"
+            android:layout_above="@+id/cardViewCheckout">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <include layout="@layout/single_cart"
+                    />
+                <include layout="@layout/single_cart"
+                    />
+                <include layout="@layout/single_cart"
+                    />
+                <include layout="@layout/single_cart"
+                    />
+                <include layout="@layout/single_cart"
+                    />
+                <include layout="@layout/single_cart"
+                    />
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:src="@mipmap/ic_arrow_forward_white_24dp" />
+                    android:minHeight="50dp"
+                    android:layout_margin="10dp"
+                    app:cardElevation="10dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:orientation="horizontal"
+                        android:weightSum="4">
+
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:src="@mipmap/ic_card_giftcard_black_24dp" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="2"
+                            android:text="Gift Wrap for Rs 25" />
+
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:src="@mipmap/ic_arrow_forward_black_24dp" />
+
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+
 
             </LinearLayout>
-        </LinearLayout>
-    </android.support.v7.widget.CardView>
 
-    <android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        </ScrollView>
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
-    </android.support.design.widget.AppBarLayout>
-
-    <include layout="@layout/content_my_cart" />
-
+    </RelativeLayout>
 </android.support.design.widget.CoordinatorLayout>
