@@ -59,15 +59,6 @@
             android:label="@string/title_activity_main2"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".MyAccount"
-            android:label="@string/title_activity_my_account"
-            android:parentActivityName=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.nitin.desichain.MainActivity" />
-        </activity>
-        <activity
             android:name=".MyOrders"
             android:label="@string/title_activity_my_orders"
             android:parentActivityName=".MyAccount"
@@ -117,6 +108,15 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.nitin.desichain.MyCart" />
+        </activity>
+        <activity
+            android:name=".MyAccount"
+            android:label="@string/title_activity_my_account"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.nitin.desichain.MainActivity" />
         </activity>
     </application>
 
