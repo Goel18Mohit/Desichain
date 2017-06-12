@@ -98,16 +98,26 @@
                 android:value=".MainActivity" />
         </activity>
         <activity
-            android:name=".Policy"
-            android:label="@string/policy_label"
-            android:parentActivityName=".MainActivity">
+            android:name=".BuyNow"
+            android:label="Delivery"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <!--
+     ATTENTION: This was auto-generated to add Google Play services to your project for
+     App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information.
+        -->
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <activity
+            android:name=".Payment"
+            android:label="@string/title_activity_payment"
+            android:parentActivityName=".MyCart"
+            android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value="com.example.nitin.desichain.MyCart" />
         </activity>
-        <activity android:name=".BuyNow"
-            android:label="Delivery"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
