@@ -100,6 +100,7 @@
             android:name=".BuyNow"
             android:label="Delivery"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".MyAccount"
             android:label="@string/title_activity_my_account"
             android:parentActivityName=".MainActivity"
