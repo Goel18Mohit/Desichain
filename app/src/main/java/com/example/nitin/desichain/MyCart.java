@@ -17,7 +17,7 @@ public class MyCart extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+/*
         mContinueBtn = (Button) findViewById(R.id.myCartContinueBtn);
         mContinueBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -25,6 +25,6 @@ public class MyCart extends AppCompatActivity {
                 startActivity(new Intent(MyCart.this,BuyNow.class));
             }
         });
-    }
+  */  }
 
 }
