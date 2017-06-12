@@ -29,6 +29,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="#ff7400"
+                    android:clickable="true"
+                    android:id="@+id/checkoutLayout"
                     android:orientation="horizontal"
                     android:padding="10dp">
 
