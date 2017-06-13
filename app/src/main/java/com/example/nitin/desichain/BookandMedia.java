@@ -2,41 +2,37 @@ package com.example.nitin.desichain;
 
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.FragmentManager;
+import android.support.design.widget.TabLayout;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.FrameLayout;
-import android.widget.ListView;
 
-import com.example.nitin.desichain.SubCategoryList.ShowCategoryAdapeter;
+import com.example.nitin.desichain.SubSubCateforyFragments.BhagavadGita;
+import com.example.nitin.desichain.SubSubCateforyFragments.Media;
+import com.example.nitin.desichain.SubSubCateforyFragments.PaperBack;
 import com.example.nitin.desichain.Utility.Utility;
 
 import java.util.ArrayList;
 
 public class BookandMedia extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener,ShowCategoryAdapeter.Itemclick {
+        implements NavigationView.OnNavigationItemSelectedListener {
        private ArrayList<String> Books=new ArrayList<>();
     private ArrayList<String> BhagavadGita=new ArrayList<>();
     private ArrayList<String> Paperback=new ArrayList<>();
     private ArrayList<String> Mediacategory=new ArrayList<>();
-    ListView BOOK_MEDIA_SUBCATEGORY;
-    FragmentManager fragmentManager;
-    SubSubCategory subSubCategory0;
-    SubSubCategory subSubCategory1;
-    SubSubCategory subSubCategory2;
+    private ViewPager viewPager;
+    private TabLayout tabLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bookand_media);
         Toolbar toolbar= (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        fragmentManager=getSupportFragmentManager();
-        BOOK_MEDIA_SUBCATEGORY= (ListView) findViewById(R.id.book_media_listview);
         getSupportActionBar().setTitle("BOOKS & MEDIA");
         Books.add("Bhagavad-Gita As It Is");
         Books.add("Paperback/ Hardbound");
@@ -79,12 +75,6 @@ public class BookandMedia extends AppCompatActivity
         Mediacategory.add("Independent Cinema");
         Mediacategory.add("Kirtans/Bhajans");
         Mediacategory.add("Lectures/ Talks");
-        subSubCategory0=new SubSubCategory(BhagavadGita,this);
-        subSubCategory1=new SubSubCategory(Paperback,this);
-        subSubCategory2=new SubSubCategory(Mediacategory,this);
-        ShowCategoryAdapeter showCategory=new ShowCategoryAdapeter(Books,this);
-        BOOK_MEDIA_SUBCATEGORY.setAdapter(showCategory);
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer,  R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -93,8 +83,21 @@ public class BookandMedia extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        viewPager= (ViewPager) findViewById(R.id.viewpager);
+        tabLayout= (TabLayout) findViewById(R.id.tab);
+        addTabs(viewPager);
+        tabLayout.setupWithViewPager(viewPager);
     }
 
+    public void addTabs(ViewPager viewPager)
+    {
+        com.example.nitin.desichain.Utility.ViewPager adapter=new com.example.nitin.desichain.Utility.ViewPager(getSupportFragmentManager());
+        adapter.addFrag(new BhagavadGita(BhagavadGita,BookandMedia.this),"BhagavadGita");
+        adapter.addFrag(new PaperBack(Paperback,BookandMedia.this),"PaperBack");
+        adapter.addFrag(new Media(Mediacategory,BookandMedia.this),"Media");
+        viewPager.setAdapter(adapter);
+
+    }
 
 
     @Override
@@ -142,18 +145,5 @@ public class BookandMedia extends AppCompatActivity
         return true;
     }
 
-    @Override
-    public void onItemClick(int position,FrameLayout id) {
-        switch (position){
-            case 0:
-                fragmentManager.beginTransaction().replace(id.getId(),subSubCategory0).commit();
-                break;
-            case 1:
-                fragmentManager.beginTransaction().replace(id.getId(),subSubCategory1).commit();
-                break;
-            case 2:fragmentManager.beginTransaction().replace(id.getId(),subSubCategory2).commit();
-                  break;
-        }
 
-    }
 }
