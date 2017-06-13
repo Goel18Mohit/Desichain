@@ -1,9 +1,10 @@
 package com.example.nitin.desichain;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.TabLayout;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +12,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.nitin.desichain.SubSubCateforyFragments.BhagavadGita;
 import com.example.nitin.desichain.Utility.Utility;
 
 import java.util.ArrayList;
@@ -24,6 +26,8 @@ public class Poojaitems extends AppCompatActivity
     private ArrayList<String> Bells=new ArrayList<>();
     private ArrayList<String> Agarbatti=new ArrayList<>();
     private ArrayList<String> Murtis=new ArrayList<>();
+    private ViewPager viewPager;
+    private TabLayout tabLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,8 +69,24 @@ public class Poojaitems extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        viewPager= (ViewPager) findViewById(R.id.viewpagerp);
+        tabLayout= (TabLayout) findViewById(R.id.tabp);
+        addTabs(viewPager);
+        tabLayout.setupWithViewPager(viewPager);
     }
 
+    public void addTabs(ViewPager viewPager)
+    {
+        com.example.nitin.desichain.Utility.ViewPager adapter=new com.example.nitin.desichain.Utility.ViewPager(getSupportFragmentManager());
+        adapter.addFrag(new BhagavadGita(itemsforworship,Poojaitems.this),"itemsforworship");
+        adapter.addFrag(new BhagavadGita(Otheressentials,Poojaitems.this),"Otheressentials");
+        adapter.addFrag(new BhagavadGita(Bells,Poojaitems.this),"Bells");
+        adapter.addFrag(new BhagavadGita(Agarbatti,Poojaitems.this),"Agarbatti");
+        adapter.addFrag(new BhagavadGita(Murtis,Poojaitems.this),"Murtis");
+
+        viewPager.setAdapter(adapter);
+
+    }
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

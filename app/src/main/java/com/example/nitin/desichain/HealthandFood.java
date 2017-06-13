@@ -1,17 +1,18 @@
 package com.example.nitin.desichain;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.TabLayout;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
+import com.example.nitin.desichain.SubSubCateforyFragments.BhagavadGita;
 import com.example.nitin.desichain.Utility.Utility;
 
 import java.util.ArrayList;
@@ -29,7 +30,8 @@ public class HealthandFood extends AppCompatActivity
     private ArrayList<String> Digestives=new ArrayList<>();
     private ArrayList<String> Grains=new ArrayList<>();
     private ArrayList<String> Spices=new ArrayList<>();
-
+    private ViewPager viewPager;
+    private TabLayout tabLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,16 +84,6 @@ public class HealthandFood extends AppCompatActivity
         Grains.add("Others");
         Spices.add("Ground Spices");
         Spices.add("Whole Spices");
-        
-
-
-
-
-
-
-
-
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer,  R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -100,6 +92,26 @@ public class HealthandFood extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        viewPager= (ViewPager) findViewById(R.id.viewpagerh);
+        tabLayout= (TabLayout) findViewById(R.id.tabh);
+        addTabs(viewPager);
+        tabLayout.setupWithViewPager(viewPager);
+    }
+
+    public void addTabs(ViewPager viewPager)
+    {
+        com.example.nitin.desichain.Utility.ViewPager adapter=new com.example.nitin.desichain.Utility.ViewPager(getSupportFragmentManager());
+        adapter.addFrag(new BhagavadGita(Foodsupplement,HealthandFood.this),"Foodsupplement");
+        adapter.addFrag(new BhagavadGita(HerbalTea,HealthandFood.this),"HerbalTea");
+        adapter.addFrag(new BhagavadGita(Ghee,HealthandFood.this),"Ghee");
+        adapter.addFrag(new BhagavadGita(Miscellaneous,HealthandFood.this),"Miscellaneous");
+        adapter.addFrag(new BhagavadGita(Snacks,HealthandFood.this),"Snacks");
+        adapter.addFrag(new BhagavadGita(Cowproducts,HealthandFood.this),"Cowproducts");
+        adapter.addFrag(new BhagavadGita(Digestives,HealthandFood.this),"Digestives");
+        adapter.addFrag(new BhagavadGita(Grains,HealthandFood.this),"Grains");
+        adapter.addFrag(new BhagavadGita(Spices,HealthandFood.this),"Spices");
+        viewPager.setAdapter(adapter);
+
     }
 
     @Override

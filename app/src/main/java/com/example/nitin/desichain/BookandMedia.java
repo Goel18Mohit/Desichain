@@ -13,8 +13,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.nitin.desichain.SubSubCateforyFragments.BhagavadGita;
-import com.example.nitin.desichain.SubSubCateforyFragments.Media;
-import com.example.nitin.desichain.SubSubCateforyFragments.PaperBack;
 import com.example.nitin.desichain.Utility.Utility;
 
 import java.util.ArrayList;
@@ -93,8 +91,8 @@ public class BookandMedia extends AppCompatActivity
     {
         com.example.nitin.desichain.Utility.ViewPager adapter=new com.example.nitin.desichain.Utility.ViewPager(getSupportFragmentManager());
         adapter.addFrag(new BhagavadGita(BhagavadGita,BookandMedia.this),"BhagavadGita");
-        adapter.addFrag(new PaperBack(Paperback,BookandMedia.this),"PaperBack");
-        adapter.addFrag(new Media(Mediacategory,BookandMedia.this),"Media");
+        adapter.addFrag(new BhagavadGita(Paperback,BookandMedia.this),"PaperBack");
+        adapter.addFrag(new BhagavadGita(Mediacategory,BookandMedia.this),"Media");
         viewPager.setAdapter(adapter);
 
     }

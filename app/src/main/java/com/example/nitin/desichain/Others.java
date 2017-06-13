@@ -1,9 +1,10 @@
 package com.example.nitin.desichain;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.TabLayout;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +12,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.nitin.desichain.SubSubCateforyFragments.BhagavadGita;
 import com.example.nitin.desichain.Utility.Utility;
 
 import java.util.ArrayList;
@@ -36,6 +38,8 @@ public class Others extends AppCompatActivity
     private ArrayList<String> handicrafts=new ArrayList<>();
     private ArrayList<String> local_handicraft=new ArrayList<>();
     private ArrayList<String> Paintings=new ArrayList<>();
+    private ViewPager viewPager;
+    private TabLayout tabLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -141,7 +145,38 @@ public class Others extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        viewPager= (ViewPager) findViewById(R.id.viewpagero);
+        tabLayout= (TabLayout) findViewById(R.id.tabo);
+        addTabs(viewPager);
+        tabLayout.setupWithViewPager(viewPager);
+
     }
+    public void addTabs(ViewPager viewPager)
+    {
+        com.example.nitin.desichain.Utility.ViewPager adapter=new com.example.nitin.desichain.Utility.ViewPager(getSupportFragmentManager());
+        adapter.addFrag(new BhagavadGita(kitchencare,Others.this),"kitchencare");
+        adapter.addFrag(new BhagavadGita(laundrycare,Others.this),"laundrycare");
+        adapter.addFrag(new BhagavadGita(homecare,Others.this),"homecare");
+        adapter.addFrag(new BhagavadGita(bedsheets,Others.this),"bedsheets");
+        adapter.addFrag(new BhagavadGita(mobilecovers,Others.this),"mobilecovers");
+        adapter.addFrag(new BhagavadGita(othersothers,Others.this),"othersothers");
+        adapter.addFrag(new BhagavadGita(PersonalCareCategory,Others.this),"PersonalCareCategory");
+        adapter.addFrag(new BhagavadGita(Cosmetics,Others.this),"Cosmetics");
+        adapter.addFrag(new BhagavadGita(Oralcare,Others.this),"Oralcare");
+        adapter.addFrag(new BhagavadGita(Babycare,Others.this),"Babycare");
+        adapter.addFrag(new BhagavadGita(Haircare,Others.this),"Haircare");
+        adapter.addFrag(new BhagavadGita(Bathbody,Others.this),"Bathbody");
+        adapter.addFrag(new BhagavadGita(Combos,Others.this),"Combos");
+        adapter.addFrag(new BhagavadGita(Miscellaneous,Others.this),"Miscellaneous");
+        adapter.addFrag(new BhagavadGita(handicrafts,Others.this),"handicrafts");
+        adapter.addFrag(new BhagavadGita(local_handicraft,Others.this),"local_handicraft");
+        adapter.addFrag(new BhagavadGita(Paintings,Others.this),"Paintings");
+
+        viewPager.setAdapter(adapter);
+
+    }
+
 
     @Override
     public void onBackPressed() {

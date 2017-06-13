@@ -1,7 +1,9 @@
 package com.example.nitin.desichain.SubSubCateforyFragments;
 
 
+import android.annotation.TargetApi;
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -37,9 +39,11 @@ public class BhagavadGita extends Fragment {
         // Inflate the layout for this fragment
         View v=inflater.inflate(R.layout.fragment_bhagavad_gita, container, false);
         listView= (ListView) v.findViewById(R.id.bhagvadlist);
+
               return v;
     }
 
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
