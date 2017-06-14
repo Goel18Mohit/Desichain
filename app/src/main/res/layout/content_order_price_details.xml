@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingEnd="5dp"
+    android:paddingRight="5dp"
+    android:stretchColumns="0">
+
+    <TableRow>
+
+        <TextView
+            android:text="Total Order Value"
+            android:textAlignment="center"
+            android:padding="3dp"/>
+
+        <TextView />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="viewEnd"
+            android:text="@string/Rs" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingEnd="5dp"
+            android:text="1520" />
+
+    </TableRow>
+
+
+    <TableRow>
+        <TextView
+            android:text="Total Discount"
+            android:textAlignment="center"
+            android:padding="3dp"/>
+
+        <TextView
+            android:textAlignment="viewEnd"
+            android:text="-" />
+
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Rs"
+            android:textAlignment="viewEnd" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingEnd="5dp"
+            android:text="1520" />
+
+    </TableRow>
+
+    <TableRow>
+
+        <TextView
+            android:text="Total Shipping Charges"
+            android:textAlignment="center"
+            android:padding="3dp"/>
+
+        <TextView />
+
+
+        <TextView/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingEnd="5dp"
+            android:text="Free" />
+    </TableRow>
+
+    <TableRow
+        android:paddingTop="10dp">
+        <TextView
+            android:text="Grand Total"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            android:padding="3dp"/>
+
+        <TextView />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Rs"
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            android:textAlignment="viewEnd" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingEnd="5dp"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:text="1520" />
+
+    </TableRow>
+
+
+</TableLayout>
