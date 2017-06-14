@@ -6,15 +6,11 @@ import android.content.pm.PackageManager;
 import android.widget.Toast;
 
 import com.example.nitin.desichain.AboutUs;
-import com.example.nitin.desichain.BookandMedia;
-import com.example.nitin.desichain.HealthandFood;
 import com.example.nitin.desichain.HelpCentre;
 import com.example.nitin.desichain.MyAccount;
 import com.example.nitin.desichain.MyCart;
 import com.example.nitin.desichain.MyOrders;
-import com.example.nitin.desichain.Others;
 import com.example.nitin.desichain.Policy;
-import com.example.nitin.desichain.Poojaitems;
 import com.example.nitin.desichain.R;
 
 /**
@@ -26,18 +22,6 @@ public class Utility {
     public static void openIntent(Context mContext, int id){
 
         switch (id){
-           case R.id.books_and_media:
-                mContext.startActivity(new Intent(mContext,BookandMedia.class));
-                break;
-            case R.id.pooja_item:
-                mContext.startActivity(new Intent(mContext,Poojaitems.class));
-                break;
-            case R.id.others:
-                mContext.startActivity(new Intent(mContext,Others.class));
-                break;
-            case R.id.health_and_food:
-                mContext.startActivity(new Intent(mContext, HealthandFood.class));
-                break;
             case R.id.kath_putli:
                 Toast.makeText(mContext,"Kath putli is selected",Toast.LENGTH_SHORT).show();
                 break;

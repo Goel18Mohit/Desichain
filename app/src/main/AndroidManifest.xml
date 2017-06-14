@@ -19,42 +19,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".BookandMedia"
-            android:label="@string/title_activity_bookand_media"
-            android:parentActivityName=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.nitin.desichain.MainActivity" />
-        </activity>
-        <activity
-            android:name=".Poojaitems"
-            android:label="@string/title_activity_poojaitems"
-            android:parentActivityName=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.nitin.desichain.MainActivity" />
-        </activity>
-        <activity
-            android:name=".HealthandFood"
-            android:label="@string/title_activity_healthand_food"
-            android:parentActivityName=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.nitin.desichain.MainActivity" />
-        </activity>
-        <activity
-            android:name=".Others"
-            android:label="@string/title_activity_others"
-            android:parentActivityName=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.nitin.desichain.MainActivity" />
-        </activity>
-        <activity
             android:name=".Main2Activity"
             android:label="@string/title_activity_main2"
             android:theme="@style/AppTheme.NoActionBar" />
