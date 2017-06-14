@@ -1,359 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_my_account"
     android:layout_width="match_parent"
-    android:id="@+id/nested"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.nitin.desichain.MyAccount"
-    tools:showIn="@layout/activity_my_account">
+    tools:showIn="@layout/app_bar_my_account">
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="6">
+
+
+        </LinearLayout>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="16dp"
-                android:background="#DCDCDC"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:weightSum="2">
 
-
-                <android.support.v7.widget.CardView
-                    android:layout_height="wrap_content"
-                    android:elevation="10dp"
-                    android:layout_margin="3dp"
-                    android:layout_width="match_parent">
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_margin="5dp"
-                            android:padding="10dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:text="My Orders"
-                            />
-                        <TableRow
-                            android:layout_margin="5dp"
-                            android:id="@+id/hr"
-                            android:padding="10dp"
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:background="#444"></TableRow>
-                        <TextView
-                            android:layout_margin="5dp"
-                            android:padding="10dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:text="VIEW ALL ORDERS"
-                            android:layout_gravity="right"
-                            />
-                    </LinearLayout>
-                </android.support.v7.widget.CardView>
-                <android.support.v7.widget.CardView
-                    android:layout_height="wrap_content"
-                    android:elevation="10dp"
-                    android:layout_margin="3dp"
-                    android:layout_width="match_parent">
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:text="My Payments"
-                            android:padding="10dp"
-                            android:layout_margin="5dp"
-                            />
-                        <TableRow
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:padding="10dp"
-                            android:layout_margin="5dp"
-                            android:background="#444"></TableRow>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:text="VIEW PAYMENTS"
-                            android:layout_margin="5dp"
-                            android:padding="10dp"
-                            android:layout_gravity="right"
-                            />
-                    </LinearLayout>
-                </android.support.v7.widget.CardView>
-
-                <android.support.v7.widget.CardView
-                    android:layout_height="wrap_content"
-                    android:elevation="10dp"
-                    android:layout_margin="3dp"
-                    android:layout_width="match_parent">
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:padding="10dp"
-                            android:layout_margin="5dp"
-                            android:text="My Addresses"
-                            />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_margin="5dp"
-                            android:padding="10dp"
-                            android:text="Save your delivery locations to place your orders faster"/>
-                        <TableRow
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:layout_margin="5dp"
-                            android:padding="10dp"
-                            android:background="#444"></TableRow>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:text="ADD AN ADDRESS"
-                            android:layout_margin="5dp"
-                            android:layout_gravity="right"
-                            android:padding="10dp"
-                            />
-                    </LinearLayout>
-                </android.support.v7.widget.CardView>
-                <android.support.v7.widget.CardView
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="3dp"
-                    android:id="@+id/hidden"
-                    android:elevation="10dp">
-                    <LinearLayout
-                        android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:orientation="horizontal"
+                    android:weightSum="4"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        android:weightSum="5">
+                        android:layout_weight="1"
+                        android:src ="@mipmap/ic_add_black_24dp"
+                        android:background="@drawable/circular"/>
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:layout_weight="3"
-                            android:orientation="horizontal"
-                            android:weightSum="4">
-                            <ImageView
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:background="@drawable/circular"
-                                android:layout_weight="1"
-                                android:src="@mipmap/ic_add_black_24dp"/>
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_weight="3"
-                                android:orientation="vertical"
-                                android:weightSum="2">
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="0dp"
-                                    android:layout_weight="1"
-                                    android:orientation="vertical"
-                                    android:weightSum="3">
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="0dp"
-                                        android:layout_weight="1"/>
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="0dp"
-                                        android:layout_weight="2"/>
-                                    <View
-                                        android:layout_width="match_parent"
-                                        android:layout_height="2dp"
-                                        android:background="#000000"/>
-                                </LinearLayout>
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="0dp"
-                                    android:layout_weight="1"
-                                    android:orientation="vertical"
-                                    android:weightSum="3">
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="0dp"
-                                        android:layout_weight="1"/>
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="0dp"
-                                        android:layout_weight="2"/>
-                                    <View
-                                        android:layout_width="match_parent"
-                                        android:layout_height="2dp"
-                                        android:background="#000000"/>
-                                </LinearLayout>
-                            </LinearLayout>
-                        </LinearLayout>
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:text="My Orders"
+                        android:layout_weight="3"/>
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:layout_weight="1"
-                            android:orientation="vertical"
-                            android:weightSum="3"
-                            >
+                </LinearLayout>
 
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="0dp"
-                                android:layout_weight="1"/>
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="0dp"
-                                android:layout_weight="2"/>
-                            <View
-                                android:layout_width="match_parent"
-                                android:layout_height="2dp"
-                                android:background="#000000"/>
-                        </LinearLayout>
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:layout_weight="1"
-                            android:orientation="vertical"
-                            android:weightSum="3"
-                            >
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="#C0C0C0"/>
 
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="0dp"
-                                android:layout_weight="1"/>
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="0dp"
-                                android:layout_weight="2"/>
-                            <View
-                                android:layout_width="match_parent"
-                                android:layout_height="2dp"
-                                android:background="#000000"/>
-                        </LinearLayout>
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:layout_weight="1"
-                            android:orientation="vertical"
-                            android:weightSum="3"
-                            >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:orientation="horizontal"
+                    android:weightSum="4"
+                    android:layout_weight="1">
 
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="0dp"
-                                android:layout_weight="1"/>
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="0dp"
-                                android:layout_weight="2"/>
-                            <View
-                                android:layout_width="match_parent"
-                                android:layout_height="2dp"
-                                android:background="#000000"/>
-                        </LinearLayout>
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:layout_weight="1"
-                            android:orientation="vertical"
-                            android:weightSum="3"
-                            >
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:src ="@mipmap/ic_add_black_24dp"
+                        android:background="@drawable/circular"/>
 
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="0dp"
-                                android:layout_weight="1"/>
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="0dp"
-                                android:layout_weight="2"/>
-                            <View
-                                android:layout_width="match_parent"
-                                android:layout_height="2dp"
-                                android:background="#000000"/>
-                        </LinearLayout>
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:text="My Orders"
+                        android:layout_weight="3"/>
 
-                    </LinearLayout>
-                </android.support.v7.widget.CardView>
+                </LinearLayout>
+
 
 
             </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:padding="10dp"
-                        android:layout_height="match_parent" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:padding="10dp"
-                        android:layout_height="match_parent"
-                        android:text="Notification Preferences"/>
-
-                </LinearLayout>
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:padding="10dp"
-                    android:background="#444"></TableRow>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:padding="10dp"
-                        android:layout_height="match_parent" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:padding="10dp"
-                        android:text="Account Settings"/>
-
-                </LinearLayout>
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="#444"></TableRow>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:padding="10dp"
-                        android:layout_height="match_parent" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:padding="10dp"
-                        android:text="Logout"/>
-
-                </LinearLayout>
-            </LinearLayout>
-        </LinearLayout>
+        </android.support.v7.widget.CardView>
 
 
-    </ScrollView>
+    </LinearLayout>
 
-
-</android.support.v4.widget.NestedScrollView>
+</ScrollView>
