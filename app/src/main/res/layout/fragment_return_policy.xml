@@ -17,7 +17,7 @@
 
         style="@style/PolicyQuestions"
 
-        android:textSize="23sp"
+        android:textSize="16sp"
 
         android:text="@string/ques1" />
 
