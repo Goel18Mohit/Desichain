@@ -3,7 +3,6 @@ package com.example.nitin.desichain.Utility;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.widget.Toast;
 
 import com.example.nitin.desichain.AboutUs;
 import com.example.nitin.desichain.HelpCentre;
@@ -22,12 +21,15 @@ public class Utility {
     public static void openIntent(Context mContext, int id){
 
         switch (id){
+
+         /* 
+
             case R.id.kath_putli:
-                Toast.makeText(mContext,"Kath putli is selected",Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext,"Kath putli is selected", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.cow_panchgava_products:
                 Toast.makeText(mContext,"cow_panchgava_products is selected",Toast.LENGTH_SHORT).show();
-                break;
+                break;*/
             case R.id.my_cart:
                 mContext.startActivity(new Intent(mContext,MyCart.class));
                 break;

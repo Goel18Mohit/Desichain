@@ -11,11 +11,10 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar" >
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
         <activity
@@ -76,11 +75,15 @@
         <activity
             android:name=".MyAccount"
             android:label="@string/title_activity_my_account"
-            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".EditProfile"
+            android:label="@string/title_activity_edit_profile"
+            android:parentActivityName=".MyAccount"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.nitin.desichain.MainActivity" />
+                android:value="com.example.nitin.desichain.MyAccount" />
         </activity>
     </application>
 

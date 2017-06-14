@@ -1,89 +1,110 @@
 package com.example.nitin.desichain.SubCategoryList;
 
 import android.content.Context;
-import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.FrameLayout;
+import android.widget.BaseExpandableListAdapter;
+import android.widget.ExpandableListView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.nitin.desichain.CategoryHolder;
 import com.example.nitin.desichain.R;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Created by NITIN on 09-Jun-17.
 */
-public class ShowCategoryAdapeter extends BaseAdapter {
+public class ShowCategoryAdapeter extends BaseExpandableListAdapter {
 
-    private ArrayList<String> subCategory;
-    private Context context;
-    FragmentManager fragmentManager;
-    public interface Itemclick{
-        public void onItemClick(int position,FrameLayout id);
-    }
-    Itemclick itemclick;
-    public ShowCategoryAdapeter(ArrayList<String> subCategory,Context context)
-    {
-        this.subCategory=subCategory;
-        this.context=context;
-        itemclick= (Itemclick) context;
-    }
-    @Override
-    public int getCount() {
-        return subCategory.size();
+
+    private Context content;
+    private ArrayList<CategoryHolder> headerlist;
+    private HashMap<String,ArrayList<String>> childlist;
+    private ExpandableListView listView;
+
+    TextView headerTextview;
+    ImageView headerImageview;
+    public ShowCategoryAdapeter(Context content, ArrayList<CategoryHolder> headerlist, HashMap<String, ArrayList<String>> childlist,ExpandableListView listView) {
+        this.content = content;
+        this.headerlist = headerlist;
+        this.childlist = childlist;
+        this.listView=listView;
     }
 
     @Override
-    public Object getItem(int position) {
-        return subCategory.get(position);
+    public int getGroupCount() {
+        return headerlist.size();
     }
 
     @Override
-    public long getItemId(int position) {
-        return 0;
+    public int getChildrenCount(int groupPosition) {
+        return childlist.get(headerlist.get(groupPosition).getPARENTCATEGORY()).size();
     }
 
     @Override
-    public View getView(final int position, View convertView, ViewGroup parent) {
-        LayoutInflater layoutInflater= (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        Viewholder viewholder;
+    public Object getGroup(int groupPosition) {
+        return headerlist.get(groupPosition);
+    }
+
+    @Override
+    public Object getChild(int groupPosition, int childPosition) {
+        return childlist.get(headerlist.get(groupPosition)).get(childPosition);
+    }
+
+    @Override
+    public long getGroupId(int groupPosition) {
+        return groupPosition;
+    }
+
+    @Override
+    public long getChildId(int groupPosition, int childPosition) {
+        return childPosition;
+    }
+
+    @Override
+    public boolean hasStableIds() {
+        return false;
+    }
+
+    @Override
+    public View getGroupView(final int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
         if(convertView==null)
         {
-            convertView=layoutInflater.inflate(R.layout.single_book_media_category,null);
-            viewholder=new Viewholder();
-            viewholder.TEXTSUBCATEGORY= (TextView) convertView.findViewById(R.id.subcategorytext);
-            viewholder.IMAGEVIEWSUBCATEGORY= (ImageView)convertView.findViewById(R.id.plus);
-            viewholder.SUBCATEGORYLIST= (FrameLayout) convertView.findViewById(R.id.list_sub_sub_category);
-            convertView.setTag(viewholder);
+            LayoutInflater layoutInflater= (LayoutInflater) content.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            convertView=layoutInflater.inflate(R.layout.simple_list,null);
         }
-        final View v1=convertView;
-        viewholder= (Viewholder) convertView.getTag();
-        viewholder.TEXTSUBCATEGORY.setText(subCategory.get(position));
-        viewholder.TEXTSUBCATEGORY.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v)
-            {
-                itemclick.onItemClick(position,((Viewholder) v1.getTag()).SUBCATEGORYLIST);
+         headerTextview= (TextView) convertView.findViewById(R.id.parentcategory);
+        headerImageview= (ImageView) convertView.findViewById(R.id.parentcategoryarrow);
+        headerTextview.setText(headerlist.get(groupPosition).getPARENTCATEGORY());
+        if(isExpanded)
+        {
+            headerImageview.setImageResource(R.mipmap.ic_keyboard_arrow_up_black_24dp);
+        }
+        else
+        {
+            headerImageview.setImageResource(R.mipmap.ic_keyboard_arrow_down_black_24dp);
+        }
+       return convertView;
+    }
 
-            }
-        });
-         viewholder.IMAGEVIEWSUBCATEGORY.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    itemclick.onItemClick(position,((Viewholder) v1.getTag()).SUBCATEGORYLIST);
-                }
-            });
+    @Override
+    public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
+        if(convertView==null){
+            LayoutInflater layoutInflater= (LayoutInflater) content.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            convertView=layoutInflater.inflate(R.layout.singlechildcategory,null);
+        }
+        TextView headerTextview= (TextView) convertView.findViewById(R.id.childcategory);
+        headerTextview.setText(childlist.get(headerlist.get(groupPosition).getPARENTCATEGORY()).get(childPosition));
         return convertView;
     }
 
-    public class Viewholder{
-        TextView TEXTSUBCATEGORY;
-        ImageView IMAGEVIEWSUBCATEGORY;
-        FrameLayout SUBCATEGORYLIST;
+    @Override
+    public boolean isChildSelectable(int groupPosition, int childPosition) {
+        return true;
     }
 }
 
