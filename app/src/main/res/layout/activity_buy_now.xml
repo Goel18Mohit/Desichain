@@ -54,17 +54,17 @@
     </LinearLayout>
 </ScrollView>
 
-    <android.support.v7.widget.CardView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_gravity="bottom"
         android:layout_alignParentBottom="true"
+        android:background="?attr/selectableItemBackground"
         xmlns:card_view="http://schemas.android.com/apk/res-auto"
-        card_view:cardElevation="10dp"
         android:id="@+id/continueBtn"
         android:layout_height="wrap_content">
             <Button
                 android:layout_width="match_parent"
-                android:background="#7CB342"
+                android:background="@color/green"
                 android:text="CONTINUE"
                 android:elevation="10dp"
                 android:id="@+id/myCartContinueBtn"
@@ -72,7 +72,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"/>
 
-    </android.support.v7.widget.CardView>
+    </LinearLayout>
 
 
 

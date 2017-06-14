@@ -21,18 +21,9 @@ public class Utility {
     public static void openIntent(Context mContext, int id){
 
         switch (id){
-         /*  case R.id.books_and_media:
-                mContext.startActivity(new Intent(mContext,BookandMedia.class));
-                break;
-            case R.id.pooja_item:
-                mContext.startActivity(new Intent(mContext,Poojaitems.class));
-                break;
-            case R.id.others:
-                mContext.startActivity(new Intent(mContext,Others.class));
-                break;
-            case R.id.health_and_food:
-                mContext.startActivity(new Intent(mContext, HealthandFood.class));
-                break;
+
+         /* 
+
             case R.id.kath_putli:
                 Toast.makeText(mContext,"Kath putli is selected", Toast.LENGTH_SHORT).show();
                 break;
@@ -58,6 +49,8 @@ public class Utility {
                     mContext.startActivity(new Intent(mContext, AboutUs.class));
         }
     }
+
+
 
     public static String getFbPageUrl(Context mContext){
 

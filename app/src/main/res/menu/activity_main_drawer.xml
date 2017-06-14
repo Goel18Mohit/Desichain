@@ -2,22 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/books_and_media"
-            android:icon="@mipmap/ic_drag_handle_black_24dp"
-            android:title="Books and Medias" />
-        <item
-            android:id="@+id/pooja_item"
-            android:icon="@mipmap/ic_drag_handle_black_24dp"
-            android:title="PoojaItem" />
-        <item
-            android:id="@+id/health_and_food"
-            android:icon="@mipmap/ic_drag_handle_black_24dp"
-            android:title="Health and Food" />
-        <item
-             android:id="@+id/others"
-            android:icon="@mipmap/ic_drag_handle_black_24dp"
-            android:title="Others"/>
+
 
         <item
             android:id="@+id/kath_putli"

@@ -17,7 +17,6 @@ public class BuyNow extends AppCompatActivity {
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
      */
-    private GoogleApiClient client;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +27,7 @@ public class BuyNow extends AppCompatActivity {
         getSupportActionBar().setTitle("Delivery");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         b1 = (Button) findViewById(R.id.myCartContinueBtn);
+        b1.setBackgroundColor(getResources().getColor(R.color.green));
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

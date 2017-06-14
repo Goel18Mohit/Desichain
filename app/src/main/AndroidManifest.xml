@@ -59,6 +59,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
+        <activity android:name=".Payment"
+            android:label="Payment"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:parentActivityName=".BuyNow">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".BuyNow"/>
+        </activity>
         <activity
             android:name=".BuyNow"
             android:label="Delivery"
