@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/childcategory"
         android:padding="10dp"
-        android:textSize="10sp"
+        android:textSize="12sp"
         tools:text="nitin"/>
 
 </LinearLayout>

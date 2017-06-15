@@ -21,7 +21,7 @@ import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity{
 
-    private ExpandableListView listView;
+    private Helper listView;
     ArrayList<CategoryHolder> arrayList;
     public ArrayList<String> Books;
     ArrayList<String> Poojaitem;
@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity{
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         View headerView = navigationView.inflateHeaderView(R.layout.nav_header_main);
-        listView= (ExpandableListView)navigationView.findViewById(R.id.parentcategoryList);
+        listView= (Helper) navigationView.findViewById(R.id.parentcategoryList);
         navigationCategoryList();
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -97,8 +97,8 @@ public class MainActivity extends AppCompatActivity{
 
     public void add()
     {
-        arrayList.add(new CategoryHolder("BOOK AND MEDIA",0));
-        arrayList.add(new CategoryHolder("PoojaItem",0));
+        arrayList.add(new CategoryHolder("Book and media",0));
+        arrayList.add(new CategoryHolder("Pooja Item",0));
         arrayList.add(new CategoryHolder("Health and food",0));
         arrayList.add(new CategoryHolder("Others",0));
         Books.add("Bhagavad-Gita As It Is");
