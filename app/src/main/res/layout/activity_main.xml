@@ -28,16 +28,37 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <include layout="@layout/nav_header_main"/>
 
-            <ExpandableListView
+            <include layout="@layout/nav_header_main"/>
+            <android.support.v4.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+            <com.example.nitin.desichain.Helper
                 android:layout_width="match_parent"
                 android:divider="@null"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:nestedScrollingEnabled="true"
                 android:id="@+id/parentcategoryList"
-                android:groupIndicator="@null"></ExpandableListView>
+                android:groupIndicator="@null"></com.example.nitin.desichain.Helper>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="50dp"
+                android:background="#C0C0C0"/>
 
         </LinearLayout>
-    </android.support.design.widget.NavigationView>*
+        </android.support.v4.widget.NestedScrollView>
+        </LinearLayout>
+
+
+    </android.support.design.widget.NavigationView>
 
 </android.support.v4.widget.DrawerLayout>
