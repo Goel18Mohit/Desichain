@@ -9,8 +9,8 @@
                 android:color="#F44336"/>
 
             <size
-                android:width="60dp"
-                android:height="60dp"/>
+                android:width="40dp"
+                android:height="40dp"/>
         </shape>
     </item>
 
@@ -20,7 +20,7 @@
             android:shape="oval">
 
             <solid
-                android:color="#B71C1C"/>
+                android:color="#FFFFFF"/>
 
             <size
                 android:width="60dp"
