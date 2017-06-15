@@ -11,10 +11,11 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar" >
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
@@ -59,14 +60,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-        <activity android:name=".Payment"
+        <activity
+            android:name=".Payment"
             android:label="Payment"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:parentActivityName=".BuyNow">
-
+            android:parentActivityName=".BuyNow"
+            android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".BuyNow"/>
+                android:value=".BuyNow" />
         </activity>
         <activity
             android:name=".BuyNow"
@@ -83,7 +84,7 @@
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.nitin.desichain.MyAccount" />
+                android:value=".MyAccount" />
         </activity>
     </application>
 

@@ -1,133 +1,191 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/content_edit_profile"
     android:layout_width="match_parent"
+    android:background="#F5F5F5"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.nitin.desichain.EditProfile"
     tools:showIn="@layout/activity_edit_profile">
 
-        <LinearLayout
+     <android.support.v7.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+         android:layout_marginTop="10dp"
+         android:id="@+id/editProfileCard">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:weightSum="8">
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="2"/>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:text="Change Photo"/>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:orientation="horizontal"
-                    android:weightSum="4">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="match_parent"
-                        android:text="Name"/>
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_weight="3"
-                        android:layout_height="match_parent"
-                        android:text="Name"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:orientation="horizontal"
-                    android:weightSum="4">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="match_parent"
-                        android:text="Name"/>
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_weight="3"
-                        android:layout_height="match_parent"
-                        android:text="Name"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:orientation="horizontal"
-                    android:weightSum="4">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="match_parent"
-                        android:text="Name"/>
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_weight="3"
-                        android:layout_height="match_parent"
-                        android:text="Name"/>
-                </LinearLayout> <LinearLayout
+            <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1"
-                android:orientation="horizontal"
-                android:weightSum="4">
+                android:layout_marginTop="10dp"
+                android:layout_weight="2">
 
                 <TextView
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="match_parent"
-                    android:text="Name"/>
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_weight="3"
-                    android:layout_height="match_parent"
-                    android:text="Name"/>
-            </LinearLayout>
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="A"
+                    android:textSize="23sp"
+                    android:textColor="@android:color/white"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:background="@drawable/fb_cricle"/>
+
+            </FrameLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
+                    android:layout_marginTop="20dp"
                     android:layout_weight="1"
-                    android:orientation="horizontal"
-                    android:weightSum="4">
+                    android:weightSum="3"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="0dp"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:layout_height="match_parent"
-                        android:text="Name"/>
-                    <TextView
+                        android:text="Name"
+
+                        android:gravity="center"/>
+                    <EditText
                         android:layout_width="0dp"
-                        android:layout_weight="3"
+                        android:background="@android:color/transparent"
                         android:layout_height="match_parent"
-                        android:text="Name"/>
+                        android:id="@+id/editNameText"
+                        android:textSize="16sp"
+                        android:text="Ashish Choudhary"
+                        android:layout_weight="2"/>
                 </LinearLayout>
 
-            </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
 
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="Email Id"
+                        android:gravity="center"/>
+                    <EditText
+                        android:layout_width="0dp"
+                        android:background="@android:color/transparent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/editEmailText"
+                        android:textSize="16sp"
+                        android:textColor="#C0C0C0"
+                        android:text="ashish.choudhary2702@gmail.com"
+                        android:layout_weight="2"/>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="Mobile No."
+                        android:gravity="center"/>
+                    <EditText
+                        android:layout_width="0dp"
+                        android:background="@android:color/transparent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/editMobileText"
+                        android:textSize="16sp"
+                        android:textColor="#C0C0C0"
+                        android:text="1234567892"
+                        android:layout_weight="2"/>
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="Gender"
+                        android:gravity="center"/>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2"
+                        android:orientation="horizontal">
+
+                        <RadioGroup
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:elevation="1dp"
+                                android:text="Male" />
+
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:elevation="1dp"
+                                android:layout_marginLeft="10dp"
+                                android:text="Female" />
+                        </RadioGroup>
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_weight="1"
+                    android:layout_marginBottom="20dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="Birth Date"
+                        android:gravity="center"/>
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:id="@+id/editBirthDateText"
+                        android:textSize="16sp"
+                        android:text="Select"
+                        android:layout_weight="2"/>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+<!--
         </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.CardView
@@ -190,7 +248,17 @@
                     android:layout_height="match_parent"
                     android:text="Name"/>
             </LinearLayout>
+            -->
         </android.support.v7.widget.CardView>
-        </LinearLayout>
 
-</ScrollView>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <include
+            layout="@layout/card_edit_profile_address"/>
+
+    </FrameLayout>
+</RelativeLayout>

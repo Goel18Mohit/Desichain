@@ -1,6 +1,7 @@
 package com.example.nitin.desichain;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -13,6 +14,7 @@ import android.widget.ExpandableListView;
 import android.widget.Toast;
 
 import com.example.nitin.desichain.SubCategoryList.ShowCategoryAdapeter;
+import com.example.nitin.desichain.Utility.Utility;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -38,7 +40,6 @@ public class MainActivity extends AppCompatActivity{
             @Override
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
-                Toast.makeText(getApplicationContext(),"onDrawerOPened",Toast.LENGTH_SHORT).show();
             }
         };
         drawer.setDrawerListener(toggle);
@@ -48,8 +49,17 @@ public class MainActivity extends AppCompatActivity{
         View headerView = navigationView.inflateHeaderView(R.layout.nav_header_main);
         listView= (ExpandableListView)navigationView.findViewById(R.id.parentcategoryList);
         navigationCategoryList();
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                Utility.openIntent(MainActivity.this,item.getItemId());
+                return true;
+            }
+        });
 
     }
+
+
 
 
 
