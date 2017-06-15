@@ -10,14 +10,16 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ExpandableListView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.nitin.desichain.SubCategoryList.ShowCategoryAdapeter;
+import com.example.nitin.desichain.Utility.Utility;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     private Helper listView;
     ArrayList<CategoryHolder> arrayList;
@@ -26,6 +28,8 @@ public class MainActivity extends AppCompatActivity{
     ArrayList<String> Healthandfood;
     ArrayList<String> others;
     HashMap<String,ArrayList<String>> hashMap;
+    View headerView;
+    LinearLayout myorder,mycart,myaccount,helpcenter,ratedesichain,policy,facebook,google,twitter,pinterest,youtube,instagram,aboutus;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,7 +49,8 @@ public class MainActivity extends AppCompatActivity{
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        View headerView = navigationView.inflateHeaderView(R.layout.nav_header_main);
+        headerView = navigationView.inflateHeaderView(R.layout.nav_header_main);
+        refferencetonavigationcategory(navigationView);
         listView= (Helper) navigationView.findViewById(R.id.parentcategoryList);
         navigationCategoryList();
 
@@ -171,5 +176,40 @@ public class MainActivity extends AppCompatActivity{
             }
         });
 
+    }
+
+    public void refferencetonavigationcategory(View view)
+    {
+        myorder= (LinearLayout) view.findViewById(R.id.myorders);
+        mycart= (LinearLayout) view.findViewById(R.id.mycart);
+        myaccount= (LinearLayout) view.findViewById(R.id.myaccount);
+        helpcenter= (LinearLayout) view.findViewById(R.id.helpcenter);
+        ratedesichain= (LinearLayout) view.findViewById(R.id.ratedesichain);
+        policy= (LinearLayout) view.findViewById(R.id.policy);
+        facebook= (LinearLayout) view.findViewById(R.id.facebook);
+        google=(LinearLayout) view.findViewById(R.id.googleplus);
+        twitter= (LinearLayout) view.findViewById(R.id.twitter);
+        pinterest= (LinearLayout) view.findViewById(R.id.pinterest);
+        youtube= (LinearLayout) view.findViewById(R.id.youtube);
+        instagram= (LinearLayout) view.findViewById(R.id.instagram);
+        aboutus= (LinearLayout) view.findViewById(R.id.aboutus);
+            myorder.setOnClickListener(this);
+        mycart.setOnClickListener(this);
+        myaccount.setOnClickListener(this);
+        helpcenter.setOnClickListener(this);
+        ratedesichain.setOnClickListener(this);
+        policy.setOnClickListener(this);
+        facebook.setOnClickListener(this);
+        google.setOnClickListener(this);
+        twitter.setOnClickListener(this);
+        pinterest.setOnClickListener(this);
+        youtube.setOnClickListener(this);
+        instagram.setOnClickListener(this);
+        aboutus.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        new Utility().openIntent(this,v.getId());
     }
 }
