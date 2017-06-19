@@ -16,7 +16,6 @@
 
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view"
-        app:menu="@menu/activity_main_drawer"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
@@ -43,11 +42,9 @@
                 android:layout_height="match_parent"
                 android:nestedScrollingEnabled="true"
                 android:id="@+id/parentcategoryList"
+                android:groupIndicator="@null"
 
-
-        </LinearLayout>
-
-                android:groupIndicator="@null"></com.example.nitin.desichain.Helper>
+               ></com.example.nitin.desichain.Helper>
 
 
             <View
@@ -122,6 +119,37 @@
                             android:textColor="#000000"
                             android:id="@+id/mycarttext"
                             android:text="My Cart"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:id="@+id/myProductLayout"
+                        android:orientation="horizontal"
+                        android:weightSum="4">
+
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:padding="5dp"
+                            android:src="@mipmap/ic_credit_card_black_24dp"
+                            android:id="@+id/myProductimage"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:paddingLeft="15dp"
+                            android:paddingTop="5dp"
+                            android:paddingBottom="5dp"
+                            android:textSize="15sp"
+                            android:textColor="#000000"
+                            android:id="@+id/myProducttext"
+                            android:text="My Product Page"/>
 
                     </LinearLayout>
 

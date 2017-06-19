@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     ArrayList<String> others;
     HashMap<String,ArrayList<String>> hashMap;
     View headerView;
-    LinearLayout myorder,mycart,myaccount,helpcenter,ratedesichain,policy,facebook,google,twitter,pinterest,youtube,instagram,aboutus;
+    LinearLayout myorder,mycart,myaccount,helpcenter,ratedesichain,productPage,policy,facebook,google,twitter,pinterest,youtube,instagram,aboutus;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,13 +53,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         refferencetonavigationcategory(navigationView);
         listView= (Helper) navigationView.findViewById(R.id.parentcategoryList);
         navigationCategoryList();
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                Utility.openIntent(MainActivity.this,item.getItemId());
-                return true;
-            }
-        });
+
 
     }
 
@@ -194,6 +188,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         facebook= (LinearLayout) view.findViewById(R.id.facebook);
         google=(LinearLayout) view.findViewById(R.id.googleplus);
         twitter= (LinearLayout) view.findViewById(R.id.twitter);
+        productPage=(LinearLayout)view.findViewById(R.id.myProductLayout);
         pinterest= (LinearLayout) view.findViewById(R.id.pinterest);
         youtube= (LinearLayout) view.findViewById(R.id.youtube);
         instagram= (LinearLayout) view.findViewById(R.id.instagram);
@@ -202,6 +197,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mycart.setOnClickListener(this);
         myaccount.setOnClickListener(this);
         helpcenter.setOnClickListener(this);
+        productPage.setOnClickListener(this);
         ratedesichain.setOnClickListener(this);
         policy.setOnClickListener(this);
         facebook.setOnClickListener(this);

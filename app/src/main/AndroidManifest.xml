@@ -12,16 +12,14 @@
             android:name=".MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
-        <activity
-            android:name=".Main2Activity"
-            android:label="@string/title_activity_main2"
-            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".MyOrders"
             android:label="@string/title_activity_my_orders"
@@ -85,6 +83,17 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MyAccount" />
+        </activity>
+        <activity android:name=".MyAddress" />
+        <activity
+            android:name=".FullOrder"
+            android:parentActivityName=".MyOrders">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MyOrders" />
+        </activity>
+        <activity android:name=".ProductPageActual">
+
         </activity>
     </application>
 
