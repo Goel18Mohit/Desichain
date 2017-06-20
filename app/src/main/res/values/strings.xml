@@ -143,5 +143,6 @@
     </string>
     <string name="title_activity_my_account">My Account</string>
     <string name="title_activity_edit_profile">Edit Profile</string>
+    <string name="title_activity_category_page">CategoryPage</string>
 
 </resources>
