@@ -22,25 +22,12 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <ScrollView
+    <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#F5F5F5"
-        android:layout_below="@+id/appBarLayout">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#F5F5F5"
-            android:orientation="vertical">
-
-            <include layout="@layout/content_my_orders" />
-            <include layout="@layout/content_my_orders" />
-            <include layout="@layout/content_my_orders" />
-            <include layout="@layout/content_my_orders" />
-
-        </LinearLayout>
-
-    </ScrollView>
+        android:layout_below="@+id/appBarLayout"
+        android:id="@+id/myOrderRecyclerView"
+        android:scrollbars="vertical"
+        android:clipToPadding="false"/>
 
 </RelativeLayout>

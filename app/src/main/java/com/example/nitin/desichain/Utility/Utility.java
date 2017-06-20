@@ -14,6 +14,7 @@ import com.example.nitin.desichain.MyAccount;
 import com.example.nitin.desichain.MyCart;
 import com.example.nitin.desichain.MyOrders;
 import com.example.nitin.desichain.Policy;
+import com.example.nitin.desichain.ProductPageActual;
 import com.example.nitin.desichain.R;
 
 import java.util.List;
@@ -33,6 +34,10 @@ public class Utility {
             case R.id.mycart:
                 Intent MYCART=new Intent(mContext, MyCart.class);
                 mContext.startActivity(MYCART);
+                break;
+            case R.id.myProductLayout:
+                Intent mProductIntent = new Intent(mContext, ProductPageActual.class);
+                mContext.startActivity(mProductIntent);
                 break;
             case R.id.myaccount:
                 Intent MYACCOUNT=new Intent(mContext, MyAccount.class);
@@ -70,6 +75,7 @@ public class Utility {
                 Intent ABOUTUS=new Intent(mContext, AboutUs.class);
                 mContext.startActivity(ABOUTUS);
                 break;
+            default: break;
         }
     }
 

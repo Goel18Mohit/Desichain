@@ -1,20 +1,32 @@
 package com.example.nitin.desichain;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+
+import com.example.nitin.desichain.Adapters.OrderAdapter;
+import com.example.nitin.desichain.Contents.Orders;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MyOrders extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    private RecyclerView mRecyclerView;
+    private List<Orders> mOrders;
+    private OrderAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +35,15 @@ public class MyOrders extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        mRecyclerView=(RecyclerView)findViewById(R.id.myOrderRecyclerView);
+        mOrders=new ArrayList<>();
+        mAdapter=new OrderAdapter(this,mOrders);
+        RecyclerView.LayoutManager lm = new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(lm);
+        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        mRecyclerView.setAdapter(mAdapter);
+
+        prepareItems();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -32,6 +53,26 @@ public class MyOrders extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+    }
+
+    private void prepareItems() {
+
+        mOrders.add(new Orders("01 jan 2017","1651513","Rs 1200","1100","Completed"));
+
+        mOrders.add(new Orders("01 jan 2017","1651513","Rs 1200","1100","Completed"));
+
+        mOrders.add(new Orders("01 jan 2017","1651513","Rs 1200","1100","Completed"));
+
+        mOrders.add(new Orders("01 jan 2017","1651513","Rs 1200","1100","Completed"));
+
+        mOrders.add(new Orders("01 jan 2017","1651513","Rs 1200","1100","Completed"));
+
+        mOrders.add(new Orders("01 jan 2017","1651513","Rs 1200","1100","Completed"));
+        mOrders.add(new Orders("01 jan 2017","1651513","Rs 1200","1100","Completed"));
+        mOrders.add(new Orders("01 jan 2017","1651513","Rs 1200","1100","Completed"));
+
+
+
     }
 
     @Override
@@ -89,5 +130,15 @@ public class MyOrders extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    class MyOnClickListener implements View.OnClickListener{
+
+
+        @Override
+        public void onClick(View v) {
+            int itemClicked = mRecyclerView.getChildLayoutPosition(v);
+            Log.i("ashishMyOrder.java",itemClicked+" position clicked");
+        }
     }
 }
