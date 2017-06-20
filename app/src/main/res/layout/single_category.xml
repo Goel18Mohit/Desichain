@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/border"
     android:padding="10dp"
-    android:weightSum="12"
+    android:weightSum="14"
     android:orientation="vertical">
 
     <FrameLayout
@@ -20,6 +20,13 @@
             android:adjustViewBounds="true"
             android:layout_gravity="center"
             android:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="17% OFF"
+            android:background="@drawable/box"
+            android:layout_gravity="left|bottom"/>
     </FrameLayout>
 
     <TextView
@@ -29,13 +36,36 @@
         android:id="@+id/productname"
         android:layout_weight="2"/>
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:layout_marginTop="2dp"
+        android:orientation="horizontal"
+        android:weightSum="2">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:textColor="#000000"
+            android:id="@+id/product_price"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:textColor="#C0C0C0"
+            android:layout_marginLeft="10dp"
+            android:id="@+id/productnamecut"
+            android:layout_weight="1"/>
+    </LinearLayout>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="0dp"
+        android:layout_weight="2"
+        android:text="Net wt.:- 10kg"
         android:textColor="#000000"
-        android:layout_marginTop="5dp"
-        android:id="@+id/product_price"
-        android:layout_weight="2"/>
+        android:layout_marginTop="2dp"/>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -56,9 +86,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="2"
-            android:layout_marginLeft="5dp"
             android:gravity="center"
-            android:paddingEnd="20dp"
             android:text="4.0"
             android:textColor="#ffffff" />
 
