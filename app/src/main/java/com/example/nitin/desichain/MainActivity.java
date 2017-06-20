@@ -1,9 +1,11 @@
 package com.example.nitin.desichain;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -24,6 +26,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     ArrayList<CategoryHolder> arrayList;
     public ArrayList<String> Books;
     ArrayList<String> Poojaitem;
+    NestedScrollView nestedScrollView;
     ArrayList<String> Healthandfood;
     ArrayList<String> others;
     HashMap<String,ArrayList<String>> hashMap;
@@ -49,6 +52,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         headerView = navigationView.inflateHeaderView(R.layout.nav_header_main);
         refferencetonavigationcategory(navigationView);
+        nestedScrollView= (NestedScrollView) navigationView.findViewById(R.id.scrollposition);
         listView= (Helper) navigationView.findViewById(R.id.parentcategoryList);
         navigationCategoryList();
 
@@ -167,9 +171,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     }
                     listView.expandGroup(groupPosition);
                      listView.setSelectedGroup(groupPosition);
+                    nestedScrollView.smoothScrollTo(0,groupPosition);
                     arrayList.get(groupPosition).setFLAG_INDICATOR(1);
 
                 }
+                return true;
+            }
+        });
+        listView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+            @Override
+            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
+                Intent intent=new Intent(MainActivity.this,CategoryPage.class);
+                startActivity(intent);
                 return true;
             }
         });
