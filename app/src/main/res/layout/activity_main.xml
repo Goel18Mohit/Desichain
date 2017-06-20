@@ -16,7 +16,6 @@
 
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view"
-        app:menu="@menu/activity_main_drawer"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
@@ -43,11 +42,9 @@
                 android:layout_height="match_parent"
                 android:nestedScrollingEnabled="true"
                 android:id="@+id/parentcategoryList"
+                android:groupIndicator="@null"
 
-
-        </LinearLayout>
-
-                android:groupIndicator="@null"></com.example.nitin.desichain.Helper>
+               ></com.example.nitin.desichain.Helper>
 
 
             <View

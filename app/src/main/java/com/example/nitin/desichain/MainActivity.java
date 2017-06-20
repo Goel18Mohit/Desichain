@@ -1,7 +1,6 @@
 package com.example.nitin.desichain;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -12,7 +11,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.example.nitin.desichain.SubCategoryList.ShowCategoryAdapeter;
 import com.example.nitin.desichain.Utility.Utility;
@@ -53,13 +51,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         refferencetonavigationcategory(navigationView);
         listView= (Helper) navigationView.findViewById(R.id.parentcategoryList);
         navigationCategoryList();
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                Utility.openIntent(MainActivity.this,item.getItemId());
-                return true;
-            }
-        });
+
 
     }
 
@@ -174,6 +166,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                     }
                     listView.expandGroup(groupPosition);
+                     listView.setSelectedGroup(groupPosition);
                     arrayList.get(groupPosition).setFLAG_INDICATOR(1);
 
                 }
