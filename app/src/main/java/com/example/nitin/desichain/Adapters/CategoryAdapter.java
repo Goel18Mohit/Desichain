@@ -1,6 +1,7 @@
 package com.example.nitin.desichain.Adapters;
 
 import android.content.Context;
+import android.graphics.Paint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,6 +56,7 @@ public class CategoryAdapter extends BaseAdapter {
             viewHolder.productprice= (TextView) convertView.findViewById(R.id.product_price);
             viewHolder.productratings= (TextView) convertView.findViewById(R.id.product_ratings);
             viewHolder.productnofratings= (TextView) convertView.findViewById(R.id.no_of_reviews);
+            viewHolder.productcut= (TextView) convertView.findViewById(R.id.productnamecut);
             convertView.setTag(viewHolder);
 
         }
@@ -64,10 +66,12 @@ public class CategoryAdapter extends BaseAdapter {
         viewHolder.productprice.setText(arrayList.get(position).getPRICE());;
         viewHolder.productratings.setText(arrayList.get(position).getRATINGS());
         viewHolder.productnofratings.setText(arrayList.get(position).getNUMBER_OF_REVIEWS());
+        viewHolder.productcut.setText("Rs.7490");
+        viewHolder.productcut.setPaintFlags(viewHolder.productcut.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
         return convertView;
     }
     public class ViewHolder{
         ImageView productImage;
-        TextView productname,productprice,productratings,productnofratings;
+        TextView productname,productprice,productratings,productnofratings,productcut;
     }
 }
