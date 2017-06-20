@@ -92,9 +92,16 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MyOrders" />
         </activity>
-        <activity android:name=".ProductPageActual">
+        <activity android:name=".ProductPageActual"
+            android:label="ProductPage"
+            android:parentActivityName=".MainActivity">
 
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"/>
         </activity>
+        <activity android:name=".AddNewAddress"
+            android:label="Add an Address"/>
     </application>
 
 </manifest>

@@ -19,7 +19,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:padding="5dp"
-                android:layout_weight="8"
+                android:layout_weight="6"
                 android:orientation="vertical">
 
                 <TextView
@@ -58,6 +58,96 @@
                         android:id="@+id/deletedCost"
                         android:textColor="@color/black"/>
                 </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="2"
+                    android:padding="5dp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:background="@android:color/holo_green_dark"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/textView10"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:layout_marginLeft="5dp"
+                                android:gravity="center"
+                                android:paddingEnd="20dp"
+                                android:text="4.0"
+                                android:textColor="#ffffff" />
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:src="@mipmap/ic_star_white_24dp"/>
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="(362)"
+                            android:textColor="@color/black"
+                            android:layout_marginLeft="5dp"/>
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:text="46 Reviews"
+                        android:textColor="@android:color/holo_blue_light"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/removeProduct"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/ring"
+                    android:src="@mipmap/ic_remove_black_24dp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    android:text="1" />
+
+                <ImageButton
+                    android:id="@+id/addProduct"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/ring"
+                    android:src="@mipmap/ic_add_black_24dp" />
+
 
             </LinearLayout>
 

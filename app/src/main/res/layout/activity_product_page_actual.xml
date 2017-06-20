@@ -85,10 +85,19 @@
                     layout="@layout/card_return_protection"/>
             </FrameLayout>
 
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+                <include
+                    layout="@layout/card_reviews"/>
+            </FrameLayout>
+
+
         </LinearLayout>
+
+
     </ScrollView>
-
-
 
     <LinearLayout
         android:layout_width="match_parent"
