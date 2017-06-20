@@ -1,29 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
 
     <android.support.v7.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-        >
+        android:layout_width="0dp"
+        android:layout_height="80dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintHorizontal_bias="0.51"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
             android:weightSum="3">
 
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:weightSum="2"
+                android:layout_height="match_parent"
                 android:orientation="vertical">
 
                 <ImageView
@@ -40,13 +43,19 @@
                     android:text="Authentic Products"
                     android:textAlignment="center"/>
 
+
+
             </LinearLayout>
 
+            <View
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:background="#C0C0C0"/>
 
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:layout_height="match_parent"
                 android:orientation="vertical">
 
                 <ImageView
@@ -64,15 +73,20 @@
                     android:textAlignment="center"/>
 
 
+
             </LinearLayout>
 
-
+            <View
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:background="#C0C0C0"/>
 
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:layout_height="match_parent"
                 android:orientation="vertical">
+
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -91,9 +105,6 @@
 
             </LinearLayout>
 
-
-
         </LinearLayout>
-
     </android.support.v7.widget.CardView>
-</LinearLayout>
+</android.support.constraint.ConstraintLayout>

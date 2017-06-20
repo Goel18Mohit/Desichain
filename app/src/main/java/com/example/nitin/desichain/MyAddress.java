@@ -1,10 +1,13 @@
 package com.example.nitin.desichain;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.Button;
 
 import com.example.nitin.desichain.Adapters.AddressAdapter;
 import com.example.nitin.desichain.Contents.AddressList;
@@ -18,13 +21,14 @@ public class MyAddress extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private AddressAdapter mAdapter;
     private List<AddressList> mAddressList;
-
+    private Button mAddNewAddress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.address_recycler_view);
 
+        mAddNewAddress = (Button)findViewById(R.id.buttonAddAddress);
         mRecyclerView = (RecyclerView)findViewById(R.id.mAddressRecyclerView);
         mAddressList = new ArrayList<>();
         mAdapter = new AddressAdapter(this,mAddressList);
@@ -33,6 +37,13 @@ public class MyAddress extends AppCompatActivity {
         mRecyclerView.setLayoutManager(lm);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         mRecyclerView.setAdapter(mAdapter);
+
+        mAddNewAddress.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),AddNewAddress.class));
+            }
+        });
 
         prepareItems();
     }
