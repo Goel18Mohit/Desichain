@@ -81,6 +81,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
+                    android:id="@+id/bankdeposit"
                     android:textSize="16sp"
                     android:textColor="@color/black"
                     android:drawableRight="@mipmap/ic_credit_card_black_24dp"
