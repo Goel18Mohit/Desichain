@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.nitin.desichain.Contents.AddressList;
 import com.example.nitin.desichain.R;
@@ -26,6 +25,10 @@ public class AddressAdapter extends RecyclerView.Adapter<AddressAdapter.MyViewHo
     private Context mContext;
     private List<AddressList> mAddress;
 
+    public interface SaveAddress{
+        public void OnEditButtonClicked(int positon);
+    }
+
     public AddressAdapter(Context mContext, List<AddressList> mAddress) {
         this.mContext = mContext;
         this.mAddress = mAddress;
@@ -40,7 +43,7 @@ public class AddressAdapter extends RecyclerView.Adapter<AddressAdapter.MyViewHo
     }
 
     @Override
-    public void onBindViewHolder(final MyViewHolder holder, int position) {
+    public void onBindViewHolder(final MyViewHolder holder, final int position) {
 
         AddressList addressList = mAddress.get(position);
         holder.mNameText.setText(addressList.getmName());
@@ -50,13 +53,13 @@ public class AddressAdapter extends RecyclerView.Adapter<AddressAdapter.MyViewHo
         holder.mPopupbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showPopupMenu(holder.mPopupbtn);
+                showPopupMenu(holder.mPopupbtn,position);
             }
         });
 
     }
 
-    private void showPopupMenu(ImageButton mPopupbtn) {
+    private void showPopupMenu(ImageButton mPopupbtn, final int position) {
 
         PopupMenu popup = new PopupMenu(mContext,mPopupbtn);
         MenuInflater inflator = popup.getMenuInflater();
@@ -64,7 +67,16 @@ public class AddressAdapter extends RecyclerView.Adapter<AddressAdapter.MyViewHo
         popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                Toast.makeText(mContext,"posiiton  clicked",Toast.LENGTH_SHORT).show();
+               if(item.getItemId()==R.id.editAddress)
+               {
+                   SaveAddress saveAddress= (SaveAddress) mContext;
+                   saveAddress.OnEditButtonClicked(position);
+               }
+                else if(item.getItemId()==R.id.removeAddress)
+               {
+                   mAddress.remove(position);
+                   notifyDataSetChanged();
+               }
                 return true;
             }
         });

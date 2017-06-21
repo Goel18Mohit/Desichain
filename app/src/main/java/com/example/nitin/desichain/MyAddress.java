@@ -1,8 +1,8 @@
 package com.example.nitin.desichain;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -15,14 +15,16 @@ import com.example.nitin.desichain.Contents.AddressList;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MyAddress extends AppCompatActivity {
+public class MyAddress extends AppCompatActivity implements AddressAdapter.SaveAddress {
 
 
+    private int POSITION;
     private RecyclerView mRecyclerView;
     private AddressAdapter mAdapter;
     private List<AddressList> mAddressList;
     private Button mAddNewAddress;
-
+    private int REQUEST_CODE_EDIT=000;
+    private int REQUEST_CODE_ADD=001;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +43,9 @@ public class MyAddress extends AppCompatActivity {
         mAddNewAddress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),AddNewAddress.class));
+                Intent intent=new Intent(MyAddress.this,AddNewAddress.class);
+                intent.putExtra("REQUESTCODE",REQUEST_CODE_ADD);
+                startActivityForResult(intent,REQUEST_CODE_ADD);
             }
         });
 
@@ -56,5 +60,37 @@ public class MyAddress extends AppCompatActivity {
         mAddressList.add(new AddressList("sdvdsvds","2013 jaoiasASDDAS aspp","984515618"));
         mAddressList.add(new AddressList("saSSA","2013 jaoias asppACS","92284515618"));
         mAddressList.add(new AddressList("BRRR","2013 jaoias aspp","98451565318"));
+    }
+
+
+    @Override
+    public void OnEditButtonClicked(int position) {
+
+        POSITION=position;
+        Intent intent=new Intent(MyAddress.this,AddNewAddress.class);
+        intent.putExtra("REQUESTCODE",REQUEST_CODE_EDIT);
+        startActivityForResult(intent,REQUEST_CODE_EDIT);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==REQUEST_CODE_EDIT)
+        {
+            if(data.getBundleExtra("NEW ADDRESS")!=null) {
+                mAddressList.remove(POSITION);
+                Bundle bundle = data.getBundleExtra("NEW ADDRESS");
+                mAddressList.add(POSITION, new AddressList(bundle.getString("CUSTOMERNAME"), bundle.getString("CUSTOMERADDRESS"), bundle.getString("CUSTOMERMOBILE")));
+                mAdapter.notifyDataSetChanged();
+            }
+        }
+        else {
+            if(data.getBundleExtra("NEW ADDRESS")!=null) {
+                Bundle bundle = data.getBundleExtra("NEW ADDRESS");
+                mAddressList.add(new AddressList(bundle.getString("CUSTOMERNAME"), bundle.getString("CUSTOMERADDRESS"), bundle.getString("CUSTOMERMOBILE")));
+                mAdapter.notifyDataSetChanged();
+            }
+
+        }
     }
 }
