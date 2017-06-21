@@ -3,13 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:orientation="vertical"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:context="com.example.nitin.desichain.MainActivity">
+ <!--
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary">
+        android:background="@color/colorPrimary"
+        android:id="@+id/appBarLayout">
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -22,7 +25,40 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_main" />
+-->
+     <android.support.design.widget.AppBarLayout
+         android:layout_width="match_parent"
+         android:id="@+id/appBarLayout"
+         android:layout_height="wrap_content"
+         android:theme="@style/AppTheme">
 
+         <android.support.design.widget.CollapsingToolbarLayout
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             app:layout_scrollFlags="scroll|exitUntilCollapsed"
+             android:fitsSystemWindows="true"
+             app:contentScrim="?attr/colorPrimary"
+             >
+             <ImageView
+                 android:id="@+id/backdrop"
+                 android:src="@drawable/ic_menu_camera"
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent"
+                 android:scaleType="centerCrop"
+                 app:layout_collapseMode="parallax" />
+
+             <include
+                 layout="@layout/layout_toolbar"/>
+         </android.support.design.widget.CollapsingToolbarLayout>
+
+     </android.support.design.widget.AppBarLayout>
+
+     <FrameLayout
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+         android:layout_marginTop="?attr/actionBarSize"
+         android:layout_below="@+id/appBarLayout">
+    <include layout="@layout/content_main" />
+     </FrameLayout>
 
 </android.support.design.widget.CoordinatorLayout>

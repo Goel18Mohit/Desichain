@@ -56,8 +56,8 @@ public class FullOrderAdapter extends RecyclerView.Adapter<FullOrderAdapter.MyVi
             super(view);
 
             mBrandText=(TextView)view.findViewById(R.id.productBrand);
-            mProductText=(TextView)view.findViewById(R.id.productName);
-            mCostText=(TextView)view.findViewById(R.id.productCost);
+            mProductText=(TextView)view.findViewById(R.id.product_Name);
+            mCostText=(TextView)view.findViewById(R.id.product_Cost);
             mQtyText=(TextView)view.findViewById(R.id.productQty);
 
         }

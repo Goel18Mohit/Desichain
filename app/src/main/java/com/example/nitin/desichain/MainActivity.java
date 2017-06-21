@@ -6,36 +6,118 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.NestedScrollView;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
+import com.example.nitin.desichain.Adapters.ProductHorizontalAdapter;
+import com.example.nitin.desichain.Contents.Advertisements;
+import com.example.nitin.desichain.Contents.ProductHorizontal;
 import com.example.nitin.desichain.SubCategoryList.ShowCategoryAdapeter;
 import com.example.nitin.desichain.Utility.Utility;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     private Helper listView;
     ArrayList<CategoryHolder> arrayList;
     public ArrayList<String> Books;
+    private List<Advertisements> mPics;
     ArrayList<String> Poojaitem;
     NestedScrollView nestedScrollView;
     ArrayList<String> Healthandfood;
     ArrayList<String> others;
     HashMap<String,ArrayList<String>> hashMap;
     View headerView;
+    private RecyclerView mLatestProductView,mBrandStudioView, mTopTenGameView,mTopTenGameView2, mFeaturedProductView,mAdvertisementView,mBestSellingView;
+    private List<ProductHorizontal> mProductsList;
+    private ProductHorizontalAdapter mLatestProductAdapter,mBrandStudioAdapter, mTopTenGameAdapter,mTopTenGameAdapter2, mFeaturedProductAdapter,mAdvertisementAdapter,mBestSellingProductAdapter;
     LinearLayout myorder,mycart,myaccount,helpcenter,ratedesichain,productPage,policy,facebook,google,twitter,pinterest,youtube,instagram,aboutus;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Toolbar toolbar = (Toolbar)findViewById(R.id.my_toolbar);
+        setSupportActionBar(toolbar);
+        final ActionBar ab = getSupportActionBar();
+
+        mLatestProductView =(RecyclerView)findViewById(R.id.LatestProductRecyclerView);
+        mProductsList=new ArrayList<>();
+        mLatestProductAdapter = new ProductHorizontalAdapter(MainActivity.this,mProductsList);
+        LinearLayoutManager lm =new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
+        mLatestProductView.setLayoutManager(lm);
+        mLatestProductView.setItemAnimator(new DefaultItemAnimator());
+        mLatestProductView.setAdapter(mLatestProductAdapter);
+        mLatestProductView.setScrollBarSize(0);
+
+        mPics=new ArrayList<>();
+        mAdvertisementView=(RecyclerView)findViewById(R.id.advertisemntRecyclerView);
+        mAdvertisementAdapter=new ProductHorizontalAdapter(this,mProductsList);
+        LinearLayoutManager lm3 = new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,true);
+        mAdvertisementView.setLayoutManager(lm3);
+        mAdvertisementView.setItemAnimator(new DefaultItemAnimator());
+        mAdvertisementView.setAdapter(mAdvertisementAdapter);
+        mAdvertisementView.setScrollBarSize(0);
+
+    //    addAdvertisment();
+
+        mBrandStudioView=(RecyclerView)findViewById(R.id.brandStudioRecyclerView);
+        mBrandStudioAdapter=new ProductHorizontalAdapter(this,mProductsList);
+        LinearLayoutManager lm6 = new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,true);
+        mBrandStudioView.setLayoutManager(lm6);
+        mBrandStudioView.setItemAnimator(new DefaultItemAnimator());
+        mBrandStudioView.setScrollBarSize(0);
+        mBrandStudioView.setAdapter(mBrandStudioAdapter);
+
+        mTopTenGameAdapter =new ProductHorizontalAdapter(MainActivity.this,mProductsList);
+        mTopTenGameView =(RecyclerView) findViewById(R.id.top_ten_game_view);
+        LinearLayoutManager lm1 = new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,true);
+        mTopTenGameView.setLayoutManager(lm1);
+        mTopTenGameView.setItemAnimator(new DefaultItemAnimator());
+        mTopTenGameView.setAdapter(mTopTenGameAdapter);
+
+
+        mTopTenGameAdapter2 =new ProductHorizontalAdapter(MainActivity.this,mProductsList);
+        mTopTenGameView2 =(RecyclerView) findViewById(R.id.top_ten_game_second_RecyclerView);
+        LinearLayoutManager lm5 = new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,true);
+        mTopTenGameView2.setLayoutManager(lm5);
+        mTopTenGameView2.setItemAnimator(new DefaultItemAnimator());
+        mTopTenGameView2.setAdapter(mTopTenGameAdapter2);
+
+
+        mFeaturedProductAdapter =new ProductHorizontalAdapter(MainActivity.this,mProductsList);
+        mFeaturedProductView =(RecyclerView)findViewById(R.id.featuredProductRecyclerView);
+        LinearLayoutManager lm2 = new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,true);
+        mFeaturedProductView.setLayoutManager(lm2);
+        mFeaturedProductView.setItemAnimator(new DefaultItemAnimator());
+        mFeaturedProductView.setAdapter(mFeaturedProductAdapter);
+
+        mBestSellingProductAdapter=new ProductHorizontalAdapter(this,mProductsList);
+        mBestSellingView=(RecyclerView)findViewById(R.id.bestSellingRecyclerView);
+        LinearLayoutManager lm4 = new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,true);
+        mBestSellingView.setLayoutManager(lm4);
+        mBestSellingView.setItemAnimator(new DefaultItemAnimator());
+        mBestSellingView.setScrollBarSize(0);
+        mBestSellingView.setAdapter(mBestSellingProductAdapter);
+
+
+
+        prepareItems();
+
+
         initiaze();
         add();
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -56,6 +138,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         listView= (Helper) navigationView.findViewById(R.id.parentcategoryList);
         navigationCategoryList();
 
+
+    }
+
+
+    private void prepareItems() {
+
+
+        mProductsList.add(new ProductHorizontal("MICROMAX SPARK VDEO(8GB) 4G VOLTE","Rs. 50000",R.mipmap.ic_launcher, "4.0","12"));
+        mProductsList.add(new ProductHorizontal("MICROMAX SPARK VDEO(8GB) 4G VOLTE","Rs. 50000",R.mipmap.ic_launcher, "4.0","12"));
+        mProductsList.add(new ProductHorizontal("MICROMAX SPARK VDEO(8GB) 4G VOLTE","Rs. 50000",R.mipmap.ic_launcher, "4.0","12"));
+        mProductsList.add(new ProductHorizontal("MICROMAX SPARK VDEO(8GB) 4G VOLTE","Rs. 50000",R.mipmap.ic_launcher, "4.0","12"));
+        mProductsList.add(new ProductHorizontal("MICROMAX SPARK VDEO(8GB) 4G VOLTE","Rs. 50000",R.mipmap.ic_launcher, "4.0","12"));
+        mProductsList.add(new ProductHorizontal("MICROMAX SPARK VDEO(8GB) 4G VOLTE","Rs. 50000",R.mipmap.ic_launcher, "4.0","12"));
+        mProductsList.add(new ProductHorizontal("MICROMAX SPARK VDEO(8GB) 4G VOLTE","Rs. 50000",R.mipmap.ic_launcher, "4.0","12"));
+        mProductsList.add(new ProductHorizontal("MICROMAX SPARK VDEO(8GB) 4G VOLTE","Rs. 50000",R.mipmap.ic_launcher, "4.0","12"));
+        mProductsList.add(new ProductHorizontal("MICROMAX SPARK VDEO(8GB) 4G VOLTE","Rs. 50000",R.mipmap.ic_launcher, "4.0","12"));
+        mProductsList.add(new ProductHorizontal("MICROMAX SPARK VDEO(8GB) 4G VOLTE","Rs. 50000",R.mipmap.ic_launcher, "4.0","12"));
 
     }
 
@@ -84,9 +183,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        switch (id){
+            case R.id.my_cart:
+                startActivity(new Intent(MainActivity.this,MyCart.class));
+                break;
+            case R.id.notifications:
+                Toast.makeText(MainActivity.this,"Notifications item selected",Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.my_orders:
+                startActivity(new Intent(MainActivity.this,MyOrders.class));
+                break;
         }
+
 
         return super.onOptionsItemSelected(item);
     }
