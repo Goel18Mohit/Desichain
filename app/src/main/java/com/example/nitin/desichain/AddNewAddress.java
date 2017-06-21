@@ -62,4 +62,12 @@ public class AddNewAddress extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent=new Intent(AddNewAddress.this,MyAccount.class);
+        startActivity(intent);
+        finish();
+    }
 }
