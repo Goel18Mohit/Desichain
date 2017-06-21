@@ -10,7 +10,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:padding="16dp"
+        android:padding="10dp"
         android:layout_weight="7">
 
         <ImageView
@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:text="17% OFF"
             android:background="@drawable/box"
-            android:layout_gravity="left|bottom"/>
+            android:layout_gravity="left"/>
     </FrameLayout>
 
     <TextView

@@ -12,13 +12,11 @@
             android:name=".MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity
             android:name=".MyOrders"
@@ -92,27 +90,27 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MyOrders" />
         </activity>
-        <activity android:name=".ProductPageActual"
+        <activity
+            android:name=".ProductPageActual"
             android:label="ProductPage"
             android:parentActivityName=".MainActivity">
-
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity"/>
+                android:value=".MainActivity" />
         </activity>
-        <activity android:name=".AddNewAddress"
-            android:label="Add an Address"/>
-
-        <activity android:name=".CategoryPage"
+        <activity
+            android:name=".AddNewAddress"
+            android:label="Add an Address" />
+        <activity
+            android:name=".CategoryPage"
             android:label="CategoryPage"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:parentActivityName=".MainActivity">
-
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity"/>
-
+                android:value=".MainActivity" />
         </activity>
+        <activity android:name=".BankDeposit"></activity>
     </application>
 
 </manifest>

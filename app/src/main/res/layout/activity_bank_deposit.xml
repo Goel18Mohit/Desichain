@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_bank_deposit"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.nitin.desichain.BankDeposit">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+    <TextView
+        android:layout_width="match_parent"
+        android:textAlignment="center"
+        android:textSize="25sp"
+        android:layout_height="wrap_content"
+        android:text="Dear Nitin Singhal"
+        android:textColor="#000000"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#000000"
+        android:layout_marginTop="10dp"
+        android:text="Namaskar Your Order has been placed and an email has been sent to your Inbox"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:layout_marginTop="10dp"
+            android:text="Order ID # DCDM9853"/>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/border"
+            android:layout_height="wrap_content">
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:padding="16dp"
+                android:background="@drawable/border"
+                android:layout_height="wrap_content">
+
+                <TableRow>
+                <TextView
+                    android:padding="5dp"
+                    android:text="Name"
+                    android:background="@drawable/box"/>
+
+
+                <TextView
+                    android:padding="5dp"
+                    android:background="@drawable/box"
+                    android:text="Apostle Trade Links"/>
+
+            </TableRow>
+
+                <TableRow>
+                    <TextView
+                        android:padding="5dp"
+                        android:background="@drawable/box"
+                        android:text="Bank Name"/>
+
+
+                    <TextView
+                        android:padding="5dp"
+                        android:background="@drawable/box"
+                        android:text="HDFC Bank"/>
+
+                </TableRow>
+
+                <TableRow>
+                    <TextView
+                        android:padding="5dp"
+                        android:background="@drawable/box"
+                        android:text="Branch"/>
+
+
+                    <TextView
+                        android:padding="5dp"
+                        android:background="@drawable/box"
+                        android:text="Chandni Chowk, New Delhi"/>
+
+                </TableRow>
+
+                <TableRow>
+                    <TextView
+                        android:padding="5dp"
+                        android:background="@drawable/box"
+                        android:text="A/c No."/>
+
+
+                    <TextView
+                        android:padding="5dp"
+                        android:background="@drawable/box"
+                        android:text="50200004008728"/>
+
+                </TableRow>
+
+                <TableRow>
+                    <TextView
+                        android:padding="5dp"
+                        android:background="@drawable/box"
+                        android:text="IFSC Code"/>
+
+
+                    <TextView
+                        android:padding="5dp"
+                        android:background="@drawable/box"
+                        android:text="HDFC0000553"/>
+
+                </TableRow>
+                <TableRow>
+                    <TextView
+                        android:padding="5dp"
+                        android:background="@drawable/box"
+                        android:text="A/c Type"/>
+
+
+                    <TextView
+                        android:padding="5dp"
+                        android:background="@drawable/box"
+                        android:text="Current A/c"/>
+
+                </TableRow>
+
+
+            </TableLayout>
+        </android.support.v7.widget.CardView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="OR"
+            android:textSize="20sp"
+            android:layout_marginTop="10dp"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:layout_gravity="" />
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:background="@drawable/border"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:padding="16dp"
+                    android:textSize="15sp"
+                    android:layout_height="wrap_content"
+                    android:text="You may mail Cheques/ DD to us at:"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:padding="16dp"
+                    android:background="#000000"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:padding="16dp"
+                    android:layout_height="wrap_content"
+                    android:text="Apostle Trade Links,
+10133-36, Model Basti Industrial Area,
+Opp. Filmistan, East Park Road,
+New Delhi-110005"/>
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Important"
+            android:textSize="20sp"
+            android:layout_marginTop="10dp"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:layout_gravity="" />
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:padding="16dp"
+                android:background="@drawable/border"
+                android:layout_height="wrap_content"
+                android:text="• Issue all cheques/demand drafts in name of ''Apostle Trade Links''.\n\n• Please provide at-par cheques so that there are no processing charges levied by your's and our's Bank. Non at-par cheques will not be accepted, and returned to you.\n\n•After making payment, kindly email the payment details to us at sales@desichain.in \n\n• To enable us to process your order, we request you to complete the following process within next 9 bussiness days. \n\n• Your Order will be shipped as soon as we receive confirmation of your payment"/>
+        </android.support.v7.widget.CardView>
+
+
+</LinearLayout>
+</ScrollView>
