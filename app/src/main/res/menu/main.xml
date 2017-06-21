@@ -2,8 +2,26 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/action_settings"
-        android:orderInCategory="100"
-        android:title="@string/action_settings"
+        android:id="@+id/my_orders"
+        android:icon="@mipmap/ic_payment_black_24dp"
+        android:orderInCategory="1"
+        android:title="My Orders"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/my_cart"
+        android:icon="@mipmap/ic_shopping_cart_black_24dp"
+        android:orderInCategory="1"
+        android:title="My Orders"
+        app:showAsAction="always" />
+
+
+
+
+    <item
+        android:id="@+id/notifications"
+        android:icon="@mipmap/ic_payment_black_24dp"
+        android:orderInCategory="2"
+        android:title="Notifications"
         app:showAsAction="never" />
 </menu>
