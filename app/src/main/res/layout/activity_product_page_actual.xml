@@ -30,7 +30,8 @@
                 android:layout_gravity="center"
                 />
             </FrameLayout>
-     <!--       <me.relex.circleindicator.CircleIndicator
+
+     <!--   <me.relex.circleindicator.CircleIndicator
                 android:id="@+id/circleIndicator"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -92,6 +93,49 @@
                 <include
                     layout="@layout/card_reviews"/>
             </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="3">
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginTop="20dp"
+                    app:cardElevation="10dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Recently Viewed Product"
+                            android:textAlignment="center"
+                            android:textSize="20sp" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="#C0C0C0" />
+
+                        <android.support.v7.widget.RecyclerView
+                            android:id="@+id/recentlyView"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:clipToPadding="true"
+                            android:scrollbars="horizontal" />
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+
+
+
+            </FrameLayout>
+
 
 
         </LinearLayout>
