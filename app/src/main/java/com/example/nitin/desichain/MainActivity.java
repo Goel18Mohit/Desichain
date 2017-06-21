@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar)findViewById(R.id.my_toolbar);
+        Toolbar toolbar = (Toolbar)findViewById(R.id.my_toolBar);
         setSupportActionBar(toolbar);
         final ActionBar ab = getSupportActionBar();
 
@@ -137,6 +137,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         nestedScrollView= (NestedScrollView) navigationView.findViewById(R.id.scrollposition);
         listView= (Helper) navigationView.findViewById(R.id.parentcategoryList);
         navigationCategoryList();
+
+
 
 
     }
