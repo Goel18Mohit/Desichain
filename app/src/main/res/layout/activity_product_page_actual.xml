@@ -64,11 +64,11 @@
                     layout="@layout/card_offers"/>
             </FrameLayout>
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Description"
-                android:textSize="18sp"
-                android:textColor="@color/black"/>
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Description"
+            android:textSize="18sp"
+            android:textColor="@color/black"/>
 
             <FrameLayout
                 android:layout_width="match_parent"
@@ -78,6 +78,34 @@
                     layout="@layout/card_product_desrciption"/>
             </FrameLayout>
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ingredients"
+                android:textSize="18sp"
+                android:textColor="@color/black"/>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+                <include
+                    layout="@layout/card_product_ingredients"/>
+            </FrameLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="How To Use"
+                android:textSize="18sp"
+                android:textColor="@color/black"/>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+                <include
+                    layout="@layout/cart_product_howtouse"/>
+            </FrameLayout>
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"

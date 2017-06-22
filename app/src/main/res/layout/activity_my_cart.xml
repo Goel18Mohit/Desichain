@@ -125,7 +125,9 @@
 
                 <include layout="@layout/single_cart"/>
                 <include layout="@layout/single_cart"/>
+
                 <include layout="@layout/single_cart"/>
+
                 <include layout="@layout/single_cart"/>
                 <include layout="@layout/single_cart"/>
 

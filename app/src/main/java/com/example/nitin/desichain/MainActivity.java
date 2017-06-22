@@ -13,6 +13,7 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public ArrayList<String> Books;
     private List<Advertisements> mPics;
     ArrayList<String> Poojaitem;
+    DrawerLayout drawer;
     NestedScrollView nestedScrollView;
     ArrayList<String> Healthandfood;
     ArrayList<String> others;
@@ -52,6 +54,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar)findViewById(R.id.my_toolBar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
         final ActionBar ab = getSupportActionBar();
 
         mLatestProductView =(RecyclerView)findViewById(R.id.LatestProductRecyclerView);
@@ -120,7 +124,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         initiaze();
         add();
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, R.string.navigation_drawer_open, R.string.navigation_drawer_close){
             @Override
@@ -128,6 +132,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 super.onDrawerOpened(drawerView);
             }
         };
+
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
@@ -195,6 +200,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.my_orders:
                 startActivity(new Intent(MainActivity.this,MyOrders.class));
                 break;
+            case android.R.id.home:
+                    if(drawer.isDrawerOpen(Gravity.LEFT)) {
+                        drawer.closeDrawer(Gravity.LEFT);
+                    }else{
+                        drawer.openDrawer(Gravity.LEFT);
+                    }
+
+
         }
 
 
@@ -330,6 +343,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         instagram.setOnClickListener(this);
         aboutus.setOnClickListener(this);
     }
+
 
     @Override
     public void onClick(View v) {

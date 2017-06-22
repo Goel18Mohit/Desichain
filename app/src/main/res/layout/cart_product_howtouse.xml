@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="3"
+                android:text="Bhagavad-gita is universally renowned as the jewel of India’s spiritual wisdom. Spoken by Lord Krishna, the Supreme Personality of Godhead, to His intimate devotee Arjuna, the Gita's seven hundred concise verses (slokas) provide a definitive guide to the science of self-realization. Indeed no work even compares in its revelations of man's essential nature, his environment and ultimately his relationship with God. It is the essence of India's spiritual wisdom, the answers to questions posed by philosophers for centuries.\n\n
+The Gita is a conversation between Krishna and His dear friend Arjuna. At the last moment before entering a battle between brothers and friends, the great warrior Arjuna begins to wonder: Why should he fight? What is the meaning of his life? Where is he going after death? In response, Krishna brings His friend from perplexity to spiritual enlightenment, and each one of us is invited to walk the same path.\n
+
+\nBhagavad Gita is the essence of Vedic knowledge. Since it is alive with knowledge and devotion, it has the power to change your life for the better.\n
+
+\nHis Divine Grace A. C. Bhaktivedanta Swami Prabhupada, the world’s foremost Vedic scholar and teacher, represents an unbroken chain of fully self-realized spiritual masters beginning with Lord Krishna Himself. Thus, unlike other editions of the Bhagavad-gita, Srila Prabhupada conveys Lord Krishna's profound message without the slightest taint of adulteration or personally motivated change. Replete with sixteen full-color plates (pages), this new edition is certain to stimulate and enlighten any reader with its ancient yet thoroughly timely teachings.\n
+
+\nTHIS IS THE MOST WIDELY READ EDITION OF THE GITA IN THE WORLD"/>
+
+
+
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+</LinearLayout>
