@@ -84,7 +84,7 @@ public class MyAccount extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.my_account, menu);
+        getMenuInflater().inflate(R.menu.my_cart_menu, menu);
         return true;
     }
 
@@ -98,6 +98,9 @@ public class MyAccount extends AppCompatActivity
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
+        }
+        else if (id==R.id.my_cart){
+            startActivity(new Intent(MyAccount.this,MyCart.class));
         }
 
         return super.onOptionsItemSelected(item);

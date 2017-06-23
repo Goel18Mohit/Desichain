@@ -5,11 +5,8 @@
     android:id="@+id/content_questionand_anser"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingTop="16dp"
     android:orientation="vertical"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.nitin.desichain.QuestionandAnser"
     tools:showIn="@layout/activity_questionand_anser">
@@ -27,8 +24,39 @@
             android:textSize="25sp"/>
     </FrameLayout>
 
-    <TextView
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="5dp"
+            android:background="@drawable/transparent_black_rect"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_search_black_24dp"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Have a question? Search for answer"
+                android:background="@android:color/transparent"
+                />
+        </LinearLayout>
+    </FrameLayout>
+
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/quesAnswerView"
+        android:layout_marginTop="10dp"
+        android:clipToPadding="true"
+        android:scrollbars="vertical"/>
+
 
 </LinearLayout>

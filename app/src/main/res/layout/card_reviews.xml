@@ -23,6 +23,9 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:clickable="true"
+                android:background="?attr/selectableItemBackground"
+                android:id="@+id/reviewsLayout"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -67,7 +70,7 @@
                     android:layout_height="0dp"
                     android:layout_weight="1"
                     android:layout_gravity="center"
-                    android:text="View All Reviews"
+                    android:text="Rate And Write Reviews"
                     android:textColor="@android:color/holo_blue_dark"
                     android:layout_marginTop="5dp"/>
 
@@ -85,6 +88,9 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:clickable="true"
+                android:id="@+id/qna"
+                android:background="?attr/selectableItemBackground"
                 android:orientation="vertical">
 
                 <TextView
