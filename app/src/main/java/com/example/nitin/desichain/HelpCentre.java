@@ -24,21 +24,29 @@ public class HelpCentre extends AppCompatActivity implements NavigationView.OnNa
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(getString(R.string.title_activity_help_centre));
-
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         Log.i(LOG_TAG,"inside on create method");
 
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
-        DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+      /*  DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle drawerToggle =  new ActionBarDrawerToggle(this,
                 drawerLayout,
                 R.string.navigation_drawer_open,
                 R.string.navigation_drawer_close);
         drawerLayout.setDrawerListener(drawerToggle);
         drawerToggle.syncState();
-
+*/
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId()==android.R.id.home){
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

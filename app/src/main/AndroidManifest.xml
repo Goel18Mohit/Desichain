@@ -82,7 +82,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MyAccount" />
         </activity>
-        <activity android:name=".MyAddress" />
+        <activity
+            android:name=".MyAddress"
+            android:label="My Address"
+            android:parentActivityName=".MyAccount">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MyAccount" />
+        </activity>
         <activity
             android:name=".FullOrder"
             android:parentActivityName=".MyOrders">
@@ -93,10 +100,10 @@
         <activity
             android:name=".ProductPageActual"
             android:label="ProductPage"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".RatingReviews">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value=".RatingReviews" />
         </activity>
         <activity
             android:name=".AddNewAddress"
@@ -120,22 +127,34 @@
             android:value="@integer/google_play_services_version" />
 
         <activity
-            android:name=".RateandReview"
-            android:label="@string/title_activity_rateand_review"
-            android:parentActivityName=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.nitin.desichain.MainActivity" />
-        </activity>
-        <activity
             android:name=".QuestionandAnser"
-            android:label="@string/title_activity_questionand_anser"
             android:parentActivityName=".ProductPageActual"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustResize">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.nitin.desichain.ProductPageActual" />
+        </activity>
+        <activity
+            android:name=".SingleQuesMultiAnswerList"
+            android:label="Desichain"
+            android:parentActivityName=".QuestionandAnser">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".QuestionandAnser" />
+        </activity>
+        <activity android:name=".RatingReviews"
+            android:parentActivityName=".ProductPageActual">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ProductPageActual"/>
+        </activity>
+        <activity android:name=".WriteReview"
+            android:theme="@style/Base.Theme.AppCompat.Light.DarkActionBar"
+            android:parentActivityName=".RatingReviews">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".RatingReviews"/>
         </activity>
     </application>
 

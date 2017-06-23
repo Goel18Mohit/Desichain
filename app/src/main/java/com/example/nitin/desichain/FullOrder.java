@@ -1,10 +1,13 @@
 package com.example.nitin.desichain;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.example.nitin.desichain.Adapters.FullOrderAdapter;
 import com.example.nitin.desichain.Contents.FullOrderContent;
@@ -34,6 +37,20 @@ public class FullOrder extends AppCompatActivity {
         mFullOrderRecyclerView.setAdapter(mAdapter);
 
         prepareItems();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.my_cart_menu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId()== R.id.my_cart){
+            startActivity(new Intent(FullOrder.this,MyCart.class));
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void prepareItems() {

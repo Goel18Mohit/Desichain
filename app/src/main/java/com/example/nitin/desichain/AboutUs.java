@@ -1,5 +1,6 @@
 package com.example.nitin.desichain;
 
+import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -26,6 +27,13 @@ public class AboutUs extends AppCompatActivity {
         ABOUT_US5.setPaintFlags(ABOUT_US5.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         ABOUT_US6.setPaintFlags(ABOUT_US6.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        super.onBackPressed();
+        finish();
     }
 
     @Override

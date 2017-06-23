@@ -1,5 +1,6 @@
 package com.example.nitin.desichain;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -11,6 +12,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -98,10 +100,20 @@ public class MyOrders extends AppCompatActivity
 
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.my_cart_menu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
         if (item.getItemId() == android.R.id.home){
             finish();
+        }
+        else if (item.getItemId() == R.id.my_cart){
+
+            startActivity(new Intent(MyOrders.this,MyCart.class));
         }
         return super.onOptionsItemSelected(item);
     }
