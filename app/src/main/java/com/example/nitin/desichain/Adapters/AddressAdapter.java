@@ -20,7 +20,7 @@ import java.util.List;
  * Created by ashis on 6/17/2017.
  */
 
-public class AddressAdapter extends RecyclerView.Adapter<AddressAdapter.MyViewHolder> {
+public class AddressAdapter extends RecyclerView.Adapter<AddressAdapter.MyViewHolder>  {
 
     private Context mContext;
     private List<AddressList> mAddress;

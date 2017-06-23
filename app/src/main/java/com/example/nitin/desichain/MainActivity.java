@@ -34,15 +34,16 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     private Helper listView;
-    ArrayList<CategoryHolder> arrayList;
-    public ArrayList<String> Books;
+    public  static ArrayList<CategoryHolder> arrayList;
+public static  ArrayList<String> Books;
     private List<Advertisements> mPics;
-    ArrayList<String> Poojaitem;
+
+ public static ArrayList<String> Poojaitem;
     DrawerLayout drawer;
     NestedScrollView nestedScrollView;
-    ArrayList<String> Healthandfood;
-    ArrayList<String> others;
-    HashMap<String,ArrayList<String>> hashMap;
+  public static ArrayList<String> Homecare;
+  public static   ArrayList<String> others;
+      public  static HashMap<String,ArrayList<String>> hashMap;
     View headerView;
     private RecyclerView mLatestProductView,mBrandStudioView, mTopTenGameView,mTopTenGameView2, mFeaturedProductView,mAdvertisementView,mBestSellingView;
     private List<ProductHorizontal> mProductsList;
@@ -122,8 +123,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         prepareItems();
 
 
-        initiaze();
-        add();
+
          drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, R.string.navigation_drawer_open, R.string.navigation_drawer_close){
@@ -141,10 +141,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         refferencetonavigationcategory(navigationView);
         nestedScrollView= (NestedScrollView) navigationView.findViewById(R.id.scrollposition);
         listView= (Helper) navigationView.findViewById(R.id.parentcategoryList);
-        navigationCategoryList();
-
-
-
+        initiaze();
+        add();
 
     }
 
@@ -218,7 +216,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     {
         arrayList.add(new CategoryHolder("Book and media",0));
         arrayList.add(new CategoryHolder("Pooja Item",0));
-        arrayList.add(new CategoryHolder("Health and food",0));
+        arrayList.add(new CategoryHolder("Home Care",0));
         arrayList.add(new CategoryHolder("Others",0));
         Books.add("Bhagavad-Gita As It Is");
         Books.add("Paperback/ Hardbound");
@@ -228,36 +226,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Poojaitem.add("Bells");
         Poojaitem.add("Agarbatti/ Dhoop");
         Poojaitem.add("Murtis/ Deities");
-        Healthandfood.add("Food Supplements");
-        Healthandfood.add("Herbal Tea/ Coffee");
-        Healthandfood.add("Clarified Butter/ Ghee");
-        Healthandfood.add("Miscellaneous");
-        Healthandfood.add("Snacks");
-        Healthandfood.add("Cow Products");
-        Healthandfood.add("Digestives");
-        Healthandfood.add("Grains (& flours)");
-        Healthandfood.add("Spices (Masalas)");
-        others.add("Kitchen Care");
-        others.add("Laundry Care");
-        others.add("Home Care");
-        others.add("Bed Sheets");
-        others.add("Mobile Covers");
-        others.add("Others");
-        others.add("PersonalCareCategory");
-        others.add("Cosmetics");
-        others.add("Oralcare");
-        others.add("Babycare");
-        others.add("Haircare");
-        others.add("Bathbody");
-        others.add("Combos");
-        others.add("Miscellaneous");
-        others.add("handicrafts");
-        others.add("local_handicraft");
-        others.add("Paintings");
+        Homecare.add("Home Decor");
+        Homecare.add("Home Furnishing");
+        Homecare.add("Kitchen n Dinning");
+        others.add("Personal Care");
+        others.add("Health & Food");
+        others.add("Fshion Accessiories");
+        others.add("Women");
+        others.add("Men");
+        others.add("BagsnStationery");
+        others.add("MobileAccessiories");
         hashMap.put(arrayList.get(0).getPARENTCATEGORY(),Books);
         hashMap.put(arrayList.get(1).getPARENTCATEGORY(),Poojaitem);
-        hashMap.put(arrayList.get(2).getPARENTCATEGORY(),Healthandfood);
+        hashMap.put(arrayList.get(2).getPARENTCATEGORY(),Homecare);
         hashMap.put(arrayList.get(3).getPARENTCATEGORY(),others);
+        navigationCategoryList();
     }
 
     public void initiaze(){
@@ -265,7 +248,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         hashMap=new HashMap<>();
         Books=new ArrayList<>();
         Poojaitem=new ArrayList<>();
-        Healthandfood=new ArrayList<>();
+        Homecare=new ArrayList<>();
         others=new ArrayList<>();
 
     }
@@ -304,7 +287,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         listView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-                Intent intent=new Intent(MainActivity.this,CategoryPage.class);
+                Intent intent=new Intent(MainActivity.this,Childcategoru.class);
+                intent.putExtra("get",hashMap.get(arrayList.get(groupPosition).getPARENTCATEGORY()).get(childPosition));
                 startActivity(intent);
                 return true;
             }

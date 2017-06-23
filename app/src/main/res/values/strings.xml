@@ -146,5 +146,6 @@
     <string name="title_activity_category_page">CategoryPage</string>
     <string name="title_activity_rateand_review">Reviews</string>
     <string name="title_activity_questionand_anser">QuestionandAnser</string>
+    <string name="title_activity_childcategoru">Childcategoru</string>
 
 </resources>
