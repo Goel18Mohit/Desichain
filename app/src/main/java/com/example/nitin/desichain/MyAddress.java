@@ -6,10 +6,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.nitin.desichain.Adapters.AddressAdapter;
 import com.example.nitin.desichain.Contents.AddressList;
@@ -51,6 +53,7 @@ public class MyAddress extends AppCompatActivity implements AddressAdapter.SaveA
                 Intent intent=new Intent(MyAddress.this,AddNewAddress.class);
                 intent.putExtra("REQUESTCODE",REQUEST_CODE_ADD);
                 startActivityForResult(intent,REQUEST_CODE_ADD);
+                finish();
             }
         });
 
@@ -95,7 +98,7 @@ public class MyAddress extends AppCompatActivity implements AddressAdapter.SaveA
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode==REQUEST_CODE_EDIT)
+       if(requestCode==REQUEST_CODE_EDIT)
         {
             if(data.getBundleExtra("NEW ADDRESS")!=null) {
                 mAddressList.remove(POSITION);
@@ -105,6 +108,7 @@ public class MyAddress extends AppCompatActivity implements AddressAdapter.SaveA
             }
         }
         else {
+
             if(data.getBundleExtra("NEW ADDRESS")!=null) {
                 Bundle bundle = data.getBundleExtra("NEW ADDRESS");
                 mAddressList.add(new AddressList(bundle.getString("CUSTOMERNAME"), bundle.getString("CUSTOMERADDRESS"), bundle.getString("CUSTOMERMOBILE")));
