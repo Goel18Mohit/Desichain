@@ -144,5 +144,7 @@
     <string name="title_activity_my_account">My Account</string>
     <string name="title_activity_edit_profile">Edit Profile</string>
     <string name="title_activity_category_page">CategoryPage</string>
+    <string name="title_activity_rateand_review">Reviews</string>
+    <string name="title_activity_questionand_anser">QuestionandAnser</string>
 
 </resources>
