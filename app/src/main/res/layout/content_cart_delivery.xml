@@ -13,7 +13,7 @@
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="1"
+        android:layout_weight="2"
         android:orientation="vertical">
 
 
@@ -46,34 +46,6 @@
         </LinearLayout>
 
     </LinearLayout>
-
-    <View
-        android:layout_width="2dp"
-        android:layout_height="match_parent"
-        android:background="#C0C0C0"/>
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/textView7"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Delivery Charges"
-            android:textAlignment="center"/>
-
-        <TextView
-            android:id="@+id/textView6"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Free"
-            android:textStyle="bold"
-            android:textColor="@android:color/holo_green_light"
-            android:textAlignment="center"/>
-    </LinearLayout>
-
 
     <View
         android:layout_width="2dp"
