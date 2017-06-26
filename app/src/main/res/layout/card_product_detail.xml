@@ -154,9 +154,9 @@
 
             <ImageButton
                 android:layout_width="0dp"
-                android:id="@+id/shareproduct"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:id="@+id/shareProduct"
                 android:background="@android:color/transparent"
                 android:src="@drawable/ic_menu_share"/>
         </LinearLayout>

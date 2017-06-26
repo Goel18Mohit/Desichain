@@ -54,6 +54,8 @@ public class SingleCartAdapter extends RecyclerView.Adapter<SingleCartAdapter.My
                 mList.remove(position);
               ListChange  listChange= (ListChange) mContext;
                 notifyDataSetChanged();
+                notifyItemRemoved(position);
+                notifyItemRangeChanged(position,mList.size());
               listChange.change();
 
             }

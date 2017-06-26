@@ -41,11 +41,6 @@
        android:layout_width="match_parent"
        android:layout_height="wrap_content"/>
 
-        <android.support.v7.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:clipToPadding="true"
-            android:id="@+id/deliveryView"/>
             <Button
                 android:layout_width="match_parent"
                 android:layout_margin="10dp"
@@ -54,9 +49,11 @@
                 android:text="Add New Address"
                 android:layout_gravity="center"/>
     </FrameLayout>
-
-        <include
-            layout="@layout/single_cart"/>
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipToPadding="true"
+            android:id="@+id/deliveryView"/>
 
 
 

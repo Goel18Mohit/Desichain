@@ -25,7 +25,12 @@ public class AddNewAddress extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.new_address);
+
+
+
         final int position=getIntent().getIntExtra("REQUESTCODE",000);
+   //     String mCustName = getIntent().getStringExtra("mCustName");
+     //   String mCustAdd = getIntent().getStringExtra("mCustAdd");
         name= (TextInputEditText) findViewById(R.id.edit_name);
         pincode= (TextInputEditText) findViewById(R.id.edit_pincode);
         address= (TextInputEditText) findViewById(R.id.edit_address);
@@ -35,6 +40,14 @@ public class AddNewAddress extends AppCompatActivity {
         save= (Button) findViewById(R.id.btnSaveAddress);
         final Spinner mSpinner = (Spinner)findViewById(R.id.spinner_select_state);
         mSpinner.setPrompt("Select State");
+/*
+        if (!mCustName.isEmpty()){
+            name.setText(mCustName);
+        }
+        if (!mCustAdd.isEmpty()){
+            address.setText(mCustAdd);
+        }
+*/
         statelist =new ArrayList<>();
         statelist.add("DELHI");
         statelist.add("haryana");

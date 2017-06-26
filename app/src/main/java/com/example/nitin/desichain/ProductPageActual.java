@@ -2,8 +2,8 @@ package com.example.nitin.desichain;
 
 import android.content.Intent;
 import android.graphics.Paint;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -11,8 +11,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ShareActionProvider;
 import android.widget.TextView;
 
 import com.example.nitin.desichain.Adapters.ProductHorizontalAdapter;
@@ -23,14 +23,15 @@ import java.util.List;
 
 public class ProductPageActual extends AppCompatActivity {
 
-    private TextView mDeletedCostText,QUANTITY_PRODUCT,PRODUCT_BUY_NOW,PRODUCT_MY_CART;
+    private TextView mDeletedCostText,QUANTITY_PRODUCT,PRODUCT_BUY_NOW,PRODUCT_MY_CART;;
     private RecyclerView mRecentlyViewed;
     private static int QUNANTIY=1;
-    private ShareActionProvider mShareActionProvider;
     private List<ProductHorizontal> mProductsList;
     private ProductHorizontalAdapter mAdapter;
     private LinearLayout mQuesnAnswer,mReviewsLayout;
-    private ImageButton ADD_PRODUCT_BUTTON,MINUS_PRODUCT_BUTTON,SHARE_PRODUCT;
+    private ImageView mShareProduct;
+
+    private ImageButton ADD_PRODUCT_BUTTON,MINUS_PRODUCT_BUTTON;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +41,6 @@ public class ProductPageActual extends AppCompatActivity {
         ADD_PRODUCT_BUTTON= (ImageButton) findViewById(R.id.addProduct);
         MINUS_PRODUCT_BUTTON= (ImageButton) findViewById(R.id.removeProduct);
         QUANTITY_PRODUCT= (TextView) findViewById(R.id.productquantity);
-        SHARE_PRODUCT= (ImageButton) findViewById(R.id.shareproduct);
         PRODUCT_BUY_NOW= (TextView) findViewById(R.id.productbuynow);
         PRODUCT_MY_CART= (TextView) findViewById(R.id.productmycart);
 
@@ -52,8 +52,20 @@ public class ProductPageActual extends AppCompatActivity {
         mRecentlyViewed.setItemAnimator(new DefaultItemAnimator());
         mRecentlyViewed.setScrollBarSize(0);
         mRecentlyViewed.setAdapter(mAdapter);
+        mShareProduct=(ImageView)findViewById(R.id.shareProduct);
 
         addItems();
+
+        mShareProduct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent sendIntent = new Intent(Intent.ACTION_SEND);
+                sendIntent.setType("text/plain");
+                sendIntent.putExtra(Intent.EXTRA_SUBJECT,"sharing Url");
+                sendIntent.putExtra(Intent.EXTRA_TEXT,"http://www.google.com");
+                startActivity(sendIntent);
+            }
+        });
 
         mReviewsLayout=(LinearLayout)findViewById(R.id.reviewsLayout);
         mReviewsLayout.setOnClickListener(new View.OnClickListener() {
@@ -90,12 +102,7 @@ public class ProductPageActual extends AppCompatActivity {
 
             }
         });
-        SHARE_PRODUCT.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-            }
-        });
         PRODUCT_BUY_NOW.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
