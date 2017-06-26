@@ -34,6 +34,9 @@
         android:orientation="vertical">
 
 
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
    <include layout="@layout/content_deliver_address"
        android:layout_width="match_parent"
        android:layout_height="wrap_content"/>
@@ -43,6 +46,19 @@
             android:layout_height="wrap_content"
             android:clipToPadding="true"
             android:id="@+id/deliveryView"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_margin="10dp"
+                android:visibility="gone"
+                android:layout_height="wrap_content"
+                android:text="Add New Address"
+                android:layout_gravity="center"/>
+    </FrameLayout>
+
+        <include
+            layout="@layout/single_cart"/>
+
+
 
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
