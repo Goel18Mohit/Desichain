@@ -27,6 +27,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="A"
+                android:id="@+id/customerfirstlettername"
                 android:gravity="center"
                 android:textColor="@color/black"
                 android:textSize="30sp"
