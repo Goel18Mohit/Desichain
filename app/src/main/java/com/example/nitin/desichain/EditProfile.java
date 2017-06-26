@@ -1,7 +1,9 @@
 package com.example.nitin.desichain;
 
+import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.icu.util.Calendar;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -9,8 +11,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class EditProfile extends AppCompatActivity {
@@ -18,7 +22,10 @@ public class EditProfile extends AppCompatActivity {
     LinearLayout LOGOUT,RESET;
     EditText USER_EMAIL_ID;
     EditText CUSTOMER_NAME;
+    TextView CUSTOMERFATEOFBIRTH;
     String CUSTOMERNAME;
+    private int mYear,mMonth,mDate;
+    Calendar calendar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,7 +33,15 @@ public class EditProfile extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
       getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        calendar=Calendar.getInstance();
+        mYear=calendar.get(Calendar.YEAR);
+        mMonth=calendar.get(Calendar.MONTH);
+        mDate=calendar.get(Calendar.DATE);
+
+
+
         LOGOUT= (LinearLayout) findViewById(R.id.logout);
+        CUSTOMERFATEOFBIRTH= (TextView) findViewById(R.id.editBirthDateText);
         RESET= (LinearLayout) findViewById(R.id.reset);
         CUSTOMER_NAME= (EditText) findViewById(R.id.editcustomerNameText);
         LOGOUT.setOnClickListener(new View.OnClickListener() {
@@ -62,6 +77,24 @@ public class EditProfile extends AppCompatActivity {
                 });
 
                 alertDialog.create().show();
+
+            }
+        });
+
+        CUSTOMERFATEOFBIRTH.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                DatePickerDialog datePickerDialog=new DatePickerDialog(EditProfile.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+
+                        month=month+1;
+
+                        CUSTOMERFATEOFBIRTH.setText(String.valueOf(dayOfMonth+"/"+month+"/"+year));
+                    }
+                },mYear,mMonth,mDate);
+                datePickerDialog.show();
 
             }
         });
