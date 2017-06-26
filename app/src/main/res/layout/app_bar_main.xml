@@ -31,14 +31,14 @@
 
         <android.support.v7.widget.Toolbar
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
+            android:layout_height="?android:attr/actionBarSize"
             android:id="@+id/my_toolBar"/>
     </android.support.design.widget.AppBarLayout>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="?attr/actionBarSize"
+        android:layout_marginTop="?android:attr/actionBarSize"
         android:layout_below="@+id/appBarLayout">
         <include layout="@layout/content_main" />
     </FrameLayout>

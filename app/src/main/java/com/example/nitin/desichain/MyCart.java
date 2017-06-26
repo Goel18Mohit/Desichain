@@ -7,9 +7,7 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.example.nitin.desichain.Adapters.SingleCartAdapter;
@@ -18,12 +16,13 @@ import com.example.nitin.desichain.Contents.SingleCart;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MyCart extends AppCompatActivity {
+public class MyCart extends AppCompatActivity  implements SingleCartAdapter.ListChange{
 
     private LinearLayout mCheckoutLayout,mPlaceOrderLayout;
     private RecyclerView mCartRecyclerView;
     private List<SingleCart> mList;
     private SingleCartAdapter mAdapter;
+    private TextView ITEM_COUNT;
 
     int k=0;
 
@@ -40,9 +39,10 @@ public class MyCart extends AppCompatActivity {
         mCartRecyclerView.setLayoutManager(lm);
         mCartRecyclerView.setItemAnimator(new DefaultItemAnimator());
         mCartRecyclerView.setAdapter(mAdapter);
-
+        ITEM_COUNT= (TextView) findViewById(R.id.itemsCount);
         prepareItems();
 
+        ITEM_COUNT.setText(String.valueOf(mList.size()));
         mPlaceOrderLayout=(LinearLayout)findViewById(R.id.placeOrderLayout);
         mPlaceOrderLayout.setBackgroundColor(getResources().getColor(R.color.green));
 
@@ -55,7 +55,23 @@ public class MyCart extends AppCompatActivity {
             }
         });
 
+        Intent intent=getIntent();
+        if(intent!=null)
+        {
+            if(intent.getIntExtra("STATUSFLAG",0)==402){
+                mList.add(new SingleCart(R.mipmap.ic_launcher,
+                        10,
+                        12000,
+                        "NEW ITEM IS ADDED DESICHAIN",
+                        "DESICHAIN"));
+                ITEM_COUNT.setText(String.valueOf(mList.size()));
+                mAdapter.notifyDataSetChanged();
+            }
+        }
+
+
     }
+
 
     private void prepareItems() {
 
@@ -98,4 +114,8 @@ public class MyCart extends AppCompatActivity {
 
     }
 
+    @Override
+    public void change() {
+        ITEM_COUNT.setText(String.valueOf(mList.size()));
+    }
 }

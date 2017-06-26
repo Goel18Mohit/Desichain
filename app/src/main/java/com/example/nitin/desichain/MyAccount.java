@@ -15,12 +15,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.nitin.desichain.Utility.Utility;
-
 public class MyAccount extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,View.OnClickListener {
 
-    private TextView editProfileText;
+    int flag=0;
+    private TextView editProfileText,CUSTOMER_FIRST_LETTER_NAME;
+    private String CUSTOMERNAMEFIRSTLETTER;
     private LinearLayout mMyOrderLayout,mMyAddressLayout,
             mNotificationLayout,mHelpCenterLayout,
             mRateAppLayout,mFeedBackLayout,mPoliciesLayout;
@@ -33,6 +33,8 @@ public class MyAccount extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        Intent intent=getIntent();
+
 
 
         mMyOrderLayout = (LinearLayout)findViewById(R.id.myOrderLayout);
@@ -42,6 +44,16 @@ public class MyAccount extends AppCompatActivity
         mRateAppLayout =(LinearLayout)findViewById(R.id.rateAppPlayStoreLayout);
         mFeedBackLayout =(LinearLayout)findViewById(R.id.appFeedbackLayout);
         mPoliciesLayout=(LinearLayout)findViewById(R.id.policiesLayout);
+       CUSTOMER_FIRST_LETTER_NAME= (TextView) findViewById(R.id.customerfirstlettername);
+        if(intent!=null)
+        {
+            flag=intent.getIntExtra("FLAGSTATUS",0);
+            if(flag==121) {
+                CUSTOMERNAMEFIRSTLETTER = intent.getStringExtra("CUSTOMERNAME").toString();
+                CUSTOMER_FIRST_LETTER_NAME.setText(String.valueOf(CUSTOMERNAMEFIRSTLETTER.charAt(0)));
+
+            }
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(

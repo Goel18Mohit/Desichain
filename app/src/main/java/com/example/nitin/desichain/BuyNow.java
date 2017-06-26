@@ -16,12 +16,11 @@ import android.widget.RadioButton;
 
 import com.example.nitin.desichain.Adapters.SingleCartAdapter;
 import com.example.nitin.desichain.Contents.SingleCart;
-import com.google.android.gms.common.api.GoogleApiClient;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class BuyNow extends AppCompatActivity {
+public class BuyNow extends AppCompatActivity  implements SingleCartAdapter.ListChange{
 
     Button b1;
     private RadioButton mGiftWrapRadioBtn;
@@ -82,6 +81,20 @@ public class BuyNow extends AppCompatActivity {
 
         prepareItems();
 
+        Intent intent=getIntent();
+        if(intent!=null)
+        {
+            if(intent.getIntExtra("STATUSFLAG",0)==401)
+            {
+                mList.add(new SingleCart(R.mipmap.ic_launcher,
+                        10,
+                        12000,
+                        "NEW ITEM ADDED",
+                        "DESICHAIN"));
+                mAdapter.notifyDataSetChanged();
+            }
+        }
+
     }
 
     private void prepareItems() {
@@ -140,6 +153,11 @@ public class BuyNow extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+
+    }
+
+    @Override
+    public void change() {
 
     }
 

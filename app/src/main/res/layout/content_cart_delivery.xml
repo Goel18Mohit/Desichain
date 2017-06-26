@@ -47,10 +47,7 @@
 
     </LinearLayout>
 
-    <View
-        android:layout_width="2dp"
-        android:layout_height="match_parent"
-        android:background="#C0C0C0"/>
+
 
     <TextView
         android:id="@+id/textView8"
