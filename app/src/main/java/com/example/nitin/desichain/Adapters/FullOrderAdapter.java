@@ -28,7 +28,7 @@ public class FullOrderAdapter extends RecyclerView.Adapter<FullOrderAdapter.MyVi
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_full_order,parent,false);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.card_full_order,parent,false);
         return new MyViewHolder(view);
     }
 
