@@ -8,7 +8,9 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 import android.widget.ImageButton;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.example.nitin.desichain.Contents.AddressList;
@@ -24,14 +26,19 @@ public class AddressAdapter extends RecyclerView.Adapter<AddressAdapter.MyViewHo
 
     private Context mContext;
     private List<AddressList> mAddress;
+    private int FLAG,i=-1;
+
+
+
 
     public interface SaveAddress{
         public void OnEditButtonClicked(int positon);
     }
 
-    public AddressAdapter(Context mContext, List<AddressList> mAddress) {
+    public AddressAdapter(Context mContext, List<AddressList> mAddress,int mFlag) {
         this.mContext = mContext;
         this.mAddress = mAddress;
+        this.FLAG = mFlag;
     }
 
 
@@ -56,6 +63,33 @@ public class AddressAdapter extends RecyclerView.Adapter<AddressAdapter.MyViewHo
                 showPopupMenu(holder.mPopupbtn,position);
             }
         });
+
+        if (FLAG==1) {
+
+            holder.mRadioBtn.setVisibility(View.VISIBLE);
+
+            holder.mRadioBtn.setChecked(position == i);
+            holder.mRadioBtn.setTag(position);
+            holder.mRadioBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    itemCheckChnaged(v);
+                }
+            });
+
+        }
+        else {
+            holder.mRadioBtn.setVisibility(View.GONE);
+        }
+
+
+
+    }
+
+    private void itemCheckChnaged(View v) {
+
+        i=(Integer)v.getTag();
+        notifyDataSetChanged();
 
     }
 
@@ -94,10 +128,12 @@ public class AddressAdapter extends RecyclerView.Adapter<AddressAdapter.MyViewHo
 
         public TextView mNameText,mAddressText,mMobile;
         public ImageButton mPopupbtn;
+        public RadioButton mRadioBtn;
 
         public MyViewHolder(View itemView) {
             super(itemView);
 
+            mRadioBtn=(RadioButton)itemView.findViewById(R.id.radioButton);
             mPopupbtn=(ImageButton)itemView.findViewById(R.id.popupImage);
             mNameText=(TextView) itemView.findViewById(R.id.nameText);
             mAddressText=(TextView)itemView.findViewById(R.id.addressText);

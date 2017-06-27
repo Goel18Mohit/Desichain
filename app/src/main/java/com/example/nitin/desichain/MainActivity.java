@@ -86,6 +86,12 @@ public static  ArrayList<String> Books;
         mBrandStudioView.setItemAnimator(new DefaultItemAnimator());
         mBrandStudioView.setScrollBarSize(0);
         mBrandStudioView.setAdapter(mBrandStudioAdapter);
+        mBrandStudioView.addOnItemTouchListener(new RecyclerItemClickListener(this, new RecyclerItemClickListener.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                startActivity(new Intent(MainActivity.this,BrandProducts.class));
+            }
+        }));
 
         mTopTenGameAdapter =new ProductHorizontalAdapter(MainActivity.this,mProductsList);
         mTopTenGameView =(RecyclerView) findViewById(R.id.top_ten_game_view);

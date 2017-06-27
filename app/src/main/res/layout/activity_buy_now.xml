@@ -96,29 +96,24 @@
             </LinearLayout>
         </android.support.v7.widget.CardView>
 
+
         <include
             layout="@layout/content_order_price_details"/>
 
+
+        <Button
+            android:layout_width="match_parent"
+            android:background="@color/green"
+            android:text="CONTINUE"
+            android:elevation="10dp"
+            android:id="@+id/myCartContinueBtn"
+            android:textColor="#ffffff"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
     </LinearLayout>
 </ScrollView>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_gravity="bottom"
-        android:layout_alignParentBottom="true"
-        android:id="@+id/continueBtn"
-        android:layout_height="wrap_content">
-            <Button
-                android:layout_width="match_parent"
-                android:background="@color/green"
-                android:text="CONTINUE"
-                android:elevation="10dp"
-                android:id="@+id/myCartContinueBtn"
-                android:textColor="#ffffff"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"/>
 
-    </LinearLayout>
 
 
 

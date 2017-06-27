@@ -5,8 +5,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 public class WriteReview extends AppCompatActivity {
+
+    private Button mSubmitReview;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -26,5 +30,13 @@ public class WriteReview extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_write_review);
+        mSubmitReview=(Button)findViewById(R.id.submitReview);
+        mSubmitReview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
     }
 }

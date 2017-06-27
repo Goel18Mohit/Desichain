@@ -36,22 +36,30 @@
         <ImageView
             android:layout_width="0dp"
             android:layout_weight="1"
+            android:visibility="gone"
+            android:id="@+id/plusIconFor2ndImage"
             android:src="@mipmap/ic_add_black_24dp"
             android:layout_height="match_parent" />
         <ImageView
             android:layout_width="0dp"
             android:layout_weight="5"
+            android:visibility="gone"
+            android:id="@+id/secondImageCombo"
             android:src="@mipmap/ic_security_black_24dp"
             android:layout_height="match_parent" />
         <ImageView
             android:layout_width="0dp"
             android:layout_weight="1"
+            android:visibility="gone"
+            android:id="@+id/plusIconFor3rdImage"
             android:src="@mipmap/ic_add_black_24dp"
             android:layout_height="match_parent" />
 
         <ImageView
             android:layout_width="0dp"
             android:layout_weight="5"
+            android:visibility="gone"
+            android:id="@+id/thirdImageCombo"
             android:src="@mipmap/ic_security_black_24dp"
             android:layout_height="match_parent" />
 
@@ -74,6 +82,7 @@
           <CheckBox
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
+              android:checked="true"
               android:layout_gravity="center"/>
       </FrameLayout>
 
@@ -129,6 +138,7 @@
             <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:id="@+id/secondImageCheck"
                 android:layout_gravity="center"/>
         </FrameLayout>
 
@@ -182,6 +192,7 @@
 
             <CheckBox
                 android:layout_width="wrap_content"
+                android:id="@+id/thirdImageCheck"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"/>
         </FrameLayout>
@@ -237,7 +248,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Total price : 8754"
+                android:id="@+id/totalPrice"
                 android:textStyle="bold"
                 android:textSize="15sp"
                 android:layout_gravity="center"/>

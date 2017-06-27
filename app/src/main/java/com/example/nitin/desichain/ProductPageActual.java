@@ -7,13 +7,17 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.nitin.desichain.Adapters.ProductHorizontalAdapter;
 import com.example.nitin.desichain.Contents.ProductHorizontal;
@@ -26,10 +30,13 @@ public class ProductPageActual extends AppCompatActivity {
     private TextView mDeletedCostText,QUANTITY_PRODUCT,PRODUCT_BUY_NOW,PRODUCT_MY_CART;;
     private RecyclerView mRecentlyViewed;
     private static int QUNANTIY=1;
+    private int productCost = 850;
+    private TextView mTotalCostText;
     private List<ProductHorizontal> mProductsList;
+    private CheckBox mSecCheckBox,mThirdCheckBox;
     private ProductHorizontalAdapter mAdapter;
-    private LinearLayout mQuesnAnswer,mReviewsLayout;
-    private ImageView mShareProduct;
+    private LinearLayout mQuesnAnswer,mReviewsLayout,mReviewsProductLayout;
+    private ImageView mShareProduct,mPlusForSecImage,mPlusForThirdImage,mSecImage,mThirdImage;
 
     private ImageButton ADD_PRODUCT_BUTTON,MINUS_PRODUCT_BUTTON;
     @Override
@@ -37,12 +44,59 @@ public class ProductPageActual extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_page_actual);
 
+        mSecCheckBox=(CheckBox)findViewById(R.id.secondImageCheck);
+        mThirdCheckBox=(CheckBox)findViewById(R.id.thirdImageCheck);
+        mPlusForSecImage=(ImageView)findViewById(R.id.plusIconFor2ndImage);
+        mPlusForThirdImage=(ImageView)findViewById(R.id.plusIconFor3rdImage);
+        mSecImage=(ImageView)findViewById(R.id.secondImageCombo);
+        mThirdImage=(ImageView)findViewById(R.id.thirdImageCombo);
+        mReviewsProductLayout=(LinearLayout)findViewById(R.id.reviewsProductPage);
         mQuesnAnswer=(LinearLayout)findViewById(R.id.qna);
         ADD_PRODUCT_BUTTON= (ImageButton) findViewById(R.id.addProduct);
         MINUS_PRODUCT_BUTTON= (ImageButton) findViewById(R.id.removeProduct);
         QUANTITY_PRODUCT= (TextView) findViewById(R.id.productquantity);
         PRODUCT_BUY_NOW= (TextView) findViewById(R.id.productbuynow);
         PRODUCT_MY_CART= (TextView) findViewById(R.id.productmycart);
+        mTotalCostText=(TextView)findViewById(R.id.totalPrice);
+
+
+        mTotalCostText.setText("Total Price is Rs:"+productCost);
+        mSecCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (mSecCheckBox.isChecked()){
+                    mTotalCostText.setText("Total Price is Rs:"+String.valueOf(productCost*2));
+                    mPlusForSecImage.setVisibility(View.VISIBLE);
+                    mSecImage.setVisibility(View.VISIBLE);
+                }
+               else if(!mSecCheckBox.isChecked()){
+                    mTotalCostText.setText("Total Price is Rs:"+String.valueOf(productCost));
+                    mPlusForSecImage.setVisibility(View.GONE);
+                    mSecImage.setVisibility(View.GONE);
+                }
+
+            }
+        });
+
+        mThirdCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+                if (mThirdCheckBox.isChecked()){
+                    mTotalCostText.setText("Total Price is Rs:"+String.valueOf(productCost*2));
+                    mPlusForThirdImage.setVisibility(View.VISIBLE);
+                    mThirdImage.setVisibility(View.VISIBLE);
+                }
+                else if (!mThirdCheckBox.isChecked()) {
+                    mTotalCostText.setText("Total Price is Rs:"+String.valueOf(productCost));
+                    mPlusForThirdImage.setVisibility(View.GONE);
+                    mThirdImage.setVisibility(View.GONE
+                    );
+
+                }
+            }
+        });
+
 
         mRecentlyViewed = (RecyclerView) findViewById(R.id.recentlyView);
         mProductsList = new ArrayList<>();
@@ -55,6 +109,13 @@ public class ProductPageActual extends AppCompatActivity {
         mShareProduct=(ImageView)findViewById(R.id.shareProduct);
 
         addItems();
+
+        mReviewsProductLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ProductPageActual.this,RatingReviews.class));
+            }
+        });
 
         mShareProduct.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,7 +160,6 @@ public class ProductPageActual extends AppCompatActivity {
                 }
                 QUNANTIY=QUNANTIY-1;
                 QUANTITY_PRODUCT.setText(String.valueOf(QUNANTIY));
-
             }
         });
 
