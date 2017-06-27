@@ -7,19 +7,16 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.example.nitin.desichain.Adapters.SingleCartAdapter;
 import com.example.nitin.desichain.Contents.SingleCart;
-import com.google.android.gms.common.api.GoogleApiClient;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +25,7 @@ public class BuyNow extends AppCompatActivity implements View.OnClickListener,Si
 
     private static  String LOG_TAG = BuyNow.class.getSimpleName();
     Button b1;
-    private int totalCost = 1520;
+    private int totalCost = 1520,FLAG=1;
     private RadioButton mGiftWrapRadioBtn;
     private LinearLayout mGiftWrapLayout;
     private RecyclerView mDeliveryView;
@@ -192,7 +189,8 @@ public class BuyNow extends AppCompatActivity implements View.OnClickListener,Si
 
             case R.id.editInfo:
 
-                Intent editIntent = new Intent(this,MyAddress.class);
+                Intent editIntent = new Intent(this,SelectAddress.class);
+                editIntent.putExtra("flagIntent",FLAG);
                 startActivity(editIntent);
                 break;
 
@@ -207,11 +205,6 @@ public class BuyNow extends AppCompatActivity implements View.OnClickListener,Si
     public void change() {
 
     }
-
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
 
 
 

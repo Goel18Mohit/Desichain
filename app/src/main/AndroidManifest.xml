@@ -143,18 +143,20 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".QuestionandAnser" />
         </activity>
-        <activity android:name=".RatingReviews"
+        <activity
+            android:name=".RatingReviews"
             android:parentActivityName=".ProductPageActual">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ProductPageActual"/>
+                android:value=".ProductPageActual" />
         </activity>
-        <activity android:name=".WriteReview"
-            android:theme="@style/Base.Theme.AppCompat.Light.DarkActionBar"
-            android:parentActivityName=".RatingReviews">
+        <activity
+            android:name=".WriteReview"
+            android:parentActivityName=".RatingReviews"
+            android:theme="@style/Base.Theme.AppCompat.Light.DarkActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".RatingReviews"/>
+                android:value=".RatingReviews" />
         </activity>
         <activity
             android:name=".Childcategoru"
@@ -164,6 +166,20 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.nitin.desichain.MainActivity" />
+        </activity>
+        <activity android:name=".SelectAddress"
+            android:label="Select Delivery Address"
+            android:parentActivityName=".BuyNow">
+            <meta-data
+                android:name="android.support.PARENT_ACTIIVTY"
+                android:value=".BuyNow"/>
+        </activity>
+        <activity android:name=".BrandProducts"
+            android:label="BrandName"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"/>
         </activity>
     </application>
 

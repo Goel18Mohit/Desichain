@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RadioButton;
 import android.widget.Toast;
 
 import com.example.nitin.desichain.Adapters.AddressAdapter;
@@ -32,6 +33,7 @@ public class MyAddress extends AppCompatActivity implements AddressAdapter.SaveA
 
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +42,8 @@ public class MyAddress extends AppCompatActivity implements AddressAdapter.SaveA
         mAddNewAddress = (Button)findViewById(R.id.buttonAddAddress);
         mRecyclerView = (RecyclerView)findViewById(R.id.mAddressRecyclerView);
         mAddressList = new ArrayList<>();
-        mAdapter = new AddressAdapter(this,mAddressList);
+        mAdapter = new AddressAdapter(this,mAddressList,0);
+
 
         RecyclerView.LayoutManager lm = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(lm);

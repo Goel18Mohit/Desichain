@@ -17,6 +17,26 @@ public class SingleCart {
         this.mProductBrand = mProductBrand;
     }
 
+    public void setmImageId(int mImageId) {
+        this.mImageId = mImageId;
+    }
+
+    public void setmQty(int mQty) {
+        this.mQty = mQty;
+    }
+
+    public void setmCost(int mCost) {
+        this.mCost = mCost;
+    }
+
+    public void setmProductName(String mProductName) {
+        this.mProductName = mProductName;
+    }
+
+    public void setmProductBrand(String mProductBrand) {
+        this.mProductBrand = mProductBrand;
+    }
+
     public int getmImageId() {
         return mImageId;
     }

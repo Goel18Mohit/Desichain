@@ -1,6 +1,8 @@
 package com.example.nitin.desichain;
 
+import android.content.Context;
 import android.content.Intent;
+import android.hardware.input.InputManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -15,6 +17,7 @@ import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -195,11 +198,6 @@ public class HelpCentre extends AppCompatActivity implements NavigationView.OnNa
                 String mQueryString = editQuery.getText().toString();
                 String mCaptchaString = editCaptcha.getText().toString();
 
-                editCaptcha.setText("");
-                editQuery.setText("");
-                editEmail.setText("");
-                editName.setText("");
-                editNumber.setText("");
 
                  if (mNameString.isEmpty()){
                     editName.setError("please enter name");
@@ -220,8 +218,20 @@ public class HelpCentre extends AppCompatActivity implements NavigationView.OnNa
                 else if (!mCaptchaString.equals(mCaptchaText.getText().toString())){
                     editCaptcha.setError("Wrong Captcha!");
                 }
+                else if (mQueryString.isEmpty()){
+                    editQuery.setError("Please Enter your Query");
+                }
+                else if (!mNameString.isEmpty() && !mContactString.isEmpty() && !mEmailString.isEmpty() &&
+                        !mQueryString.isEmpty()){
 
-                else {
+                    editCaptcha.setText("");
+                    editQuery.setText("");
+                    editEmail.setText("");
+                    editName.setText("");
+                    editNumber.setText("");
+
+                    InputMethodManager im = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                    im.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),InputMethodManager.HIDE_NOT_ALWAYS);
 
                     Toast.makeText(this, "thankyou for reaching us", Toast.LENGTH_LONG).show();
 
