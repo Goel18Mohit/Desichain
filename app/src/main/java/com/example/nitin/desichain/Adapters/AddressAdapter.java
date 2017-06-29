@@ -31,6 +31,7 @@ public class AddressAdapter extends RecyclerView.Adapter<AddressAdapter.MyViewHo
 
 
 
+
     public interface SaveAddress{
         public void OnEditButtonClicked(int positon);
     }
@@ -56,6 +57,7 @@ public class AddressAdapter extends RecyclerView.Adapter<AddressAdapter.MyViewHo
         holder.mNameText.setText(addressList.getmName());
         holder.mMobile.setText(addressList.getmContactNumber());
         holder.mAddressText.setText(addressList.getmAddress());
+
 
         holder.mPopupbtn.setOnClickListener(new View.OnClickListener() {
             @Override
