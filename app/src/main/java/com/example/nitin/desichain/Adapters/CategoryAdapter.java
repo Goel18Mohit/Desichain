@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.nitin.desichain.Contents.CategoryList;
 import com.example.nitin.desichain.R;
@@ -44,7 +45,7 @@ public class CategoryAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(int position, View convertView, final ViewGroup parent) {
         ViewHolder viewHolder;
         if(convertView==null)
         {
@@ -57,10 +58,12 @@ public class CategoryAdapter extends BaseAdapter {
             viewHolder.productratings= (TextView) convertView.findViewById(R.id.product_ratings);
             viewHolder.productnofratings= (TextView) convertView.findViewById(R.id.no_of_reviews);
             viewHolder.productcut= (TextView) convertView.findViewById(R.id.productnamecut);
+
             convertView.setTag(viewHolder);
 
         }
         viewHolder= (ViewHolder) convertView.getTag();
+
         viewHolder.productImage.setImageResource(arrayList.get(position).getImageUrl());
         viewHolder.productname.setText(arrayList.get(position).getPRODUCT_NAME());
         viewHolder.productprice.setText(arrayList.get(position).getPRICE());;
@@ -68,6 +71,7 @@ public class CategoryAdapter extends BaseAdapter {
         viewHolder.productnofratings.setText(arrayList.get(position).getNUMBER_OF_REVIEWS());
         viewHolder.productcut.setText("Rs.7490");
         viewHolder.productcut.setPaintFlags(viewHolder.productcut.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+
         return convertView;
     }
     public class ViewHolder{

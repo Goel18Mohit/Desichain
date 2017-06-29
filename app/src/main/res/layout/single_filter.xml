@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:id="@+id/singleFilter"
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp"
+    android:textSize="20sp"
+    android:gravity="center"
+    android:textColor="#FFFFFF"
+    android:clickable="true"
+    android:background="?android:attr/selectableItemBackground"
+    android:textAlignment="center"
+    android:layout_height="wrap_content">
+
+</TextView>

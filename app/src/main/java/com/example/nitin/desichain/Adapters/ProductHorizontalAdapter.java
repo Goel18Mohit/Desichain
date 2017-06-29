@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.nitin.desichain.Contents.ProductHorizontal;
 import com.example.nitin.desichain.R;
@@ -43,6 +44,12 @@ public class ProductHorizontalAdapter extends RecyclerView.Adapter<ProductHorizo
         holder.mProductname.setText(mProduct.getmProductName());
         holder.mProductReviewsNo.setText(mProduct.getmProductNoOfReviews());
         holder.mProductImage.setImageResource(mProduct.getmProductImageId());
+        holder.mAddToCartImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(mContext,"product added to cart successfully",Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
@@ -52,12 +59,13 @@ public class ProductHorizontalAdapter extends RecyclerView.Adapter<ProductHorizo
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
 
-        private ImageView mProductImage;
+        private ImageView mProductImage,mAddToCartImage;
         private TextView mProductname,mProductCost,mProductRating, mProductReviewsNo;
 
 
         public MyViewHolder(View itemView) {
             super(itemView);
+            mAddToCartImage=(ImageView)itemView.findViewById(R.id.addToCart);
             mProductImage=(ImageView)itemView.findViewById(R.id.product_image);
             mProductname=(TextView)itemView.findViewById(R.id.productname);
             mProductCost=(TextView)itemView.findViewById(R.id.product_price);
