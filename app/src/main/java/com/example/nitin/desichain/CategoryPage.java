@@ -21,7 +21,7 @@ import java.util.ArrayList;
 public class CategoryPage extends AppCompatActivity {
 
     GridView listView;
-    TextView SORT_OPTION;
+    TextView SORT_OPTION,FILTER_OPTION;
     private ArrayList<com.example.nitin.desichain.Contents.CategoryList> arrayList;
     final CharSequence[] sortoption={"Relevance","Popularity","Price Low To High","Price High To Low","Discount","Fresh Arrivals"};
     @Override
@@ -33,6 +33,7 @@ public class CategoryPage extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        FILTER_OPTION=(TextView)findViewById(R.id.filter);
         listView= (GridView) findViewById(R.id.categorygridview);
         SORT_OPTION= (TextView) findViewById(R.id.sort);
         arrayList=new ArrayList<>();
@@ -207,11 +208,17 @@ public class CategoryPage extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         Toast.makeText(CategoryPage.this,"clicked",Toast.LENGTH_SHORT).show();
-                        dialog.dismiss();
                     }
                 });
                 alertdialog.create().show();
 
+            }
+        });
+
+        FILTER_OPTION.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(CategoryPage.this,Filters.class));
             }
         });
     }
