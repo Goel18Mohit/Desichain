@@ -1,17 +1,21 @@
 package com.example.nitin.desichain;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.icu.util.Calendar;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,6 +29,14 @@ public class MyAccount extends AppCompatActivity
     private LinearLayout mMyOrderLayout,mMyAddressLayout,
             mNotificationLayout,mHelpCenterLayout,
             mRateAppLayout,mFeedBackLayout,mPoliciesLayout;
+
+    LinearLayout LOGOUT,RESET;
+    EditText USER_EMAIL_ID;
+    EditText CUSTOMER_NAME;
+    TextView CUSTOMERFATEOFBIRTH;
+    String CUSTOMERNAME;
+    private int mYear,mMonth,mDate;
+    Calendar calendar;
 
 
     @Override
@@ -82,6 +94,53 @@ public class MyAccount extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        LOGOUT= (LinearLayout) findViewById(R.id.logout);
+        RESET= (LinearLayout) findViewById(R.id.reset);
+        CUSTOMER_NAME= (EditText) findViewById(R.id.editcustomerNameText);
+        LOGOUT.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(MyAccount.this,MainActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+        RESET.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                final AlertDialog.Builder alertDialog=new AlertDialog.Builder(MyAccount.this);
+                alertDialog.setTitle("Reset Password");
+                alertDialog.setMessage("Your Email Id");
+                USER_EMAIL_ID=new EditText(MyAccount.this);
+                alertDialog.setView(USER_EMAIL_ID);
+                alertDialog.setPositiveButton("Submit", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        if(USER_EMAIL_ID.getText().toString().isEmpty())
+                        {
+
+                            USER_EMAIL_ID.setError("field cant be empty");
+                        }
+                        else {
+                            dialog.dismiss();
+                            Toast.makeText(MyAccount.this, "Email has been seet", Toast.LENGTH_SHORT).show();
+
+                        }
+                    }
+                });
+                alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+
+                alertDialog.create().show();
+
+            }
+        });
     }
 
     @Override

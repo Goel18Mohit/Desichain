@@ -12,11 +12,6 @@
             android:name=".MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".MyOrders"
@@ -167,19 +162,34 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.nitin.desichain.MainActivity" />
         </activity>
-        <activity android:name=".SelectAddress"
+        <activity
+            android:name=".SelectAddress"
             android:label="Select Delivery Address"
             android:parentActivityName=".BuyNow">
             <meta-data
                 android:name="android.support.PARENT_ACTIIVTY"
-                android:value=".BuyNow"/>
+                android:value=".BuyNow" />
         </activity>
-        <activity android:name=".BrandProducts"
+        <activity
+            android:name=".BrandProducts"
             android:label="BrandName"
             android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity"/>
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name=".SearchActivity"
+            android:label="@string/title_activity_search"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".MainScreen"
+            android:theme="@style/splashscreen">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 
