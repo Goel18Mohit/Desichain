@@ -2,6 +2,7 @@ package com.example.nitin.desichain.Adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,7 @@ import java.util.List;
  */
 
 public class SingleCartAdapter extends RecyclerView.Adapter<SingleCartAdapter.MyViewHolder> {
+
 
     public interface ListChange{
         public void change();
@@ -39,10 +41,27 @@ public class SingleCartAdapter extends RecyclerView.Adapter<SingleCartAdapter.My
         return new MyViewHolder(view);
     }
 
-    @Override
-    public void onBindViewHolder(MyViewHolder holder, final int position) {
+    public int getIncreasedQty(int mPrevQty){
 
-        SingleCart sc = mList.get(position);
+        return  mPrevQty+1;
+
+    }
+
+    public int getDecreasedQty(int mDecQty){
+
+        return  mDecQty-1;
+    }
+
+
+    @Override
+    public void onBindViewHolder(final MyViewHolder holder, final int position) {
+
+
+
+        final SingleCart sc = mList.get(position);
+
+        final int mQty = sc.getmQty();
+
         holder.mProductCost.setText(String.valueOf(sc.getmCost()));
         holder.mProductQty.setText(String.valueOf(sc.getmQty()));
         holder.mProductBrand.setText(sc.getmProductBrand());
@@ -58,6 +77,31 @@ public class SingleCartAdapter extends RecyclerView.Adapter<SingleCartAdapter.My
 
             }
         });
+
+        holder.mAddProduct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int updatedQty = getIncreasedQty(mQty);
+                sc.setmQty(updatedQty);
+                mList.set(position,sc);
+                Log.i("updated value",String.valueOf(updatedQty));
+                notifyDataSetChanged();
+            }
+        });
+
+        holder.mRemoveProduct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int mRemovedQty = getDecreasedQty(mQty);
+                if (mRemovedQty > 0) {
+                    sc.setmQty(mRemovedQty);
+                    mList.set(position, sc);
+                    Log.i("decreased value", String.valueOf(mRemovedQty));
+                    notifyDataSetChanged();
+                }
+            }
+        });
+
     }
 
     @Override
@@ -68,11 +112,13 @@ public class SingleCartAdapter extends RecyclerView.Adapter<SingleCartAdapter.My
     public class MyViewHolder extends RecyclerView.ViewHolder {
         private ImageView mProductImage;
         private TextView mProductName,mProductBrand,mProductQty,mProductCost;
-        private ImageButton mRemoveItemFromCart;
+        private ImageButton mRemoveItemFromCart, mAddProduct,mRemoveProduct;
 
 
         public MyViewHolder(View view) {
             super(view);
+            mAddProduct =(ImageButton)view.findViewById(R.id.addProduct);
+            mRemoveProduct=(ImageButton)view.findViewById(R.id.removeProduct);
             mProductImage=(ImageView)view.findViewById(R.id.mProdImage);
             mProductName=(TextView)view.findViewById(R.id.mProdName);
             mProductBrand=(TextView)view.findViewById(R.id.mProductBrand);

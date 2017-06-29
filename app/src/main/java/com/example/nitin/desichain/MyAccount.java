@@ -1,6 +1,7 @@
 package com.example.nitin.desichain;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -164,8 +165,12 @@ public class MyAccount extends AppCompatActivity
                 Toast.makeText(this,"Rate option selected",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.appFeedbackLayout:
-                Toast.makeText(this,"feedback option selected",Toast.LENGTH_SHORT).show();
-                break;
+                Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
+                emailIntent.setData(Uri.parse("mailto:ashish.chaudhary@softroneretail.com"));
+                emailIntent.putExtra(Intent.EXTRA_SUBJECT,"Subject line");
+                if (emailIntent.resolveActivity(getPackageManager()) != null){
+                    startActivity(emailIntent);
+                }                break;
             case R.id.policiesLayout:
                 startActivity(new Intent(this,Policy.class));
                 break;

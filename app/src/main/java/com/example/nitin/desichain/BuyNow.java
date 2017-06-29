@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
+import android.widget.TextView;
 
 import com.example.nitin.desichain.Adapters.SingleCartAdapter;
 import com.example.nitin.desichain.Contents.SingleCart;
@@ -20,15 +21,17 @@ import com.example.nitin.desichain.Contents.SingleCart;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BuyNow extends AppCompatActivity  implements SingleCartAdapter.ListChange{
+public class BuyNow extends AppCompatActivity implements View.OnClickListener,SingleCartAdapter.ListChange{
 
+    private static  String LOG_TAG = BuyNow.class.getSimpleName();
     Button b1;
+    private int totalCost = 1520,FLAG=1;
     private RadioButton mGiftWrapRadioBtn;
     private LinearLayout mGiftWrapLayout;
     private RecyclerView mDeliveryView;
     private List<SingleCart> mList;
     private SingleCartAdapter mAdapter;
-
+    private TextView editAddress,mAddNewAddress,mBuyNowCustName,mBuyNowAddress,mGrandTotal;
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.my_cart_menu,menu);
@@ -43,6 +46,11 @@ public class BuyNow extends AppCompatActivity  implements SingleCartAdapter.List
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Delivery");
+        mGrandTotal=(TextView)findViewById(R.id.grandTotal);
+        editAddress=(TextView)findViewById(R.id.editInfo);
+        mAddNewAddress=(TextView)findViewById(R.id.newAddress);
+        mBuyNowCustName=(TextView)findViewById(R.id.buyNowCustomerName);
+        mBuyNowAddress=(TextView)findViewById(R.id.buyNowCustomerAddress);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         b1 = (Button) findViewById(R.id.myCartContinueBtn);
         b1.setBackgroundColor(getResources().getColor(R.color.green));
@@ -63,16 +71,34 @@ public class BuyNow extends AppCompatActivity  implements SingleCartAdapter.List
 
                 if (mGiftWrapRadioBtn.isChecked()) {
                     mGiftWrapRadioBtn.setChecked(false);
+                    mGrandTotal.setText(String.valueOf(totalCost));
                 } else {
                     mGiftWrapRadioBtn.setChecked(true);
+                    mGrandTotal.setText(String.valueOf(totalCost+25));
                 }
             }
         });
 
+        mGiftWrapRadioBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mGiftWrapRadioBtn.isChecked()) {
+                    mGrandTotal.setText(String.valueOf(totalCost+25));
 
+                } else {
+                    mGiftWrapRadioBtn.setChecked(true);
+                    mGrandTotal.setText(String.valueOf(totalCost+25));
+
+                }
+            }
+        });
+
+        editAddress.setOnClickListener(this);
+        mAddNewAddress.setOnClickListener(this);
         mDeliveryView=(RecyclerView) findViewById(R.id.deliveryView);
         mList=new ArrayList<>();
         mAdapter=new SingleCartAdapter(this,mList);
+
 
         LinearLayoutManager lm = new LinearLayoutManager(this);
         mDeliveryView.setLayoutManager(lm);
@@ -157,14 +183,28 @@ public class BuyNow extends AppCompatActivity  implements SingleCartAdapter.List
     }
 
     @Override
-    public void change() {
+    public void onClick(View v) {
+
+        switch (v.getId()){
+
+            case R.id.editInfo:
+
+                Intent editIntent = new Intent(this,SelectAddress.class);
+                editIntent.putExtra("flagIntent",FLAG);
+                startActivity(editIntent);
+                break;
+
+            case R.id.newAddress:
+                startActivity(new Intent(this,AddNewAddress.class));
+                break;
+        }
 
     }
 
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
+    @Override
+    public void change() {
+
+    }
 
 
 

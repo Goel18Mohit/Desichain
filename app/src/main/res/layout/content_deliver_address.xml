@@ -54,6 +54,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
+                    android:id="@+id/buyNowMobile"
                     android:text="9844515315"/>
 
             </LinearLayout>
@@ -75,7 +76,9 @@
                     android:layout_weight="1"
                     android:layout_margin="5dp"
                     android:id="@+id/editInfo"
+                    android:background="?android:attr/selectableItemBackground"
                     android:gravity="center"
+                    android:clickable="true"
                     android:text="Edit/Change"
                     android:textAlignment="center"
                     android:textColor="@android:color/holo_blue_light"
@@ -92,6 +95,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:clickable="true"
+                    android:background="?android:attr/selectableItemBackground"
                     android:gravity="center"
                     android:layout_margin="5dp"
                     android:id="@+id/newAddress"

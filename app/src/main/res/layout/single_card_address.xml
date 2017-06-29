@@ -58,13 +58,14 @@
                     android:id="@+id/addressText"
                     android:text="address"/>
 
-                <CheckBox
+
+                <RadioButton
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:id="@+id/checkboxselect"
                     android:layout_weight="1"
-                    android:background="?attr/selectableItemBackground"
-                    android:layout_gravity="right|end" />
+                    android:id="@+id/radioButton"
+                    android:layout_gravity="end"/>
+
             </LinearLayout>
 
 
