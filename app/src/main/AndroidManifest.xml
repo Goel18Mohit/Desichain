@@ -99,12 +99,7 @@
         </activity>
         <activity
             android:name=".ProductPageActual"
-            android:label="ProductPage"
-            android:parentActivityName=".RatingReviews">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".RatingReviews" />
-        </activity>
+            android:label="ProductPage" />
         <activity
             android:name=".AddNewAddress"
             android:label="Add an Address" />
@@ -167,19 +162,27 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.nitin.desichain.MainActivity" />
         </activity>
-        <activity android:name=".SelectAddress"
+        <activity
+            android:name=".SelectAddress"
             android:label="Select Delivery Address"
             android:parentActivityName=".BuyNow">
             <meta-data
                 android:name="android.support.PARENT_ACTIIVTY"
-                android:value=".BuyNow"/>
+                android:value=".BuyNow" />
         </activity>
-        <activity android:name=".BrandProducts"
+        <activity
+            android:name=".BrandProducts"
             android:label="BrandName"
             android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity"/>
+                android:value=".MainActivity" />
+        </activity>
+        <activity android:name=".Filters"
+            android:parentActivityName=".CategoryPage">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".CategoryPage"/>
         </activity>
     </application>
 

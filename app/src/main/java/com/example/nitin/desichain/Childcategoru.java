@@ -37,12 +37,11 @@ public class Childcategoru extends AppCompatActivity {
     ArrayList<ChildCategoryList> men;
     ArrayList<ChildCategoryList> bags;
     ArrayList<ChildCategoryList> mobile;
+
     GridView gridView;
     ChildCategoryAdapter childCategoryAdapter;
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
+
+
 
 
 
