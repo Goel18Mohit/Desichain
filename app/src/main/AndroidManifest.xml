@@ -29,11 +29,10 @@
         <activity
             android:name=".MyCart"
             android:label="My Cart"
-            android:parentActivityName=".MainActivity"
-            android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+
+
         </activity>
         <activity
             android:name=".AboutUs"
