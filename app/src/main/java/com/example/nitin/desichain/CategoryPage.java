@@ -22,6 +22,7 @@ public class CategoryPage extends AppCompatActivity {
 
     GridView listView;
     TextView SORT_OPTION,FILTER_OPTION;
+    private Toolbar mToolbar;
     private ArrayList<com.example.nitin.desichain.Contents.CategoryList> arrayList;
     final CharSequence[] sortoption={"Relevance","Popularity","Price Low To High","Price High To Low","Discount","Fresh Arrivals"};
     @Override
@@ -234,6 +235,11 @@ public class CategoryPage extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId()==R.id.my_cart){
             startActivity(new Intent(CategoryPage.this,MyCart.class));
+        }
+
+        if (item.getItemId() == android.R.id.home){
+            finish();
+
         }
         return super.onOptionsItemSelected(item);
     }

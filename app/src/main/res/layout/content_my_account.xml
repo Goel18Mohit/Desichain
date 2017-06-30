@@ -15,7 +15,7 @@
         android:minHeight="70dp"
         android:orientation="horizontal"
         android:padding="5dp"
-        android:background="#EF5350">
+        android:background="@drawable/side_nav_bar">
 
         <FrameLayout
             android:layout_width="0dp"

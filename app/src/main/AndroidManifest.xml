@@ -11,7 +11,7 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/status_bar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -30,31 +30,24 @@
         <activity
             android:name=".HelpCentre"
             android:label="Help Centre"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/status_bar" />
         <activity
             android:name=".MyCart"
             android:label="My Cart"
 
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            android:theme="@style/status_bar">
 
 
         </activity>
         <activity
             android:name=".AboutUs"
             android:label="About Us"
-            android:parentActivityName=".MainActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
-        </activity>
+            android:theme="@style/status_bar"/>
         <activity
             android:name=".Policy"
             android:label="@string/policy_label"
-            android:parentActivityName=".MainActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
-        </activity>
+            android:theme="@style/status_bar"/>
+
         <activity
             android:name=".Payment"
             android:label="Payment"
@@ -71,7 +64,7 @@
         <activity
             android:name=".MyAccount"
             android:label="@string/title_activity_my_account"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/status_bar" />
         <activity
             android:name=".EditProfile"
             android:label="@string/title_activity_edit_profile"
@@ -91,26 +84,18 @@
         </activity>
         <activity
             android:name=".FullOrder"
-            android:parentActivityName=".MyOrders">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MyOrders" />
-        </activity>
+            android:theme="@style/status_bar"/>
         <activity
             android:name=".ProductPageActual"
-            android:label="ProductPage" />
+            android:label="ProductPage"
+            android:theme="@style/status_bar"/>
         <activity
             android:name=".AddNewAddress"
             android:label="Add an Address" />
         <activity
             android:name=".CategoryPage"
             android:label="CategoryPage"
-            android:parentActivityName=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
-        </activity>
+            android:theme="@style/status_bar"/>
         <activity android:name=".BankDeposit" />
         <!--
  ATTENTION: This was auto-generated to add Google Play services to your project for
@@ -155,12 +140,7 @@
         <activity
             android:name=".Childcategoru"
             android:label="@string/title_activity_childcategoru"
-            android:parentActivityName=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.nitin.desichain.MainActivity" />
-        </activity>
+            android:theme="@style/status_bar"/>
         <activity
             android:name=".SelectAddress"
             android:label="Select Delivery Address"
@@ -172,11 +152,8 @@
         <activity
             android:name=".BrandProducts"
             android:label="BrandName"
-            android:parentActivityName=".MainActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
-        </activity>
+            android:theme="@style/status_bar"/>
+
         <activity android:name=".Filters"
             android:parentActivityName=".CategoryPage">
             <meta-data

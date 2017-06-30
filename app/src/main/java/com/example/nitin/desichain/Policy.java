@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -30,6 +32,7 @@ public class Policy extends AppCompatActivity implements View.OnClickListener {
     ArrayList<String> others;
     HashMap<String,ArrayList<String>> hashMap;
     View headerView;
+    private Toolbar mToolbar;
     private LinearLayout mCustomerServiceLayout,mShippingLayout,mReturnLayout;
     private int RETURN_CLICKS = 0,CUSTOMER_CLICKS =0;
     private FragmentManager fragmentManager;
@@ -45,7 +48,13 @@ public class Policy extends AppCompatActivity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_policy);
-       mImgCustomerService=(ImageView)findViewById(R.id.imgCustomerService);
+
+        mToolbar=(Toolbar)findViewById(R.id.myToolBar);
+        setSupportActionBar(mToolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(false);
+
+        mImgCustomerService=(ImageView)findViewById(R.id.imgCustomerService);
         mImgReturnPolicy=(ImageView)findViewById(R.id.imgReturnPolicy);
 
         SHIPPING_POLICY_BUTTON=(ImageView)findViewById(R.id.imgShippingPolicy);
@@ -161,4 +170,18 @@ public class Policy extends AppCompatActivity implements View.OnClickListener {
         }
 
     }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()){
+            case android.R.id.home:
+                finish();
+                break;
+        }
+
+        return true;
+    }
+
 }

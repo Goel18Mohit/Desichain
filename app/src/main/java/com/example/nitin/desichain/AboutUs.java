@@ -4,11 +4,15 @@ import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 public class AboutUs extends AppCompatActivity {
 
+
     private static final String LOG_TAG = AboutUs.class.getSimpleName();
+    private Toolbar mToolbar;
     TextView ABOUT_US1,ABOUT_US2,ABOUT_US3,ABOUT_US4,ABOUT_US5,ABOUT_US6;
     String STRING_ABOUT_US_1="Welcome to DesiChain, your one stop Shop for all your regular Desi (Indian) essentials. Starting from the Toiletries to Cosmetics, from Herbals Products to Fresh Organic beans, DesiChain keeps it all... We welcome and wish you a pleasant Shopping!.";
     String STRING_ABOUT_US_2="By purchasing, the buyer expressly warrants that he/she is in compliance with all applicable Federal, State, and Local laws and regulations regarding the purchase, ownership, and use of the item. The buyer expressly agrees to indemnify and hold harmless our store, company or its licensors for all claims resulting directly or indirectly from the purchase, ownership, use or mis-use of the item in violation of applicable Federal, State, and Local laws or regulations. Some items can be dangerous if improperly handled. Keep away from children. You must be 18 or older to purchase.";
@@ -17,6 +21,12 @@ public class AboutUs extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_us);
+        mToolbar=(Toolbar)findViewById(R.id.myToolBar);
+        setSupportActionBar(mToolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(false);
+
+
         ABOUT_US1= (TextView) findViewById(R.id.about_us1);
         ABOUT_US2=(TextView)findViewById(R.id.about_us2);
         ABOUT_US3=(TextView)findViewById(R.id.about_us3);
@@ -27,6 +37,18 @@ public class AboutUs extends AppCompatActivity {
         ABOUT_US5.setPaintFlags(ABOUT_US5.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         ABOUT_US6.setPaintFlags(ABOUT_US6.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()){
+            case android.R.id.home:
+                finish();
+                break;
+        }
+
+        return true;
     }
 
     @Override

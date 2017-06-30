@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -20,12 +21,20 @@ public class FullOrder extends AppCompatActivity {
     private RecyclerView mFullOrderRecyclerView;
     private List<FullOrderContent> mFullOrderList;
     private FullOrderAdapter mAdapter;
+    private Toolbar mToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_full_order);
         setTitle("Order Id: 12016");
+
+
+        mToolbar=(Toolbar)findViewById(R.id.myToolBar);
+        setSupportActionBar(mToolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(false);
+
 
         mFullOrderRecyclerView=(RecyclerView)findViewById(R.id.fullOrderListRecyclerView);
         mFullOrderList=new ArrayList<>();
@@ -49,6 +58,10 @@ public class FullOrder extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId()== R.id.my_cart){
             startActivity(new Intent(FullOrder.this,MyCart.class));
+        }
+
+        if (item.getItemId()==android.R.id.home){
+            finish();
         }
         return super.onOptionsItemSelected(item);
     }
