@@ -9,6 +9,7 @@ import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public  static ArrayList<CategoryHolder> arrayList;
 public static  ArrayList<String> Books;
     private List<Advertisements> mPics;
+    private CardView cardView;
 
  public static ArrayList<String> Poojaitem;
     DrawerLayout drawer;
@@ -58,6 +60,8 @@ public static  ArrayList<String> Books;
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         final ActionBar ab = getSupportActionBar();
+        cardView= (CardView) findViewById(R.id.searchproduct);
+
 
         mLatestProductView =(RecyclerView)findViewById(R.id.LatestProductRecyclerView);
         mProductsList=new ArrayList<>();
@@ -150,6 +154,14 @@ public static  ArrayList<String> Books;
         initiaze();
         add();
 
+        cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent=new Intent(MainActivity.this,SearchActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
 
