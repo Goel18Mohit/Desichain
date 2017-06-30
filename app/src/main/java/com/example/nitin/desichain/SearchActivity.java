@@ -6,9 +6,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import com.example.nitin.desichain.Adapters.SearchAdapter;
 
 import java.util.ArrayList;
 
@@ -67,8 +68,8 @@ public class SearchActivity extends AppCompatActivity {
         PREVIOUS_SEARCHED.add("BOOKS");
         PREVIOUS_SEARCHED.add("BOOKS");
         PREVIOUS_SEARCHED.add("BOOKS");
-        ArrayAdapter<String> adapter=new ArrayAdapter<String>(SearchActivity.this,android.R.layout.simple_list_item_1,PREVIOUS_SEARCHED);
-        listView.setAdapter(adapter);
+SearchAdapter mAdapter = new SearchAdapter(PREVIOUS_SEARCHED,this);
+        listView.setAdapter(mAdapter);
 
 
     }

@@ -7,13 +7,16 @@
 
     <TextView
         android:layout_width="0dp"
+        android:layout_marginLeft="16dp"
+        android:textSize="20sp"
         android:layout_height="wrap_content"
         android:layout_weight="3"
-        android:id="@+id/singleearch"/>
+        android:id="@+id/singlesearch"/>
 
     <ImageView
         android:layout_width="0dp"
         android:layout_height="match_parent"
+        android:id="@+id/searchImage"
         android:src="@mipmap/ic_add_black_24dp"
         android:layout_weight="1"/>
 </LinearLayout>
