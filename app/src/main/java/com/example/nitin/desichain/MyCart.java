@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -22,6 +24,7 @@ public class MyCart extends AppCompatActivity  implements SingleCartAdapter.List
     private RecyclerView mCartRecyclerView;
     private List<SingleCart> mList;
     private SingleCartAdapter mAdapter;
+    private Toolbar mToolbar;
     private TextView ITEM_COUNT;
 
     int k=0;
@@ -30,6 +33,11 @@ public class MyCart extends AppCompatActivity  implements SingleCartAdapter.List
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_cart);
+
+        mToolbar=(Toolbar)findViewById(R.id.myToolBar);
+        setSupportActionBar(mToolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(false);
 
         mCartRecyclerView=(RecyclerView)findViewById(R.id.cartView);
         mList=new ArrayList<>();
@@ -72,6 +80,18 @@ public class MyCart extends AppCompatActivity  implements SingleCartAdapter.List
 
     }
 
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()){
+            case android.R.id.home:
+                finish();
+                break;
+        }
+
+        return true;
+    }
 
     private void prepareItems() {
 

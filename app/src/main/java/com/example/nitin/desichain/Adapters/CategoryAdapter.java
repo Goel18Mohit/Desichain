@@ -15,9 +15,6 @@ import com.example.nitin.desichain.R;
 
 import java.util.ArrayList;
 
-/**
- * Created by NITIN on 20-Jun-17.
- */
 
 public class CategoryAdapter extends BaseAdapter {
 
