@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    tools:context="com.example.nitin.desichain.Payment">
+    tools:context="com.example.nitin.desichain.Policy">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -13,14 +12,18 @@
         android:background="@drawable/side_nav_bar">
 
         <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+            android:id="@+id/myToolBar"/>
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_payment" />
-
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:layout_below="@+id/appBarLayout">
+        <include layout="@layout/content_policy" />
+    </FrameLayout>
 
 </android.support.design.widget.CoordinatorLayout>

@@ -47,16 +47,11 @@
         <activity
             android:name=".Payment"
             android:label="Payment"
-            android:parentActivityName=".BuyNow"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".BuyNow" />
-        </activity>
+            android:theme="@style/status_bar"/>
         <activity
             android:name=".BuyNow"
             android:label="Delivery"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/status_bar" />
         <activity
             android:name=".MyAccount"
             android:label="@string/title_activity_my_account"
@@ -73,11 +68,7 @@
         <activity
             android:name=".MyAddress"
             android:label="My Address"
-            android:parentActivityName=".MyAccount">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MyAccount" />
-        </activity>
+            android:theme="@style/status_bar"/>
         <activity
             android:name=".FullOrder"
             android:theme="@style/status_bar"/>
@@ -89,7 +80,8 @@
 
         <activity
             android:name=".AddNewAddress"
-            android:label="Add an Address" />
+            android:label="Add an Address"
+            android:theme="@style/status_bar"/>
         <activity
             android:name=".CategoryPage"
             android:label="CategoryPage"

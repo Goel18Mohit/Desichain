@@ -1,244 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<!--
+
+
+</android.support.design.widget.CoordinatorLayout>
+-->
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.example.nitin.desichain.ProductPageActual">
+    tools:openDrawer="start">
 
-    <android.support.design.widget.AppBarLayout
+    <include
+        layout="@layout/app_bar_product_page"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/side_nav_bar">
+        android:layout_height="match_parent" />
 
-        <android.support.v7.widget.Toolbar
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:id="@+id/myToolBar"/>
-
-    </android.support.design.widget.AppBarLayout>
-
-
-    <RelativeLayout
-        android:layout_width="match_parent"
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        >
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/nav_header_my_orders"
+        app:menu="@menu/activity_my_orders_drawer" />
 
-        <android.support.v4.widget.NestedScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_above="@+id/buyNowCartLayout"
-            android:background="#F5F5F5">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_above="@+id/buyNowCartLayout"
-                android:orientation="vertical">
-
-                <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="2">
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center"
-                        android:adjustViewBounds="true"
-                        android:cropToPadding="true"
-                        android:src="@mipmap/ic_launcher" />
-                </FrameLayout>
-
-                <!--   <me.relex.circleindicator.CircleIndicator
-                           android:id="@+id/circleIndicator"
-                           android:layout_width="match_parent"
-                           android:layout_height="0dp"
-                           android:layout_alignParentBottom="true"
-                           android:layout_weight="1"
-                           android:scrollbarSize="@dimen/activity_horizontal_margin"
-                           app:ci_drawable="@drawable/black"
-                           app:ci_drawable_unselected="@drawable/grey" />
-           -->
-                <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1">
-
-                    <include layout="@layout/card_product_detail" />
-                </FrameLayout>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Offers"
-                    android:textColor="@color/black"
-                    android:textSize="18sp" />
-
-                <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1">
-
-                    <include layout="@layout/card_offers" />
-                </FrameLayout>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Description"
-                    android:textColor="@color/black"
-                    android:textSize="18sp" />
-
-                <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1">
-
-                    <include layout="@layout/card_product_desrciption" />
-                </FrameLayout>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Ingredients"
-                    android:textColor="@color/black"
-                    android:textSize="18sp" />
-
-                <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1">
-
-                    <include layout="@layout/card_product_ingredients" />
-                </FrameLayout>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="How To Use"
-                    android:textColor="@color/black"
-                    android:textSize="18sp" />
-
-                <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1">
-
-                    <include layout="@layout/cart_product_howtouse" />
-                </FrameLayout>
-
-                <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1">
-
-                    <include layout="@layout/card_return_protection" />
-                </FrameLayout>
-
-                <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="3">
-
-                    <include layout="@layout/cart_combo" />
-                </FrameLayout>
-
-                <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1">
-
-                    <include layout="@layout/card_reviews" />
-                </FrameLayout>
-
-                <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="3">
-
-                    <android.support.v7.widget.CardView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginBottom="20dp"
-                        android:layout_marginTop="20dp"
-                        app:cardElevation="10dp">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="Recently Viewed Product"
-                                android:textAlignment="center"
-                                android:textSize="20sp" />
-
-                            <View
-                                android:layout_width="match_parent"
-                                android:layout_height="1dp"
-                                android:background="#C0C0C0" />
-
-                            <android.support.v7.widget.RecyclerView
-                                android:id="@+id/recentlyView"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:clipToPadding="true"
-                                android:scrollbars="horizontal" />
-                        </LinearLayout>
-                    </android.support.v7.widget.CardView>
-
-
-                </FrameLayout>
-
-
-            </LinearLayout>
-
-
-        </android.support.v4.widget.NestedScrollView>
-
-        <LinearLayout
-            android:id="@+id/buyNowCartLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/productmycart"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="?attr/selectableItemBackground"
-                android:clickable="true"
-                android:padding="10dp"
-                android:text="Add to Cart"
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                android:textSize="20sp" />
-
-            <FrameLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/green">
-
-                <TextView
-                    android:id="@+id/productbuynow"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="?attr/selectableItemBackground"
-                    android:padding="10dp"
-                    android:text="Buy Now"
-                    android:textAlignment="center"
-                    android:textColor="@android:color/white"
-                    android:textSize="20sp" />
-            </FrameLayout>
-        </LinearLayout>
-
-    </RelativeLayout>
-</android.support.design.widget.CoordinatorLayout>
+</android.support.v4.widget.DrawerLayout>
