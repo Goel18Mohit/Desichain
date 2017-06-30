@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -30,7 +31,7 @@ public class MyAddress extends AppCompatActivity implements AddressAdapter.SaveA
     private Button mAddNewAddress;
     private int REQUEST_CODE_EDIT=000;
     private int REQUEST_CODE_ADD=001;
-
+    private Toolbar mToolbar;
 
 
 
@@ -43,6 +44,12 @@ public class MyAddress extends AppCompatActivity implements AddressAdapter.SaveA
         mRecyclerView = (RecyclerView)findViewById(R.id.mAddressRecyclerView);
         mAddressList = new ArrayList<>();
         mAdapter = new AddressAdapter(this,mAddressList,0);
+
+        mToolbar=(Toolbar)findViewById(R.id.myToolBar);
+        setSupportActionBar(mToolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(false);
+
 
 
         RecyclerView.LayoutManager lm = new LinearLayoutManager(this);
@@ -94,6 +101,11 @@ public class MyAddress extends AppCompatActivity implements AddressAdapter.SaveA
         if (item.getItemId()==R.id.my_cart){
 
             startActivity(new Intent(MyAddress.this,MyCart.class));
+        }
+
+        if (item.getItemId() == android.R.id.home){
+
+            finish();
         }
         return super.onOptionsItemSelected(item);
     }

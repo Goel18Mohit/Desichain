@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Spinner;
@@ -19,6 +21,7 @@ public class AddNewAddress extends AppCompatActivity {
 
     TextInputEditText name,pincode,address,landmark,city,mobile;
     String state;
+    private Toolbar mToolbar;
     Button save;
     ArrayList<String> statelist;
     @Override
@@ -26,6 +29,11 @@ public class AddNewAddress extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.new_address);
 
+
+        mToolbar=(Toolbar)findViewById(R.id.myToolBar);
+        setSupportActionBar(mToolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(false);
 
 
         final int position=getIntent().getIntExtra("REQUESTCODE",000);
@@ -82,5 +90,15 @@ public class AddNewAddress extends AppCompatActivity {
         Intent intent=new Intent(AddNewAddress.this,MyAddress.class);
         startActivity(intent);
         finish();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                finish();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

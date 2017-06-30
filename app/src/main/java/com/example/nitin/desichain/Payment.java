@@ -4,10 +4,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.RadioButton;
 
 public class Payment extends AppCompatActivity {
+
+
 
     RadioButton bankdeposit;
     @Override
@@ -15,7 +18,10 @@ public class Payment extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(false);
 
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -29,4 +35,16 @@ public class Payment extends AppCompatActivity {
         });
     }
 
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()){
+            case android.R.id.home:
+                finish();
+                break;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 }

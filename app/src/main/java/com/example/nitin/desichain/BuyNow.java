@@ -43,8 +43,12 @@ public class BuyNow extends AppCompatActivity implements View.OnClickListener,Si
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buy_now);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.myToolBar);
         setSupportActionBar(toolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(false);
+
         getSupportActionBar().setTitle("Delivery");
         mGrandTotal=(TextView)findViewById(R.id.grandTotal);
         editAddress=(TextView)findViewById(R.id.editInfo);
