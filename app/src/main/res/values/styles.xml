@@ -6,6 +6,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -22,6 +23,12 @@
         <item name="android:layout_margin">3dp</item>
         <item name="android:textAppearance">@style/TextAppearance.AppCompat.Title</item>
         <item name="android:textAlignment">center</item>
+    </style>
+
+    <style name="status_bar" parent="Base.Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">#2E7D32</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
     </style>
 
     <style name="PolicyQuestions">

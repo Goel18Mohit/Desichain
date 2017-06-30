@@ -22,13 +22,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/appBarLayout"
+            android:background="@drawable/side_nav_bar"
             android:theme="@style/AppTheme.AppBarOverlay">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="#EF5350"
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
         <include layout="@layout/content_my_account" />

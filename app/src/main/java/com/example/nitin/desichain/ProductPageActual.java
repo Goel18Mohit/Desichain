@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -31,6 +32,7 @@ public class ProductPageActual extends AppCompatActivity {
     private RecyclerView mRecentlyViewed;
     private static int QUNANTIY=1;
     private int productCost = 850;
+    private Toolbar mToolbar;
     private TextView mTotalCostText;
     private List<ProductHorizontal> mProductsList;
     private CheckBox mSecCheckBox,mThirdCheckBox;
@@ -39,10 +41,19 @@ public class ProductPageActual extends AppCompatActivity {
     private ImageView mShareProduct,mPlusForSecImage,mPlusForThirdImage,mSecImage,mThirdImage;
 
     private ImageButton ADD_PRODUCT_BUTTON,MINUS_PRODUCT_BUTTON;
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_page_actual);
+
+        mToolbar=(Toolbar)findViewById(R.id.myToolBar);
+        setSupportActionBar(mToolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(false);
 
         mSecCheckBox=(CheckBox)findViewById(R.id.secondImageCheck);
         mThirdCheckBox=(CheckBox)findViewById(R.id.thirdImageCheck);
@@ -202,6 +213,7 @@ public class ProductPageActual extends AppCompatActivity {
         else if (item.getItemId()==R.id.my_cart){
             startActivity(new Intent(ProductPageActual.this,MyCart.class));
         }
+
         return true;
     }
 
