@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -22,6 +23,7 @@ public class RatingReviews extends AppCompatActivity {
     private RecyclerView mRatingReviewView;
     private List<RatingContent> mList;
     private RatingAdapter mAdapter;
+    private Toolbar mToolbar;
 
 
     @Override
@@ -35,6 +37,9 @@ public class RatingReviews extends AppCompatActivity {
         if (item.getItemId()==R.id.my_cart){
             startActivity(new Intent(RatingReviews.this,MyCart.class));
         }
+        else if (item.getItemId()==android.R.id.home){
+            finish();
+        }
         return super.onOptionsItemSelected(item);
     }
 
@@ -42,6 +47,10 @@ public class RatingReviews extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rating_reviews);
+        mToolbar=(Toolbar)findViewById(R.id.myToolBar);
+        setSupportActionBar(mToolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(false);
 
         mRatingReviewView=(RecyclerView)findViewById(R.id.reviewRatingView);
         mList=new ArrayList<>();

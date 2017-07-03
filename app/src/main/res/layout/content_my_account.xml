@@ -88,6 +88,9 @@
                 <include
                     layout="@layout/card_my_account"/>
 
+                <include
+                    layout="@layout/card_edit_profile_address"/>
+
             </LinearLayout>
 
 

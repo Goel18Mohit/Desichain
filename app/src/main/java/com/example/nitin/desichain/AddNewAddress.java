@@ -27,7 +27,7 @@ public class AddNewAddress extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.new_address);
+        setContentView(R.layout.activity_new_address);
 
 
         mToolbar=(Toolbar)findViewById(R.id.myToolBar);

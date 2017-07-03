@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -17,25 +18,12 @@
     </android.support.design.widget.AppBarLayout>
 
 
-    <RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_marginTop="?attr/actionBarSize"
-    android:layout_height="match_parent">
-    <android.support.v7.widget.RecyclerView
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/mAddressRecyclerView"
-        android:layout_above="@+id/buttonAddAddress"
-        android:scrollbars="vertical"
-        android:clipToPadding="false"/>
+        android:layout_marginTop="?attr/actionBarSize"
+        android:layout_below="@+id/appBarLayout">
+        <include layout="@layout/content_address_recycler_view" />
+    </FrameLayout>
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="add new address"
-        android:id="@+id/buttonAddAddress"
-        android:background="?attr/selectableItemBackground"
-        android:layout_alignParentBottom="true"/>
-
-</RelativeLayout>
-</android.support.design.widget.CoordinatorLayout>
+    </android.support.design.widget.CoordinatorLayout>

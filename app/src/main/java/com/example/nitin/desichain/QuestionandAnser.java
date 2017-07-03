@@ -8,6 +8,7 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.example.nitin.desichain.Adapters.QuestionAnsAdapter;
@@ -21,12 +22,16 @@ public class QuestionandAnser extends AppCompatActivity {
     private RecyclerView mQuesAnsView;
     private QuestionAnsAdapter mAdapter;
     private List<QuestionAnswer> mQuesAnswers;
+    private Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_questionand_anser);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+        toolbar = (Toolbar) findViewById(R.id.myToolBar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(false);
 
         mQuesAnswers=new ArrayList<>();
         mQuesAnsView=(RecyclerView)findViewById(R.id.quesAnswerView);
@@ -75,4 +80,12 @@ public class QuestionandAnser extends AppCompatActivity {
 
     }
 
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId()==android.R.id.home){
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }
