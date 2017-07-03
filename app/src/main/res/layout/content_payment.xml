@@ -53,7 +53,7 @@
                     android:layout_margin="10dp"
                     android:textSize="16sp"
                     android:textColor="@color/black"
-                    android:drawableRight="@mipmap/ic_credit_card_black_24dp"
+                    android:drawableRight="@mipmap/credit"
                     android:text="Credit/Debit Card"
                     android:textAlignment="center" />
 
@@ -66,7 +66,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:drawableRight="@mipmap/ic_payment_black_24dp"
+                    android:drawableRight="@mipmap/net_bank"
                     android:text="Net Banking"
                     android:textSize="16sp"
                     android:textColor="@color/black"

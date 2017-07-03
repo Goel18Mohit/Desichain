@@ -27,7 +27,7 @@ public class ShowCategoryAdapeter extends BaseExpandableListAdapter {
     private ExpandableListView listView;
 
     TextView headerTextview;
-    ImageView headerImageview;
+    ImageView headerImageview,categoryImage;
     public ShowCategoryAdapeter(Context content, ArrayList<CategoryHolder> headerlist, HashMap<String, ArrayList<String>> childlist,ExpandableListView listView) {
         this.content = content;
         this.headerlist = headerlist;
@@ -77,8 +77,13 @@ public class ShowCategoryAdapeter extends BaseExpandableListAdapter {
             LayoutInflater layoutInflater= (LayoutInflater) content.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView=layoutInflater.inflate(R.layout.simple_list,null);
         }
-         headerTextview= (TextView) convertView.findViewById(R.id.parentcategory);
+        headerTextview= (TextView) convertView.findViewById(R.id.parentcategory);
         headerImageview= (ImageView) convertView.findViewById(R.id.parentcategoryarrow);
+        categoryImage=(ImageView)convertView.findViewById(R.id.categoryImage);
+
+        categoryImage.setImageResource(headerlist.get(groupPosition).getmImageId());
+
+
         headerTextview.setText(headerlist.get(groupPosition).getPARENTCATEGORY());
         if(isExpanded)
         {

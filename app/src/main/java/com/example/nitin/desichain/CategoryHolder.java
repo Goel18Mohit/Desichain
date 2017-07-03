@@ -6,12 +6,24 @@ package com.example.nitin.desichain;
 
 public class CategoryHolder {
     private String PARENTCATEGORY;
-    private int FLAG_INDICATOR;
 
-    public CategoryHolder(String PARENTCATEGORY, int FLAG_INDICATOR) {
+    private int FLAG_INDICATOR,mImageId;
+
+    public CategoryHolder(String PARENTCATEGORY, int FLAG_INDICATOR,int mImageId) {
         this.PARENTCATEGORY = PARENTCATEGORY;
         this.FLAG_INDICATOR = FLAG_INDICATOR;
+        this.mImageId = mImageId;
     }
+
+
+    public int getmImageId() {
+        return mImageId;
+    }
+
+    public void setmImageId(int mImageId) {
+        this.mImageId = mImageId;
+    }
+
 
     public void setPARENTCATEGORY(String PARENTCATEGORY) {
         this.PARENTCATEGORY = PARENTCATEGORY;

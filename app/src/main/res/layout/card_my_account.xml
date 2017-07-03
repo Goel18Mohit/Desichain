@@ -43,7 +43,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:src="@mipmap/ic_credit_card_black_24dp"/>
+                    android:src="@mipmap/notification"/>
 
                 <TextView
                     android:layout_width="0dp"
@@ -70,7 +70,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:src="@mipmap/ic_credit_card_black_24dp"/>
+                    android:src="@mipmap/help"/>
 
                 <TextView
                     android:layout_width="0dp"
@@ -97,7 +97,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:src="@mipmap/ic_credit_card_black_24dp"/>
+                    android:src="@mipmap/rate"/>
 
                 <TextView
                     android:layout_width="0dp"
@@ -152,7 +152,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:src="@mipmap/ic_credit_card_black_24dp"/>
+                    android:src="@mipmap/policy"/>
 
                 <TextView
                     android:layout_width="0dp"

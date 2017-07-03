@@ -4,7 +4,16 @@
     android:layout_height="wrap_content"
     android:padding="10dp"
     android:orientation="horizontal"
-    android:weightSum="4">
+    android:weightSum="5">
+
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:padding="5dp"
+        android:src="@mipmap/insta"
+        android:id="@+id/categoryImage"/>
+
 
     <TextView
         android:layout_width="0dp"
