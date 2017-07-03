@@ -39,7 +39,7 @@
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"
-                                android:src="@mipmap/ic_credit_card_black_24dp"/>
+                                android:src="@mipmap/order"/>
 
                             <TextView
                                 android:layout_width="0dp"
@@ -67,7 +67,7 @@
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"
-                                android:src="@mipmap/ic_credit_card_black_24dp"/>
+                                android:src="@mipmap/address"/>
 
                             <TextView
                                 android:layout_width="0dp"
@@ -88,8 +88,6 @@
                 <include
                     layout="@layout/card_my_account"/>
 
-                <include
-                    layout="@layout/card_edit_profile_address"/>
 
             </LinearLayout>
 

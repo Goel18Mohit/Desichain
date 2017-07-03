@@ -238,7 +238,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:src="@mipmap/ic_add_black_24dp"/>
+                android:src="@mipmap/mail"/>
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -285,7 +285,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:src="@mipmap/ic_drag_handle_black_24dp"/>
+                android:src="@mipmap/map"/>
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -332,7 +332,7 @@ New Delhi-110005"/>
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:src="@mipmap/ic_add_black_24dp"/>
+                android:src="@mipmap/mail"/>
 
             <LinearLayout
                 android:layout_width="0dp"
