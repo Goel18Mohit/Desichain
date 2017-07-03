@@ -36,8 +36,17 @@
         <item name="android:textColor">@android:color/black</item>
     </style>
 
-    <style name="splashscreen" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="Orderscreen" parent="AppTheme.NoActionBar">
+        <item name="colorPrimaryDark">@color/darkgreen</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="splashscreen" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimaryDark">@color/white</item>
+    </style>
+    <style name="notcustomtoolbar" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimaryDark">@color/darkgreen</item>
+      <item name="android:actionBarStyle">@color/darkgreen</item>
     </style>
 
 </resources>

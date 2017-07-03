@@ -39,7 +39,7 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/app_bar_height"
+            android:layout_marginTop="128dp"
             android:layout_below="@+id/appBarLayout">
             <include layout="@layout/content_my_account" />
         </FrameLayout>

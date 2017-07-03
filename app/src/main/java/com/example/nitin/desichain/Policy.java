@@ -3,9 +3,9 @@ package com.example.nitin.desichain;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -29,10 +29,10 @@ public class Policy extends AppCompatActivity implements View.OnClickListener {
     ArrayList<String> Poojaitem;
     NestedScrollView nestedScrollView;
     ArrayList<String> Healthandfood;
+    DrawerLayout drawer;
     ArrayList<String> others;
     HashMap<String,ArrayList<String>> hashMap;
-    View headerView;
-    private Toolbar mToolbar;
+    View headerView;;
     private LinearLayout mCustomerServiceLayout,mShippingLayout,mReturnLayout;
     private int RETURN_CLICKS = 0,CUSTOMER_CLICKS =0;
     private FragmentManager fragmentManager;
@@ -48,14 +48,13 @@ public class Policy extends AppCompatActivity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_policy);
-
-        mToolbar=(Toolbar)findViewById(R.id.myToolBar);
-        setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(false);
 
         mImgCustomerService=(ImageView)findViewById(R.id.imgCustomerService);
         mImgReturnPolicy=(ImageView)findViewById(R.id.imgReturnPolicy);
+
+        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 
         SHIPPING_POLICY_BUTTON=(ImageView)findViewById(R.id.imgShippingPolicy);
 
