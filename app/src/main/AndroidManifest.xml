@@ -12,6 +12,7 @@
             android:name=".MainActivity"
             android:label="@string/app_name"
             android:theme="@style/status_bar">
+            android:theme="@style/status_bar">
 
         </activity>
         <activity
@@ -108,7 +109,11 @@
             android:theme="@style/status_bar"/>
         <activity
             android:name=".RatingReviews"
-            android:theme="@style/status_bar"/>
+            android:parentActivityName=".ProductPageActual">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ProductPageActual" />
+        </activity>
         <activity
             android:name=".WriteReview"
             android:theme="@style/status_bar"/>
@@ -131,7 +136,8 @@
 
         <activity android:name=".Filters"
             android:theme="@style/status_bar"/>
-        <activity android:name=".MainScreen">
+        <activity android:name=".MainScreen"
+            android:theme="@style/splashscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

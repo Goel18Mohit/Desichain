@@ -3,20 +3,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main_screen"
     android:layout_width="match_parent"
+    android:background="@color/darkgreen"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-
+    tools:background="@color/darkgreen"
     tools:context="com.example.nitin.desichain.MainScreen">
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/darkgreen"
         android:layout_gravity="center">
 
         <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@mipmap/ic_security_black_24dp"/>
+            android:layout_gravity="center"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/desichain_logo"/>
     </android.support.v7.widget.CardView>
 
 </FrameLayout>

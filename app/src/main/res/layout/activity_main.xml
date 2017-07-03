@@ -24,6 +24,7 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
+        android:background="#FFFF8D"
         android:fitsSystemWindows="true">
 
         <LinearLayout
@@ -81,7 +82,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:padding="5dp"
-                            android:src="@mipmap/ic_credit_card_black_24dp"
+                            android:src="@mipmap/order"
                             android:id="@+id/myorderimage"/>
 
                     <TextView
@@ -112,7 +113,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:padding="5dp"
-                            android:src="@mipmap/ic_credit_card_black_24dp"
+                            android:src="@mipmap/cart"
                             android:id="@+id/mycartimage"/>
 
                         <TextView
@@ -174,7 +175,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:padding="5dp"
-                            android:src="@mipmap/ic_credit_card_black_24dp"
+                            android:src="@mipmap/account"
                             android:id="@+id/myaccountimage"/>
 
                         <TextView
@@ -205,7 +206,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:padding="5dp"
-                            android:src="@mipmap/ic_credit_card_black_24dp"
+                            android:src="@mipmap/help"
                             android:id="@+id/helpcenterimage"/>
 
                         <TextView
@@ -266,7 +267,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:padding="5dp"
-                            android:src="@mipmap/ic_credit_card_black_24dp"
+                            android:src="@mipmap/policy"
                             android:id="@+id/mypolicyimage"/>
 
                         <TextView
@@ -308,7 +309,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:padding="5dp"
-                            android:src="@mipmap/ic_credit_card_black_24dp"
+                            android:src="@mipmap/fb"
                             android:id="@+id/myfacebookimage"/>
 
                         <TextView
@@ -338,7 +339,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:padding="5dp"
-                            android:src="@mipmap/ic_credit_card_black_24dp"
+                            android:src="@mipmap/g"
                             android:id="@+id/googleimage"/>
 
                         <TextView
@@ -460,7 +461,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:padding="5dp"
-                            android:src="@mipmap/ic_credit_card_black_24dp"
+                            android:src="@mipmap/insta"
                             android:id="@+id/instagramimage"/>
 
                         <TextView
