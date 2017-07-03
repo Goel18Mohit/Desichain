@@ -7,6 +7,7 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
@@ -25,12 +26,29 @@ public class SingleQuesMultiAnswerList extends AppCompatActivity {
     private List<SingleQuesMultipleAnswer> mList;
     private TextView mAnswerQues;
     private FrameLayout mAnswerQuesFrame;
+    private Toolbar mToolbar;
     private Button mCancelBtn;
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        if (item.getItemId()==android.R.id.home){
+            finish();
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ques_answer_list);
+
+        mToolbar=(Toolbar)findViewById(R.id.myToolBar);
+        setSupportActionBar(mToolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(false);
+
 
         mCancelBtn=(Button)findViewById(R.id.cancelAnswer);
         mAnswerQues=(TextView)findViewById(R.id.answerQues);

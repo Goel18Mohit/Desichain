@@ -7,13 +7,10 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.RadioButton;
-import android.widget.Toast;
 
 import com.example.nitin.desichain.Adapters.AddressAdapter;
 import com.example.nitin.desichain.Contents.AddressList;
@@ -38,7 +35,7 @@ public class MyAddress extends AppCompatActivity implements AddressAdapter.SaveA
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.address_recycler_view);
+        setContentView(R.layout.activity_my_address);
 
         mAddNewAddress = (Button)findViewById(R.id.buttonAddAddress);
         mRecyclerView = (RecyclerView)findViewById(R.id.mAddressRecyclerView);
