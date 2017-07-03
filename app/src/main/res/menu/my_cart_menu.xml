@@ -4,7 +4,7 @@
 
     <item
         android:id="@+id/my_cart"
-        android:icon="@mipmap/ic_shopping_cart_black_24dp"
+        android:icon="@mipmap/cart"
         android:orderInCategory="1"
         android:title="My Orders"
         app:showAsAction="always" />

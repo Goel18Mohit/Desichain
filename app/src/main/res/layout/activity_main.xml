@@ -237,7 +237,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:padding="5dp"
-                            android:src="@mipmap/ic_credit_card_black_24dp"
+                            android:src="@mipmap/rate"
                             android:id="@+id/myrateimage"/>
 
                         <TextView
@@ -400,7 +400,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:padding="5dp"
-                            android:src="@mipmap/ic_credit_card_black_24dp"
+                            android:src="@mipmap/pin"
                             android:id="@+id/pinterestimage"/>
 
                         <TextView
@@ -431,7 +431,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:padding="5dp"
-                            android:src="@mipmap/ic_credit_card_black_24dp"
+                            android:src="@mipmap/youtube"
                             android:id="@+id/youtubeimage"/>
 
                         <TextView
@@ -492,6 +492,15 @@
                     android:clickable="true"
                     android:orientation="horizontal"
                     android:id="@+id/aboutus">
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:padding="5dp"
+                        android:src="@mipmap/about_us"
+                        android:id="@+id/aboutUsImage"/>
+
 
                     <TextView
                         android:layout_width="match_parent"

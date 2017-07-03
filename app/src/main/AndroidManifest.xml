@@ -109,11 +109,7 @@
             android:theme="@style/status_bar"/>
         <activity
             android:name=".RatingReviews"
-            android:parentActivityName=".ProductPageActual">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ProductPageActual" />
-        </activity>
+            android:theme="@style/status_bar"/>
         <activity
             android:name=".WriteReview"
             android:theme="@style/status_bar"/>
