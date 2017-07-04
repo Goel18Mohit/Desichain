@@ -111,10 +111,11 @@
                 android:layout_height="wrap_content"
                 android:paddingBottom="5dp"
                 android:clickable="true"
+                android:id="@+id/rateReviewText"
                 android:gravity="center"
                 android:layout_gravity="center"
                 android:drawableLeft="@mipmap/rate"
-                android:text="Rate your purchase"
+                android:text="Rate and Review your purchase"
                 android:textSize="20sp"
                 android:textColor="@color/black"
                 android:textAlignment="center" />
