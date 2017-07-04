@@ -31,7 +31,8 @@ public class ProductHorizontalAdapter extends RecyclerView.Adapter<ProductHorizo
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(mContext).inflate(R.layout.single_category,parent,false);
+        LayoutInflater layoutInflater= (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View view=layoutInflater.inflate(R.layout.single_category,null);
         return new MyViewHolder(view);
     }
 

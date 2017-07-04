@@ -143,7 +143,7 @@ public static  ArrayList<String> Books;
             }
         };
 
-        drawer.setDrawerListener(toggle);
+       drawer.setDrawerListener(toggle);
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);

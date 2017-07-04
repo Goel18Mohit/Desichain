@@ -8,7 +8,6 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:openDrawer="start">
-
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -47,6 +46,7 @@
                     <com.example.nitin.desichain.Helper
                         android:layout_width="match_parent"
                         android:divider="@null"
+                        android:background="?android:attr/selectableItemBackground"
                         android:layout_height="match_parent"
                         android:nestedScrollingEnabled="true"
                         android:id="@+id/parentcategoryList"
@@ -74,6 +74,7 @@
                         android:layout_weight="1"
                         android:clickable="true"
                         android:id="@+id/myorders"
+                        android:background="?android:attr/selectableItemBackground"
                         android:orientation="horizontal"
                         android:weightSum="4">
 
@@ -82,7 +83,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:padding="5dp"
-                            android:src="@mipmap/ic_credit_card_black_24dp"
+                            android:src="@mipmap/order"
                             android:id="@+id/myorderimage"/>
 
                         <TextView
@@ -104,6 +105,7 @@
                         android:layout_height="0dp"
                         android:layout_weight="1"
                         android:clickable="true"
+                        android:background="?android:attr/selectableItemBackground"
                         android:id="@+id/mycart"
                         android:orientation="horizontal"
                         android:weightSum="4">
@@ -113,7 +115,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:padding="5dp"
-                            android:src="@mipmap/ic_credit_card_black_24dp"
+                            android:src="@mipmap/cart"
                             android:id="@+id/mycartimage"/>
 
                         <TextView
@@ -135,6 +137,7 @@
                         android:layout_height="0dp"
                         android:layout_weight="1"
                         android:clickable="true"
+                        android:background="?android:attr/selectableItemBackground"
                         android:id="@+id/myProductLayout"
                         android:orientation="horizontal"
                         android:weightSum="4">
@@ -167,6 +170,7 @@
                         android:layout_weight="1"
                         android:clickable="true"
                         android:id="@+id/myaccount"
+                        android:background="?android:attr/selectableItemBackground"
                         android:orientation="horizontal"
                         android:weightSum="4">
 
@@ -175,7 +179,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:padding="5dp"
-                            android:src="@mipmap/ic_credit_card_black_24dp"
+                            android:src="@mipmap/account"
                             android:id="@+id/myaccountimage"/>
 
                         <TextView
@@ -196,6 +200,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
+                        android:background="?android:attr/selectableItemBackground"
                         android:clickable="true"
                         android:id="@+id/helpcenter"
                         android:orientation="horizontal"
@@ -206,7 +211,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:padding="5dp"
-                            android:src="@mipmap/ic_credit_card_black_24dp"
+                            android:src="@mipmap/help"
                             android:id="@+id/helpcenterimage"/>
 
                         <TextView
@@ -227,6 +232,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
+                        android:background="?android:attr/selectableItemBackground"
                         android:id="@+id/ratedesichain"
                         android:clickable="true"
                         android:orientation="horizontal"
@@ -259,6 +265,7 @@
                         android:clickable="true"
                         android:id="@+id/policy"
                         android:layout_weight="1"
+                        android:background="?android:attr/selectableItemBackground"
                         android:orientation="horizontal"
                         android:weightSum="4">
 
@@ -267,7 +274,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:padding="5dp"
-                            android:src="@mipmap/ic_credit_card_black_24dp"
+                            android:src="@mipmap/policy"
                             android:id="@+id/mypolicyimage"/>
 
                         <TextView
@@ -301,6 +308,7 @@
                         android:layout_weight="1"
                         android:clickable="true"
                         android:id="@+id/facebook"
+                        android:background="?android:attr/selectableItemBackground"
                         android:orientation="horizontal"
                         android:weightSum="4">
 
@@ -309,7 +317,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:padding="5dp"
-                            android:src="@mipmap/ic_credit_card_black_24dp"
+                            android:src="@mipmap/fb"
                             android:id="@+id/myfacebookimage"/>
 
                         <TextView
@@ -329,6 +337,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:clickable="true"
+                        android:background="?android:attr/selectableItemBackground"
                         android:id="@+id/googleplus"
                         android:layout_weight="1"
                         android:orientation="horizontal"
@@ -339,7 +348,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:padding="5dp"
-                            android:src="@mipmap/ic_credit_card_black_24dp"
+                            android:src="@mipmap/g"
                             android:id="@+id/googleimage"/>
 
                         <TextView
@@ -360,6 +369,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
+                        android:background="?android:attr/selectableItemBackground"
                         android:id="@+id/twitter"
                         android:clickable="true"
                         android:orientation="horizontal"
@@ -392,6 +402,7 @@
                         android:layout_weight="1"
                         android:clickable="true"
                         android:id="@+id/pinterest"
+                        android:background="?android:attr/selectableItemBackground"
                         android:orientation="horizontal"
                         android:weightSum="4">
 
@@ -423,6 +434,7 @@
                         android:layout_weight="1"
                         android:id="@+id/youtube"
                         android:clickable="true"
+                        android:background="?android:attr/selectableItemBackground"
                         android:orientation="horizontal"
                         android:weightSum="4">
 
@@ -452,6 +464,7 @@
                         android:layout_height="0dp"
                         android:layout_weight="1"
                         android:clickable="true"
+                        android:background="?android:attr/selectableItemBackground"
                         android:id="@+id/instagram"
                         android:orientation="horizontal"
                         android:weightSum="4">
@@ -461,7 +474,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:padding="5dp"
-                            android:src="@mipmap/ic_credit_card_black_24dp"
+                            android:src="@mipmap/insta"
                             android:id="@+id/instagramimage"/>
 
                         <TextView
@@ -489,6 +502,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
+                        android:background="?android:attr/selectableItemBackground"
                         android:clickable="true"
                         android:orientation="horizontal"
                         android:id="@+id/aboutus">
@@ -508,6 +522,5 @@
 
 
     </android.support.design.widget.NavigationView>
-
 </android.support.v4.widget.DrawerLayout>
 

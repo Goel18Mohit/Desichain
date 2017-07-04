@@ -25,7 +25,7 @@
         <item name="android:textAlignment">center</item>
     </style>
 
-    <style name="status_bar" parent="Base.Theme.AppCompat.Light.DarkActionBar">
+    <style name="status_bar" parent="AppTheme.NoActionBar">
         <item name="colorPrimary">#2E7D32</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
