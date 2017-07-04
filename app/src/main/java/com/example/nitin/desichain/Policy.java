@@ -28,7 +28,7 @@ import java.util.List;
 
 public class Policy extends AppCompatActivity implements View.OnClickListener {
 
-
+    private Toolbar mToolbar;
     private Helper listView;
     ArrayList<CategoryHolder> arrayList;
     public ArrayList<String> Books;
@@ -56,15 +56,15 @@ public class Policy extends AppCompatActivity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_policy);
-        Toolbar toolbar = (Toolbar)findViewById(R.id.myToolBar);
-        setSupportActionBar(toolbar);
+        mToolbar=(Toolbar)findViewById(R.id.myToolBar);
+        setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(false);
 
         mImgCustomerService=(ImageView)findViewById(R.id.imgCustomerService);
         mImgReturnPolicy=(ImageView)findViewById(R.id.imgReturnPolicy);
 
-
+        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 
         SHIPPING_POLICY_BUTTON=(ImageView)findViewById(R.id.imgShippingPolicy);
 
@@ -218,10 +218,10 @@ public class Policy extends AppCompatActivity implements View.OnClickListener {
 
     public void add()
     {
-        arrayList.add(new CategoryHolder("Book and media",0));
-        arrayList.add(new CategoryHolder("Pooja Item",0));
-        arrayList.add(new CategoryHolder("Home Care",0));
-        arrayList.add(new CategoryHolder("Others",0));
+        arrayList.add(new CategoryHolder("Book and media",0,R.mipmap.book));
+        arrayList.add(new CategoryHolder("Pooja Item",0,R.mipmap.pooja));
+        arrayList.add(new CategoryHolder("Home Care",0,R.mipmap.homecare));
+        arrayList.add(new CategoryHolder("Others",0,R.mipmap.other));
         Books.add("Bhagavad-Gita As It Is");
         Books.add("Paperback/ Hardbound");
         Books.add("Media");
