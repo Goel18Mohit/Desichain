@@ -115,6 +115,7 @@ public class MyAccount extends AppCompatActivity
         LOGOUT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(MyAccount.this,"You have been logged out ",Toast.LENGTH_LONG).show();
                 Intent intent=new Intent(MyAccount.this,MainActivity.class);
                 startActivity(intent);
                 finish();

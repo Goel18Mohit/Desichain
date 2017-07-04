@@ -16,6 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.example.nitin.desichain.Adapters.FullOrderAdapter;
 import com.example.nitin.desichain.Contents.FullOrderContent;
@@ -60,6 +61,9 @@ public class FullOrder extends AppCompatActivity implements View.OnClickListener
         mFullOrderRecyclerView=(RecyclerView)findViewById(R.id.fullOrderListRecyclerView);
         mFullOrderList=new ArrayList<>();
         mAdapter=new FullOrderAdapter(this,mFullOrderList);
+
+
+
 
         LinearLayoutManager lm = new LinearLayoutManager(this);
         mFullOrderRecyclerView.setLayoutManager(lm);
