@@ -165,8 +165,8 @@ public class MyAccount extends AppCompatActivity
             }
         };
 
-        //drawer.setDrawerListener(toggle);
-        // toggle.syncState();
+        drawer.setDrawerListener(toggle);
+        toggle.syncState();
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         headerView = navigationView.inflateHeaderView(R.layout.nav_header_main);
         refferencetonavigationcategory(navigationView);

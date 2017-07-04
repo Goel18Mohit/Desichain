@@ -34,6 +34,8 @@ public class MyCart extends AppCompatActivity  implements SingleCartAdapter.List
     private SingleCartAdapter mAdapter;
     private Toolbar mToolbar;
     private TextView ITEM_COUNT;
+
+    int k=0;
     private Helper listView;
     View headerView;
     DrawerLayout drawer;
@@ -46,8 +48,6 @@ public class MyCart extends AppCompatActivity  implements SingleCartAdapter.List
     public  static HashMap<String,ArrayList<String>> hashMap;
     LinearLayout myorder,mycart,myaccount,helpcenter,ratedesichain,productPage,policy,facebook,google,twitter,pinterest,youtube,instagram,aboutus;
 
-
-    int k=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,13 +69,6 @@ public class MyCart extends AppCompatActivity  implements SingleCartAdapter.List
         mCartRecyclerView.setAdapter(mAdapter);
         ITEM_COUNT= (TextView) findViewById(R.id.itemsCount);
         prepareItems();
-
-        ITEM_COUNT.setText(String.valueOf(mList.size()));
-        mPlaceOrderLayout=(LinearLayout)findViewById(R.id.placeOrderLayout);
-        mPlaceOrderLayout.setBackgroundColor(getResources().getColor(R.color.green));
-
-
-
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, R.string.navigation_drawer_open, R.string.navigation_drawer_close){
@@ -94,6 +87,12 @@ public class MyCart extends AppCompatActivity  implements SingleCartAdapter.List
         listView= (Helper) navigationView.findViewById(R.id.parentcategoryList);
         initiaze();
         add();
+
+
+        ITEM_COUNT.setText(String.valueOf(mList.size()));
+       // mPlaceOrderLayout=(LinearLayout)findViewById(R.id.placeOrderLayout);
+//        mPlaceOrderLayout.setBackgroundColor(getResources().getColor(R.color.green));
+
 
         mCheckoutLayout=(LinearLayout)findViewById(R.id.checkoutLayout);
         mCheckoutLayout.setOnClickListener(new View.OnClickListener() {
