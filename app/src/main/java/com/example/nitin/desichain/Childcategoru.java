@@ -24,6 +24,7 @@ import com.example.nitin.desichain.Utility.Utility;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import static com.example.nitin.desichain.MainActivity.*;
 import static com.example.nitin.desichain.MainActivity.arrayList;
 
 
@@ -467,10 +468,10 @@ public class Childcategoru extends AppCompatActivity implements View.OnClickList
 
     public void add()
     {
-        arrayList.add(new CategoryHolder("Book and media",0));
-        arrayList.add(new CategoryHolder("Pooja Item",0));
-        arrayList.add(new CategoryHolder("Home Care",0));
-        arrayList.add(new CategoryHolder("Others",0));
+        arrayList.add(new CategoryHolder("Book and media",0,R.mipmap.book));
+        arrayList.add(new CategoryHolder("Pooja Item",0,R.mipmap.pooja));
+        arrayList.add(new CategoryHolder("Home Care",0,R.mipmap.homecare));
+        arrayList.add(new CategoryHolder("Others",0,R.mipmap.other));
         Books.add("Bhagavad-Gita As It Is");
         Books.add("Paperback/ Hardbound");
         Books.add("Media");

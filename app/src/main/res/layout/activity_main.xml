@@ -88,7 +88,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="3"
-                        android:paddingLeft="15dp"
                         android:paddingBottom="5dp"
                         android:paddingTop="5dp"
                         android:id="@+id/myordertext"
@@ -273,7 +272,6 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="3"
-                            android:paddingLeft="15dp"
                             android:paddingTop="5dp"
                             android:paddingBottom="5dp"
                             android:textSize="15sp"
@@ -369,7 +367,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:padding="5dp"
-                            android:src="@mipmap/ic_credit_card_black_24dp"
+                            android:src="@mipmap/twitter"
                             android:id="@+id/twitterimage"/>
 
                         <TextView

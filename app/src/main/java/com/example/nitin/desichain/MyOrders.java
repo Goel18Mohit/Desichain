@@ -1,6 +1,7 @@
 package com.example.nitin.desichain;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -40,12 +41,12 @@ public class MyOrders extends AppCompatActivity implements View.OnClickListener 
     DrawerLayout drawer;
     NestedScrollView nestedScrollView;
     public static ArrayList<String> Poojaitem;
-    public  static ArrayList<CategoryHolder> arrayList;
-    public static  ArrayList<String> Books;
+    public static ArrayList<CategoryHolder> arrayList;
+    public static ArrayList<String> Books;
     public static ArrayList<String> Homecare;
-    public static   ArrayList<String> others;
-    public  static HashMap<String,ArrayList<String>> hashMap;
-    LinearLayout myorder,mycart,myaccount,helpcenter,ratedesichain,productPage,policy,facebook,google,twitter,pinterest,youtube,instagram,aboutus;
+    public static ArrayList<String> others;
+    public static HashMap<String, ArrayList<String>> hashMap;
+    LinearLayout myorder, mycart, myaccount, helpcenter, ratedesichain, productPage, policy, facebook, google, twitter, pinterest, youtube, instagram, aboutus;
 
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -73,7 +74,7 @@ public class MyOrders extends AppCompatActivity implements View.OnClickListener 
 
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, R.string.navigation_drawer_open, R.string.navigation_drawer_close){
+                this, drawer, R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
             @Override
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
@@ -85,8 +86,8 @@ public class MyOrders extends AppCompatActivity implements View.OnClickListener 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         headerView = navigationView.inflateHeaderView(R.layout.nav_header_main);
         refferencetonavigationcategory(navigationView);
-        nestedScrollView= (NestedScrollView) navigationView.findViewById(R.id.scrollposition);
-        listView= (Helper) navigationView.findViewById(R.id.parentcategoryList);
+        nestedScrollView = (NestedScrollView) navigationView.findViewById(R.id.scrollposition);
+        listView = (Helper) navigationView.findViewById(R.id.parentcategoryList);
         initiaze();
         add();
 
@@ -124,29 +125,27 @@ public class MyOrders extends AppCompatActivity implements View.OnClickListener 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.my_cart_menu,menu);
+        getMenuInflater().inflate(R.menu.my_cart_menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        if (item.getItemId() == android.R.id.home){
+        if (item.getItemId() == android.R.id.home) {
             finish();
-        }
-        else if (item.getItemId() == R.id.my_cart){
+        } else if (item.getItemId() == R.id.my_cart) {
 
-            startActivity(new Intent(MyOrders.this,MyCart.class));
+            startActivity(new Intent(MyOrders.this, MyCart.class));
         }
         return super.onOptionsItemSelected(item);
     }
 
-    public void add()
-    {
-        arrayList.add(new CategoryHolder("Book and media",0));
-        arrayList.add(new CategoryHolder("Pooja Item",0));
-        arrayList.add(new CategoryHolder("Home Care",0));
-        arrayList.add(new CategoryHolder("Others",0));
+    public void add() {
+        arrayList.add(new CategoryHolder("Book and media",0,R.mipmap.book));
+        arrayList.add(new CategoryHolder("Pooja Item",0,R.mipmap.pooja));
+        arrayList.add(new CategoryHolder("Home Care",0,R.mipmap.homecare));
+        arrayList.add(new CategoryHolder("Others",0,R.mipmap.other));
         Books.add("Bhagavad-Gita As It Is");
         Books.add("Paperback/ Hardbound");
         Books.add("Media");
@@ -165,40 +164,37 @@ public class MyOrders extends AppCompatActivity implements View.OnClickListener 
         others.add("Men");
         others.add("BagsnStationery");
         others.add("MobileAccessiories");
-        hashMap.put(arrayList.get(0).getPARENTCATEGORY(),Books);
-        hashMap.put(arrayList.get(1).getPARENTCATEGORY(),Poojaitem);
-        hashMap.put(arrayList.get(2).getPARENTCATEGORY(),Homecare);
-        hashMap.put(arrayList.get(3).getPARENTCATEGORY(),others);
+        hashMap.put(arrayList.get(0).getPARENTCATEGORY(), Books);
+        hashMap.put(arrayList.get(1).getPARENTCATEGORY(), Poojaitem);
+        hashMap.put(arrayList.get(2).getPARENTCATEGORY(), Homecare);
+        hashMap.put(arrayList.get(3).getPARENTCATEGORY(), others);
         navigationCategoryList();
     }
 
-    public void initiaze(){
-        arrayList=new ArrayList<>();
-        hashMap=new HashMap<>();
-        Books=new ArrayList<>();
-        Poojaitem=new ArrayList<>();
-        Homecare=new ArrayList<>();
-        others=new ArrayList<>();
+    public void initiaze() {
+        arrayList = new ArrayList<>();
+        hashMap = new HashMap<>();
+        Books = new ArrayList<>();
+        Poojaitem = new ArrayList<>();
+        Homecare = new ArrayList<>();
+        others = new ArrayList<>();
 
     }
-    public void navigationCategoryList(){
-        final ShowCategoryAdapeter showCategoryAdapeter=new ShowCategoryAdapeter(MyOrders.this,arrayList,hashMap,listView);
+
+    public void navigationCategoryList() {
+        final ShowCategoryAdapeter showCategoryAdapeter = new ShowCategoryAdapeter(MyOrders.this, arrayList, hashMap, listView);
         listView.setAdapter(showCategoryAdapeter);
         listView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
             @Override
             public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
 
-                if(arrayList.get(groupPosition).getFLAG_INDICATOR()==1)
-                {
+                if (arrayList.get(groupPosition).getFLAG_INDICATOR() == 1) {
                     listView.collapseGroup(groupPosition);
                     arrayList.get(groupPosition).setFLAG_INDICATOR(0);
 
-                }
-                else{
-                    for(int i=0;i<arrayList.size();i++)
-                    {
-                        if(arrayList.get(i).getFLAG_INDICATOR()==1)
-                        {
+                } else {
+                    for (int i = 0; i < arrayList.size(); i++) {
+                        if (arrayList.get(i).getFLAG_INDICATOR() == 1) {
                             listView.collapseGroup(i);
                             arrayList.get(i).setFLAG_INDICATOR(0);
                         }
@@ -206,18 +202,27 @@ public class MyOrders extends AppCompatActivity implements View.OnClickListener 
                     }
                     listView.expandGroup(groupPosition);
                     listView.setSelectedGroup(groupPosition);
-                    nestedScrollView.smoothScrollTo(0,groupPosition);
+                    nestedScrollView.smoothScrollTo(0, groupPosition);
                     arrayList.get(groupPosition).setFLAG_INDICATOR(1);
 
+                 /*   DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+                    drawer.closeDrawer(GravityCompat.START);
+                   */ return true;
                 }
+
+                /**
+                 * ATTENTION: This was auto-generated to implement the App Indexing API.
+                 * See https://g.co/AppIndexing/AndroidStudio for more information.
+                 */
+
                 return true;
             }
         });
         listView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-                Intent intent=new Intent(MyOrders.this,Childcategoru.class);
-                intent.putExtra("get",hashMap.get(arrayList.get(groupPosition).getPARENTCATEGORY()).get(childPosition));
+                Intent intent = new Intent(MyOrders.this, Childcategoru.class);
+                intent.putExtra("get", hashMap.get(arrayList.get(groupPosition).getPARENTCATEGORY()).get(childPosition));
                 startActivity(intent);
                 return true;
             }
@@ -225,22 +230,21 @@ public class MyOrders extends AppCompatActivity implements View.OnClickListener 
 
     }
 
-    public void refferencetonavigationcategory(View view)
-    {
-        myorder= (LinearLayout) view.findViewById(R.id.myorders);
-        mycart= (LinearLayout) view.findViewById(R.id.mycart);
-        myaccount= (LinearLayout) view.findViewById(R.id.myaccount);
-        helpcenter= (LinearLayout) view.findViewById(R.id.helpcenter);
-        ratedesichain= (LinearLayout) view.findViewById(R.id.ratedesichain);
-        policy= (LinearLayout) view.findViewById(R.id.policy);
-        facebook= (LinearLayout) view.findViewById(R.id.facebook);
-        google=(LinearLayout) view.findViewById(R.id.googleplus);
-        twitter= (LinearLayout) view.findViewById(R.id.twitter);
-        productPage=(LinearLayout)view.findViewById(R.id.myProductLayout);
-        pinterest= (LinearLayout) view.findViewById(R.id.pinterest);
-        youtube= (LinearLayout) view.findViewById(R.id.youtube);
-        instagram= (LinearLayout) view.findViewById(R.id.instagram);
-        aboutus= (LinearLayout) view.findViewById(R.id.aboutus);
+    public void refferencetonavigationcategory(View view) {
+        myorder = (LinearLayout) view.findViewById(R.id.myorders);
+        mycart = (LinearLayout) view.findViewById(R.id.mycart);
+        myaccount = (LinearLayout) view.findViewById(R.id.myaccount);
+        helpcenter = (LinearLayout) view.findViewById(R.id.helpcenter);
+        ratedesichain = (LinearLayout) view.findViewById(R.id.ratedesichain);
+        policy = (LinearLayout) view.findViewById(R.id.policy);
+        facebook = (LinearLayout) view.findViewById(R.id.facebook);
+        google = (LinearLayout) view.findViewById(R.id.googleplus);
+        twitter = (LinearLayout) view.findViewById(R.id.twitter);
+        productPage = (LinearLayout) view.findViewById(R.id.myProductLayout);
+        pinterest = (LinearLayout) view.findViewById(R.id.pinterest);
+        youtube = (LinearLayout) view.findViewById(R.id.youtube);
+        instagram = (LinearLayout) view.findViewById(R.id.instagram);
+        aboutus = (LinearLayout) view.findViewById(R.id.aboutus);
         myorder.setOnClickListener(this);
         mycart.setOnClickListener(this);
         myaccount.setOnClickListener(this);
@@ -260,7 +264,7 @@ public class MyOrders extends AppCompatActivity implements View.OnClickListener 
 
     @Override
     public void onClick(View v) {
-        new Utility().openIntent(this,v.getId());
+        new Utility().openIntent(this, v.getId());
     }
 
 

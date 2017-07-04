@@ -5,7 +5,6 @@
     android:id="@+id/content_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.nitin.desichain.MainActivity"
     tools:showIn="@layout/app_bar_main">
@@ -14,23 +13,27 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:fillViewport="true"
 
-            android:orientation="vertical">
+            android:orientation="vertical"
+            >
 
-            <android.support.v7.widget.CardView
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_marginBottom="10dp"
-                android:layout_weight="2">
+                android:layout_weight="3"
+                android:fillViewport="true"
+                android:orientation="vertical">
 
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/advertisemntRecyclerView"
+                <android.support.v4.view.ViewPager
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:clipToPadding="true"
-                    android:scrollbars="horizontal" />
+                    android:layout_height="150dp"
+                    android:fillViewport="true"
+                    android:id="@+id/viewpager"/>
 
-            </android.support.v7.widget.CardView>
+
+            </LinearLayout>
 
             <FrameLayout
                 android:layout_width="match_parent"
@@ -42,8 +45,8 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:scaleType="centerCrop"
-                    android:src="@mipmap/ic_launcher" />
+                    android:scaleType="fitXY"
+                    android:src="@drawable/banner_advertisment" />
 
             </FrameLayout>
 
@@ -187,8 +190,8 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:scaleType="centerCrop"
-                    android:src="@mipmap/ic_launcher" />
+                    android:scaleType="fitXY"
+                    android:src="@drawable/free_shipping_banner" />
 
             </FrameLayout>
 
@@ -290,14 +293,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginBottom="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 android:layout_weight="1">
 
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:scaleType="centerCrop"
-                    android:src="@mipmap/ic_launcher" />
+                    android:scaleType="fitXY"
+                    android:src="@drawable/sale_50" />
 
             </FrameLayout>
 

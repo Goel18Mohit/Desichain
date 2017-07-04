@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.ActionBar;
@@ -22,6 +23,7 @@ import android.widget.ExpandableListView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.example.nitin.desichain.Adapters.CustomViewpagerAdapter;
 import com.example.nitin.desichain.Adapters.ProductHorizontalAdapter;
 import com.example.nitin.desichain.Contents.Advertisements;
 import com.example.nitin.desichain.Contents.ProductHorizontal;
@@ -37,13 +39,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Helper listView;
     public  static ArrayList<CategoryHolder> arrayList;
 public static  ArrayList<String> Books;
-    private List<Advertisements> mPics;
     private CardView cardView;
-
+    private NestedScrollView mNestedScrollView;
  public static ArrayList<String> Poojaitem;
     DrawerLayout drawer;
     NestedScrollView nestedScrollView;
   public static ArrayList<String> Homecare;
+    private ViewPager viewPager;
+    private CustomViewpagerAdapter mAdapter;
+    private int images[] = {R.drawable.hitkary_small,
+                            R.drawable.hitkary2_small};
   public static   ArrayList<String> others;
       public  static HashMap<String,ArrayList<String>> hashMap;
     View headerView;
@@ -60,7 +65,12 @@ public static  ArrayList<String> Books;
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         final ActionBar ab = getSupportActionBar();
+        mNestedScrollView=(NestedScrollView)findViewById(R.id.content_main);
+        mNestedScrollView.setFillViewport(true);
         cardView= (CardView) findViewById(R.id.searchproduct);
+        viewPager=(ViewPager)findViewById(R.id.viewpager);
+        mAdapter=new CustomViewpagerAdapter(this,images);
+        viewPager.setAdapter(mAdapter);
 
 
         mLatestProductView =(RecyclerView)findViewById(R.id.LatestProductRecyclerView);
@@ -68,20 +78,10 @@ public static  ArrayList<String> Books;
         mLatestProductAdapter = new ProductHorizontalAdapter(MainActivity.this,mProductsList);
         LinearLayoutManager lm =new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
         mLatestProductView.setLayoutManager(lm);
+        mLatestProductView.setFocusable(false);
         mLatestProductView.setItemAnimator(new DefaultItemAnimator());
         mLatestProductView.setAdapter(mLatestProductAdapter);
         mLatestProductView.setScrollBarSize(0);
-
-        mPics=new ArrayList<>();
-        mAdvertisementView=(RecyclerView)findViewById(R.id.advertisemntRecyclerView);
-        mAdvertisementAdapter=new ProductHorizontalAdapter(this,mProductsList);
-        LinearLayoutManager lm3 = new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,true);
-        mAdvertisementView.setLayoutManager(lm3);
-        mAdvertisementView.setItemAnimator(new DefaultItemAnimator());
-        mAdvertisementView.setAdapter(mAdvertisementAdapter);
-        mAdvertisementView.setScrollBarSize(0);
-
-    //    addAdvertisment();
 
         mBrandStudioView=(RecyclerView)findViewById(R.id.brandStudioRecyclerView);
         mBrandStudioAdapter=new ProductHorizontalAdapter(this,mProductsList);
@@ -234,7 +234,7 @@ public static  ArrayList<String> Books;
     {
         arrayList.add(new CategoryHolder("Book and media",0,R.mipmap.book));
         arrayList.add(new CategoryHolder("Pooja Item",0,R.mipmap.pooja));
-        arrayList.add(new CategoryHolder("Home Care",0,R.mipmap.ic_credit_card_black_24dp));
+        arrayList.add(new CategoryHolder("Home Care",0,R.mipmap.homecare));
         arrayList.add(new CategoryHolder("Others",0,R.mipmap.other));
         Books.add("Bhagavad-Gita As It Is");
         Books.add("Paperback/ Hardbound");

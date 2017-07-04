@@ -2,6 +2,7 @@ package com.example.nitin.desichain;
 
 import android.content.Intent;
 import android.graphics.Paint;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
@@ -151,7 +152,9 @@ public class ProductPageActual extends AppCompatActivity implements View.OnClick
         LinearLayoutManager lm = new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,true);
         mRecentlyViewed.setLayoutManager(lm);
         mRecentlyViewed.setItemAnimator(new DefaultItemAnimator());
-        mRecentlyViewed.setScrollBarSize(0);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            mRecentlyViewed.setScrollBarSize(0);
+        }
         mRecentlyViewed.setAdapter(mAdapter);
         mShareProduct=(ImageView)findViewById(R.id.shareProduct);
 
@@ -269,10 +272,10 @@ public class ProductPageActual extends AppCompatActivity implements View.OnClick
 
     public void add()
     {
-        arrayList.add(new CategoryHolder("Book and media",0));
-        arrayList.add(new CategoryHolder("Pooja Item",0));
-        arrayList.add(new CategoryHolder("Home Care",0));
-        arrayList.add(new CategoryHolder("Others",0));
+        arrayList.add(new CategoryHolder("Book and media",0,R.mipmap.book));
+        arrayList.add(new CategoryHolder("Pooja Item",0,R.mipmap.pooja));
+        arrayList.add(new CategoryHolder("Home Care",0,R.mipmap.homecare));
+        arrayList.add(new CategoryHolder("Others",0,R.mipmap.other));
         Books.add("Bhagavad-Gita As It Is");
         Books.add("Paperback/ Hardbound");
         Books.add("Media");
