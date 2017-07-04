@@ -6,13 +6,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Toast;
 
 public class Payment extends AppCompatActivity {
 
 
 
-    RadioButton bankdeposit;
+    RadioButton PaymentRadioButton,bankdeposit;
+    Button PaymentContinue;
+    RadioGroup radioGroup;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,17 +27,26 @@ public class Payment extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(false);
-
-
+        bankdeposit=(RadioButton)findViewById(R.id.bankdeposit);
+        PaymentContinue= (Button) findViewById(R.id.paymentcontinue);
+        radioGroup= (RadioGroup) findViewById(R.id.paymentradio);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        bankdeposit= (RadioButton) findViewById(R.id.bankdeposit);
-        bankdeposit.setOnClickListener(new View.OnClickListener() {
+
+        PaymentContinue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(Payment.this,BankDeposit.class);
-                startActivity(intent);
+
+                PaymentRadioButton= (RadioButton) findViewById(radioGroup.getCheckedRadioButtonId());
+                Toast.makeText(Payment.this,String.valueOf(radioGroup.getCheckedRadioButtonId()),Toast.LENGTH_SHORT).show();
+                if(radioGroup.getCheckedRadioButtonId()==R.id.bankdeposit)
+                {
+                    //Toast.makeText(Payment.this,String.valueOf(radioGroup.getCheckedRadioButtonId()+1),Toast.LENGTH_SHORT).show();
+                    Intent intent=new Intent(Payment.this,BankDeposit.class);
+                    startActivity(intent);
+                }
             }
         });
+
     }
 
 

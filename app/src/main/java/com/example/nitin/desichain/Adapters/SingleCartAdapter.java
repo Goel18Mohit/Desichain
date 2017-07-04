@@ -1,6 +1,7 @@
 package com.example.nitin.desichain.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.nitin.desichain.Contents.SingleCart;
+import com.example.nitin.desichain.ProductPageActual;
 import com.example.nitin.desichain.R;
 
 import java.util.List;
@@ -78,6 +80,34 @@ public class SingleCartAdapter extends RecyclerView.Adapter<SingleCartAdapter.My
             }
         });
 
+        holder.mProductCost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(mContext, ProductPageActual.class);
+                mContext.startActivity(intent);
+            }
+        });
+        holder.mProductBrand.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(mContext, ProductPageActual.class);
+                mContext.startActivity(intent);
+            }
+        });
+        holder.mProductName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(mContext, ProductPageActual.class);
+                mContext.startActivity(intent);
+            }
+        });
+        holder.mProductImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(mContext, ProductPageActual.class);
+                mContext.startActivity(intent);
+            }
+        });
         holder.mAddProduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

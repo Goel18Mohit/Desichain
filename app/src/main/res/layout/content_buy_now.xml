@@ -70,7 +70,7 @@
                         android:textAlignment="center"
                         android:text="Gift Wrap for Rs 25" />
 
-                    <RadioButton
+                    <CheckBox
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="1"

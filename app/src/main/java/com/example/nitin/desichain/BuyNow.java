@@ -15,10 +15,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ExpandableListView;
 import android.widget.LinearLayout;
-import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.nitin.desichain.Adapters.SingleCartAdapter;
 import com.example.nitin.desichain.Contents.SingleCart;
@@ -34,7 +36,7 @@ public class BuyNow extends AppCompatActivity implements View.OnClickListener,Si
     private static  String LOG_TAG = BuyNow.class.getSimpleName();
     Button b1;
     private int totalCost = 1520,FLAG=1;
-    private RadioButton mGiftWrapRadioBtn;
+    private CheckBox mGiftWrapRadioBtn;
     private LinearLayout mGiftWrapLayout;
     private RecyclerView mDeliveryView;
     private List<SingleCart> mList;
@@ -86,27 +88,50 @@ public class BuyNow extends AppCompatActivity implements View.OnClickListener,Si
                 startActivity(i);
             }
         });
-        mGiftWrapRadioBtn =(RadioButton)findViewById(R.id.giftWrapRadioButton);
+        mGiftWrapRadioBtn = (CheckBox) findViewById(R.id.giftWrapRadioButton);
+        mGiftWrapRadioBtn.setChecked(false);
         mGiftWrapLayout=(LinearLayout)findViewById(R.id.giftWrapLayout);
 
-        mGiftWrapLayout.setOnClickListener(new View.OnClickListener() {
+        mGiftWrapRadioBtn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onClick(View v) {
-
-                if (mGiftWrapRadioBtn.isChecked()) {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked)
+                {
+                    mGiftWrapRadioBtn.setChecked(true);
+                    Toast.makeText(BuyNow.this,String.valueOf(mGiftWrapRadioBtn.isChecked()),Toast.LENGTH_SHORT).show();
+                    mGrandTotal.setText(String.valueOf(totalCost+25));
+                }
+                else if(!isChecked) {
+                    Toast.makeText(BuyNow.this,"checked101",Toast.LENGTH_SHORT).show();
                     mGiftWrapRadioBtn.setChecked(false);
                     mGrandTotal.setText(String.valueOf(totalCost));
-                } else {
+                }
+
+            }
+        });
+      /*  mGiftWrapRadioBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (mGiftWrapRadioBtn.isChecked())
+                {
+                    mGiftWrapRadioBtn.setChecked(false);
+                    Toast.makeText(BuyNow.this,String.valueOf(mGiftWrapRadioBtn.isChecked()),Toast.LENGTH_SHORT).show();
+                    mGrandTotal.setText(String.valueOf(totalCost));
+                }
+                else if(!mGiftWrapRadioBtn.isChecked()) {
+                    Toast.makeText(BuyNow.this,"checked101",Toast.LENGTH_SHORT).show();
                     mGiftWrapRadioBtn.setChecked(true);
                     mGrandTotal.setText(String.valueOf(totalCost+25));
                 }
             }
-        });
+        });*/
 
-        mGiftWrapRadioBtn.setOnClickListener(new View.OnClickListener() {
+       /* mGiftWrapRadioBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (mGiftWrapRadioBtn.isChecked()) {
+                    mGiftWrapRadioBtn.setChecked(false);
                     mGrandTotal.setText(String.valueOf(totalCost+25));
 
                 } else {
@@ -115,7 +140,7 @@ public class BuyNow extends AppCompatActivity implements View.OnClickListener,Si
 
                 }
             }
-        });
+        });*/
 
         editAddress.setOnClickListener(this);
         mAddNewAddress.setOnClickListener(this);

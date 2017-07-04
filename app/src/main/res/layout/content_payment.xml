@@ -45,6 +45,7 @@
 
             <RadioGroup
                 android:layout_width="match_parent"
+                android:id="@+id/paymentradio"
                 android:layout_height="match_parent">
 
                 <RadioButton
@@ -132,6 +133,7 @@
         android:layout_alignParentBottom="true"
         android:background="@color/green"
         android:text="Continue"
+        android:id="@+id/paymentcontinue"
         android:textColor="@android:color/white" />
 
 
