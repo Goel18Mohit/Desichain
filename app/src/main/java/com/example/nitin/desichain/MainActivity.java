@@ -1,6 +1,7 @@
 package com.example.nitin.desichain;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -81,14 +82,18 @@ public static  ArrayList<String> Books;
         mLatestProductView.setFocusable(false);
         mLatestProductView.setItemAnimator(new DefaultItemAnimator());
         mLatestProductView.setAdapter(mLatestProductAdapter);
-        mLatestProductView.setScrollBarSize(0);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            mLatestProductView.setScrollBarSize(0);
+        }
 
         mBrandStudioView=(RecyclerView)findViewById(R.id.brandStudioRecyclerView);
         mBrandStudioAdapter=new ProductHorizontalAdapter(this,mProductsList);
         LinearLayoutManager lm6 = new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,true);
         mBrandStudioView.setLayoutManager(lm6);
         mBrandStudioView.setItemAnimator(new DefaultItemAnimator());
-        mBrandStudioView.setScrollBarSize(0);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            mBrandStudioView.setScrollBarSize(0);
+        }
         mBrandStudioView.setAdapter(mBrandStudioAdapter);
         mBrandStudioView.addOnItemTouchListener(new RecyclerItemClickListener(this, new RecyclerItemClickListener.OnItemClickListener() {
             @Override

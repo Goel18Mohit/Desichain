@@ -24,7 +24,6 @@ import com.example.nitin.desichain.Utility.Utility;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import static com.example.nitin.desichain.MainActivity.*;
 import static com.example.nitin.desichain.MainActivity.arrayList;
 
 
@@ -75,7 +74,7 @@ public class Childcategoru extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_childcategoru);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+         getSupportActionBar().setTitle(getIntent().getStringExtra("get"));
         inti();
         gridView= (GridView) findViewById(R.id.singlechildlistview);
         Intent intent = getIntent();

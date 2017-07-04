@@ -16,7 +16,8 @@
         android:layout_height="wrap_content"
         android:text="add new address"
         android:id="@+id/buttonAddAddress"
-        android:background="?attr/selectableItemBackground"
+        android:textColor="#ffffff"
+        android:background="@color/green"
         android:layout_alignParentBottom="true"/>
 
 </RelativeLayout>
