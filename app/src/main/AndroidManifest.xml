@@ -103,6 +103,10 @@
             android:name=".CouponsPage"
             android:theme="@style/AppTheme"
             android:parentActivityName=".MyCart"/>
+        <activity
+            android:name=".Wallet_page"
+            android:theme="@style/AppTheme"
+            android:parentActivityName=".MyAccount"/>
         <activity android:name=".BankDeposit" />
         <!--
  ATTENTION: This was auto-generated to add Google Play services to your project for
