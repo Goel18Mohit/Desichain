@@ -16,6 +16,8 @@ import java.util.ArrayList;
  * Created by NITIN on 29-Jun-17.
  */
 
+
+
 public class SearchAdapter extends BaseAdapter {
 
     private ArrayList<String> search;

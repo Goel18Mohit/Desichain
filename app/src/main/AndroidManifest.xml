@@ -90,6 +90,19 @@
             android:name=".CategoryPage"
             android:label="CategoryPage"
             android:theme="@style/status_bar"/>
+        <activity
+            android:name=".SearchActivity"
+            android:theme="@style/status_bar"
+            android:parentActivityName=".MainActivity"/>
+        <activity
+            android:name=".NotificationPage"
+            android:theme="@style/status_bar"
+            android:parentActivityName=".MyAccount"/>
+
+        <activity
+            android:name=".CouponsPage"
+            android:theme="@style/AppTheme"
+            android:parentActivityName=".MyCart"/>
         <activity android:name=".BankDeposit" />
         <!--
  ATTENTION: This was auto-generated to add Google Play services to your project for
@@ -141,11 +154,6 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".SearchActivity"
-            android:theme="@style/status_bar"
-            android:parentActivityName=".MainActivity">
-
-        </activity>
     </application>
 
 </manifest>

@@ -5,6 +5,7 @@
     android:id="@+id/content_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fillViewport="true"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.nitin.desichain.MainActivity"
     tools:showIn="@layout/app_bar_main">
@@ -45,10 +46,11 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:scaleType="fitXY"
                     android:src="@drawable/banner_advertisment" />
 
             </FrameLayout>
+
+
 
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
@@ -190,7 +192,7 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:scaleType="fitXY"
+                    android:scaleType="center"
                     android:src="@drawable/free_shipping_banner" />
 
             </FrameLayout>
@@ -512,9 +514,26 @@
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
+                android:layout_marginTop="16dp"
+                android:layout_weight="2">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <include layout="@layout/card_return_protection" />
+            </FrameLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
                 android:layout_marginTop="20dp"
                 android:layout_weight="3"
                 app:cardElevation="10dp">
+
+
 
                 <LinearLayout
                     android:layout_width="match_parent"

@@ -39,7 +39,7 @@ public class BuyNow extends AppCompatActivity implements View.OnClickListener,Si
     private RecyclerView mDeliveryView;
     private List<SingleCart> mList;
     private SingleCartAdapter mAdapter;
-    private TextView editAddress,mAddNewAddress,mBuyNowCustName,mBuyNowAddress,mGrandTotal;
+    private TextView editAddress,mAddNewAddress,mBuyNowCustName,mBuyNowAddress,mGrandTotal, mPromoCode;
     private Helper listView;
     View headerView;
     DrawerLayout drawer;
@@ -117,6 +117,16 @@ public class BuyNow extends AppCompatActivity implements View.OnClickListener,Si
                 }
             }
         });
+
+        mPromoCode = (TextView) findViewById(R.id.textView8);
+        mPromoCode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getBaseContext(), CouponsPage.class);
+                startActivity(intent);
+            }
+        });
+
 
         editAddress.setOnClickListener(this);
         mAddNewAddress.setOnClickListener(this);

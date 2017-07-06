@@ -242,7 +242,7 @@ public class MyAccount extends AppCompatActivity
                 startActivity(new Intent(this,MyAddress.class));
                 break;
             case R.id.notificationLayout:
-                Toast.makeText(this,"Notifications option selected",Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(this, NotificationPage.class));
                 break;
             case R.id.helpCentreLayout:
                 startActivity(new Intent(this,HelpCentre.class));

@@ -3,6 +3,7 @@ package com.example.nitin.desichain;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.MenuItemCompat;
@@ -36,9 +37,15 @@ import com.example.nitin.desichain.Utility.Utility;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
+    private int currentPage = 0;
+    Timer timer;
+    final long DELAY_MS = 500;
+    final long PERIOD_MS = 3000;
     private Helper listView;
     public  static ArrayList<CategoryHolder> arrayList;
 public static  ArrayList<String> Books;
@@ -77,6 +84,24 @@ public static  ArrayList<String> Books;
         viewPager=(ViewPager)findViewById(R.id.viewpager);
         mAdapter=new CustomViewpagerAdapter(this,images);
         viewPager.setAdapter(mAdapter);
+        final Handler handler = new Handler();
+        final Runnable update = new Runnable() {
+            @Override
+            public void run() {
+                if (currentPage==2){
+                    currentPage=0;
+                }
+                viewPager.setCurrentItem(currentPage++,true);
+            }
+        };
+
+        timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                handler.post(update);
+            }
+        },DELAY_MS,PERIOD_MS);
 
 
         mLatestProductView =(RecyclerView)findViewById(R.id.LatestProductRecyclerView);
