@@ -80,7 +80,7 @@ public static  ArrayList<String> Books;
         
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
-        final ActionBar ab = getSupportActionBar();
+        invalidateOptionsMenu();
         mNestedScrollView=(NestedScrollView)findViewById(R.id.content_main);
         mNestedScrollView.setFillViewport(true);
         cardView= (CardView) findViewById(R.id.searchproduct);
@@ -233,6 +233,8 @@ public static  ArrayList<String> Books;
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         MenuItem menuItem=menu.findItem(R.id.menu_messages);
+        MenuItem item = menu.findItem(R.id.search_item);
+        item.setVisible(false);
         MenuItemCompat.setActionView(menuItem,R.layout.cart_icon_for_toolbar);
        RelativeLayout mycarttoolbar= (RelativeLayout) MenuItemCompat.getActionView(menuItem);
       txtViewCount = (TextView) mycarttoolbar.findViewById(R.id.badge_notification_1);

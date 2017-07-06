@@ -73,6 +73,9 @@ public class RatingReviews extends AppCompatActivity  implements View.OnClickLis
         if (item.getItemId()==R.id.my_cart){
             startActivity(new Intent(RatingReviews.this,MyCart.class));
         }
+        else if (item.getItemId()==R.id.search_item){
+            startActivity(new Intent(this,SearchActivity.class));
+        }
         else if (item.getItemId()==android.R.id.home){
             finish();
         }

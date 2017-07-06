@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
@@ -127,9 +128,18 @@ public class HelpCentre extends AppCompatActivity implements View.OnClickListene
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId()==android.R.id.home){
             finish();
+        }
+        else if (item.getItemId()==R.id.search_item){
+            startActivity(new Intent(this,SearchActivity.class));
         }
         return super.onOptionsItemSelected(item);
     }

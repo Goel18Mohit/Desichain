@@ -269,7 +269,7 @@ public class CategoryPage extends AppCompatActivity implements View.OnClickListe
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
-        getMenuInflater().inflate(R.menu.my_cart_menu,menu);
+        getMenuInflater().inflate(R.menu.main,menu);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -278,11 +278,13 @@ public class CategoryPage extends AppCompatActivity implements View.OnClickListe
         if (item.getItemId()==R.id.my_cart){
             startActivity(new Intent(CategoryPage.this,MyCart.class));
         }
-
+        else if (item.getItemId()==R.id.search_item){
+            startActivity(new Intent(this,SearchActivity.class));
+        }
         if (item.getItemId() == android.R.id.home){
             finish();
-
         }
+
         return super.onOptionsItemSelected(item);
     }
     public void add()

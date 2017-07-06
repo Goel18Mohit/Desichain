@@ -268,6 +268,9 @@ public class ProductPageActual extends AppCompatActivity implements View.OnClick
         else if (item.getItemId()==R.id.my_cart){
             startActivity(new Intent(ProductPageActual.this,MyCart.class));
         }
+        else if (item.getItemId()==R.id.search_item){
+            startActivity(new Intent(this,SearchActivity.class));
+        }
 
         return true;
     }

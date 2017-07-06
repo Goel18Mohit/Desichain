@@ -54,7 +54,7 @@ public class BuyNow extends AppCompatActivity implements View.OnClickListener,Si
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.my_cart_menu,menu);
+        getMenuInflater().inflate(R.menu.main,menu);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -139,7 +139,7 @@ public class BuyNow extends AppCompatActivity implements View.OnClickListener,Si
         mDeliveryView.setFocusable(false);
         mDeliveryView.setItemAnimator(new DefaultItemAnimator());
         mDeliveryView.setAdapter(mAdapter);
-
+        mDeliveryView.setNestedScrollingEnabled(false);
         prepareItems();
 
         Intent intent=getIntent();
@@ -228,6 +228,9 @@ public class BuyNow extends AppCompatActivity implements View.OnClickListener,Si
                 break;
             case R.id.my_cart:
                 startActivity(new Intent(BuyNow.this,MyCart.class));
+                break;
+            case R.id.search_item:
+                startActivity(new Intent(this,SearchActivity.class));
                 break;
         }
 

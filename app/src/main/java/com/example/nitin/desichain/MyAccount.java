@@ -226,7 +226,9 @@ public class MyAccount extends AppCompatActivity
         else if (id==R.id.my_cart){
             startActivity(new Intent(MyAccount.this,MyCart.class));
         }
-
+        else if (item.getItemId()==R.id.search_item){
+            startActivity(new Intent(this,SearchActivity.class));
+        }
         return super.onOptionsItemSelected(item);
     }
 

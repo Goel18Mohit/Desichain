@@ -6,7 +6,13 @@
     <ScrollView
         android:layout_width="match_parent"
         android:paddingStart="5dp"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:paddingLeft="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -154,5 +160,22 @@
                     android:background="#C0C0C0"/></LinearLayout>
 
         </FrameLayout>
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="16dp"
+                android:layout_weight="2">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <include layout="@layout/card_return_protection" />
+                </FrameLayout>
+
+            </android.support.v7.widget.CardView>
+
+
+        </LinearLayout>
     </ScrollView>
 </RelativeLayout>
