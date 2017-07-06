@@ -8,10 +8,14 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ExpandableListView;
 import android.widget.GridView;
@@ -19,20 +23,28 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.ListAdapter;
 
 import com.example.nitin.desichain.Adapters.ChildCategoryAdapter;
+import com.example.nitin.desichain.Adapters.ChildCategoryCardAdapter;
+import com.example.nitin.desichain.Contents.ChildCategoryBrand;
 import com.example.nitin.desichain.Contents.ChildCategoryList;
 import com.example.nitin.desichain.SubCategoryList.ShowCategoryAdapeter;
 import com.example.nitin.desichain.Utility.Utility;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import static com.example.nitin.desichain.MainActivity.arrayList;
 
 
 
 public class Childcategoru extends AppCompatActivity implements View.OnClickListener {
+
+    private RecyclerView newLaunchView,mPublisherView,mPriceView,mDiscountView,mPopularCategView;
+    private List<ChildCategoryBrand> mNewLaunchList,mPublisherList,mPriceList,mDiscountList,mPopularCategList;
+    private ChildCategoryCardAdapter mnewLaunchAdapter,mPublisherAdapter,mPriceAdapter,mDiscountAdapter,mPopularCategAdapter;
 
     ArrayList<ChildCategoryList> homedecor;
     ArrayList<ChildCategoryList> homefurnishing;
@@ -80,6 +92,53 @@ public class Childcategoru extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_childcategoru);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        newLaunchView=(RecyclerView)findViewById(R.id.newLaunchRecyclerView);
+        mNewLaunchList =new ArrayList<>();
+        mnewLaunchAdapter =new ChildCategoryCardAdapter(this, mNewLaunchList);
+        GridLayoutManager lm = new GridLayoutManager(this,4);
+        newLaunchView.setLayoutManager(lm);
+        newLaunchView.setItemAnimator(new DefaultItemAnimator());
+        newLaunchView.setAdapter(mnewLaunchAdapter);
+
+        prepareitems();
+
+        mPublisherView=(RecyclerView)findViewById(R.id.publisherRecyclerView);
+        mPublisherList=new ArrayList<>();
+        mPublisherAdapter=new ChildCategoryCardAdapter(this,mPublisherList);
+        GridLayoutManager gm = new GridLayoutManager(this,4);
+        mPublisherView.setItemAnimator(new DefaultItemAnimator());
+        mPublisherView.setLayoutManager(gm);
+        mPublisherView.setAdapter(mPublisherAdapter);
+        preparePublisherItems();
+
+        mPriceView=(RecyclerView)findViewById(R.id.shopByPriceRecyclerView);
+        mPriceList=new ArrayList<>();
+        mPriceAdapter=new ChildCategoryCardAdapter(this,mPriceList);
+        GridLayoutManager gm1 = new GridLayoutManager(this,4);
+        mPriceView.setLayoutManager(gm1);
+        mPriceView.setItemAnimator(new DefaultItemAnimator());
+        mPriceView.setAdapter(mPriceAdapter);
+        preparePriceItems();
+
+        mDiscountView=(RecyclerView)findViewById(R.id.discountRecyclerView);
+        mDiscountList=new ArrayList<>();
+        mDiscountAdapter=new ChildCategoryCardAdapter(this,mDiscountList);
+        GridLayoutManager gm2 = new GridLayoutManager(this,4);
+        mDiscountView.setLayoutManager(gm2);
+        mDiscountView.setItemAnimator(new DefaultItemAnimator());
+        mDiscountView.setAdapter(mDiscountAdapter);
+        prepareDiscountItems();
+
+        mPopularCategView=(RecyclerView)findViewById(R.id.popularCategoryRecyclerView);
+        mPopularCategList=new ArrayList<>();
+        mPopularCategAdapter=new ChildCategoryCardAdapter(this,mPopularCategList);
+        GridLayoutManager gm3 = new GridLayoutManager(this,4);
+        mPopularCategView.setLayoutManager(gm3);
+        mPopularCategView.setItemAnimator(new DefaultItemAnimator());
+        mPopularCategView.setAdapter(mPopularCategAdapter);
+        preparePopularCategItems();
+
          getSupportActionBar().setTitle(getIntent().getStringExtra("get"));
         inti();
         gridView= (GridView) findViewById(R.id.singlechildlistview);
@@ -89,6 +148,7 @@ public class Childcategoru extends AppCompatActivity implements View.OnClickList
              setBhagavad();
              childCategoryAdapter=new ChildCategoryAdapter(Childcategoru.this,bhagavad);
              gridView.setAdapter(childCategoryAdapter);
+             setGridViewHeightBasedOnChildren(gridView,2);
 
 
          }
@@ -98,29 +158,33 @@ public class Childcategoru extends AppCompatActivity implements View.OnClickList
                 setPaperback();
              childCategoryAdapter=new ChildCategoryAdapter(Childcategoru.this,paperback);
              gridView.setAdapter(childCategoryAdapter);
+             setGridViewHeightBasedOnChildren(gridView,2);
          }
         else if(MainActivity.hashMap.get(arrayList.get(0).getPARENTCATEGORY()).get(2).equals(choice)){
 
              setMedia();
              childCategoryAdapter=new ChildCategoryAdapter(Childcategoru.this,media);
              gridView.setAdapter(childCategoryAdapter);
+             setGridViewHeightBasedOnChildren(gridView,2);
          }
         else if(MainActivity.hashMap.get(arrayList.get(1).getPARENTCATEGORY()).get(0).equals(choice)){
 
              setItemsofworship();
              childCategoryAdapter=new ChildCategoryAdapter(Childcategoru.this,itemsofworship);
              gridView.setAdapter(childCategoryAdapter);
+             setGridViewHeightBasedOnChildren(gridView,2);
          }
         else if(MainActivity.hashMap.get(arrayList.get(1).getPARENTCATEGORY()).get(1).equals(choice)){
              setOtheressentials();
              childCategoryAdapter=new ChildCategoryAdapter(Childcategoru.this,otheressentials);
              gridView.setAdapter(childCategoryAdapter);
-
+             setGridViewHeightBasedOnChildren(gridView,2);
          }
         else if(MainActivity.hashMap.get(arrayList.get(1).getPARENTCATEGORY()).get(2).equals(choice)){
              setBells();
              childCategoryAdapter=new ChildCategoryAdapter(Childcategoru.this,bells);
              gridView.setAdapter(childCategoryAdapter);
+             setGridViewHeightBasedOnChildren(gridView,2);
 
          }
         else if(MainActivity.hashMap.get(arrayList.get(1).getPARENTCATEGORY()).get(3).equals(choice)){
@@ -128,30 +192,35 @@ public class Childcategoru extends AppCompatActivity implements View.OnClickList
              setAgarbatti();
              childCategoryAdapter=new ChildCategoryAdapter(Childcategoru.this,agarbatti);
              gridView.setAdapter(childCategoryAdapter);
+             setGridViewHeightBasedOnChildren(gridView,2);
          }
         else if(MainActivity.hashMap.get(arrayList.get(1).getPARENTCATEGORY()).get(4).equals(choice)){
 
              setMurtis();
              childCategoryAdapter=new ChildCategoryAdapter(Childcategoru.this,murtis);
              gridView.setAdapter(childCategoryAdapter);
+             setGridViewHeightBasedOnChildren(gridView,2);
          }
         else if(MainActivity.hashMap.get(arrayList.get(2).getPARENTCATEGORY()).get(0).equals(choice)){
 
              setHomedecor();
              childCategoryAdapter=new ChildCategoryAdapter(Childcategoru.this,homedecor);
              gridView.setAdapter(childCategoryAdapter);
+             setGridViewHeightBasedOnChildren(gridView,2);
          }
         else if(MainActivity.hashMap.get(arrayList.get(2).getPARENTCATEGORY()).get(1).equals(choice)){
 
              setHomefurnishing();
              childCategoryAdapter=new ChildCategoryAdapter(Childcategoru.this,homefurnishing);
              gridView.setAdapter(childCategoryAdapter);
+             setGridViewHeightBasedOnChildren(gridView,2);
          }
         else if(MainActivity.hashMap.get(arrayList.get(2).getPARENTCATEGORY()).get(2).equals(choice))
          {
              setKitchenndinning();
              childCategoryAdapter=new ChildCategoryAdapter(Childcategoru.this,kitchenndinning);
              gridView.setAdapter(childCategoryAdapter);
+             setGridViewHeightBasedOnChildren(gridView,2);
 
          }
          else if(MainActivity.hashMap.get(arrayList.get(3).getPARENTCATEGORY()).get(0).equals(choice)){
@@ -159,35 +228,41 @@ public class Childcategoru extends AppCompatActivity implements View.OnClickList
              setPersonalcare();
              childCategoryAdapter=new ChildCategoryAdapter(Childcategoru.this,personalcare);
              gridView.setAdapter(childCategoryAdapter);
+             setGridViewHeightBasedOnChildren(gridView,2);
          }
          else if(MainActivity.hashMap.get(arrayList.get(3).getPARENTCATEGORY()).get(1).equals(choice)){
 
              setHealthandfood();
              childCategoryAdapter=new ChildCategoryAdapter(Childcategoru.this,healthandfood);
              gridView.setAdapter(childCategoryAdapter);
+             setGridViewHeightBasedOnChildren(gridView,2);
          }
          else if(MainActivity.hashMap.get(arrayList.get(3).getPARENTCATEGORY()).get(2).equals(choice)){
 
              setFashion();
              childCategoryAdapter=new ChildCategoryAdapter(Childcategoru.this,fashion);
              gridView.setAdapter(childCategoryAdapter);
+             setGridViewHeightBasedOnChildren(gridView,2);
          }
          else if(MainActivity.hashMap.get(arrayList.get(3).getPARENTCATEGORY()).get(3).equals(choice)){
 
              setWomen();
              childCategoryAdapter=new ChildCategoryAdapter(Childcategoru.this,women);
              gridView.setAdapter(childCategoryAdapter);
+             setGridViewHeightBasedOnChildren(gridView,2);
          }
          else if(MainActivity.hashMap.get(arrayList.get(3).getPARENTCATEGORY()).get(4).equals(choice)){
 
              setMen();
              childCategoryAdapter=new ChildCategoryAdapter(Childcategoru.this,men);
              gridView.setAdapter(childCategoryAdapter);
+             setGridViewHeightBasedOnChildren(gridView,2);
          }
          else if(MainActivity.hashMap.get(arrayList.get(3).getPARENTCATEGORY()).get(5).equals(choice)){
              setBags();
              childCategoryAdapter=new ChildCategoryAdapter(Childcategoru.this,bags);
              gridView.setAdapter(childCategoryAdapter);
+             setGridViewHeightBasedOnChildren(gridView,2);
 
          }
          else if(MainActivity.hashMap.get(arrayList.get(3).getPARENTCATEGORY()).get(6).equals(choice))
@@ -196,6 +271,7 @@ public class Childcategoru extends AppCompatActivity implements View.OnClickList
 
              childCategoryAdapter=new ChildCategoryAdapter(Childcategoru.this,mobile);
              gridView.setAdapter(childCategoryAdapter);
+             setGridViewHeightBasedOnChildren(gridView,2);
 
            }
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -231,6 +307,44 @@ public class Childcategoru extends AppCompatActivity implements View.OnClickList
         });
     }
 
+    private void preparePopularCategItems() {
+
+        for (int i=0;i<8;i++){
+            mPopularCategList.add(new ChildCategoryBrand(R.mipmap.ic_launcher,"Popular categ name"));
+        }
+    }
+
+    private void prepareDiscountItems() {
+       for (int i=0;i<8;i++){
+            mDiscountList.add(new ChildCategoryBrand(R.mipmap.ic_launcher,"Discount text"));
+        }
+    }
+
+    private void preparePriceItems() {
+
+        for (int i=0;i<8;i++){
+            mPriceList.add(new ChildCategoryBrand(R.mipmap.ic_launcher,"Price text in Rs"));
+        }
+    }
+
+
+
+    private void preparePublisherItems() {
+        for (int i=0;i<8;i++){
+            mPublisherList.add(new ChildCategoryBrand(R.mipmap.ic_launcher,"Publisher Name"));
+        }
+    }
+
+    private void prepareitems() {
+
+        for (int i=0;i<8;i++){
+
+            mNewLaunchList.add(new ChildCategoryBrand(R.mipmap.ic_launcher,"Brand Name"));
+        }
+
+
+    }
+
     public void inti(){
         homedecor = new ArrayList<>();
         homefurnishing = new ArrayList<>();
@@ -250,6 +364,34 @@ public class Childcategoru extends AppCompatActivity implements View.OnClickList
         otheressentials = new ArrayList<>();
         bhagavad = new ArrayList<>();
         media = new ArrayList<>();
+    }
+
+    public void setGridViewHeightBasedOnChildren(GridView gridView, int columns) {
+        ListAdapter listAdapter = gridView.getAdapter();
+        if (listAdapter == null) {
+            // pre-condition
+            return;
+        }
+
+        int totalHeight = 0;
+        int items = listAdapter.getCount();
+        int rows = 0;
+
+        View listItem = listAdapter.getView(0, null, gridView);
+        listItem.measure(0, 0);
+        totalHeight = listItem.getMeasuredHeight();
+
+        float x = 1;
+        if( items > columns ){
+            x = items/columns;
+            rows = (int) (x + 1);
+            totalHeight *= rows;
+        }
+
+        ViewGroup.LayoutParams params = gridView.getLayoutParams();
+        params.height = totalHeight;
+        gridView.setLayoutParams(params);
+
     }
 
     public void setHomedecor() {

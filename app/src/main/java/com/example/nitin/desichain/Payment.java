@@ -29,6 +29,8 @@ public class Payment extends AppCompatActivity {
         bankdeposit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
                 Intent intent=new Intent(Payment.this,BankDeposit.class);
                 startActivity(intent);
             }

@@ -13,6 +13,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ExpandableListView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -29,6 +30,7 @@ import java.util.List;
 public class MyCart extends AppCompatActivity  implements SingleCartAdapter.ListChange,View.OnClickListener{
 
     private LinearLayout mCheckoutLayout,mPlaceOrderLayout;
+    private Button checkoutBtn;
     private RecyclerView mCartRecyclerView;
     private List<SingleCart> mList;
     private SingleCartAdapter mAdapter;
@@ -63,6 +65,7 @@ public class MyCart extends AppCompatActivity  implements SingleCartAdapter.List
         mList=new ArrayList<>();
         mAdapter=new SingleCartAdapter(this,mList);
 
+        checkoutBtn=(Button)findViewById(R.id.btnCheck);
         LinearLayoutManager lm = new LinearLayoutManager(this);
         mCartRecyclerView.setLayoutManager(lm);
         mCartRecyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -78,6 +81,12 @@ public class MyCart extends AppCompatActivity  implements SingleCartAdapter.List
             }
         };
 
+        checkoutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MyCart.this,BuyNow.class));
+            }
+        });
         //drawer.setDrawerListener(toggle);
         // toggle.syncState();
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
@@ -94,13 +103,7 @@ public class MyCart extends AppCompatActivity  implements SingleCartAdapter.List
 //        mPlaceOrderLayout.setBackgroundColor(getResources().getColor(R.color.green));
 
 
-        mCheckoutLayout=(LinearLayout)findViewById(R.id.checkoutLayout);
-        mCheckoutLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MyCart.this,BuyNow.class));
-            }
-        });
+
 
         Intent intent=getIntent();
         if(intent!=null)
