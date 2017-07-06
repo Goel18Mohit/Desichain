@@ -12,10 +12,12 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ExpandableListView;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -35,8 +37,9 @@ public class RatingReviews extends AppCompatActivity  implements View.OnClickLis
     private List<RatingContent> mList;
     private RatingAdapter mAdapter;
     private Toolbar mToolbar;
-    TextView txtViewCount;
     int count=2;
+    TextView txtViewCount;
+    ImageView  toolbarcartimage;
     private Helper listView;
     View headerView;
     DrawerLayout drawer;
@@ -58,11 +61,18 @@ public class RatingReviews extends AppCompatActivity  implements View.OnClickLis
         MenuItemCompat.setActionView(menuItem,R.layout.cart_icon_for_toolbar);
         RelativeLayout mycarttoolbar= (RelativeLayout) MenuItemCompat.getActionView(menuItem);
         txtViewCount = (TextView) mycarttoolbar.findViewById(R.id.badge_notification_1);
+        toolbarcartimage= (ImageView) mycarttoolbar.findViewById(R.id.badge_notification_image);
         count++;
+        toolbarcartimage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(RatingReviews.this,MyCart.class));
+            }
+        });
         txtViewCount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                txtViewCount.setText(String.valueOf(count++));
+                startActivity(new Intent(RatingReviews.this,MyCart.class));
             }
         });
 
@@ -71,16 +81,20 @@ public class RatingReviews extends AppCompatActivity  implements View.OnClickLis
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId()==R.id.my_cart){
-            startActivity(new Intent(RatingReviews.this,MyCart.class));
+
+        switch (item.getItemId()){
+            case android.R.id.home:
+                if(drawer.isDrawerOpen(Gravity.LEFT)) {
+                    drawer.closeDrawer(Gravity.LEFT);
+                }else{
+                    drawer.openDrawer(Gravity.LEFT);
+                }
+            case R.id.search_item:
+                startActivity(new Intent(this,SearchActivity.class));
+                break;
         }
-        else if (item.getItemId()==R.id.search_item){
-            startActivity(new Intent(this,SearchActivity.class));
-        }
-        else if (item.getItemId()==android.R.id.home){
-            finish();
-        }
-        return super.onOptionsItemSelected(item);
+
+        return true;
     }
 
     @Override

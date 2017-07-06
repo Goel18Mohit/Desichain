@@ -127,7 +127,7 @@ public class MyCart extends AppCompatActivity  implements SingleCartAdapter.List
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main,menu);
-        MenuItem item = menu.findItem(R.id.menu_messages);
+        MenuItem item = menu.findItem(R.id.my_cart);
         item.setVisible(false);
         return super.onCreateOptionsMenu(menu);
     }

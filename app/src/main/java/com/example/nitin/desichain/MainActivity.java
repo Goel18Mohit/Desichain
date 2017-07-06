@@ -1,6 +1,5 @@
 package com.example.nitin.desichain;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -11,7 +10,6 @@ import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.NestedScrollView;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
@@ -180,8 +178,7 @@ public static  ArrayList<String> Books;
                 super.onDrawerOpened(drawerView);
             }
         };
-
-       drawer.setDrawerListener(toggle);
+        drawer.setDrawerListener(toggle);
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
@@ -230,7 +227,7 @@ public static  ArrayList<String> Books;
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
-        MenuItem menuItem=menu.findItem(R.id.menu_messages);
+        MenuItem menuItem=menu.findItem(R.id.my_cart);
         MenuItem item = menu.findItem(R.id.search_item);
         item.setVisible(false);
         MenuItemCompat.setActionView(menuItem,R.layout.cart_icon_for_toolbar);

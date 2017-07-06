@@ -11,6 +11,7 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -177,6 +178,7 @@ public class BuyNow extends AppCompatActivity implements View.OnClickListener,Si
         add();
     }
 
+
     private void prepareItems() {
 
         mList.add(new SingleCart(R.mipmap.ic_launcher,
@@ -225,14 +227,20 @@ public class BuyNow extends AppCompatActivity implements View.OnClickListener,Si
         switch (item.getItemId()) {
 
             case android.R.id.home:
-                finish();
-                break;
-            case R.id.my_cart:
-                startActivity(new Intent(BuyNow.this,MyCart.class));
-                break;
-            case R.id.search_item:
-                startActivity(new Intent(this,SearchActivity.class));
-                break;
+                switch (item.getItemId()){
+                    case android.R.id.home:
+                        if(drawer.isDrawerOpen(Gravity.LEFT)) {
+                            drawer.closeDrawer(Gravity.LEFT);
+                        }else{
+                            drawer.openDrawer(Gravity.LEFT);
+                        }
+                    case R.id.search_item:
+                        startActivity(new Intent(this,SearchActivity.class));
+                        break;
+                }
+
+                return true;
+
         }
 
         return super.onOptionsItemSelected(item);
