@@ -45,6 +45,7 @@ public class CategoryPage extends AppCompatActivity implements View.OnClickListe
     public static ArrayList<String> Homecare;
     public static   ArrayList<String> others;
     public  static HashMap<String,ArrayList<String>> hashMap;
+    LinearLayout subscribe;
     LinearLayout myorder,mycart,myaccount,helpcenter,ratedesichain,productPage,policy,facebook,google,twitter,pinterest,youtube,instagram,aboutus;
 
     final CharSequence[] sortoption={"Relevance","Popularity","Price Low To High","Price High To Low","Discount","Fresh Arrivals"};
@@ -385,6 +386,7 @@ public class CategoryPage extends AppCompatActivity implements View.OnClickListe
         youtube= (LinearLayout) view.findViewById(R.id.youtube);
         instagram= (LinearLayout) view.findViewById(R.id.instagram);
         aboutus= (LinearLayout) view.findViewById(R.id.aboutus);
+        subscribe= (LinearLayout) findViewById(R.id.subscribe);
         myorder.setOnClickListener(this);
         mycart.setOnClickListener(this);
         myaccount.setOnClickListener(this);
@@ -399,11 +401,12 @@ public class CategoryPage extends AppCompatActivity implements View.OnClickListe
         youtube.setOnClickListener(this);
         instagram.setOnClickListener(this);
         aboutus.setOnClickListener(this);
+        subscribe.setOnClickListener(this);
     }
 
 
     @Override
     public void onClick(View v) {
-        new Utility().openIntent(this,v.getId());
+        new Utility().openIntent(this,v.getId(),drawer);
     }
 }

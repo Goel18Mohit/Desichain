@@ -1,13 +1,13 @@
 package com.example.nitin.desichain;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,8 +20,6 @@ import com.example.nitin.desichain.Utility.Utility;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-
-import static com.example.nitin.desichain.MainActivity.arrayList;
 
 public class Filters extends AppCompatActivity implements View.OnClickListener{
 
@@ -39,6 +37,7 @@ public class Filters extends AppCompatActivity implements View.OnClickListener{
     public static ArrayList<String> Homecare;
     public static   ArrayList<String> others;
     public  static HashMap<String,ArrayList<String>> hashMap;
+    LinearLayout subscribe;
     LinearLayout myorder,mycart,myaccount,helpcenter,ratedesichain,productPage,policy,facebook,google,twitter,pinterest,youtube,instagram,aboutus;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -198,6 +197,7 @@ public class Filters extends AppCompatActivity implements View.OnClickListener{
         youtube= (LinearLayout) view.findViewById(R.id.youtube);
         instagram= (LinearLayout) view.findViewById(R.id.instagram);
         aboutus= (LinearLayout) view.findViewById(R.id.aboutus);
+        subscribe= (LinearLayout) findViewById(R.id.subscribe);
         myorder.setOnClickListener(this);
         mycart.setOnClickListener(this);
         myaccount.setOnClickListener(this);
@@ -212,12 +212,13 @@ public class Filters extends AppCompatActivity implements View.OnClickListener{
         youtube.setOnClickListener(this);
         instagram.setOnClickListener(this);
         aboutus.setOnClickListener(this);
+        subscribe.setOnClickListener(this);
     }
 
 
     @Override
     public void onClick(View v) {
-        new Utility().openIntent(this,v.getId());
+        new Utility().openIntent(this,v.getId(),drawer);
     }
 
 }

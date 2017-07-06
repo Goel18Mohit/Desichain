@@ -51,6 +51,7 @@ public class BuyNow extends AppCompatActivity implements View.OnClickListener,Si
     public static   ArrayList<String> others;
     public  static HashMap<String,ArrayList<String>> hashMap;
     LinearLayout myorder,mycart,myaccount,helpcenter,ratedesichain,productPage,policy,facebook,google,twitter,pinterest,youtube,instagram,aboutus;
+    LinearLayout subscribe;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -240,7 +241,7 @@ public class BuyNow extends AppCompatActivity implements View.OnClickListener,Si
             case R.id.newAddress:
                 startActivity(new Intent(this,AddNewAddress.class));
                 break;
-            default:new Utility().openIntent(this,v.getId());
+            default:new Utility().openIntent(this,v.getId(),drawer);
                 break;
         }
 
@@ -352,6 +353,7 @@ public class BuyNow extends AppCompatActivity implements View.OnClickListener,Si
         youtube= (LinearLayout) view.findViewById(R.id.youtube);
         instagram= (LinearLayout) view.findViewById(R.id.instagram);
         aboutus= (LinearLayout) view.findViewById(R.id.aboutus);
+        subscribe= (LinearLayout) findViewById(R.id.subscribe);
         myorder.setOnClickListener(this);
         mycart.setOnClickListener(this);
         myaccount.setOnClickListener(this);
@@ -366,6 +368,7 @@ public class BuyNow extends AppCompatActivity implements View.OnClickListener,Si
         youtube.setOnClickListener(this);
         instagram.setOnClickListener(this);
         aboutus.setOnClickListener(this);
+        subscribe.setOnClickListener(this);
     }
 
 

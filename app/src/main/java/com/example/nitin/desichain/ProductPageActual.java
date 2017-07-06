@@ -51,6 +51,7 @@ public class ProductPageActual extends AppCompatActivity implements View.OnClick
     private LinearLayout mQuesnAnswer,mReviewsLayout,mReviewsProductLayout;
     private ImageView mShareProduct,mPlusForSecImage,mPlusForThirdImage,mSecImage,mThirdImage;
 
+    LinearLayout subscribe;
     private ImageButton ADD_PRODUCT_BUTTON,MINUS_PRODUCT_BUTTON;
 
 
@@ -243,7 +244,7 @@ public class ProductPageActual extends AppCompatActivity implements View.OnClick
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
-        MenuItem menuItem=menu.findItem(R.id.menu_messages);
+        MenuItem menuItem=menu.findItem(R.id.my_cart);
         MenuItemCompat.setActionView(menuItem,R.layout.cart_icon_for_toolbar);
         RelativeLayout mycarttoolbar= (RelativeLayout) MenuItemCompat.getActionView(menuItem);
         txtViewCount = (TextView) mycarttoolbar.findViewById(R.id.badge_notification_1);
@@ -386,6 +387,7 @@ public class ProductPageActual extends AppCompatActivity implements View.OnClick
         youtube= (LinearLayout) view.findViewById(R.id.youtube);
         instagram= (LinearLayout) view.findViewById(R.id.instagram);
         aboutus= (LinearLayout) view.findViewById(R.id.aboutus);
+        subscribe= (LinearLayout) findViewById(R.id.subscribe);
         myorder.setOnClickListener(this);
         mycart.setOnClickListener(this);
         myaccount.setOnClickListener(this);
@@ -400,11 +402,12 @@ public class ProductPageActual extends AppCompatActivity implements View.OnClick
         youtube.setOnClickListener(this);
         instagram.setOnClickListener(this);
         aboutus.setOnClickListener(this);
+        subscribe.setOnClickListener(this);
     }
 
 
     @Override
     public void onClick(View v) {
-        new Utility().openIntent(this,v.getId());
+        new Utility().openIntent(this,v.getId(),drawer);
     }
 }

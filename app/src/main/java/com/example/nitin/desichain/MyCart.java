@@ -292,7 +292,7 @@ public class MyCart extends AppCompatActivity  implements SingleCartAdapter.List
 
     @Override
     public void onClick(View v) {
-        new Utility().openIntent(this,v.getId());
+        new Utility().openIntent(this,v.getId(),drawer);
     }
     @Override
     public void change() {

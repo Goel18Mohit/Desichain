@@ -9,7 +9,7 @@
         app:showAsAction="never" />
 
     <item
-        android:id="@+id/menu_messages"
+        android:id="@+id/my_cart"
         android:icon="@mipmap/cart"
         android:title="mycart"
         app:showAsAction="always" />

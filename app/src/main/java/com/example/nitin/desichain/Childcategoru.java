@@ -64,7 +64,7 @@ public class Childcategoru extends AppCompatActivity implements View.OnClickList
     public static   ArrayList<String> others;
     public  static HashMap<String,ArrayList<String>> hashMap;
     LinearLayout myorder,mycart,myaccount,helpcenter,ratedesichain,productPage,policy,facebook,google,twitter,pinterest,youtube,instagram,aboutus;
-
+    LinearLayout subscribe;
     GridView gridView;
     ChildCategoryAdapter childCategoryAdapter;
 
@@ -452,7 +452,7 @@ public class Childcategoru extends AppCompatActivity implements View.OnClickList
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
-        MenuItem menuItem=menu.findItem(R.id.menu_messages);
+        MenuItem menuItem=menu.findItem(R.id.my_cart);
         MenuItemCompat.setActionView(menuItem,R.layout.cart_icon_for_toolbar);
         RelativeLayout mycarttoolbar= (RelativeLayout) MenuItemCompat.getActionView(menuItem);
         txtViewCount = (TextView) mycarttoolbar.findViewById(R.id.badge_notification_1);
@@ -481,7 +481,7 @@ public class Childcategoru extends AppCompatActivity implements View.OnClickList
             case android.R.id.home:
                 finish();
                 break;
-            case R.id.menu_messages:
+            case R.id.my_cart:
                 startActivity(new Intent(Childcategoru.this,MyCart.class));
         }
 
@@ -605,6 +605,7 @@ public class Childcategoru extends AppCompatActivity implements View.OnClickList
         youtube= (LinearLayout) view.findViewById(R.id.youtube);
         instagram= (LinearLayout) view.findViewById(R.id.instagram);
         aboutus= (LinearLayout) view.findViewById(R.id.aboutus);
+        subscribe= (LinearLayout) findViewById(R.id.subscribe);
         myorder.setOnClickListener(this);
         mycart.setOnClickListener(this);
         myaccount.setOnClickListener(this);
@@ -619,11 +620,12 @@ public class Childcategoru extends AppCompatActivity implements View.OnClickList
         youtube.setOnClickListener(this);
         instagram.setOnClickListener(this);
         aboutus.setOnClickListener(this);
+        subscribe.setOnClickListener(this);
     }
 
 
     @Override
     public void onClick(View v) {
-        new Utility().openIntent(this,v.getId());
+        new Utility().openIntent(this,v.getId(),drawer);
     }
 }

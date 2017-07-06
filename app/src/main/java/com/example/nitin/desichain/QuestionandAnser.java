@@ -40,6 +40,7 @@ public class QuestionandAnser extends AppCompatActivity implements View.OnClickL
     public static  ArrayList<String> Books;
     public static ArrayList<String> Homecare;
     public static   ArrayList<String> others;
+    LinearLayout subscribe;
     public  static HashMap<String,ArrayList<String>> hashMap;
     LinearLayout myorder,mycart,myaccount,helpcenter,ratedesichain,productPage,policy,facebook,google,twitter,pinterest,youtube,instagram,aboutus;
 
@@ -228,6 +229,7 @@ public class QuestionandAnser extends AppCompatActivity implements View.OnClickL
         youtube= (LinearLayout) view.findViewById(R.id.youtube);
         instagram= (LinearLayout) view.findViewById(R.id.instagram);
         aboutus= (LinearLayout) view.findViewById(R.id.aboutus);
+        subscribe= (LinearLayout) findViewById(R.id.subscribe);
         myorder.setOnClickListener(this);
         mycart.setOnClickListener(this);
         myaccount.setOnClickListener(this);
@@ -242,12 +244,13 @@ public class QuestionandAnser extends AppCompatActivity implements View.OnClickL
         youtube.setOnClickListener(this);
         instagram.setOnClickListener(this);
         aboutus.setOnClickListener(this);
+        subscribe.setOnClickListener(this);
     }
 
 
     @Override
     public void onClick(View v) {
-        new Utility().openIntent(this,v.getId());
+        new Utility().openIntent(this,v.getId(),drawer);
     }
 
 }

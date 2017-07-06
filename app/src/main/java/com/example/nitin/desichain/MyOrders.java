@@ -132,7 +132,7 @@ public class MyOrders extends AppCompatActivity implements View.OnClickListener 
 
             // Inflate the menu; this adds items to the action bar if it is present.
             getMenuInflater().inflate(R.menu.main, menu);
-            MenuItem menuItem=menu.findItem(R.id.menu_messages);
+            MenuItem menuItem=menu.findItem(R.id.my_cart);
             MenuItemCompat.setActionView(menuItem,R.layout.cart_icon_for_toolbar);
             RelativeLayout mycarttoolbar= (RelativeLayout) MenuItemCompat.getActionView(menuItem);
             txtViewCount = (TextView) mycarttoolbar.findViewById(R.id.badge_notification_1);
@@ -283,7 +283,7 @@ public class MyOrders extends AppCompatActivity implements View.OnClickListener 
 
     @Override
     public void onClick(View v) {
-        new Utility().openIntent(this, v.getId());
+        new Utility().openIntent(this, v.getId(),drawer);
     }
 
 

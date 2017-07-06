@@ -50,7 +50,7 @@ public class Policy extends AppCompatActivity implements View.OnClickListener {
     public static int SHIPPING_FLAG =0;
     final ShippingPolicy shippingPolicy=new ShippingPolicy();
     LinearLayout myorder,mycart,myaccount,helpcenter,ratedesichain,productPage,policy,facebook,google,twitter,pinterest,youtube,instagram,aboutus;
-
+    LinearLayout subscribe;
     public TextView textView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -197,7 +197,7 @@ public class Policy extends AppCompatActivity implements View.OnClickListener {
                 break;
 
             default:
-                new Utility().openIntent(this,v.getId());
+                new Utility().openIntent(this,v.getId(),drawer);
                 break;
         }
 
@@ -316,6 +316,7 @@ public class Policy extends AppCompatActivity implements View.OnClickListener {
         youtube= (LinearLayout) view.findViewById(R.id.youtube);
         instagram= (LinearLayout) view.findViewById(R.id.instagram);
         aboutus= (LinearLayout) view.findViewById(R.id.aboutus);
+        subscribe= (LinearLayout) findViewById(R.id.subscribe);
         myorder.setOnClickListener(this);
         mycart.setOnClickListener(this);
         myaccount.setOnClickListener(this);
@@ -330,6 +331,7 @@ public class Policy extends AppCompatActivity implements View.OnClickListener {
         youtube.setOnClickListener(this);
         instagram.setOnClickListener(this);
         aboutus.setOnClickListener(this);
+        subscribe.setOnClickListener(this);
     }
 
 
