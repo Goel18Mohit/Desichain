@@ -129,7 +129,7 @@ public class MyAddress extends AppCompatActivity implements AddressAdapter.SaveA
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.my_cart_menu,menu);
+        getMenuInflater().inflate(R.menu.main,menu);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -139,7 +139,9 @@ public class MyAddress extends AppCompatActivity implements AddressAdapter.SaveA
 
             startActivity(new Intent(MyAddress.this,MyCart.class));
         }
-
+        else if (item.getItemId()==R.id.search_item){
+            startActivity(new Intent(this,SearchActivity.class));
+        }
         if (item.getItemId() == android.R.id.home){
 
             finish();

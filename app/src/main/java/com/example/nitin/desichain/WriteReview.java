@@ -68,8 +68,11 @@ public class WriteReview extends AppCompatActivity implements View.OnClickListen
         if (item.getItemId()==R.id.my_cart){
             startActivity(new Intent(this,MyCart.class));
         }
-        if (item.getItemId()==android.R.id.home){
+        else if (item.getItemId()==android.R.id.home){
             finish();
+        }
+        else if (item.getItemId()==R.id.search_item){
+            startActivity(new Intent(this,SearchActivity.class));
         }
         return super.onOptionsItemSelected(item);
     }

@@ -50,7 +50,6 @@
                     <com.example.nitin.desichain.Helper
                         android:layout_width="match_parent"
                         android:divider="@null"
-                        android:background="?android:attr/selectableItemBackground"
                         android:layout_height="match_parent"
                         android:nestedScrollingEnabled="true"
                         android:id="@+id/parentcategoryList"
@@ -78,10 +77,8 @@
                         android:layout_weight="1"
                         android:clickable="true"
                         android:id="@+id/myorders"
-                        android:background="?android:attr/selectableItemBackground"
                         android:orientation="horizontal"
                         android:weightSum="4">
-
                         <ImageView
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
@@ -95,11 +92,11 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="3"
                             android:paddingLeft="15dp"
-                            android:paddingBottom="5dp"
                             android:paddingTop="5dp"
-                            android:id="@+id/myordertext"
+                            android:paddingBottom="5dp"
                             android:textSize="15sp"
                             android:textColor="#000000"
+                            android:id="@+id/myordertext"
                             android:text="My Orders"/>
 
                     </LinearLayout>
@@ -109,7 +106,6 @@
                         android:layout_height="0dp"
                         android:layout_weight="1"
                         android:clickable="true"
-                        android:background="?android:attr/selectableItemBackground"
                         android:id="@+id/mycart"
                         android:orientation="horizontal"
                         android:weightSum="4">
@@ -141,7 +137,6 @@
                         android:layout_height="0dp"
                         android:layout_weight="1"
                         android:clickable="true"
-                        android:background="?android:attr/selectableItemBackground"
                         android:id="@+id/myProductLayout"
                         android:orientation="horizontal"
                         android:weightSum="4">
@@ -174,7 +169,6 @@
                         android:layout_weight="1"
                         android:clickable="true"
                         android:id="@+id/myaccount"
-                        android:background="?android:attr/selectableItemBackground"
                         android:orientation="horizontal"
                         android:weightSum="4">
 
@@ -204,7 +198,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:background="?android:attr/selectableItemBackground"
                         android:clickable="true"
                         android:id="@+id/helpcenter"
                         android:orientation="horizontal"
@@ -236,7 +229,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:background="?android:attr/selectableItemBackground"
                         android:id="@+id/ratedesichain"
                         android:clickable="true"
                         android:orientation="horizontal"
@@ -247,7 +239,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:padding="5dp"
-                            android:src="@mipmap/ic_credit_card_black_24dp"
+                            android:src="@mipmap/rate"
                             android:id="@+id/myrateimage"/>
 
                         <TextView
@@ -269,7 +261,6 @@
                         android:clickable="true"
                         android:id="@+id/policy"
                         android:layout_weight="1"
-                        android:background="?android:attr/selectableItemBackground"
                         android:orientation="horizontal"
                         android:weightSum="4">
 
@@ -279,7 +270,7 @@
                             android:layout_weight="1"
                             android:padding="5dp"
                             android:src="@mipmap/policy"
-                            android:id="@+id/mypolicyimage"/>
+                            android:id="@+id/mypolicyimage" />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -312,7 +303,6 @@
                         android:layout_weight="1"
                         android:clickable="true"
                         android:id="@+id/facebook"
-                        android:background="?android:attr/selectableItemBackground"
                         android:orientation="horizontal"
                         android:weightSum="4">
 
@@ -341,7 +331,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:clickable="true"
-                        android:background="?android:attr/selectableItemBackground"
                         android:id="@+id/googleplus"
                         android:layout_weight="1"
                         android:orientation="horizontal"
@@ -373,7 +362,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:background="?android:attr/selectableItemBackground"
                         android:id="@+id/twitter"
                         android:clickable="true"
                         android:orientation="horizontal"
@@ -384,7 +372,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:padding="5dp"
-                            android:src="@mipmap/ic_credit_card_black_24dp"
+                            android:src="@mipmap/twitter"
                             android:id="@+id/twitterimage"/>
 
                         <TextView
@@ -406,7 +394,6 @@
                         android:layout_weight="1"
                         android:clickable="true"
                         android:id="@+id/pinterest"
-                        android:background="?android:attr/selectableItemBackground"
                         android:orientation="horizontal"
                         android:weightSum="4">
 
@@ -415,7 +402,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:padding="5dp"
-                            android:src="@mipmap/ic_credit_card_black_24dp"
+                            android:src="@mipmap/pin"
                             android:id="@+id/pinterestimage"/>
 
                         <TextView
@@ -438,7 +425,6 @@
                         android:layout_weight="1"
                         android:id="@+id/youtube"
                         android:clickable="true"
-                        android:background="?android:attr/selectableItemBackground"
                         android:orientation="horizontal"
                         android:weightSum="4">
 
@@ -447,7 +433,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:padding="5dp"
-                            android:src="@mipmap/ic_credit_card_black_24dp"
+                            android:src="@mipmap/youtube"
                             android:id="@+id/youtubeimage"/>
 
                         <TextView
@@ -468,7 +454,6 @@
                         android:layout_height="0dp"
                         android:layout_weight="1"
                         android:clickable="true"
-                        android:background="?android:attr/selectableItemBackground"
                         android:id="@+id/instagram"
                         android:orientation="horizontal"
                         android:weightSum="4">
@@ -506,10 +491,18 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:background="?android:attr/selectableItemBackground"
                         android:clickable="true"
                         android:orientation="horizontal"
                         android:id="@+id/aboutus">
+
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:padding="5dp"
+                            android:src="@mipmap/about_us"
+                            android:id="@+id/aboutUsImage"/>
+
 
                         <TextView
                             android:layout_width="match_parent"
@@ -519,6 +512,7 @@
                             android:textColor="#000000"
                             android:textSize="15sp"/>
                     </LinearLayout>
+
 
                     <View
                         android:layout_width="match_parent"
@@ -540,7 +534,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:padding="5dp"
-                            android:src="@mipmap/about_us"
+                            android:src="@mipmap/newsletter"
                             android:id="@+id/subscribimage"/>
 
 
@@ -552,6 +546,7 @@
                             android:textColor="#000000"
                             android:textSize="15sp"/>
                     </LinearLayout>
+
                 </LinearLayout>
             </android.support.v4.widget.NestedScrollView>
         </LinearLayout>

@@ -31,10 +31,10 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
-                    android:src="@mipmap/ic_security_black_24dp"
+                    android:src="@mipmap/veg"
                     android:layout_gravity="center"/>
 
                 <TextView
@@ -91,10 +91,10 @@
 
 
                 <ImageView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
-                    android:src="@mipmap/ic_payment_black_24dp"
+                    android:src="@mipmap/secure_payment"
                     android:layout_gravity="center"/>
 
                 <TextView
@@ -132,7 +132,7 @@
 
 
                     <ImageView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
                         android:src="@mipmap/genuine_product"
@@ -160,16 +160,15 @@
 
 
                     <ImageView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:src="@mipmap/ic_payment_black_24dp"
+                        android:src="@mipmap/make_in_india"
                         android:layout_gravity="center"/>
 
                     <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
                         android:text="MakeInIndia"
                         android:textAlignment="center"/>
 
@@ -189,16 +188,15 @@
 
 
                     <ImageView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:src="@mipmap/ic_payment_black_24dp"
+                        android:src="@mipmap/no_leather"
                         android:layout_gravity="center"/>
 
                     <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
                         android:text="No Leather Products"
                         android:textAlignment="center"/>
 

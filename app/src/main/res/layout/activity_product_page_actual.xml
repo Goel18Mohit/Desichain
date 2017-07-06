@@ -26,6 +26,7 @@
 
     </FrameLayout>
 
+
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view"
         android:layout_width="wrap_content"
@@ -82,7 +83,6 @@
                         android:id="@+id/myorders"
                         android:orientation="horizontal"
                         android:weightSum="4">
-
                         <ImageView
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
@@ -95,11 +95,12 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="3"
-                            android:paddingBottom="5dp"
+                            android:paddingLeft="15dp"
                             android:paddingTop="5dp"
-                            android:id="@+id/myordertext"
+                            android:paddingBottom="5dp"
                             android:textSize="15sp"
                             android:textColor="#000000"
+                            android:id="@+id/myordertext"
                             android:text="My Orders"/>
 
                     </LinearLayout>
@@ -273,12 +274,13 @@
                             android:layout_weight="1"
                             android:padding="5dp"
                             android:src="@mipmap/policy"
-                            android:id="@+id/mypolicyimage"/>
+                            android:id="@+id/mypolicyimage" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="3"
+                            android:paddingLeft="15dp"
                             android:paddingTop="5dp"
                             android:paddingBottom="5dp"
                             android:textSize="15sp"
@@ -515,6 +517,7 @@
                             android:textSize="15sp"/>
                     </LinearLayout>
 
+
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="0.2dp"
@@ -535,7 +538,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:padding="5dp"
-                            android:src="@mipmap/about_us"
+                            android:src="@mipmap/newsletter"
                             android:id="@+id/subscribimage"/>
 
 
@@ -547,6 +550,7 @@
                             android:textColor="#000000"
                             android:textSize="15sp"/>
                     </LinearLayout>
+
                 </LinearLayout>
             </android.support.v4.widget.NestedScrollView>
         </LinearLayout>

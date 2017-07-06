@@ -43,23 +43,23 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
-            <com.example.nitin.desichain.Helper
-                android:layout_width="match_parent"
-                android:divider="@null"
-                android:layout_height="match_parent"
-                android:nestedScrollingEnabled="true"
-                android:id="@+id/parentcategoryList"
-                android:groupIndicator="@null"
+                    <com.example.nitin.desichain.Helper
+                        android:layout_width="match_parent"
+                        android:divider="@null"
+                        android:layout_height="match_parent"
+                        android:nestedScrollingEnabled="true"
+                        android:id="@+id/parentcategoryList"
+                        android:groupIndicator="@null"
 
-               ></com.example.nitin.desichain.Helper>
+                        ></com.example.nitin.desichain.Helper>
 
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.2dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:background="#C0C0C0"/>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.2dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="#C0C0C0"/>
 
                     <TextView
                         android:layout_width="match_parent"
@@ -75,7 +75,6 @@
                         android:id="@+id/myorders"
                         android:orientation="horizontal"
                         android:weightSum="4">
-
                         <ImageView
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
@@ -84,16 +83,17 @@
                             android:src="@mipmap/order"
                             android:id="@+id/myorderimage"/>
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="3"
-                        android:paddingBottom="5dp"
-                        android:paddingTop="5dp"
-                        android:id="@+id/myordertext"
-                        android:textSize="15sp"
-                        android:textColor="#000000"
-                        android:text="My Orders"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:paddingLeft="15dp"
+                            android:paddingTop="5dp"
+                            android:paddingBottom="5dp"
+                            android:textSize="15sp"
+                            android:textColor="#000000"
+                            android:id="@+id/myordertext"
+                            android:text="My Orders"/>
 
                     </LinearLayout>
 
@@ -266,12 +266,13 @@
                             android:layout_weight="1"
                             android:padding="5dp"
                             android:src="@mipmap/policy"
-                            android:id="@+id/mypolicyimage"/>
+                            android:id="@+id/mypolicyimage" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="3"
+                            android:paddingLeft="15dp"
                             android:paddingTop="5dp"
                             android:paddingBottom="5dp"
                             android:textSize="15sp"
@@ -326,7 +327,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:clickable="true"
-                            android:id="@+id/googleplus"
+                        android:id="@+id/googleplus"
                         android:layout_weight="1"
                         android:orientation="horizontal"
                         android:weightSum="4">
@@ -482,31 +483,31 @@
                         android:layout_marginBottom="10dp"
                         android:background="#C0C0C0"/>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:clickable="true"
-                    android:orientation="horizontal"
-                    android:id="@+id/aboutus">
-
-                    <ImageView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:padding="5dp"
-                        android:src="@mipmap/about_us"
-                        android:id="@+id/aboutUsImage"/>
-
-
-                    <TextView
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:text="About Us"
-                        android:textColor="#000000"
-                        android:textSize="15sp"/>
-                     </LinearLayout>
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:orientation="horizontal"
+                        android:id="@+id/aboutus">
+
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:padding="5dp"
+                            android:src="@mipmap/about_us"
+                            android:id="@+id/aboutUsImage"/>
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:text="About Us"
+                            android:textColor="#000000"
+                            android:textSize="15sp"/>
+                    </LinearLayout>
 
 
                     <View
@@ -529,7 +530,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:padding="5dp"
-                            android:src="@mipmap/about_us"
+                            android:src="@mipmap/newsletter"
                             android:id="@+id/subscribimage"/>
 
 
@@ -542,8 +543,8 @@
                             android:textSize="15sp"/>
                     </LinearLayout>
 
-        </LinearLayout>
-        </android.support.v4.widget.NestedScrollView>
+                </LinearLayout>
+            </android.support.v4.widget.NestedScrollView>
         </LinearLayout>
 
 

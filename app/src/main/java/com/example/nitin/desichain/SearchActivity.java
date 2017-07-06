@@ -31,6 +31,7 @@ public class SearchActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(false);
+        invalidateOptionsMenu();
         listView= (ListView) findViewById(R.id.previoussearched);
         PREVIOUS_SEARCHED=new ArrayList<>();
         PREVIOUS_SEARCHED.add("BOOKS");
@@ -82,7 +83,9 @@ SearchAdapter mAdapter = new SearchAdapter(PREVIOUS_SEARCHED,this);
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
-        MenuItem menuItem=menu.findItem(R.id.my_cart);
+        MenuItem menuItem=menu.findItem(R.id.menu_messages);
+        MenuItem item = menu.findItem(R.id.search_item);
+        item.setVisible(false);
         MenuItemCompat.setActionView(menuItem,R.layout.cart_icon_for_toolbar);
         RelativeLayout mycarttoolbar= (RelativeLayout) MenuItemCompat.getActionView(menuItem);
         txtViewCount = (TextView) mycarttoolbar.findViewById(R.id.badge_notification_1);

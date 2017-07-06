@@ -10,6 +10,7 @@ import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ExpandableListView;
@@ -103,6 +104,13 @@ public class Policy extends AppCompatActivity implements View.OnClickListener {
 
     }
 
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
 
 
 
@@ -211,6 +219,8 @@ public class Policy extends AppCompatActivity implements View.OnClickListener {
             case android.R.id.home:
                 finish();
                 break;
+            case R.id.search_item:
+                startActivity(new Intent(this,SearchActivity.class));
         }
 
         return true;

@@ -94,7 +94,7 @@ public class FullOrder extends AppCompatActivity implements View.OnClickListener
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.my_cart_menu,menu);
+        getMenuInflater().inflate(R.menu.main,menu);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -103,7 +103,9 @@ public class FullOrder extends AppCompatActivity implements View.OnClickListener
         if (item.getItemId()== R.id.my_cart){
             startActivity(new Intent(FullOrder.this,MyCart.class));
         }
-
+        else if (item.getItemId()==R.id.search_item){
+            startActivity(new Intent(this,SearchActivity.class));
+        }
         if (item.getItemId()==android.R.id.home){
             finish();
         }
@@ -243,6 +245,7 @@ public class FullOrder extends AppCompatActivity implements View.OnClickListener
         aboutus.setOnClickListener(this);
         subscribe.setOnClickListener(this);
     }
+
 
 
     @Override
