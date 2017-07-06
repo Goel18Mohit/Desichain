@@ -167,7 +167,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:id="@+id/dialler_call"
-                android:src="@mipmap/ic_call_black_24dp"
+                android:src="@mipmap/call"
                 android:layout_weight="1"/>
 
             <LinearLayout
@@ -211,7 +211,8 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:id="@+id/textMessage"
-                android:src="@mipmap/ic_message_black_24dp"
+                android:src="@mipmap/message"
+                android:layout_marginRight="8dp"
                 android:layout_weight="1"/>
         </LinearLayout>
 
@@ -223,7 +224,6 @@
         android:minHeight="150dp"
         android:id="@+id/card_email"
         android:clickable="true"
-        android:foreground="?android:attr/selectableItemBackgroundBorderless"
         android:layout_below="@+id/card_customer_care"
         app:cardElevation="10dp"
         android:layout_margin="3dp">
@@ -269,7 +269,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minHeight="150dp"
-        android:foreground="?android:attr/selectableItemBackgroundBorderless"
         android:id="@+id/card_our_location"
         android:layout_below="@+id/card_email"
         app:cardElevation="10dp"
@@ -316,7 +315,6 @@ New Delhi-110005"/>
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/card_bulk_order_enquiry"
-        android:foreground="?android:attr/selectableItemBackgroundBorderless"
         android:layout_below="@+id/card_our_location"
         app:cardElevation="10dp"
         android:minHeight="150dp"
@@ -332,7 +330,7 @@ New Delhi-110005"/>
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:src="@mipmap/mail"/>
+                android:src="@mipmap/bulk"/>
 
             <LinearLayout
                 android:layout_width="0dp"

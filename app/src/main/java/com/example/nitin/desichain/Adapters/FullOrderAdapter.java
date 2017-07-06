@@ -1,6 +1,7 @@
 package com.example.nitin.desichain.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 
 import com.example.nitin.desichain.Contents.FullOrderContent;
 import com.example.nitin.desichain.R;
+import com.example.nitin.desichain.WriteReview;
 
 import java.util.List;
 
@@ -41,6 +43,12 @@ public class FullOrderAdapter extends RecyclerView.Adapter<FullOrderAdapter.MyVi
         holder.mProductText.setText(mFullOrderContent.getmProductName());
         holder.mBrandText.setText(mFullOrderContent.getmBrandName());
         holder.mQtyText.setText(String.valueOf(mFullOrderContent.getmQty()));
+        holder.mRateReviewText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mContext.startActivity(new Intent(mContext, WriteReview.class));
+            }
+        });
     }
 
     @Override
@@ -50,11 +58,12 @@ public class FullOrderAdapter extends RecyclerView.Adapter<FullOrderAdapter.MyVi
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView mBrandText,mProductText,mCostText,mQtyText;
+        private TextView mBrandText,mProductText,mCostText,mQtyText,mRateReviewText;
 
         public MyViewHolder(View view) {
             super(view);
 
+            mRateReviewText=(TextView)view.findViewById(R.id.rateReviewText);
             mBrandText=(TextView)view.findViewById(R.id.productBrand);
             mProductText=(TextView)view.findViewById(R.id.product_Name);
             mCostText=(TextView)view.findViewById(R.id.product_Cost);

@@ -41,6 +41,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hapticFeedbackEnabled="false"
+                    android:maxLength="6"
                     android:hint="Pincode*"
                     android:inputType="number"
                     android:singleLine="true" />
@@ -88,21 +89,19 @@
                     android:inputType="text"
                     android:singleLine="true" />
             </android.support.design.widget.TextInputLayout>
-
+<!--
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:orientation="horizontal">
-
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="3"
+                    android:gravity="center"
                     android:text="Select Your State"
-                    android:textColor="@color/black"
-                    android:textAlignment="center"
-                    android:gravity="center"/>
+                    android:textColor="@color/black"/>
 
 
                 <Spinner
@@ -112,6 +111,17 @@
                     android:id="@+id/spinner_select_state"/>
 
             </LinearLayout>
+-->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="16dp"
+                android:layout_weight="1">
+            <Spinner
+                android:id="@+id/spinner_select_state"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+            </FrameLayout>
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
@@ -122,6 +132,7 @@
                     android:id="@+id/edit_mobile"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:maxLength="10"
                     android:hapticFeedbackEnabled="false"
                     android:hint="Mobile*"
                     android:inputType="number"

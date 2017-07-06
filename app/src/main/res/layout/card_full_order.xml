@@ -13,7 +13,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="234dp"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <LinearLayout
@@ -79,7 +79,8 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="Quantity:"
-                            android:textAlignment="textEnd" />
+                            android:textAlignment="textEnd"
+                            />
 
                         <TextView
                             android:id="@+id/productQty"
@@ -105,21 +106,17 @@
                 android:layout_height="2dp"
                 android:background="#C0C0C0" />
 
-            <RatingBar
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:numStars="5"
-
-                />
-
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingBottom="5dp"
-                android:text="Rate your purchase"
-                android:textSize="20sp"
-                android:textColor="@color/black"
+                android:clickable="true"
+                android:id="@+id/rateReviewText"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:text="Rate and Review this product"
+                android:textSize="16sp"
+                android:textColor="@android:color/holo_blue_light"
                 android:textAlignment="center" />
         </LinearLayout>
     </android.support.v7.widget.CardView>

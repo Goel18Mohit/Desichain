@@ -1,13 +1,19 @@
 package com.example.nitin.desichain;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.MenuItemCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -18,12 +24,15 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.nitin.desichain.Adapters.CustomViewpagerAdapter;
 import com.example.nitin.desichain.Adapters.ProductHorizontalAdapter;
-import com.example.nitin.desichain.Contents.Advertisements;
 import com.example.nitin.desichain.Contents.ProductHorizontal;
 import com.example.nitin.desichain.SubCategoryList.ShowCategoryAdapeter;
 import com.example.nitin.desichain.Utility.Utility;
@@ -31,36 +40,71 @@ import com.example.nitin.desichain.Utility.Utility;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
+    private int currentPage = 0;
+    Timer timer;
+    final long DELAY_MS = 500;
+    final long PERIOD_MS = 3000;
     private Helper listView;
     public  static ArrayList<CategoryHolder> arrayList;
 public static  ArrayList<String> Books;
-    private List<Advertisements> mPics;
     private CardView cardView;
-
+    private NestedScrollView mNestedScrollView;
  public static ArrayList<String> Poojaitem;
     DrawerLayout drawer;
     NestedScrollView nestedScrollView;
+    TextView txtViewCount;
   public static ArrayList<String> Homecare;
+    int count=2;
+    private ViewPager viewPager;
+    private CustomViewpagerAdapter mAdapter;
+    private int images[] = {R.drawable.hitkary_small,
+                            R.drawable.hitkary2_small};
   public static   ArrayList<String> others;
       public  static HashMap<String,ArrayList<String>> hashMap;
     View headerView;
     private RecyclerView mLatestProductView,mBrandStudioView, mTopTenGameView,mTopTenGameView2, mFeaturedProductView,mAdvertisementView,mBestSellingView;
     private List<ProductHorizontal> mProductsList;
     private ProductHorizontalAdapter mLatestProductAdapter,mBrandStudioAdapter, mTopTenGameAdapter,mTopTenGameAdapter2, mFeaturedProductAdapter,mAdvertisementAdapter,mBestSellingProductAdapter;
-    LinearLayout myorder,mycart,myaccount,helpcenter,ratedesichain,productPage,policy,facebook,google,twitter,pinterest,youtube,instagram,aboutus;
+    LinearLayout myorder,mycart,myaccount,helpcenter,ratedesichain,productPage,policy,facebook,google,twitter,pinterest,youtube,instagram,aboutus,subscribe;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar)findViewById(R.id.my_toolBar);
         setSupportActionBar(toolbar);
+        
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         final ActionBar ab = getSupportActionBar();
+        mNestedScrollView=(NestedScrollView)findViewById(R.id.content_main);
+        mNestedScrollView.setFillViewport(true);
         cardView= (CardView) findViewById(R.id.searchproduct);
+        viewPager=(ViewPager)findViewById(R.id.viewpager);
+        mAdapter=new CustomViewpagerAdapter(this,images);
+        viewPager.setAdapter(mAdapter);
+        final Handler handler = new Handler();
+        final Runnable update = new Runnable() {
+            @Override
+            public void run() {
+                if (currentPage==2){
+                    currentPage=0;
+                }
+                viewPager.setCurrentItem(currentPage++,true);
+            }
+        };
+
+        timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                handler.post(update);
+            }
+        },DELAY_MS,PERIOD_MS);
 
 
         mLatestProductView =(RecyclerView)findViewById(R.id.LatestProductRecyclerView);
@@ -68,27 +112,21 @@ public static  ArrayList<String> Books;
         mLatestProductAdapter = new ProductHorizontalAdapter(MainActivity.this,mProductsList);
         LinearLayoutManager lm =new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
         mLatestProductView.setLayoutManager(lm);
+        mLatestProductView.setFocusable(false);
         mLatestProductView.setItemAnimator(new DefaultItemAnimator());
         mLatestProductView.setAdapter(mLatestProductAdapter);
-        mLatestProductView.setScrollBarSize(0);
-
-        mPics=new ArrayList<>();
-        mAdvertisementView=(RecyclerView)findViewById(R.id.advertisemntRecyclerView);
-        mAdvertisementAdapter=new ProductHorizontalAdapter(this,mProductsList);
-        LinearLayoutManager lm3 = new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,true);
-        mAdvertisementView.setLayoutManager(lm3);
-        mAdvertisementView.setItemAnimator(new DefaultItemAnimator());
-        mAdvertisementView.setAdapter(mAdvertisementAdapter);
-        mAdvertisementView.setScrollBarSize(0);
-
-    //    addAdvertisment();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            mLatestProductView.setScrollBarSize(0);
+        }
 
         mBrandStudioView=(RecyclerView)findViewById(R.id.brandStudioRecyclerView);
         mBrandStudioAdapter=new ProductHorizontalAdapter(this,mProductsList);
         LinearLayoutManager lm6 = new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,true);
         mBrandStudioView.setLayoutManager(lm6);
         mBrandStudioView.setItemAnimator(new DefaultItemAnimator());
-        mBrandStudioView.setScrollBarSize(0);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            mBrandStudioView.setScrollBarSize(0);
+        }
         mBrandStudioView.setAdapter(mBrandStudioAdapter);
         mBrandStudioView.addOnItemTouchListener(new RecyclerItemClickListener(this, new RecyclerItemClickListener.OnItemClickListener() {
             @Override
@@ -125,7 +163,9 @@ public static  ArrayList<String> Books;
         LinearLayoutManager lm4 = new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,true);
         mBestSellingView.setLayoutManager(lm4);
         mBestSellingView.setItemAnimator(new DefaultItemAnimator());
-        mBestSellingView.setScrollBarSize(0);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            mBestSellingView.setScrollBarSize(0);
+        }
         mBestSellingView.setAdapter(mBestSellingProductAdapter);
 
 
@@ -143,7 +183,7 @@ public static  ArrayList<String> Books;
             }
         };
 
-        drawer.setDrawerListener(toggle);
+       drawer.setDrawerListener(toggle);
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
@@ -168,16 +208,13 @@ public static  ArrayList<String> Books;
     private void prepareItems() {
 
 
-        mProductsList.add(new ProductHorizontal("MICROMAX SPARK VDEO(8GB) 4G VOLTE","Rs. 50000",R.mipmap.ic_launcher, "4.0","12"));
-        mProductsList.add(new ProductHorizontal("MICROMAX SPARK VDEO(8GB) 4G VOLTE","Rs. 50000",R.mipmap.ic_launcher, "4.0","12"));
-        mProductsList.add(new ProductHorizontal("MICROMAX SPARK VDEO(8GB) 4G VOLTE","Rs. 50000",R.mipmap.ic_launcher, "4.0","12"));
-        mProductsList.add(new ProductHorizontal("MICROMAX SPARK VDEO(8GB) 4G VOLTE","Rs. 50000",R.mipmap.ic_launcher, "4.0","12"));
-        mProductsList.add(new ProductHorizontal("MICROMAX SPARK VDEO(8GB) 4G VOLTE","Rs. 50000",R.mipmap.ic_launcher, "4.0","12"));
-        mProductsList.add(new ProductHorizontal("MICROMAX SPARK VDEO(8GB) 4G VOLTE","Rs. 50000",R.mipmap.ic_launcher, "4.0","12"));
-        mProductsList.add(new ProductHorizontal("MICROMAX SPARK VDEO(8GB) 4G VOLTE","Rs. 50000",R.mipmap.ic_launcher, "4.0","12"));
-        mProductsList.add(new ProductHorizontal("MICROMAX SPARK VDEO(8GB) 4G VOLTE","Rs. 50000",R.mipmap.ic_launcher, "4.0","12"));
-        mProductsList.add(new ProductHorizontal("MICROMAX SPARK VDEO(8GB) 4G VOLTE","Rs. 50000",R.mipmap.ic_launcher, "4.0","12"));
-        mProductsList.add(new ProductHorizontal("MICROMAX SPARK VDEO(8GB) 4G VOLTE","Rs. 50000",R.mipmap.ic_launcher, "4.0","12"));
+        mProductsList.add(new ProductHorizontal("MICROMAX SPARK VDEO(8GB) 4G VOLTE","Rs. 50000",R.mipmap.ic_launcher, "(12)","4.0"));
+        mProductsList.add(new ProductHorizontal("MICROMAX SPARK VDEO(8GB) 4G VOLTE","Rs. 50000",R.mipmap.ic_launcher, "(12)","4.0"));
+        mProductsList.add(new ProductHorizontal("MICROMAX SPARK VDEO(8GB) 4G VOLTE","Rs. 50000",R.mipmap.ic_launcher, "(12)","4.0"));
+        mProductsList.add(new ProductHorizontal("MICROMAX SPARK VDEO(8GB) 4G VOLTE","Rs. 50000",R.mipmap.ic_launcher, "(12)","4.0"));
+        mProductsList.add(new ProductHorizontal("MICROMAX SPARK VDEO(8GB) 4G VOLTE","Rs. 50000",R.mipmap.ic_launcher, "(12)","4.0"));
+        mProductsList.add(new ProductHorizontal("MICROMAX SPARK VDEO(8GB) 4G VOLTE","Rs. 50000",R.mipmap.ic_launcher, "(12)","4.0"));
+        mProductsList.add(new ProductHorizontal("MICROMAX SPARK VDEO(8GB) 4G VOLTE","Rs. 50000",R.mipmap.ic_launcher, "(12)","4.0"));
 
     }
 
@@ -195,8 +232,37 @@ public static  ArrayList<String> Books;
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
+        MenuItem menuItem=menu.findItem(R.id.menu_messages);
+        MenuItemCompat.setActionView(menuItem,R.layout.cart_icon_for_toolbar);
+       RelativeLayout mycarttoolbar= (RelativeLayout) MenuItemCompat.getActionView(menuItem);
+      txtViewCount = (TextView) mycarttoolbar.findViewById(R.id.badge_notification_1);
+      count++;
+        txtViewCount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                txtViewCount.setText(String.valueOf(count++));
+            }
+        });
+
         return true;
     }
+
+   /* public void updateHotCount(final int new_hot_number) {
+        count = new_hot_number;
+        if (count < 0) return;
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                if (count == 0)
+                    txtViewCount.setVisibility(View.GONE);
+                else {
+                    txtViewCount.setVisibility(View.VISIBLE);
+                    txtViewCount.setText(Integer.toString(count));
+                    // supportInvalidateOptionsMenu();
+                }
+            }
+        });
+    }*/
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -234,7 +300,7 @@ public static  ArrayList<String> Books;
     {
         arrayList.add(new CategoryHolder("Book and media",0,R.mipmap.book));
         arrayList.add(new CategoryHolder("Pooja Item",0,R.mipmap.pooja));
-        arrayList.add(new CategoryHolder("Home Care",0,R.mipmap.ic_credit_card_black_24dp));
+        arrayList.add(new CategoryHolder("Home Care",0,R.mipmap.homecare));
         arrayList.add(new CategoryHolder("Others",0,R.mipmap.other));
         Books.add("Bhagavad-Gita As It Is");
         Books.add("Paperback/ Hardbound");
@@ -330,6 +396,7 @@ public static  ArrayList<String> Books;
         youtube= (LinearLayout) view.findViewById(R.id.youtube);
         instagram= (LinearLayout) view.findViewById(R.id.instagram);
         aboutus= (LinearLayout) view.findViewById(R.id.aboutus);
+        subscribe= (LinearLayout) findViewById(R.id.subscribe);
             myorder.setOnClickListener(this);
         mycart.setOnClickListener(this);
         myaccount.setOnClickListener(this);
@@ -344,6 +411,44 @@ public static  ArrayList<String> Books;
         youtube.setOnClickListener(this);
         instagram.setOnClickListener(this);
         aboutus.setOnClickListener(this);
+        subscribe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(drawer.isDrawerOpen(Gravity.LEFT)) {
+                    drawer.closeDrawer(Gravity.LEFT);
+                }
+                AlertDialog.Builder builder=new AlertDialog.Builder(MainActivity.this);
+                builder.setTitle("Enter The Email");
+                final EditText USER_EMAIL_SUBSCRIBE=new EditText(MainActivity.this);
+                builder.setView(USER_EMAIL_SUBSCRIBE);
+                builder.setPositiveButton("Submit", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        if(USER_EMAIL_SUBSCRIBE.getText().toString().equals(""))
+                        {
+
+                            Toast.makeText(MainActivity.this,"",Toast.LENGTH_SHORT).show();
+                        }
+                        else {
+                            dialog.dismiss();
+                            Toast.makeText(MainActivity.this, "Email has been seet", Toast.LENGTH_SHORT).show();
+
+                        }
+                    }
+                });
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+
+                builder.create().show();
+
+
+            }
+        });
     }
 
 

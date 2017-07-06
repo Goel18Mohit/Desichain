@@ -3,6 +3,7 @@ package com.example.nitin.desichain;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.icu.util.Calendar;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -28,10 +29,12 @@ public class EditProfile extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
       getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        calendar=Calendar.getInstance();
-        mYear=calendar.get(Calendar.YEAR);
-        mMonth=calendar.get(Calendar.MONTH);
-        mDate=calendar.get(Calendar.DATE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            calendar=Calendar.getInstance();
+            mYear=calendar.get(Calendar.YEAR);
+            mMonth=calendar.get(Calendar.MONTH);
+            mDate=calendar.get(Calendar.DATE);
+        }
 
 
 

@@ -24,7 +24,6 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="#FFFF8D"
         android:fitsSystemWindows="true">
 
         <LinearLayout
@@ -89,7 +88,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="3"
-                        android:paddingLeft="15dp"
                         android:paddingBottom="5dp"
                         android:paddingTop="5dp"
                         android:id="@+id/myordertext"
@@ -274,7 +272,6 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="3"
-                            android:paddingLeft="15dp"
                             android:paddingTop="5dp"
                             android:paddingBottom="5dp"
                             android:textSize="15sp"
@@ -370,7 +367,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:padding="5dp"
-                            android:src="@mipmap/ic_credit_card_black_24dp"
+                            android:src="@mipmap/twitter"
                             android:id="@+id/twitterimage"/>
 
                         <TextView
@@ -510,6 +507,40 @@
                         android:textColor="#000000"
                         android:textSize="15sp"/>
                      </LinearLayout>
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.2dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="#C0C0C0"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:orientation="horizontal"
+                        android:id="@+id/subscribe">
+
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:padding="5dp"
+                            android:src="@mipmap/about_us"
+                            android:id="@+id/subscribimage"/>
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:text="Subscribe For NewsLetter"
+                            android:textColor="#000000"
+                            android:textSize="15sp"/>
+                    </LinearLayout>
 
         </LinearLayout>
         </android.support.v4.widget.NestedScrollView>
