@@ -36,7 +36,7 @@ public class MyAccount extends AppCompatActivity
     int flag=0;
     private TextView editProfileText,CUSTOMER_FIRST_LETTER_NAME;
     private String CUSTOMERNAMEFIRSTLETTER;
-    private LinearLayout mMyOrderLayout,mMyAddressLayout,
+    private LinearLayout mMyOrderLayout,mMyAddressLayout,mMyWallet,
             mNotificationLayout,mHelpCenterLayout,
             mRateAppLayout,mFeedBackLayout,mPoliciesLayout;
 
@@ -76,6 +76,7 @@ public class MyAccount extends AppCompatActivity
 
         mMyOrderLayout = (LinearLayout)findViewById(R.id.myOrderLayout);
         mMyAddressLayout=(LinearLayout)findViewById(R.id.myAddressLayout);
+        mMyWallet = (LinearLayout)findViewById(R.id.walletLayout);
         mNotificationLayout=(LinearLayout)findViewById(R.id.notificationLayout);
         mHelpCenterLayout = (LinearLayout)findViewById(R.id.helpCentreLayout);
         mRateAppLayout =(LinearLayout)findViewById(R.id.rateAppPlayStoreLayout);
@@ -106,6 +107,7 @@ public class MyAccount extends AppCompatActivity
 
         mMyOrderLayout.setOnClickListener(this);
         mMyAddressLayout.setOnClickListener(this);
+        mMyWallet.setOnClickListener(this);
         mNotificationLayout.setOnClickListener(this);
         mHelpCenterLayout.setOnClickListener(this);
         mRateAppLayout.setOnClickListener(this);
@@ -240,6 +242,9 @@ public class MyAccount extends AppCompatActivity
                 break;
             case R.id.myAddressLayout:
                 startActivity(new Intent(this,MyAddress.class));
+                break;
+            case R.id.walletLayout:
+                startActivity(new Intent(this, Wallet_page.class));
                 break;
             case R.id.notificationLayout:
                 startActivity(new Intent(this, NotificationPage.class));
