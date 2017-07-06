@@ -157,6 +157,9 @@ public class MyOrders extends AppCompatActivity implements View.OnClickListener 
 
             startActivity(new Intent(MyOrders.this, MyCart.class));
         }
+        else if (item.getItemId()==R.id.search_item){
+            startActivity(new Intent(MyOrders.this,SearchActivity.class));
+        }
         return super.onOptionsItemSelected(item);
     }
 

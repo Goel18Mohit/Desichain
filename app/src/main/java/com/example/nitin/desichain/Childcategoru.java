@@ -98,6 +98,7 @@ public class Childcategoru extends AppCompatActivity implements View.OnClickList
         mnewLaunchAdapter =new ChildCategoryCardAdapter(this, mNewLaunchList);
         GridLayoutManager lm = new GridLayoutManager(this,4);
         newLaunchView.setLayoutManager(lm);
+        newLaunchView.setNestedScrollingEnabled(false);
         newLaunchView.setItemAnimator(new DefaultItemAnimator());
         newLaunchView.setAdapter(mnewLaunchAdapter);
 
@@ -110,6 +111,7 @@ public class Childcategoru extends AppCompatActivity implements View.OnClickList
         mPublisherView.setItemAnimator(new DefaultItemAnimator());
         mPublisherView.setLayoutManager(gm);
         mPublisherView.setAdapter(mPublisherAdapter);
+        mPublisherView.setNestedScrollingEnabled(false);
         preparePublisherItems();
 
         mPriceView=(RecyclerView)findViewById(R.id.shopByPriceRecyclerView);
@@ -119,6 +121,7 @@ public class Childcategoru extends AppCompatActivity implements View.OnClickList
         mPriceView.setLayoutManager(gm1);
         mPriceView.setItemAnimator(new DefaultItemAnimator());
         mPriceView.setAdapter(mPriceAdapter);
+        mPriceView.setNestedScrollingEnabled(false);
         preparePriceItems();
 
         mDiscountView=(RecyclerView)findViewById(R.id.discountRecyclerView);
@@ -128,6 +131,7 @@ public class Childcategoru extends AppCompatActivity implements View.OnClickList
         mDiscountView.setLayoutManager(gm2);
         mDiscountView.setItemAnimator(new DefaultItemAnimator());
         mDiscountView.setAdapter(mDiscountAdapter);
+        mDiscountView.setNestedScrollingEnabled(false);
         prepareDiscountItems();
 
         mPopularCategView=(RecyclerView)findViewById(R.id.popularCategoryRecyclerView);
@@ -137,6 +141,7 @@ public class Childcategoru extends AppCompatActivity implements View.OnClickList
         mPopularCategView.setLayoutManager(gm3);
         mPopularCategView.setItemAnimator(new DefaultItemAnimator());
         mPopularCategView.setAdapter(mPopularCategAdapter);
+        mPopularCategView.setNestedScrollingEnabled(false);
         preparePopularCategItems();
 
          getSupportActionBar().setTitle(getIntent().getStringExtra("get"));
@@ -479,8 +484,8 @@ public class Childcategoru extends AppCompatActivity implements View.OnClickList
 
     public void setBhagavad() {
 
-        bhagavad.add(new ChildCategoryList("Bengali", R.mipmap.ic_security_black_24dp));
-        bhagavad.add(new ChildCategoryList("Chinese", R.mipmap.ic_security_black_24dp));
+        bhagavad.add(new ChildCategoryList("Bengali", R.mipmap.showcase));
+        bhagavad.add(new ChildCategoryList("Chinese", R.mipmap.gifts));
         bhagavad.add(new ChildCategoryList("English", R.mipmap.ic_security_black_24dp));
         bhagavad.add(new ChildCategoryList("Gujarati", R.mipmap.ic_security_black_24dp));
         bhagavad.add(new ChildCategoryList("Hindi", R.mipmap.ic_security_black_24dp));
@@ -625,6 +630,10 @@ public class Childcategoru extends AppCompatActivity implements View.OnClickList
                 break;
             case R.id.menu_messages:
                 startActivity(new Intent(Childcategoru.this,MyCart.class));
+                break;
+            case R.id.search_item:
+                startActivity(new Intent(this,SearchActivity.class));
+                break;
         }
 
         return true;
