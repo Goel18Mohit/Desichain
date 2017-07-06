@@ -16,9 +16,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <include layout="@layout/content_cart_delivery" />
-
-
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
