@@ -5,6 +5,7 @@ import android.graphics.Paint;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -22,6 +23,7 @@ import android.widget.ExpandableListView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.nitin.desichain.Adapters.ProductHorizontalAdapter;
@@ -41,6 +43,8 @@ public class ProductPageActual extends AppCompatActivity implements View.OnClick
     private int productCost = 850;
     private Toolbar mToolbar;
     private TextView mTotalCostText;
+    TextView txtViewCount;
+    int count=2;
     private List<ProductHorizontal> mProductsList;
     private CheckBox mSecCheckBox,mThirdCheckBox;
     private ProductHorizontalAdapter mAdapter;
@@ -238,9 +242,21 @@ public class ProductPageActual extends AppCompatActivity implements View.OnClick
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        MenuItem menuItem=menu.findItem(R.id.menu_messages);
+        MenuItemCompat.setActionView(menuItem,R.layout.cart_icon_for_toolbar);
+        RelativeLayout mycarttoolbar= (RelativeLayout) MenuItemCompat.getActionView(menuItem);
+        txtViewCount = (TextView) mycarttoolbar.findViewById(R.id.badge_notification_1);
+        count++;
+        txtViewCount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                txtViewCount.setText(String.valueOf(count++));
+            }
+        });
 
-        getMenuInflater().inflate(R.menu.my_cart_menu,menu);
         return true;
+
     }
 
     @Override

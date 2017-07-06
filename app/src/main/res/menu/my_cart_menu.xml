@@ -3,10 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/my_cart"
-        android:icon="@mipmap/ic_shopping_cart_black_36dp"
-        android:orderInCategory="1"
-        android:title="My Orders"
+        android:id="@+id/menu_messages"
+        android:icon="@mipmap/cart"
+        android:title="mycart"
         app:showAsAction="always" />
 
 </menu>

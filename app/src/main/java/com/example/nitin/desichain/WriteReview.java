@@ -2,6 +2,7 @@ package com.example.nitin.desichain;
 
 import android.content.Intent;
 import android.support.design.widget.NavigationView;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -14,6 +15,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ExpandableListView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.example.nitin.desichain.SubCategoryList.ShowCategoryAdapeter;
 import com.example.nitin.desichain.Utility.Utility;
@@ -33,6 +36,8 @@ public class WriteReview extends AppCompatActivity implements View.OnClickListen
     public  static ArrayList<CategoryHolder> arrayList;
     public static  ArrayList<String> Books;
     public static ArrayList<String> Homecare;
+    TextView txtViewCount;
+    int count=2;
     public static   ArrayList<String> others;
     public  static HashMap<String,ArrayList<String>> hashMap;
     LinearLayout myorder,mycart,myaccount,helpcenter,ratedesichain,productPage,policy,facebook,google,twitter,pinterest,youtube,instagram,aboutus;
@@ -40,8 +45,21 @@ public class WriteReview extends AppCompatActivity implements View.OnClickListen
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.my_cart_menu,menu);
-        return super.onCreateOptionsMenu(menu);
+        getMenuInflater().inflate(R.menu.main, menu);
+        MenuItem menuItem=menu.findItem(R.id.menu_messages);
+        MenuItemCompat.setActionView(menuItem,R.layout.cart_icon_for_toolbar);
+        RelativeLayout mycarttoolbar= (RelativeLayout) MenuItemCompat.getActionView(menuItem);
+        txtViewCount = (TextView) mycarttoolbar.findViewById(R.id.badge_notification_1);
+        count++;
+        txtViewCount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                txtViewCount.setText(String.valueOf(count++));
+            }
+        });
+
+        return true;
+
     }
 
     @Override

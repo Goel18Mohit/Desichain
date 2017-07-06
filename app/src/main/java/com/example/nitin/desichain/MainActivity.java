@@ -6,6 +6,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.NestedScrollView;
@@ -25,6 +26,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.nitin.desichain.Adapters.CustomViewpagerAdapter;
@@ -47,7 +50,9 @@ public static  ArrayList<String> Books;
  public static ArrayList<String> Poojaitem;
     DrawerLayout drawer;
     NestedScrollView nestedScrollView;
+    TextView txtViewCount;
   public static ArrayList<String> Homecare;
+    int count=2;
     private ViewPager viewPager;
     private CustomViewpagerAdapter mAdapter;
     private int images[] = {R.drawable.hitkary_small,
@@ -65,6 +70,7 @@ public static  ArrayList<String> Books;
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar)findViewById(R.id.my_toolBar);
         setSupportActionBar(toolbar);
+        
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         final ActionBar ab = getSupportActionBar();
@@ -201,8 +207,37 @@ public static  ArrayList<String> Books;
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
+        MenuItem menuItem=menu.findItem(R.id.menu_messages);
+        MenuItemCompat.setActionView(menuItem,R.layout.cart_icon_for_toolbar);
+       RelativeLayout mycarttoolbar= (RelativeLayout) MenuItemCompat.getActionView(menuItem);
+      txtViewCount = (TextView) mycarttoolbar.findViewById(R.id.badge_notification_1);
+      count++;
+        txtViewCount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                txtViewCount.setText(String.valueOf(count++));
+            }
+        });
+
         return true;
     }
+
+   /* public void updateHotCount(final int new_hot_number) {
+        count = new_hot_number;
+        if (count < 0) return;
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                if (count == 0)
+                    txtViewCount.setVisibility(View.GONE);
+                else {
+                    txtViewCount.setVisibility(View.VISIBLE);
+                    txtViewCount.setText(Integer.toString(count));
+                    // supportInvalidateOptionsMenu();
+                }
+            }
+        });
+    }*/
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
