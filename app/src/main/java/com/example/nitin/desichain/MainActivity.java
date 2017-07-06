@@ -1,14 +1,18 @@
 package com.example.nitin.desichain;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -19,13 +23,15 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.nitin.desichain.Adapters.CustomViewpagerAdapter;
 import com.example.nitin.desichain.Adapters.ProductHorizontalAdapter;
-import com.example.nitin.desichain.Contents.Advertisements;
 import com.example.nitin.desichain.Contents.ProductHorizontal;
 import com.example.nitin.desichain.SubCategoryList.ShowCategoryAdapeter;
 import com.example.nitin.desichain.Utility.Utility;
@@ -44,7 +50,9 @@ public static  ArrayList<String> Books;
  public static ArrayList<String> Poojaitem;
     DrawerLayout drawer;
     NestedScrollView nestedScrollView;
+    TextView txtViewCount;
   public static ArrayList<String> Homecare;
+    int count=2;
     private ViewPager viewPager;
     private CustomViewpagerAdapter mAdapter;
     private int images[] = {R.drawable.hitkary_small,
@@ -55,13 +63,14 @@ public static  ArrayList<String> Books;
     private RecyclerView mLatestProductView,mBrandStudioView, mTopTenGameView,mTopTenGameView2, mFeaturedProductView,mAdvertisementView,mBestSellingView;
     private List<ProductHorizontal> mProductsList;
     private ProductHorizontalAdapter mLatestProductAdapter,mBrandStudioAdapter, mTopTenGameAdapter,mTopTenGameAdapter2, mFeaturedProductAdapter,mAdvertisementAdapter,mBestSellingProductAdapter;
-    LinearLayout myorder,mycart,myaccount,helpcenter,ratedesichain,productPage,policy,facebook,google,twitter,pinterest,youtube,instagram,aboutus;
+    LinearLayout myorder,mycart,myaccount,helpcenter,ratedesichain,productPage,policy,facebook,google,twitter,pinterest,youtube,instagram,aboutus,subscribe;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar)findViewById(R.id.my_toolBar);
         setSupportActionBar(toolbar);
+        
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         final ActionBar ab = getSupportActionBar();
@@ -81,14 +90,18 @@ public static  ArrayList<String> Books;
         mLatestProductView.setFocusable(false);
         mLatestProductView.setItemAnimator(new DefaultItemAnimator());
         mLatestProductView.setAdapter(mLatestProductAdapter);
-        mLatestProductView.setScrollBarSize(0);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            mLatestProductView.setScrollBarSize(0);
+        }
 
         mBrandStudioView=(RecyclerView)findViewById(R.id.brandStudioRecyclerView);
         mBrandStudioAdapter=new ProductHorizontalAdapter(this,mProductsList);
         LinearLayoutManager lm6 = new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,true);
         mBrandStudioView.setLayoutManager(lm6);
         mBrandStudioView.setItemAnimator(new DefaultItemAnimator());
-        mBrandStudioView.setScrollBarSize(0);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            mBrandStudioView.setScrollBarSize(0);
+        }
         mBrandStudioView.setAdapter(mBrandStudioAdapter);
         mBrandStudioView.addOnItemTouchListener(new RecyclerItemClickListener(this, new RecyclerItemClickListener.OnItemClickListener() {
             @Override
@@ -125,7 +138,9 @@ public static  ArrayList<String> Books;
         LinearLayoutManager lm4 = new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,true);
         mBestSellingView.setLayoutManager(lm4);
         mBestSellingView.setItemAnimator(new DefaultItemAnimator());
-        mBestSellingView.setScrollBarSize(0);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            mBestSellingView.setScrollBarSize(0);
+        }
         mBestSellingView.setAdapter(mBestSellingProductAdapter);
 
 
@@ -192,8 +207,37 @@ public static  ArrayList<String> Books;
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
+        MenuItem menuItem=menu.findItem(R.id.menu_messages);
+        MenuItemCompat.setActionView(menuItem,R.layout.cart_icon_for_toolbar);
+       RelativeLayout mycarttoolbar= (RelativeLayout) MenuItemCompat.getActionView(menuItem);
+      txtViewCount = (TextView) mycarttoolbar.findViewById(R.id.badge_notification_1);
+      count++;
+        txtViewCount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                txtViewCount.setText(String.valueOf(count++));
+            }
+        });
+
         return true;
     }
+
+   /* public void updateHotCount(final int new_hot_number) {
+        count = new_hot_number;
+        if (count < 0) return;
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                if (count == 0)
+                    txtViewCount.setVisibility(View.GONE);
+                else {
+                    txtViewCount.setVisibility(View.VISIBLE);
+                    txtViewCount.setText(Integer.toString(count));
+                    // supportInvalidateOptionsMenu();
+                }
+            }
+        });
+    }*/
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -327,6 +371,7 @@ public static  ArrayList<String> Books;
         youtube= (LinearLayout) view.findViewById(R.id.youtube);
         instagram= (LinearLayout) view.findViewById(R.id.instagram);
         aboutus= (LinearLayout) view.findViewById(R.id.aboutus);
+        subscribe= (LinearLayout) findViewById(R.id.subscribe);
             myorder.setOnClickListener(this);
         mycart.setOnClickListener(this);
         myaccount.setOnClickListener(this);
@@ -341,6 +386,44 @@ public static  ArrayList<String> Books;
         youtube.setOnClickListener(this);
         instagram.setOnClickListener(this);
         aboutus.setOnClickListener(this);
+        subscribe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(drawer.isDrawerOpen(Gravity.LEFT)) {
+                    drawer.closeDrawer(Gravity.LEFT);
+                }
+                AlertDialog.Builder builder=new AlertDialog.Builder(MainActivity.this);
+                builder.setTitle("Enter The Email");
+                final EditText USER_EMAIL_SUBSCRIBE=new EditText(MainActivity.this);
+                builder.setView(USER_EMAIL_SUBSCRIBE);
+                builder.setPositiveButton("Submit", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        if(USER_EMAIL_SUBSCRIBE.getText().toString().equals(""))
+                        {
+
+                            Toast.makeText(MainActivity.this,"",Toast.LENGTH_SHORT).show();
+                        }
+                        else {
+                            dialog.dismiss();
+                            Toast.makeText(MainActivity.this, "Email has been seet", Toast.LENGTH_SHORT).show();
+
+                        }
+                    }
+                });
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+
+                builder.create().show();
+
+
+            }
+        });
     }
 
 

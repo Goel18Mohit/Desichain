@@ -2,12 +2,15 @@ package com.example.nitin.desichain;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ListView;
-import android.widget.Toast;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.example.nitin.desichain.Adapters.SearchAdapter;
 
@@ -18,6 +21,8 @@ public class SearchActivity extends AppCompatActivity {
 
     ArrayList<String> PREVIOUS_SEARCHED;
     ListView listView;
+    TextView txtViewCount;
+    int count=2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,8 +81,20 @@ SearchAdapter mAdapter = new SearchAdapter(PREVIOUS_SEARCHED,this);
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.mysearch,menu);
-        return super.onCreateOptionsMenu(menu);
+        getMenuInflater().inflate(R.menu.main, menu);
+        MenuItem menuItem=menu.findItem(R.id.menu_messages);
+        MenuItemCompat.setActionView(menuItem,R.layout.cart_icon_for_toolbar);
+        RelativeLayout mycarttoolbar= (RelativeLayout) MenuItemCompat.getActionView(menuItem);
+        txtViewCount = (TextView) mycarttoolbar.findViewById(R.id.badge_notification_1);
+        count++;
+        txtViewCount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                txtViewCount.setText(String.valueOf(count++));
+            }
+        });
+
+        return true;
     }
 
     @Override
@@ -90,18 +107,7 @@ SearchAdapter mAdapter = new SearchAdapter(PREVIOUS_SEARCHED,this);
             finish();
         }
 
-        switch (item.getItemId()) {
-            case R.id.my_cart:
-                startActivity(new Intent(SearchActivity.this, MyCart.class));
-                break;
-            case R.id.notifications:
-                Toast.makeText(SearchActivity.this, "Notifications item selected", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.my_orders:
-                startActivity(new Intent(SearchActivity.this, MyOrders.class));
-                break;
 
-        }
         return true;
     }
 }

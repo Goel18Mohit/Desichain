@@ -3,6 +3,7 @@ package com.example.nitin.desichain;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -14,7 +15,10 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ExpandableListView;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.example.nitin.desichain.Adapters.ChildCategoryAdapter;
 import com.example.nitin.desichain.Contents.ChildCategoryList;
@@ -24,7 +28,6 @@ import com.example.nitin.desichain.Utility.Utility;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import static com.example.nitin.desichain.MainActivity.*;
 import static com.example.nitin.desichain.MainActivity.arrayList;
 
 
@@ -53,6 +56,7 @@ public class Childcategoru extends AppCompatActivity implements View.OnClickList
    private Helper listView;
     View headerView;
     DrawerLayout drawer;
+    ImageView toolbarcartimage;
     NestedScrollView nestedScrollView;
     public static ArrayList<String> Poojaitem;
     public static  ArrayList<String> Books;
@@ -64,7 +68,8 @@ public class Childcategoru extends AppCompatActivity implements View.OnClickList
     GridView gridView;
     ChildCategoryAdapter childCategoryAdapter;
 
-
+    TextView txtViewCount;
+    int count=2;
 
 
 
@@ -75,7 +80,7 @@ public class Childcategoru extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_childcategoru);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+         getSupportActionBar().setTitle(getIntent().getStringExtra("get"));
         inti();
         gridView= (GridView) findViewById(R.id.singlechildlistview);
         Intent intent = getIntent();
@@ -446,7 +451,26 @@ public class Childcategoru extends AppCompatActivity implements View.OnClickList
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.my_cart_menu,menu);
+        getMenuInflater().inflate(R.menu.main, menu);
+        MenuItem menuItem=menu.findItem(R.id.menu_messages);
+        MenuItemCompat.setActionView(menuItem,R.layout.cart_icon_for_toolbar);
+        RelativeLayout mycarttoolbar= (RelativeLayout) MenuItemCompat.getActionView(menuItem);
+        txtViewCount = (TextView) mycarttoolbar.findViewById(R.id.badge_notification_1);
+        toolbarcartimage= (ImageView) mycarttoolbar.findViewById(R.id.badge_notification_image);
+        count++;
+        toolbarcartimage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Childcategoru.this,MyCart.class));
+            }
+        });
+        txtViewCount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Childcategoru.this,MyCart.class));
+            }
+        });
+
         return true;
     }
 
@@ -457,7 +481,7 @@ public class Childcategoru extends AppCompatActivity implements View.OnClickList
             case android.R.id.home:
                 finish();
                 break;
-            case R.id.my_cart:
+            case R.id.menu_messages:
                 startActivity(new Intent(Childcategoru.this,MyCart.class));
         }
 
@@ -541,9 +565,24 @@ public class Childcategoru extends AppCompatActivity implements View.OnClickList
         listView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
+
                 Intent intent=new Intent(Childcategoru.this,Childcategoru.class);
                 intent.putExtra("get",hashMap.get(arrayList.get(groupPosition).getPARENTCATEGORY()).get(childPosition));
                 startActivity(intent);
+                try {
+                    Thread.sleep(200);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                for(int i=0;i<arrayList.size();i++)
+                {
+                    if(arrayList.get(i).getFLAG_INDICATOR()==1)
+                    {
+                        listView.collapseGroup(i);
+                        arrayList.get(i).setFLAG_INDICATOR(0);
+                    }
+
+                }
                 return true;
             }
         });

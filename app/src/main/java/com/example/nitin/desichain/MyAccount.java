@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -19,6 +20,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,6 +40,8 @@ public class MyAccount extends AppCompatActivity
             mNotificationLayout,mHelpCenterLayout,
             mRateAppLayout,mFeedBackLayout,mPoliciesLayout;
 
+    TextView txtViewCount;
+    int count=2;
     LinearLayout LOGOUT,RESET;
     EditText USER_EMAIL_ID;
     EditText CUSTOMER_NAME;
@@ -190,7 +194,19 @@ public class MyAccount extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.my_cart_menu, menu);
+        getMenuInflater().inflate(R.menu.main, menu);
+        MenuItem menuItem=menu.findItem(R.id.menu_messages);
+        MenuItemCompat.setActionView(menuItem,R.layout.cart_icon_for_toolbar);
+        RelativeLayout mycarttoolbar= (RelativeLayout) MenuItemCompat.getActionView(menuItem);
+        txtViewCount = (TextView) mycarttoolbar.findViewById(R.id.badge_notification_1);
+        count++;
+        txtViewCount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                txtViewCount.setText(String.valueOf(count++));
+            }
+        });
+
         return true;
     }
 
