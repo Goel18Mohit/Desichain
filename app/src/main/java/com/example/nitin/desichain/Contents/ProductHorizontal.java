@@ -6,25 +6,34 @@ package com.example.nitin.desichain.Contents;
 
 public class ProductHorizontal {
 
-    private String mProductName,mProductCost,mProductNoOfReviews,mProductRating;
-    private int mProductImageId;
-    public ProductHorizontal(String mProductName, String mProductCost, int mProductImageId, String mProductNoOfReviews, String mProductRating) {
+    private String mProductName,mProductNoOfReviews,mProductRating;
+    private String mProductImageId;
+    int DISCOUNT;
+    int mProductCost;
+
+    public int getDISCOUNT() {
+        return DISCOUNT;
+    }
+
+    public ProductHorizontal(String mProductName, int mProductCost, String mProductImageId, String mProductNoOfReviews, String mProductRating, int DISCOUNT) {
         this.mProductName = mProductName;
         this.mProductCost = mProductCost;
         this.mProductImageId = mProductImageId;
         this.mProductNoOfReviews = mProductNoOfReviews;
         this.mProductRating = mProductRating;
+        this.DISCOUNT=DISCOUNT;
+
     }
 
     public String getmProductName() {
         return mProductName;
     }
 
-    public String getmProductCost() {
+    public int getmProductCost() {
         return mProductCost;
     }
 
-    public int getmProductImageId() {
+    public String getmProductImageId() {
         return mProductImageId;
     }
 

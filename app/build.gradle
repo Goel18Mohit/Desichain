@@ -32,6 +32,8 @@ dependencies {
     compile 'com.android.support:support-v4:25.3.0'
     compile 'com.google.android.gms:play-services-appindexing:9.8.0'
     compile 'me.relex:circleindicator:1.2.2'
+    compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.ms-square:expandableTextView:0.1.4'
     testCompile 'junit:junit:4.12'
+
 }
