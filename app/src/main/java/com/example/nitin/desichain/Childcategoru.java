@@ -400,8 +400,8 @@ public class Childcategoru extends AppCompatActivity implements View.OnClickList
     }
 
     public void setHomedecor() {
-        homedecor.add(new ChildCategoryList("Showpieces & Decoratives", R.mipmap.ic_security_black_24dp));
-        homedecor.add(new ChildCategoryList("Arts,Gift & Crafts", R.mipmap.ic_security_black_24dp));
+        homedecor.add(new ChildCategoryList("Showpieces & Decoratives", R.mipmap.showcase));
+        homedecor.add(new ChildCategoryList("Arts,Gift & Crafts", R.mipmap.gifts));
         homedecor.add(new ChildCategoryList("Clocks", R.mipmap.ic_security_black_24dp));
         homedecor.add(new ChildCategoryList("Lamps & Lighting", R.mipmap.ic_security_black_24dp));
         homedecor.add(new ChildCategoryList("Paintings", R.mipmap.ic_security_black_24dp));
