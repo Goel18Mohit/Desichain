@@ -5,16 +5,20 @@ import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ExpandableListView;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.nitin.desichain.SubCategoryList.ShowCategoryAdapeter;
@@ -31,6 +35,9 @@ public class AboutUs extends AppCompatActivity implements View.OnClickListener {
     private Toolbar mToolbar;
     View headerView;
     DrawerLayout drawer;
+    int count=2;
+    TextView txtViewCount;
+    ImageView  toolbarcartimage;
     NestedScrollView nestedScrollView;
     public static ArrayList<String> Poojaitem;
     public  static ArrayList<CategoryHolder> arrayList;
@@ -43,6 +50,7 @@ public class AboutUs extends AppCompatActivity implements View.OnClickListener {
     String STRING_ABOUT_US_2="By purchasing, the buyer expressly warrants that he/she is in compliance with all applicable Federal, State, and Local laws and regulations regarding the purchase, ownership, and use of the item. The buyer expressly agrees to indemnify and hold harmless our store, company or its licensors for all claims resulting directly or indirectly from the purchase, ownership, use or mis-use of the item in violation of applicable Federal, State, and Local laws or regulations. Some items can be dangerous if improperly handled. Keep away from children. You must be 18 or older to purchase.";
     LinearLayout myorder,mycart,myaccount,helpcenter,ratedesichain,productPage,policy,facebook,google,twitter,pinterest,youtube,instagram,aboutus;
     String STRING_ABOUT_US_3="You acknowledge and agree that all copyright, trademarks and all other intellectual property rights in the Content, our Desichain Site listings, Software and all HTML and other code contained herein, shall remain at all times vested in DesiChain, its parent company, associates and/or its licensors and is protected by copyright and other laws and international treaty provisions. You are permitted to use this material only as expressly authorized by our Company or its licensors. Any reproduction or redistribution of the above listed materials is prohibited by law and may result in civil and criminal penalties. Violators will be prosecuted to the fullest extent permissible under applicable law. Without limiting the foregoing, copying the above listed materials to any other server or location for publication, reproduction or distribution is expressly prohibited.";
+    LinearLayout subscribe;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,18 +92,17 @@ public class AboutUs extends AppCompatActivity implements View.OnClickListener {
     }
 
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main,menu);
-        return super.onCreateOptionsMenu(menu);
-    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()){
             case android.R.id.home:
-                finish();
-                break;
+                if(drawer.isDrawerOpen(Gravity.LEFT)) {
+                    drawer.closeDrawer(Gravity.LEFT);
+                }else{
+                    drawer.openDrawer(Gravity.LEFT);
+                }
             case R.id.search_item:
                 startActivity(new Intent(this,SearchActivity.class));
         }
@@ -197,6 +204,31 @@ public class AboutUs extends AppCompatActivity implements View.OnClickListener {
 
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        MenuItem menuItem=menu.findItem(R.id.my_cart);
+        MenuItemCompat.setActionView(menuItem,R.layout.cart_icon_for_toolbar);
+        RelativeLayout mycarttoolbar= (RelativeLayout) MenuItemCompat.getActionView(menuItem);
+        txtViewCount = (TextView) mycarttoolbar.findViewById(R.id.badge_notification_1);
+        toolbarcartimage= (ImageView) mycarttoolbar.findViewById(R.id.badge_notification_image);
+        count++;
+        toolbarcartimage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(AboutUs.this,MyCart.class));
+            }
+        });
+        txtViewCount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(AboutUs.this,MyCart.class));
+            }
+        });
+
+        return true;
+    }
+
     public void refferencetonavigationcategory(View view)
     {
         myorder= (LinearLayout) view.findViewById(R.id.myorders);
@@ -213,6 +245,7 @@ public class AboutUs extends AppCompatActivity implements View.OnClickListener {
         youtube= (LinearLayout) view.findViewById(R.id.youtube);
         instagram= (LinearLayout) view.findViewById(R.id.instagram);
         aboutus= (LinearLayout) view.findViewById(R.id.aboutus);
+        subscribe= (LinearLayout) findViewById(R.id.subscribe);
         myorder.setOnClickListener(this);
         mycart.setOnClickListener(this);
         myaccount.setOnClickListener(this);
@@ -227,12 +260,13 @@ public class AboutUs extends AppCompatActivity implements View.OnClickListener {
         youtube.setOnClickListener(this);
         instagram.setOnClickListener(this);
         aboutus.setOnClickListener(this);
+        subscribe.setOnClickListener(this);
     }
 
 
     @Override
     public void onClick(View v) {
-        new Utility().openIntent(this,v.getId());
+        new Utility().openIntent(this,v.getId(),drawer);
     }
     @Override
     public void onBackPressed() {

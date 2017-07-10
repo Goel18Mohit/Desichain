@@ -14,10 +14,12 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ExpandableListView;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -38,8 +40,9 @@ public class MyOrders extends AppCompatActivity implements View.OnClickListener 
     private List<Orders> mOrders;
     private OrderAdapter mAdapter;
 
-    TextView txtViewCount;
     int count=2;
+    TextView txtViewCount;
+    ImageView toolbarcartimage;
     private Helper listView;
     View headerView;
     DrawerLayout drawer;
@@ -130,37 +133,46 @@ public class MyOrders extends AppCompatActivity implements View.OnClickListener 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
-            // Inflate the menu; this adds items to the action bar if it is present.
-            getMenuInflater().inflate(R.menu.main, menu);
-            MenuItem menuItem=menu.findItem(R.id.menu_messages);
-            MenuItemCompat.setActionView(menuItem,R.layout.cart_icon_for_toolbar);
-            RelativeLayout mycarttoolbar= (RelativeLayout) MenuItemCompat.getActionView(menuItem);
-            txtViewCount = (TextView) mycarttoolbar.findViewById(R.id.badge_notification_1);
-            count++;
-            txtViewCount.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    txtViewCount.setText(String.valueOf(count++));
-                }
-            });
+        getMenuInflater().inflate(R.menu.main, menu);
+        MenuItem menuItem=menu.findItem(R.id.my_cart);
+        MenuItemCompat.setActionView(menuItem,R.layout.cart_icon_for_toolbar);
+        RelativeLayout mycarttoolbar= (RelativeLayout) MenuItemCompat.getActionView(menuItem);
+        txtViewCount = (TextView) mycarttoolbar.findViewById(R.id.badge_notification_1);
+        toolbarcartimage= (ImageView) mycarttoolbar.findViewById(R.id.badge_notification_image);
+        count++;
+        toolbarcartimage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MyOrders.this,MyCart.class));
+            }
+        });
+        txtViewCount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MyOrders.this,MyCart.class));
+            }
+        });
 
-            return true;
+        return true;
 
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        if (item.getItemId() == android.R.id.home) {
-            finish();
-        } else if (item.getItemId() == R.id.my_cart) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                if(drawer.isDrawerOpen(Gravity.LEFT)) {
+                    drawer.closeDrawer(Gravity.LEFT);
+                }else{
+                    drawer.openDrawer(Gravity.LEFT);
+                }
+            case R.id.search_item:
+                startActivity(new Intent(this,SearchActivity.class));
+                break;
+        }
 
-            startActivity(new Intent(MyOrders.this, MyCart.class));
-        }
-        else if (item.getItemId()==R.id.search_item){
-            startActivity(new Intent(MyOrders.this,SearchActivity.class));
-        }
-        return super.onOptionsItemSelected(item);
+        return true;
     }
 
     public void add() {
@@ -286,7 +298,7 @@ public class MyOrders extends AppCompatActivity implements View.OnClickListener 
 
     @Override
     public void onClick(View v) {
-        new Utility().openIntent(this, v.getId());
+        new Utility().openIntent(this, v.getId(),drawer);
     }
 
 

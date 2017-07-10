@@ -9,11 +9,13 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ExpandableListView;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -36,8 +38,10 @@ public class WriteReview extends AppCompatActivity implements View.OnClickListen
     public  static ArrayList<CategoryHolder> arrayList;
     public static  ArrayList<String> Books;
     public static ArrayList<String> Homecare;
-    TextView txtViewCount;
     int count=2;
+    TextView txtViewCount;
+    ImageView  toolbarcartimage;
+    LinearLayout subscribe;
     public static   ArrayList<String> others;
     public  static HashMap<String,ArrayList<String>> hashMap;
     LinearLayout myorder,mycart,myaccount,helpcenter,ratedesichain,productPage,policy,facebook,google,twitter,pinterest,youtube,instagram,aboutus;
@@ -46,15 +50,22 @@ public class WriteReview extends AppCompatActivity implements View.OnClickListen
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
-        MenuItem menuItem=menu.findItem(R.id.menu_messages);
+        MenuItem menuItem=menu.findItem(R.id.my_cart);
         MenuItemCompat.setActionView(menuItem,R.layout.cart_icon_for_toolbar);
         RelativeLayout mycarttoolbar= (RelativeLayout) MenuItemCompat.getActionView(menuItem);
         txtViewCount = (TextView) mycarttoolbar.findViewById(R.id.badge_notification_1);
-        count++;
+        toolbarcartimage= (ImageView) mycarttoolbar.findViewById(R.id.badge_notification_image);
+
+        toolbarcartimage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(WriteReview.this,MyCart.class));
+            }
+        });
         txtViewCount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                txtViewCount.setText(String.valueOf(count++));
+                startActivity(new Intent(WriteReview.this,MyCart.class));
             }
         });
 
@@ -64,16 +75,17 @@ public class WriteReview extends AppCompatActivity implements View.OnClickListen
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId()==R.id.my_cart){
-            startActivity(new Intent(this,MyCart.class));
+
+        switch (item.getItemId()){
+            case android.R.id.home:
+                if(drawer.isDrawerOpen(Gravity.LEFT)) {
+                    drawer.closeDrawer(Gravity.LEFT);
+                }else{
+                    drawer.openDrawer(Gravity.LEFT);
+                }
         }
-        else if (item.getItemId()==android.R.id.home){
-            finish();
-        }
-        else if (item.getItemId()==R.id.search_item){
-            startActivity(new Intent(this,SearchActivity.class));
-        }
-        return super.onOptionsItemSelected(item);
+
+        return true;
     }
 
     @Override
@@ -215,6 +227,7 @@ public class WriteReview extends AppCompatActivity implements View.OnClickListen
         youtube= (LinearLayout) view.findViewById(R.id.youtube);
         instagram= (LinearLayout) view.findViewById(R.id.instagram);
         aboutus= (LinearLayout) view.findViewById(R.id.aboutus);
+        subscribe= (LinearLayout) findViewById(R.id.subscribe);
         myorder.setOnClickListener(this);
         mycart.setOnClickListener(this);
         myaccount.setOnClickListener(this);
@@ -229,11 +242,12 @@ public class WriteReview extends AppCompatActivity implements View.OnClickListen
         youtube.setOnClickListener(this);
         instagram.setOnClickListener(this);
         aboutus.setOnClickListener(this);
+        subscribe.setOnClickListener(this);
     }
 
 
     @Override
     public void onClick(View v) {
-        new Utility().openIntent(this,v.getId());
+        new Utility().openIntent(this,v.getId(),drawer);
     }
 }

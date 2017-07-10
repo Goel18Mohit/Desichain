@@ -61,7 +61,7 @@ public class MyAccount extends AppCompatActivity
     public static   ArrayList<String> others;
     public  static HashMap<String,ArrayList<String>> hashMap;
     LinearLayout myorder,mycart,myaccount,helpcenter,ratedesichain,productPage,policy,facebook,google,twitter,pinterest,youtube,instagram,aboutus;
-
+    LinearLayout subscribe;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -197,7 +197,7 @@ public class MyAccount extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
-        MenuItem menuItem=menu.findItem(R.id.menu_messages);
+        MenuItem menuItem=menu.findItem(R.id.my_cart);
         MenuItemCompat.setActionView(menuItem,R.layout.cart_icon_for_toolbar);
         RelativeLayout mycarttoolbar= (RelativeLayout) MenuItemCompat.getActionView(menuItem);
         txtViewCount = (TextView) mycarttoolbar.findViewById(R.id.badge_notification_1);
@@ -267,7 +267,7 @@ public class MyAccount extends AppCompatActivity
             case R.id.policiesLayout:
                 startActivity(new Intent(this,Policy.class));
                 break;
-            default:new Utility().openIntent(this,v.getId());
+            default:new Utility().openIntent(this,v.getId(),drawer);
                 break;
 
         }
@@ -372,6 +372,7 @@ public class MyAccount extends AppCompatActivity
         youtube= (LinearLayout) view.findViewById(R.id.youtube);
         instagram= (LinearLayout) view.findViewById(R.id.instagram);
         aboutus= (LinearLayout) view.findViewById(R.id.aboutus);
+        subscribe= (LinearLayout) findViewById(R.id.subscribe);
         myorder.setOnClickListener(this);
         mycart.setOnClickListener(this);
         myaccount.setOnClickListener(this);
@@ -386,6 +387,7 @@ public class MyAccount extends AppCompatActivity
         youtube.setOnClickListener(this);
         instagram.setOnClickListener(this);
         aboutus.setOnClickListener(this);
+        subscribe.setOnClickListener(this);
     }
 
 }

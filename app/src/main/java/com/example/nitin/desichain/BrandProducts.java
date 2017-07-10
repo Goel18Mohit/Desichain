@@ -1,12 +1,12 @@
 package com.example.nitin.desichain;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.NestedScrollView;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -31,6 +31,7 @@ public class BrandProducts extends AppCompatActivity implements View.OnClickList
     private RecyclerView mBrandRecyclerView;
     private List<ProductHorizontal> mList;
     private ProductHorizontalAdapter mAdapter;
+    DrawerLayout drawer;
     private Toolbar mToolbar;
     View headerView;
     private int FLAG=1;
@@ -81,6 +82,14 @@ public class BrandProducts extends AppCompatActivity implements View.OnClickList
         mBrandRecyclerView.setItemAnimator(new DefaultItemAnimator());
         mBrandRecyclerView.setAdapter(mAdapter);
 
+        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, R.string.navigation_drawer_open, R.string.navigation_drawer_close){
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                super.onDrawerOpened(drawerView);
+            }
+        };
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         headerView = navigationView.inflateHeaderView(R.layout.nav_header_main);
         refferencetonavigationcategory(navigationView);
@@ -242,7 +251,7 @@ public class BrandProducts extends AppCompatActivity implements View.OnClickList
             case R.id.newAddress:
                 startActivity(new Intent(this,AddNewAddress.class));
                 break;
-            default:new Utility().openIntent(this,v.getId());
+            default:new Utility().openIntent(this,v.getId(),drawer);
                 break;
         }
 
