@@ -11,6 +11,7 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -51,10 +52,11 @@ public class BuyNow extends AppCompatActivity implements View.OnClickListener,Si
     public static   ArrayList<String> others;
     public  static HashMap<String,ArrayList<String>> hashMap;
     LinearLayout myorder,mycart,myaccount,helpcenter,ratedesichain,productPage,policy,facebook,google,twitter,pinterest,youtube,instagram,aboutus;
+    LinearLayout subscribe;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.my_cart_menu,menu);
+        getMenuInflater().inflate(R.menu.main,menu);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -139,7 +141,7 @@ public class BuyNow extends AppCompatActivity implements View.OnClickListener,Si
         mDeliveryView.setFocusable(false);
         mDeliveryView.setItemAnimator(new DefaultItemAnimator());
         mDeliveryView.setAdapter(mAdapter);
-
+        mDeliveryView.setNestedScrollingEnabled(false);
         prepareItems();
 
         Intent intent=getIntent();
@@ -175,6 +177,7 @@ public class BuyNow extends AppCompatActivity implements View.OnClickListener,Si
         initiaze();
         add();
     }
+
 
     private void prepareItems() {
 
@@ -224,11 +227,20 @@ public class BuyNow extends AppCompatActivity implements View.OnClickListener,Si
         switch (item.getItemId()) {
 
             case android.R.id.home:
-                finish();
-                break;
-            case R.id.my_cart:
-                startActivity(new Intent(BuyNow.this,MyCart.class));
-                break;
+                switch (item.getItemId()){
+                    case android.R.id.home:
+                        if(drawer.isDrawerOpen(Gravity.LEFT)) {
+                            drawer.closeDrawer(Gravity.LEFT);
+                        }else{
+                            drawer.openDrawer(Gravity.LEFT);
+                        }
+                    case R.id.search_item:
+                        startActivity(new Intent(this,SearchActivity.class));
+                        break;
+                }
+
+                return true;
+
         }
 
         return super.onOptionsItemSelected(item);
@@ -250,7 +262,7 @@ public class BuyNow extends AppCompatActivity implements View.OnClickListener,Si
             case R.id.newAddress:
                 startActivity(new Intent(this,AddNewAddress.class));
                 break;
-            default:new Utility().openIntent(this,v.getId());
+            default:new Utility().openIntent(this,v.getId(),drawer);
                 break;
         }
 
@@ -362,6 +374,7 @@ public class BuyNow extends AppCompatActivity implements View.OnClickListener,Si
         youtube= (LinearLayout) view.findViewById(R.id.youtube);
         instagram= (LinearLayout) view.findViewById(R.id.instagram);
         aboutus= (LinearLayout) view.findViewById(R.id.aboutus);
+        subscribe= (LinearLayout) findViewById(R.id.subscribe);
         myorder.setOnClickListener(this);
         mycart.setOnClickListener(this);
         myaccount.setOnClickListener(this);
@@ -376,6 +389,7 @@ public class BuyNow extends AppCompatActivity implements View.OnClickListener,Si
         youtube.setOnClickListener(this);
         instagram.setOnClickListener(this);
         aboutus.setOnClickListener(this);
+        subscribe.setOnClickListener(this);
     }
 
 

@@ -9,10 +9,18 @@
         app:showAsAction="never" />
 
     <item
-        android:id="@+id/menu_messages"
+        android:id="@+id/my_cart"
         android:icon="@mipmap/cart"
         android:title="mycart"
+        android:orderInCategory="2"
         app:showAsAction="always" />
+
+    <item
+        android:title="Search"
+        android:id="@+id/search_item"
+        android:icon="@mipmap/ic_search_black_24dp"
+        app:showAsAction="always"
+        android:orderInCategory="1"/>
 
 
 

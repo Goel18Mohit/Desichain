@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.nitin.desichain">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -92,8 +93,7 @@
             android:theme="@style/status_bar"/>
         <activity
             android:name=".SearchActivity"
-            android:theme="@style/status_bar"
-            android:parentActivityName=".MainActivity"/>
+            android:theme="@style/status_bar"/>
         <activity
             android:name=".NotificationPage"
             android:theme="@style/status_bar"
@@ -158,6 +158,6 @@
             </intent-filter>
         </activity>
 
-    </application>
+         </application>
 
 </manifest>

@@ -5,16 +5,20 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,6 +41,9 @@ public class Policy extends AppCompatActivity implements View.OnClickListener {
     NestedScrollView nestedScrollView;
     ArrayList<String> Healthandfood;
     DrawerLayout drawer;
+    int count=2;
+    TextView txtViewCount;
+    ImageView  toolbarcartimage;
     ArrayList<String> others;
     HashMap<String,ArrayList<String>> hashMap;
     View headerView;;
@@ -50,7 +57,7 @@ public class Policy extends AppCompatActivity implements View.OnClickListener {
     public static int SHIPPING_FLAG =0;
     final ShippingPolicy shippingPolicy=new ShippingPolicy();
     LinearLayout myorder,mycart,myaccount,helpcenter,ratedesichain,productPage,policy,facebook,google,twitter,pinterest,youtube,instagram,aboutus;
-
+    LinearLayout subscribe;
     public TextView textView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,6 +109,7 @@ public class Policy extends AppCompatActivity implements View.OnClickListener {
         add();
 
     }
+
 
 
 
@@ -197,7 +205,7 @@ public class Policy extends AppCompatActivity implements View.OnClickListener {
                 break;
 
             default:
-                new Utility().openIntent(this,v.getId());
+                new Utility().openIntent(this,v.getId(),drawer);
                 break;
         }
 
@@ -205,11 +213,40 @@ public class Policy extends AppCompatActivity implements View.OnClickListener {
 
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        MenuItem menuItem=menu.findItem(R.id.my_cart);
+        MenuItemCompat.setActionView(menuItem,R.layout.cart_icon_for_toolbar);
+        RelativeLayout mycarttoolbar= (RelativeLayout) MenuItemCompat.getActionView(menuItem);
+        txtViewCount = (TextView) mycarttoolbar.findViewById(R.id.badge_notification_1);
+        toolbarcartimage= (ImageView) mycarttoolbar.findViewById(R.id.badge_notification_image);
+        count++;
+        toolbarcartimage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Policy.this,MyCart.class));
+            }
+        });
+        txtViewCount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Policy.this,MyCart.class));
+            }
+        });
 
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case android.R.id.home:
-                finish();
+                if(drawer.isDrawerOpen(Gravity.LEFT)) {
+                    drawer.closeDrawer(Gravity.LEFT);
+                }else{
+                    drawer.openDrawer(Gravity.LEFT);
+                } case R.id.search_item:
+                startActivity(new Intent(this,SearchActivity.class));
                 break;
         }
 
@@ -316,6 +353,7 @@ public class Policy extends AppCompatActivity implements View.OnClickListener {
         youtube= (LinearLayout) view.findViewById(R.id.youtube);
         instagram= (LinearLayout) view.findViewById(R.id.instagram);
         aboutus= (LinearLayout) view.findViewById(R.id.aboutus);
+        subscribe= (LinearLayout) findViewById(R.id.subscribe);
         myorder.setOnClickListener(this);
         mycart.setOnClickListener(this);
         myaccount.setOnClickListener(this);
@@ -330,6 +368,7 @@ public class Policy extends AppCompatActivity implements View.OnClickListener {
         youtube.setOnClickListener(this);
         instagram.setOnClickListener(this);
         aboutus.setOnClickListener(this);
+        subscribe.setOnClickListener(this);
     }
 
 

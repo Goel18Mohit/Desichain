@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
@@ -56,6 +57,7 @@ public class HelpCentre extends AppCompatActivity implements View.OnClickListene
     public static ArrayList<String> Homecare;
     public static   ArrayList<String> others;
     public  static HashMap<String,ArrayList<String>> hashMap;
+    LinearLayout subscribe;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -127,9 +129,18 @@ public class HelpCentre extends AppCompatActivity implements View.OnClickListene
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId()==android.R.id.home){
             finish();
+        }
+        else if (item.getItemId()==R.id.search_item){
+            startActivity(new Intent(this,SearchActivity.class));
         }
         return super.onOptionsItemSelected(item);
     }
@@ -256,7 +267,7 @@ public class HelpCentre extends AppCompatActivity implements View.OnClickListene
                }
                 break;
             default:
-                new Utility().openIntent(this,v.getId());
+                new Utility().openIntent(this,v.getId(),drawer);
 
         }
     }
@@ -362,6 +373,7 @@ public class HelpCentre extends AppCompatActivity implements View.OnClickListene
         youtube= (LinearLayout) view.findViewById(R.id.youtube);
         instagram= (LinearLayout) view.findViewById(R.id.instagram);
         aboutus= (LinearLayout) view.findViewById(R.id.aboutus);
+        subscribe= (LinearLayout) findViewById(R.id.subscribe);
         myorder.setOnClickListener(this);
         mycart.setOnClickListener(this);
         myaccount.setOnClickListener(this);
@@ -376,6 +388,7 @@ public class HelpCentre extends AppCompatActivity implements View.OnClickListene
         youtube.setOnClickListener(this);
         instagram.setOnClickListener(this);
         aboutus.setOnClickListener(this);
+        subscribe.setOnClickListener(this);
     }
 
 }

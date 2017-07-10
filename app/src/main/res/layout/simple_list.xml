@@ -7,13 +7,12 @@
     android:weightSum="5">
 
     <FrameLayout
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1">
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
     <ImageView
-        android:layout_width="match_parent"
+        android:layout_width="36dp"
         android:layout_height="match_parent"
-        android:scaleType="fitCenter"
+        android:scaleType="fitStart"
         android:src="@mipmap/insta"
         android:id="@+id/categoryImage"/>
     </FrameLayout>
@@ -21,7 +20,7 @@
     <TextView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="3"
+        android:layout_weight="4"
         android:textColor="#000000"
         android:textSize="15sp"
         android:id="@+id/parentcategory"/>

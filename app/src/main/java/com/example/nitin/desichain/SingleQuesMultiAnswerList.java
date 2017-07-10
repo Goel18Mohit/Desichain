@@ -3,6 +3,7 @@ package com.example.nitin.desichain;
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.design.widget.NavigationView;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -12,12 +13,16 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ExpandableListView;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.nitin.desichain.Adapters.SingleQuesMultiAnsAdapter;
@@ -39,6 +44,9 @@ public class SingleQuesMultiAnswerList extends AppCompatActivity implements View
     private Toolbar mToolbar;
     private Button mCancelBtn;
 
+    int count=2;
+    TextView txtViewCount;
+    ImageView  toolbarcartimage;
     private Helper listView;
     View headerView;
     DrawerLayout drawer;
@@ -49,16 +57,22 @@ public class SingleQuesMultiAnswerList extends AppCompatActivity implements View
     public static ArrayList<String> Homecare;
     public static   ArrayList<String> others;
     public  static HashMap<String,ArrayList<String>> hashMap;
+    LinearLayout subscribe;
     LinearLayout myorder,mycart,myaccount,helpcenter,ratedesichain,productPage,policy,facebook,google,twitter,pinterest,youtube,instagram,aboutus;
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        if (item.getItemId()==android.R.id.home){
-            finish();
+        switch (item.getItemId()){
+            case android.R.id.home:
+                if(drawer.isDrawerOpen(Gravity.LEFT)) {
+                    drawer.closeDrawer(Gravity.LEFT);
+                }else{
+                    drawer.openDrawer(Gravity.LEFT);
+                }
         }
 
-        return super.onOptionsItemSelected(item);
+        return true;
     }
 
     @Override
@@ -251,6 +265,7 @@ public class SingleQuesMultiAnswerList extends AppCompatActivity implements View
         youtube= (LinearLayout) view.findViewById(R.id.youtube);
         instagram= (LinearLayout) view.findViewById(R.id.instagram);
         aboutus= (LinearLayout) view.findViewById(R.id.aboutus);
+        subscribe= (LinearLayout) findViewById(R.id.subscribe);
         myorder.setOnClickListener(this);
         mycart.setOnClickListener(this);
         myaccount.setOnClickListener(this);
@@ -265,12 +280,37 @@ public class SingleQuesMultiAnswerList extends AppCompatActivity implements View
         youtube.setOnClickListener(this);
         instagram.setOnClickListener(this);
         aboutus.setOnClickListener(this);
+        subscribe.setOnClickListener(this);
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        MenuItem menuItem=menu.findItem(R.id.my_cart);
+        MenuItemCompat.setActionView(menuItem,R.layout.cart_icon_for_toolbar);
+        RelativeLayout mycarttoolbar= (RelativeLayout) MenuItemCompat.getActionView(menuItem);
+        txtViewCount = (TextView) mycarttoolbar.findViewById(R.id.badge_notification_1);
+        toolbarcartimage= (ImageView) mycarttoolbar.findViewById(R.id.badge_notification_image);
+        count++;
+        toolbarcartimage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(SingleQuesMultiAnswerList.this,MyCart.class));
+            }
+        });
+        txtViewCount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(SingleQuesMultiAnswerList.this,MyCart.class));
+            }
+        });
+
+        return true;
+    }
 
     @Override
     public void onClick(View v) {
-        new Utility().openIntent(this,v.getId());
+        new Utility().openIntent(this,v.getId(),drawer);
     }
 
 }

@@ -11,6 +11,7 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -60,7 +61,7 @@ public class MyCart extends AppCompatActivity  implements SingleCartAdapter.List
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(false);
-
+        invalidateOptionsMenu();
         mCartRecyclerView=(RecyclerView)findViewById(R.id.cartView);
         mList=new ArrayList<>();
         mAdapter=new SingleCartAdapter(this,mList);
@@ -124,11 +125,22 @@ public class MyCart extends AppCompatActivity  implements SingleCartAdapter.List
 
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main,menu);
+        MenuItem item = menu.findItem(R.id.my_cart);
+        item.setVisible(false);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()){
             case android.R.id.home:
                 finish();
+                break;
+            case R.id.search_item:
+                startActivity(new Intent(this,SearchActivity.class));
                 break;
         }
 
@@ -295,7 +307,7 @@ public class MyCart extends AppCompatActivity  implements SingleCartAdapter.List
 
     @Override
     public void onClick(View v) {
-        new Utility().openIntent(this,v.getId());
+        new Utility().openIntent(this,v.getId(),drawer);
     }
     @Override
     public void change() {

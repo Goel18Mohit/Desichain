@@ -39,6 +39,7 @@ public class MyAddress extends AppCompatActivity implements AddressAdapter.SaveA
     private int REQUEST_CODE_ADD=001;
     private Toolbar mToolbar;
 
+    LinearLayout subscribe;
     private Helper listView;
     View headerView;
     DrawerLayout drawer;
@@ -128,7 +129,7 @@ public class MyAddress extends AppCompatActivity implements AddressAdapter.SaveA
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.my_cart_menu,menu);
+        getMenuInflater().inflate(R.menu.main,menu);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -138,7 +139,9 @@ public class MyAddress extends AppCompatActivity implements AddressAdapter.SaveA
 
             startActivity(new Intent(MyAddress.this,MyCart.class));
         }
-
+        else if (item.getItemId()==R.id.search_item){
+            startActivity(new Intent(this,SearchActivity.class));
+        }
         if (item.getItemId() == android.R.id.home){
 
             finish();
@@ -269,6 +272,7 @@ public class MyAddress extends AppCompatActivity implements AddressAdapter.SaveA
         youtube= (LinearLayout) view.findViewById(R.id.youtube);
         instagram= (LinearLayout) view.findViewById(R.id.instagram);
         aboutus= (LinearLayout) view.findViewById(R.id.aboutus);
+        subscribe= (LinearLayout) findViewById(R.id.subscribe);
         myorder.setOnClickListener(this);
         mycart.setOnClickListener(this);
         myaccount.setOnClickListener(this);
@@ -283,11 +287,12 @@ public class MyAddress extends AppCompatActivity implements AddressAdapter.SaveA
         youtube.setOnClickListener(this);
         instagram.setOnClickListener(this);
         aboutus.setOnClickListener(this);
+        subscribe.setOnClickListener(this);
     }
 
 
     @Override
     public void onClick(View v) {
-        new Utility().openIntent(this,v.getId());
+        new Utility().openIntent(this,v.getId(),drawer);
     }
 }

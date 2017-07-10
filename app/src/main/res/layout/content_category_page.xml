@@ -7,13 +7,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.example.nitin.desichain.CategoryPage"
-    tools:showIn="@layout/activity_category_page">
+    tools:context="com.example.nitin.desichain.CategoryPage">
 
     <GridView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:numColumns="2"
+        android:layout_margin="8dp"
         android:id="@+id/categorygridview"></GridView>
 
 

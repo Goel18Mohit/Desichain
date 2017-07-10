@@ -2,10 +2,15 @@ package com.example.nitin.desichain.Utility;
 
 import android.content.ActivityNotFoundException;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.net.Uri;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.AlertDialog;
+import android.view.Gravity;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.nitin.desichain.AboutUs;
@@ -25,61 +30,87 @@ import java.util.List;
 
 public class Utility {
 
-    public  void openIntent(Context mContext, int id){
+    DrawerLayout drawerLayout;
+    Context mContext;
+    public  void openIntent(Context mContext, int id,DrawerLayout drawer){
+        drawerLayout=drawer;
+        this.mContext=mContext;
         switch (id){
             case R.id.myorders:
                 Intent MYORDERS=new Intent(mContext, MyOrders.class);
                 mContext.startActivity(MYORDERS);
+                closenavigation();
                 break;
             case R.id.mycart:
                 Intent MYCART=new Intent(mContext, MyCart.class);
                 mContext.startActivity(MYCART);
+                closenavigation();
                 break;
             case R.id.myProductLayout:
                 Intent mProductIntent = new Intent(mContext, ProductPageActual.class);
                 mContext.startActivity(mProductIntent);
+                closenavigation();
                 break;
             case R.id.myaccount:
                 Intent MYACCOUNT=new Intent(mContext, MyAccount.class);
                 mContext.startActivity(MYACCOUNT);
+                closenavigation();
                 break;
             case R.id.helpcenter:
                 Intent HELPCENTER=new Intent(mContext, HelpCentre.class);
                 mContext.startActivity(HELPCENTER);
+                closenavigation();
                 break;
-            case R.id.policy:Intent POLICY=new Intent(mContext, Policy.class);
+            case R.id.policy:
+                Intent POLICY=new Intent(mContext, Policy.class);
                 mContext.startActivity(POLICY);
+                closenavigation();
                 break;
             case R.id.ratedesichain:
                 Toast.makeText(mContext,"PLAYSTORELINK",Toast.LENGTH_SHORT).show();
+                closenavigation();
                 break;
             case R.id.facebook:
                 openFbIntent(mContext);
+                closenavigation();
                 break;
             case R.id.googleplus:
                 openGoogleIntent(mContext);
+                closenavigation();
                 break;
             case R.id.twitter:
                 openTwitterIntent(mContext);
+                closenavigation();
                 break;
             case R.id.pinterest:
+                closenavigation();
                 openPinterestIntent(mContext);
                 break;
             case R.id.youtube:
                 openYoutubeIntent(mContext);
+                closenavigation();
                 break;
             case R.id.instagram:
                 openInstaIntent(mContext);
+                closenavigation();
                 break;
             case R.id.aboutus:
                 Intent ABOUTUS=new Intent(mContext, AboutUs.class);
                 mContext.startActivity(ABOUTUS);
+                closenavigation();
                 break;
+            case R.id.subscribe:
+                closenavigation();
+                openDialogBox();
             default: break;
         }
     }
 
-
+public void closenavigation(){
+    if(drawerLayout.isDrawerOpen(Gravity.LEFT)) {
+        drawerLayout.closeDrawer(Gravity.LEFT);
+    }
+}
 
     public static String getFbPageUrl(Context mContext){
 
@@ -173,6 +204,39 @@ public class Utility {
         String facebookUrl = Utility.getFbPageUrl(context);
         facebookIntent.setData(Uri.parse(facebookUrl));
         context.startActivity(facebookIntent);
+
+    }
+
+    private void openDialogBox(){
+        AlertDialog.Builder builder=new AlertDialog.Builder(mContext);
+        builder.setTitle("Enter The Email");
+        final EditText USER_EMAIL_SUBSCRIBE=new EditText(mContext);
+        builder.setView(USER_EMAIL_SUBSCRIBE);
+        builder.setPositiveButton("Submit", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                if(USER_EMAIL_SUBSCRIBE.getText().toString().equals(""))
+                {
+
+                    Toast.makeText(mContext,"",Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    dialog.dismiss();
+                    Toast.makeText(mContext, "Email has been seet", Toast.LENGTH_SHORT).show();
+
+                }
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        builder.create().show();
+
 
     }
 

@@ -6,12 +6,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 public class Payment extends AppCompatActivity {
 
 
-
+    private RadioGroup radioGroup;
+    private Button submit;
     RadioButton bankdeposit;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,17 +25,18 @@ public class Payment extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(false);
-
-
+        submit=(Button)findViewById(R.id.continueBtn);
+        radioGroup=(RadioGroup)findViewById(R.id.paymentRadiogroup);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         bankdeposit= (RadioButton) findViewById(R.id.bankdeposit);
-        bankdeposit.setOnClickListener(new View.OnClickListener() {
+
+        submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
-                Intent intent=new Intent(Payment.this,BankDeposit.class);
-                startActivity(intent);
+                int id = radioGroup.getCheckedRadioButtonId();
+                if (id == bankdeposit.getId()){
+                    startActivity(new Intent(Payment.this,BankDeposit.class));
+                }
             }
         });
     }
