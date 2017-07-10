@@ -98,7 +98,7 @@ public class BrandProducts extends AppCompatActivity implements View.OnClickList
         initiaze();
         add();
         
-        prepareItems();
+
     }
 
     private void add() {
@@ -221,7 +221,7 @@ public class BrandProducts extends AppCompatActivity implements View.OnClickList
 
     }
 
-    private void prepareItems() {
+   /* private void prepareItems() {
 
         mList.add(new ProductHorizontal("MICROMAX SPARK VDEO(8GB) 4G VOLTE","Rs. 50000",R.mipmap.ic_launcher, "4.0","12"));
 
@@ -235,7 +235,7 @@ public class BrandProducts extends AppCompatActivity implements View.OnClickList
         mList.add(new ProductHorizontal("MICROMAX SPARK VDEO(8GB) 4G VOLTE","Rs. 50000",R.mipmap.ic_launcher, "4.0","12"));
 
 
-    }
+    }*/
 
     @Override
     public void onClick(View v) {

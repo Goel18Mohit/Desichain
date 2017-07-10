@@ -165,7 +165,7 @@ public class ProductPageActual extends AppCompatActivity implements View.OnClick
         mRecentlyViewed.setAdapter(mAdapter);
         mShareProduct=(ImageView)findViewById(R.id.shareProduct);
 
-        addItems();
+        //addItems();
 
         mReviewsProductLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -286,7 +286,7 @@ public class ProductPageActual extends AppCompatActivity implements View.OnClick
         return true;
     }
 
-    private void addItems() {
+   /* private void addItems() {
 
         mProductsList.add(new ProductHorizontal("MICROMAX SPARK VDEO(8GB) 4G VOLTE","Rs. 50000",R.mipmap.ic_launcher, "4.0","12"));
         mProductsList.add(new ProductHorizontal("MICROMAX SPARK VDEO(8GB) 4G VOLTE","Rs. 50000",R.mipmap.ic_launcher, "4.0","12"));
@@ -298,7 +298,7 @@ public class ProductPageActual extends AppCompatActivity implements View.OnClick
         mProductsList.add(new ProductHorizontal("MICROMAX SPARK VDEO(8GB) 4G VOLTE","Rs. 50000",R.mipmap.ic_launcher, "4.0","12"));
         mProductsList.add(new ProductHorizontal("MICROMAX SPARK VDEO(8GB) 4G VOLTE","Rs. 50000",R.mipmap.ic_launcher, "4.0","12"));
         mProductsList.add(new ProductHorizontal("MICROMAX SPARK VDEO(8GB) 4G VOLTE","Rs. 50000",R.mipmap.ic_launcher, "4.0","12"));
-    }
+    }*/
 
     public void add()
     {
