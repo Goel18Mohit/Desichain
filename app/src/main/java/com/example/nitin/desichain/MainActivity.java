@@ -27,17 +27,22 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.nitin.desichain.Adapters.BrandStudioAdapter;
 import com.example.nitin.desichain.Adapters.CustomViewpagerAdapter;
 import com.example.nitin.desichain.Adapters.ProductHorizontalAdapter;
+import com.example.nitin.desichain.Contents.BrandStudioList;
 import com.example.nitin.desichain.Contents.ProductHorizontal;
+import com.example.nitin.desichain.Internet.FetchingFromUrl;
+import com.example.nitin.desichain.ParsingJson.BrandStudio;
+import com.example.nitin.desichain.ParsingJson.BsetSellingProduct;
 import com.example.nitin.desichain.SubCategoryList.ShowCategoryAdapeter;
 import com.example.nitin.desichain.Utility.Utility;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.concurrent.ExecutionException;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -55,7 +60,10 @@ public static  ArrayList<String> Books;
     NestedScrollView nestedScrollView;
     TextView txtViewCount;
   public static ArrayList<String> Homecare;
+    TextView TESTING;
+    private ArrayList<BrandStudioList> BRAND_STUDIO_LIST;
     int count=2;
+    String JSON_RESPONSE;
     private ViewPager viewPager;
     private CustomViewpagerAdapter mAdapter;
     private int images[] = {R.drawable.hitkary_small,
@@ -63,9 +71,10 @@ public static  ArrayList<String> Books;
   public static   ArrayList<String> others;
       public  static HashMap<String,ArrayList<String>> hashMap;
     View headerView;
+    private BrandStudioAdapter mBrandStudioAdapter;
     private RecyclerView mLatestProductView,mBrandStudioView, mTopTenGameView,mTopTenGameView2, mFeaturedProductView,mAdvertisementView,mBestSellingView;
-    private List<ProductHorizontal> mProductsList;
-    private ProductHorizontalAdapter mLatestProductAdapter,mBrandStudioAdapter, mTopTenGameAdapter,mTopTenGameAdapter2, mFeaturedProductAdapter,mAdvertisementAdapter,mBestSellingProductAdapter;
+    private ArrayList<ProductHorizontal> mProductsList;
+    private ProductHorizontalAdapter mLatestProductAdapter, mTopTenGameAdapter,mTopTenGameAdapter2, mFeaturedProductAdapter,mAdvertisementAdapter,mBestSellingProductAdapter;
     LinearLayout myorder,mycart,myaccount,helpcenter,ratedesichain,productPage,policy,facebook,google,twitter,pinterest,youtube,instagram,aboutus,subscribe;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,7 +82,7 @@ public static  ArrayList<String> Books;
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar)findViewById(R.id.my_toolBar);
         setSupportActionBar(toolbar);
-        
+        TESTING= (TextView) findViewById(R.id.testing);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         invalidateOptionsMenu();
@@ -102,9 +111,9 @@ public static  ArrayList<String> Books;
             }
         },DELAY_MS,PERIOD_MS);
 
-
+      launchBestSellingProduct();
+        loadBrandStudio();
         mLatestProductView =(RecyclerView)findViewById(R.id.LatestProductRecyclerView);
-        mProductsList=new ArrayList<>();
         mLatestProductAdapter = new ProductHorizontalAdapter(MainActivity.this,mProductsList);
         LinearLayoutManager lm =new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
         mLatestProductView.setLayoutManager(lm);
@@ -116,7 +125,7 @@ public static  ArrayList<String> Books;
         }
 
         mBrandStudioView=(RecyclerView)findViewById(R.id.brandStudioRecyclerView);
-        mBrandStudioAdapter=new ProductHorizontalAdapter(this,mProductsList);
+        mBrandStudioAdapter=new BrandStudioAdapter(BRAND_STUDIO_LIST,MainActivity.this);
         LinearLayoutManager lm6 = new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,true);
         mBrandStudioView.setLayoutManager(lm6);
         mBrandStudioView.setItemAnimator(new DefaultItemAnimator());
@@ -166,7 +175,7 @@ public static  ArrayList<String> Books;
 
 
 
-        prepareItems();
+
 
 
 
@@ -189,6 +198,9 @@ public static  ArrayList<String> Books;
         initiaze();
         add();
 
+
+
+
         cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -200,17 +212,20 @@ public static  ArrayList<String> Books;
     }
 
 
-    private void prepareItems() {
 
-
-        mProductsList.add(new ProductHorizontal("MICROMAX SPARK VDEO(8GB) 4G VOLTE","Rs. 50000",R.mipmap.ic_launcher, "(12)","4.0"));
-        mProductsList.add(new ProductHorizontal("MICROMAX SPARK VDEO(8GB) 4G VOLTE","Rs. 50000",R.mipmap.ic_launcher, "(12)","4.0"));
-        mProductsList.add(new ProductHorizontal("MICROMAX SPARK VDEO(8GB) 4G VOLTE","Rs. 50000",R.mipmap.ic_launcher, "(12)","4.0"));
-        mProductsList.add(new ProductHorizontal("MICROMAX SPARK VDEO(8GB) 4G VOLTE","Rs. 50000",R.mipmap.ic_launcher, "(12)","4.0"));
-        mProductsList.add(new ProductHorizontal("MICROMAX SPARK VDEO(8GB) 4G VOLTE","Rs. 50000",R.mipmap.ic_launcher, "(12)","4.0"));
-        mProductsList.add(new ProductHorizontal("MICROMAX SPARK VDEO(8GB) 4G VOLTE","Rs. 50000",R.mipmap.ic_launcher, "(12)","4.0"));
-        mProductsList.add(new ProductHorizontal("MICROMAX SPARK VDEO(8GB) 4G VOLTE","Rs. 50000",R.mipmap.ic_launcher, "(12)","4.0"));
-
+    public void launchBestSellingProduct()
+    {
+        try {
+            JSON_RESPONSE=new FetchingFromUrl().execute("http://dc.desichain.in/DesiChainWeService.asmx/FeaturedProduct").get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+        if(JSON_RESPONSE!=null)
+        {
+            mProductsList=new BsetSellingProduct(JSON_RESPONSE,MainActivity.this).parseBestSellingProduct();
+        }
     }
 
     @Override
@@ -226,6 +241,7 @@ public static  ArrayList<String> Books;
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
+
         getMenuInflater().inflate(R.menu.main, menu);
         MenuItem menuItem=menu.findItem(R.id.my_cart);
         MenuItem item = menu.findItem(R.id.search_item);
@@ -415,5 +431,20 @@ public static  ArrayList<String> Books;
     @Override
     public void onClick(View v) {
         new Utility().openIntent(this,v.getId(),drawer);
+    }
+
+    public void loadBrandStudio()
+    {
+        try {
+            JSON_RESPONSE=new FetchingFromUrl().execute("http://dc.desichain.in/DesiChainWeService.asmx/BrandDetail").get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+        if(JSON_RESPONSE!=null)
+        {
+            BRAND_STUDIO_LIST=new BrandStudio(JSON_RESPONSE,MainActivity.this).parseBestSellingProduct();
+        }
     }
 }
