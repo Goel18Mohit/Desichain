@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Desichain.iml" filepath="$PROJECT_DIR$/Desichain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PGSDK_V2.1/PGSDK_V2.1.iml" filepath="$PROJECT_DIR$/PGSDK_V2.1/PGSDK_V2.1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PGSDK_V2.1/PGSDK_V2.1.iml" filepath="$PROJECT_DIR$/PGSDK_V2.1/PGSDK_V2.1.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

@@ -6,28 +6,26 @@ package com.example.nitin.desichain.Contents;
 
 public class ChildCategoryBrand {
 
-    private int mImageId;
-    private String mBrandName;
+    private int PRODUCT_ID_SNO;
+    private String PRODUCT_IMAGE_URL;
+    private String PRODUCT_NAME;
 
 
-    public ChildCategoryBrand(int mImageId, String mBrandName) {
-        this.mImageId = mImageId;
-        this.mBrandName = mBrandName;
+    public ChildCategoryBrand(int PRODUCT_ID_SNO, String PRODUCT_NAME, String PRODUCT_IMAGE_URL) {
+        this.PRODUCT_ID_SNO = PRODUCT_ID_SNO;
+        this.PRODUCT_NAME = PRODUCT_NAME;
+        this.PRODUCT_IMAGE_URL = PRODUCT_IMAGE_URL;
     }
 
-    public int getmImageId() {
-        return mImageId;
+    public int getPRODUCT_ID_SNO() {
+        return PRODUCT_ID_SNO;
     }
 
-    public void setmImageId(int mImageId) {
-        this.mImageId = mImageId;
+    public String getPRODUCT_IMAGE_URL() {
+        return PRODUCT_IMAGE_URL;
     }
 
-    public String getmBrandName() {
-        return mBrandName;
-    }
-
-    public void setmBrandName(String mBrandName) {
-        this.mBrandName = mBrandName;
+    public String getPRODUCT_NAME() {
+        return PRODUCT_NAME;
     }
 }

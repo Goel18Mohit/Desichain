@@ -10,8 +10,9 @@ import android.widget.TextView;
 
 import com.example.nitin.desichain.Contents.ChildCategoryBrand;
 import com.example.nitin.desichain.R;
+import com.squareup.picasso.Picasso;
 
-import java.util.List;
+import java.util.ArrayList;
 
 /**
  * Created by ashis on 7/5/2017.
@@ -20,9 +21,9 @@ import java.util.List;
 public class ChildCategoryCardAdapter extends RecyclerView.Adapter<ChildCategoryCardAdapter.MyViewHolder> {
 
     private Context mContext;
-    private List<ChildCategoryBrand> mList;
+    private ArrayList<ChildCategoryBrand> mList;
 
-    public ChildCategoryCardAdapter(Context mContext, List<ChildCategoryBrand> mList) {
+    public ChildCategoryCardAdapter(Context mContext, ArrayList<ChildCategoryBrand> mList) {
         this.mContext = mContext;
         this.mList = mList;
     }
@@ -37,8 +38,8 @@ public class ChildCategoryCardAdapter extends RecyclerView.Adapter<ChildCategory
     public void onBindViewHolder(MyViewHolder holder, int position) {
 
         ChildCategoryBrand brand = mList.get(position);
-        holder.imageView.setImageResource(brand.getmImageId());
-        holder.textView.setText(brand.getmBrandName());
+        Picasso.with(mContext).load("http://www.desichain.in/uploads/"+mList.get(position).getPRODUCT_IMAGE_URL()).into(holder.imageView);
+        holder.textView.setText(mList.get(position).getPRODUCT_NAME());
     }
 
     @Override
