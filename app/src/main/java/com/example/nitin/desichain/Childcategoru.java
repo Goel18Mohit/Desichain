@@ -21,20 +21,22 @@ import android.widget.ExpandableListView;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListAdapter;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.ListAdapter;
 
 import com.example.nitin.desichain.Adapters.ChildCategoryAdapter;
 import com.example.nitin.desichain.Adapters.ChildCategoryCardAdapter;
 import com.example.nitin.desichain.Contents.ChildCategoryBrand;
 import com.example.nitin.desichain.Contents.ChildCategoryList;
+import com.example.nitin.desichain.Internet.FetchingFromUrl;
+import com.example.nitin.desichain.ParsingJson.ShopByPublisher;
 import com.example.nitin.desichain.SubCategoryList.ShowCategoryAdapeter;
 import com.example.nitin.desichain.Utility.Utility;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 import static com.example.nitin.desichain.MainActivity.arrayList;
 
@@ -43,7 +45,7 @@ import static com.example.nitin.desichain.MainActivity.arrayList;
 public class Childcategoru extends AppCompatActivity implements View.OnClickListener {
 
     private RecyclerView newLaunchView,mPublisherView,mPriceView,mDiscountView,mPopularCategView;
-    private List<ChildCategoryBrand> mNewLaunchList,mPublisherList,mPriceList,mDiscountList,mPopularCategList;
+   private ArrayList<ChildCategoryBrand> SHOP_BY_PUBLISHER;
     private ChildCategoryCardAdapter mnewLaunchAdapter,mPublisherAdapter,mPriceAdapter,mDiscountAdapter,mPopularCategAdapter;
 
     ArrayList<ChildCategoryList> homedecor;
@@ -68,6 +70,7 @@ public class Childcategoru extends AppCompatActivity implements View.OnClickList
    private Helper listView;
     View headerView;
     DrawerLayout drawer;
+    private String JSON_RESPONSE;
     ImageView toolbarcartimage;
     NestedScrollView nestedScrollView;
     public static ArrayList<String> Poojaitem;
@@ -93,57 +96,56 @@ public class Childcategoru extends AppCompatActivity implements View.OnClickList
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        newLaunchView=(RecyclerView)findViewById(R.id.newLaunchRecyclerView);
-        mNewLaunchList =new ArrayList<>();
-        mnewLaunchAdapter =new ChildCategoryCardAdapter(this, mNewLaunchList);
-        GridLayoutManager lm = new GridLayoutManager(this,4);
-        newLaunchView.setLayoutManager(lm);
-        newLaunchView.setNestedScrollingEnabled(false);
-        newLaunchView.setItemAnimator(new DefaultItemAnimator());
-        newLaunchView.setAdapter(mnewLaunchAdapter);
 
-        prepareitems();
+        JSON_RESPONSE=load("http://dc.desichain.in/DesiChainWeService.asmx/TotalPublisherDetail");
+        if(JSON_RESPONSE!=null) {
 
-        mPublisherView=(RecyclerView)findViewById(R.id.publisherRecyclerView);
-        mPublisherList=new ArrayList<>();
-        mPublisherAdapter=new ChildCategoryCardAdapter(this,mPublisherList);
-        GridLayoutManager gm = new GridLayoutManager(this,4);
-        mPublisherView.setItemAnimator(new DefaultItemAnimator());
-        mPublisherView.setLayoutManager(gm);
-        mPublisherView.setAdapter(mPublisherAdapter);
-        mPublisherView.setNestedScrollingEnabled(false);
-        preparePublisherItems();
+            SHOP_BY_PUBLISHER=new ShopByPublisher(JSON_RESPONSE,Childcategoru.this).parsingShopByPublisher();
+            newLaunchView = (RecyclerView) findViewById(R.id.newLaunchRecyclerView);
+            mnewLaunchAdapter = new ChildCategoryCardAdapter(this, SHOP_BY_PUBLISHER);
+            GridLayoutManager lm = new GridLayoutManager(this, 4);
+            newLaunchView.setLayoutManager(lm);
+            newLaunchView.setNestedScrollingEnabled(false);
+            newLaunchView.setItemAnimator(new DefaultItemAnimator());
+            newLaunchView.setAdapter(mnewLaunchAdapter);
 
-        mPriceView=(RecyclerView)findViewById(R.id.shopByPriceRecyclerView);
-        mPriceList=new ArrayList<>();
-        mPriceAdapter=new ChildCategoryCardAdapter(this,mPriceList);
-        GridLayoutManager gm1 = new GridLayoutManager(this,4);
-        mPriceView.setLayoutManager(gm1);
-        mPriceView.setItemAnimator(new DefaultItemAnimator());
-        mPriceView.setAdapter(mPriceAdapter);
-        mPriceView.setNestedScrollingEnabled(false);
-        preparePriceItems();
 
-        mDiscountView=(RecyclerView)findViewById(R.id.discountRecyclerView);
-        mDiscountList=new ArrayList<>();
-        mDiscountAdapter=new ChildCategoryCardAdapter(this,mDiscountList);
-        GridLayoutManager gm2 = new GridLayoutManager(this,4);
-        mDiscountView.setLayoutManager(gm2);
-        mDiscountView.setItemAnimator(new DefaultItemAnimator());
-        mDiscountView.setAdapter(mDiscountAdapter);
-        mDiscountView.setNestedScrollingEnabled(false);
-        prepareDiscountItems();
+            mPublisherView = (RecyclerView) findViewById(R.id.publisherRecyclerView);
+            mPublisherAdapter = new ChildCategoryCardAdapter(this, SHOP_BY_PUBLISHER);
+            GridLayoutManager gm = new GridLayoutManager(this, 4);
+            mPublisherView.setItemAnimator(new DefaultItemAnimator());
+            mPublisherView.setLayoutManager(gm);
+            mPublisherView.setAdapter(mPublisherAdapter);
+            mPublisherView.setNestedScrollingEnabled(false);
 
-        mPopularCategView=(RecyclerView)findViewById(R.id.popularCategoryRecyclerView);
-        mPopularCategList=new ArrayList<>();
-        mPopularCategAdapter=new ChildCategoryCardAdapter(this,mPopularCategList);
-        GridLayoutManager gm3 = new GridLayoutManager(this,4);
-        mPopularCategView.setLayoutManager(gm3);
-        mPopularCategView.setItemAnimator(new DefaultItemAnimator());
-        mPopularCategView.setAdapter(mPopularCategAdapter);
-        mPopularCategView.setNestedScrollingEnabled(false);
-        preparePopularCategItems();
 
+            mPriceView = (RecyclerView) findViewById(R.id.shopByPriceRecyclerView);
+            mPriceAdapter = new ChildCategoryCardAdapter(this,SHOP_BY_PUBLISHER);
+            GridLayoutManager gm1 = new GridLayoutManager(this, 4);
+            mPriceView.setLayoutManager(gm1);
+            mPriceView.setItemAnimator(new DefaultItemAnimator());
+            mPriceView.setAdapter(mPriceAdapter);
+            mPriceView.setNestedScrollingEnabled(false);
+
+
+            mDiscountView = (RecyclerView) findViewById(R.id.discountRecyclerView);
+            mDiscountAdapter = new ChildCategoryCardAdapter(this, SHOP_BY_PUBLISHER);
+            GridLayoutManager gm2 = new GridLayoutManager(this, 4);
+            mDiscountView.setLayoutManager(gm2);
+            mDiscountView.setItemAnimator(new DefaultItemAnimator());
+            mDiscountView.setAdapter(mDiscountAdapter);
+            mDiscountView.setNestedScrollingEnabled(false);
+
+
+            mPopularCategView = (RecyclerView) findViewById(R.id.popularCategoryRecyclerView);
+            mPopularCategAdapter = new ChildCategoryCardAdapter(this, SHOP_BY_PUBLISHER);
+            GridLayoutManager gm3 = new GridLayoutManager(this, 4);
+            mPopularCategView.setLayoutManager(gm3);
+            mPopularCategView.setItemAnimator(new DefaultItemAnimator());
+            mPopularCategView.setAdapter(mPopularCategAdapter);
+            mPopularCategView.setNestedScrollingEnabled(false);
+
+        }
          getSupportActionBar().setTitle(getIntent().getStringExtra("get"));
         inti();
         gridView= (GridView) findViewById(R.id.singlechildlistview);
@@ -312,43 +314,11 @@ public class Childcategoru extends AppCompatActivity implements View.OnClickList
         });
     }
 
-    private void preparePopularCategItems() {
-
-        for (int i=0;i<8;i++){
-            mPopularCategList.add(new ChildCategoryBrand(R.mipmap.ic_launcher,"Popular categ name"));
-        }
-    }
-
-    private void prepareDiscountItems() {
-       for (int i=0;i<8;i++){
-            mDiscountList.add(new ChildCategoryBrand(R.mipmap.ic_launcher,"Discount text"));
-        }
-    }
-
-    private void preparePriceItems() {
-
-        for (int i=0;i<8;i++){
-            mPriceList.add(new ChildCategoryBrand(R.mipmap.ic_launcher,"Price text in Rs"));
-        }
-    }
 
 
 
-    private void preparePublisherItems() {
-        for (int i=0;i<8;i++){
-            mPublisherList.add(new ChildCategoryBrand(R.mipmap.ic_launcher,"Publisher Name"));
-        }
-    }
-
-    private void prepareitems() {
-
-        for (int i=0;i<8;i++){
-
-            mNewLaunchList.add(new ChildCategoryBrand(R.mipmap.ic_launcher,"Brand Name"));
-        }
 
 
-    }
 
     public void inti(){
         homedecor = new ArrayList<>();
@@ -778,5 +748,18 @@ public class Childcategoru extends AppCompatActivity implements View.OnClickList
     @Override
     public void onClick(View v) {
         new Utility().openIntent(this,v.getId(),drawer);
+    }
+
+    public String load(String url)
+    {
+        try {
+            JSON_RESPONSE=new FetchingFromUrl().execute(url).get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+        return JSON_RESPONSE;
+
     }
 }
