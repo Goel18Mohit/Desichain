@@ -232,8 +232,9 @@ public class BuyNow extends AppCompatActivity implements View.OnClickListener,Si
                         if(drawer.isDrawerOpen(Gravity.LEFT)) {
                             drawer.closeDrawer(Gravity.LEFT);
                         }else{
-                            drawer.openDrawer(Gravity.LEFT);
+                            finish();
                         }
+                        break;
                     case R.id.search_item:
                         startActivity(new Intent(this,SearchActivity.class));
                         break;

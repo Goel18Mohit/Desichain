@@ -65,6 +65,7 @@ public class FilterFragmentData extends Fragment {
         mFilterListView.setHasFixedSize(true);
         mFilterListView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
+
         if (mFilterItemName.equals("author")){
             if (mAdapter==null) {
                 authorFilterList = new ArrayList<>();
@@ -80,6 +81,7 @@ public class FilterFragmentData extends Fragment {
 
             }
         }
+
         else if (mFilterItemName.equals("price")){
             if (mAdapter==null) {
                 priceFilterList = new ArrayList<>();

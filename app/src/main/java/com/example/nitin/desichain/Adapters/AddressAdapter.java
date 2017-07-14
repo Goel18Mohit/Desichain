@@ -1,6 +1,7 @@
 package com.example.nitin.desichain.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,7 +13,9 @@ import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.nitin.desichain.AddNewAddress;
 import com.example.nitin.desichain.Contents.AddressList;
 import com.example.nitin.desichain.R;
 
@@ -105,9 +108,12 @@ public class AddressAdapter extends RecyclerView.Adapter<AddressAdapter.MyViewHo
             public boolean onMenuItemClick(MenuItem item) {
                if(item.getItemId()==R.id.editAddress)
                {
+                   Toast.makeText(mContext,"edit clicked",Toast.LENGTH_SHORT).show();
+                   mContext.startActivity(new Intent(mContext,AddNewAddress.class));
+/*
                    SaveAddress saveAddress= (SaveAddress) mContext;
                    saveAddress.OnEditButtonClicked(position);
-               }
+  */             }
                 else if(item.getItemId()==R.id.removeAddress)
                {
                    mAddress.remove(position);

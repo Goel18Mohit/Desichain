@@ -26,7 +26,7 @@ import com.example.nitin.desichain.Utility.Utility;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class WriteReview extends AppCompatActivity implements View.OnClickListener{
+public class WriteReview extends AppCompatActivity implements View.OnClickListener {
 
     private Button mSubmitReview;
     private Toolbar mToolbar;
@@ -35,37 +35,37 @@ public class WriteReview extends AppCompatActivity implements View.OnClickListen
     DrawerLayout drawer;
     NestedScrollView nestedScrollView;
     public static ArrayList<String> Poojaitem;
-    public  static ArrayList<CategoryHolder> arrayList;
-    public static  ArrayList<String> Books;
+    public static ArrayList<CategoryHolder> arrayList;
+    public static ArrayList<String> Books;
     public static ArrayList<String> Homecare;
-    int count=2;
+    int count = 2;
     TextView txtViewCount;
-    ImageView  toolbarcartimage;
+    ImageView toolbarcartimage;
     LinearLayout subscribe;
-    public static   ArrayList<String> others;
-    public  static HashMap<String,ArrayList<String>> hashMap;
-    LinearLayout myorder,mycart,myaccount,helpcenter,ratedesichain,productPage,policy,facebook,google,twitter,pinterest,youtube,instagram,aboutus;
+    public static ArrayList<String> others;
+    public static HashMap<String, ArrayList<String>> hashMap;
+    LinearLayout myorder, mycart, myaccount, helpcenter, ratedesichain, productPage, policy, facebook, google, twitter, pinterest, youtube, instagram, aboutus;
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
-        MenuItem menuItem=menu.findItem(R.id.my_cart);
-        MenuItemCompat.setActionView(menuItem,R.layout.cart_icon_for_toolbar);
-        RelativeLayout mycarttoolbar= (RelativeLayout) MenuItemCompat.getActionView(menuItem);
+        MenuItem menuItem = menu.findItem(R.id.my_cart);
+        MenuItemCompat.setActionView(menuItem, R.layout.cart_icon_for_toolbar);
+        RelativeLayout mycarttoolbar = (RelativeLayout) MenuItemCompat.getActionView(menuItem);
         txtViewCount = (TextView) mycarttoolbar.findViewById(R.id.badge_notification_1);
-        toolbarcartimage= (ImageView) mycarttoolbar.findViewById(R.id.badge_notification_image);
+        toolbarcartimage = (ImageView) mycarttoolbar.findViewById(R.id.badge_notification_image);
 
         toolbarcartimage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(WriteReview.this,MyCart.class));
+                startActivity(new Intent(WriteReview.this, MyCart.class));
             }
         });
         txtViewCount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(WriteReview.this,MyCart.class));
+                startActivity(new Intent(WriteReview.this, MyCart.class));
             }
         });
 
@@ -76,12 +76,12 @@ public class WriteReview extends AppCompatActivity implements View.OnClickListen
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case android.R.id.home:
-                if(drawer.isDrawerOpen(Gravity.LEFT)) {
+                if (drawer.isDrawerOpen(Gravity.LEFT)) {
                     drawer.closeDrawer(Gravity.LEFT);
-                }else{
-                    drawer.openDrawer(Gravity.LEFT);
+                } else {
+                    finish();
                 }
         }
 
@@ -93,13 +93,13 @@ public class WriteReview extends AppCompatActivity implements View.OnClickListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_write_review);
 
-        mToolbar=(Toolbar)findViewById(R.id.myToolBar);
+        mToolbar = (Toolbar) findViewById(R.id.myToolBar);
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(false);
 
 
-        mSubmitReview=(Button)findViewById(R.id.submitReview);
+        mSubmitReview = (Button) findViewById(R.id.submitReview);
         mSubmitReview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -109,7 +109,7 @@ public class WriteReview extends AppCompatActivity implements View.OnClickListen
 
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, R.string.navigation_drawer_open, R.string.navigation_drawer_close){
+                this, drawer, R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
             @Override
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
@@ -121,18 +121,18 @@ public class WriteReview extends AppCompatActivity implements View.OnClickListen
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         headerView = navigationView.inflateHeaderView(R.layout.nav_header_main);
         refferencetonavigationcategory(navigationView);
-        nestedScrollView= (NestedScrollView) navigationView.findViewById(R.id.scrollposition);
-        listView= (Helper) navigationView.findViewById(R.id.parentcategoryList);
+        nestedScrollView = (NestedScrollView) navigationView.findViewById(R.id.scrollposition);
+        listView = (Helper) navigationView.findViewById(R.id.parentcategoryList);
         initiaze();
         add();
 
     }
-    public void add()
-    {
-        arrayList.add(new CategoryHolder("Book and media",0,R.mipmap.book));
-        arrayList.add(new CategoryHolder("Pooja Item",0,R.mipmap.pooja));
-        arrayList.add(new CategoryHolder("Home Care",0,R.mipmap.homecare));
-        arrayList.add(new CategoryHolder("Others",0,R.mipmap.other));
+
+    public void add() {
+        arrayList.add(new CategoryHolder("Book and media", 0, R.mipmap.book));
+        arrayList.add(new CategoryHolder("Pooja Item", 0, R.mipmap.pooja));
+        arrayList.add(new CategoryHolder("Home Care", 0, R.mipmap.homecare));
+        arrayList.add(new CategoryHolder("Others", 0, R.mipmap.other));
         Books.add("Bhagavad-Gita As It Is");
         Books.add("Paperback/ Hardbound");
         Books.add("Media");
@@ -151,40 +151,37 @@ public class WriteReview extends AppCompatActivity implements View.OnClickListen
         others.add("Men");
         others.add("BagsnStationery");
         others.add("MobileAccessiories");
-        hashMap.put(arrayList.get(0).getPARENTCATEGORY(),Books);
-        hashMap.put(arrayList.get(1).getPARENTCATEGORY(),Poojaitem);
-        hashMap.put(arrayList.get(2).getPARENTCATEGORY(),Homecare);
-        hashMap.put(arrayList.get(3).getPARENTCATEGORY(),others);
+        hashMap.put(arrayList.get(0).getPARENTCATEGORY(), Books);
+        hashMap.put(arrayList.get(1).getPARENTCATEGORY(), Poojaitem);
+        hashMap.put(arrayList.get(2).getPARENTCATEGORY(), Homecare);
+        hashMap.put(arrayList.get(3).getPARENTCATEGORY(), others);
         navigationCategoryList();
     }
 
-    public void initiaze(){
-        arrayList=new ArrayList<>();
-        hashMap=new HashMap<>();
-        Books=new ArrayList<>();
-        Poojaitem=new ArrayList<>();
-        Homecare=new ArrayList<>();
-        others=new ArrayList<>();
+    public void initiaze() {
+        arrayList = new ArrayList<>();
+        hashMap = new HashMap<>();
+        Books = new ArrayList<>();
+        Poojaitem = new ArrayList<>();
+        Homecare = new ArrayList<>();
+        others = new ArrayList<>();
 
     }
-    public void navigationCategoryList(){
-        final ShowCategoryAdapeter showCategoryAdapeter=new ShowCategoryAdapeter(WriteReview.this,arrayList,hashMap,listView);
+
+    public void navigationCategoryList() {
+        final ShowCategoryAdapeter showCategoryAdapeter = new ShowCategoryAdapeter(WriteReview.this, arrayList, hashMap, listView);
         listView.setAdapter(showCategoryAdapeter);
         listView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
             @Override
             public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
 
-                if(arrayList.get(groupPosition).getFLAG_INDICATOR()==1)
-                {
+                if (arrayList.get(groupPosition).getFLAG_INDICATOR() == 1) {
                     listView.collapseGroup(groupPosition);
                     arrayList.get(groupPosition).setFLAG_INDICATOR(0);
 
-                }
-                else{
-                    for(int i=0;i<arrayList.size();i++)
-                    {
-                        if(arrayList.get(i).getFLAG_INDICATOR()==1)
-                        {
+                } else {
+                    for (int i = 0; i < arrayList.size(); i++) {
+                        if (arrayList.get(i).getFLAG_INDICATOR() == 1) {
                             listView.collapseGroup(i);
                             arrayList.get(i).setFLAG_INDICATOR(0);
                         }
@@ -192,7 +189,7 @@ public class WriteReview extends AppCompatActivity implements View.OnClickListen
                     }
                     listView.expandGroup(groupPosition);
                     listView.setSelectedGroup(groupPosition);
-                    nestedScrollView.smoothScrollTo(0,groupPosition);
+                    nestedScrollView.smoothScrollTo(0, groupPosition);
                     arrayList.get(groupPosition).setFLAG_INDICATOR(1);
 
                 }
@@ -202,9 +199,9 @@ public class WriteReview extends AppCompatActivity implements View.OnClickListen
         listView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-                Intent intent=new Intent(WriteReview.this,Childcategoru.class);
-                intent.putExtra("get",hashMap.get(arrayList.get(groupPosition).getPARENTCATEGORY()).get(childPosition));
-                intent.putExtra("getFilterName",String.valueOf(arrayList.get(groupPosition).getPARENTCATEGORY()));
+                Intent intent = new Intent(WriteReview.this, Childcategoru.class);
+                intent.putExtra("get", hashMap.get(arrayList.get(groupPosition).getPARENTCATEGORY()).get(childPosition));
+                intent.putExtra("getFilterName", String.valueOf(arrayList.get(groupPosition).getPARENTCATEGORY()));
                 startActivity(intent);
                 return true;
             }
@@ -212,23 +209,22 @@ public class WriteReview extends AppCompatActivity implements View.OnClickListen
 
     }
 
-    public void refferencetonavigationcategory(View view)
-    {
-        myorder= (LinearLayout) view.findViewById(R.id.myorders);
-        mycart= (LinearLayout) view.findViewById(R.id.mycart);
-        myaccount= (LinearLayout) view.findViewById(R.id.myaccount);
-        helpcenter= (LinearLayout) view.findViewById(R.id.helpcenter);
-        ratedesichain= (LinearLayout) view.findViewById(R.id.ratedesichain);
-        policy= (LinearLayout) view.findViewById(R.id.policy);
-        facebook= (LinearLayout) view.findViewById(R.id.facebook);
-        google=(LinearLayout) view.findViewById(R.id.googleplus);
-        twitter= (LinearLayout) view.findViewById(R.id.twitter);
-        productPage=(LinearLayout)view.findViewById(R.id.myProductLayout);
-        pinterest= (LinearLayout) view.findViewById(R.id.pinterest);
-        youtube= (LinearLayout) view.findViewById(R.id.youtube);
-        instagram= (LinearLayout) view.findViewById(R.id.instagram);
-        aboutus= (LinearLayout) view.findViewById(R.id.aboutus);
-        subscribe= (LinearLayout) findViewById(R.id.subscribe);
+    public void refferencetonavigationcategory(View view) {
+        myorder = (LinearLayout) view.findViewById(R.id.myorders);
+        mycart = (LinearLayout) view.findViewById(R.id.mycart);
+        myaccount = (LinearLayout) view.findViewById(R.id.myaccount);
+        helpcenter = (LinearLayout) view.findViewById(R.id.helpcenter);
+        ratedesichain = (LinearLayout) view.findViewById(R.id.ratedesichain);
+        policy = (LinearLayout) view.findViewById(R.id.policy);
+        facebook = (LinearLayout) view.findViewById(R.id.facebook);
+        google = (LinearLayout) view.findViewById(R.id.googleplus);
+        twitter = (LinearLayout) view.findViewById(R.id.twitter);
+        productPage = (LinearLayout) view.findViewById(R.id.myProductLayout);
+        pinterest = (LinearLayout) view.findViewById(R.id.pinterest);
+        youtube = (LinearLayout) view.findViewById(R.id.youtube);
+        instagram = (LinearLayout) view.findViewById(R.id.instagram);
+        aboutus = (LinearLayout) view.findViewById(R.id.aboutus);
+        subscribe = (LinearLayout) findViewById(R.id.subscribe);
         myorder.setOnClickListener(this);
         mycart.setOnClickListener(this);
         myaccount.setOnClickListener(this);
@@ -249,6 +245,6 @@ public class WriteReview extends AppCompatActivity implements View.OnClickListen
 
     @Override
     public void onClick(View v) {
-        new Utility().openIntent(this,v.getId(),drawer);
+        new Utility().openIntent(this, v.getId(), drawer);
     }
 }
