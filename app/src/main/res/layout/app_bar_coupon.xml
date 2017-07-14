@@ -1,34 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!--
+-->
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.example.nitin.desichain.NotificationPage">
+    tools:context="com.example.nitin.desichain.Childcategoru">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
-        android:id="@+id/appBarLayout"
-        android:background="@color/green"
         android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:background="@drawable/side_nav_bar">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@drawable/side_nav_bar"
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
     </android.support.design.widget.AppBarLayout>
 
-    <android.support.v7.widget.RecyclerView
+
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/appBarLayout"
-        android:id="@+id/couponRecyclerView"
-        android:scrollbars="vertical"
-        android:clipToPadding="false"/>
-
-</RelativeLayout>
+        android:layout_marginTop="?attr/actionBarSize"
+        android:layout_below="@+id/appBarLayout">
+        <include layout="@layout/content_coupon_page" />
+    </FrameLayout>
+</android.support.design.widget.CoordinatorLayout>

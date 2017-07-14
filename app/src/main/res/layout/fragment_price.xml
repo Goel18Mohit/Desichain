@@ -1,14 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:rsb="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/tools"
+    xmlns:app1="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
+<!--
    <org.florescu.android.rangeseekbar.RangeSeekBar
        android:layout_width="match_parent"
+       android:layout_marginLeft="8dp"
+       android:layout_marginRight="8dp"
+       android:layout_centerInParent="true"
+       android:scrollbarSize="20dp"
        android:layout_height="wrap_content"
        android:id="@+id/seekbar"
        rsb:absoluteMaxValue="200"
        rsb:absoluteMinValue="0"/>
-</LinearLayout>
+-->
+
+   <com.crystal.crystalrangeseekbar.widgets.CrystalRangeSeekbar
+       android:id="@+id/seekbar"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:scrollbarThumbVertical="@anim/cb_anim"
+       android:scrollbarThumbHorizontal="@anim/cb_translate"
+       android:layout_marginLeft="8dp"
+        app1:min_value="0"
+       app1:bar_highlight_color="@android:color/holo_green_dark"
+       app1:corner_radius="50"
+       app1:max_value="200"
+       app1:right_thumb_color="@android:color/holo_green_dark"
+       app1:left_thumb_color="@android:color/holo_green_dark"
+       app1:left_thumb_color_pressed="@color/green"
+       app1:right_thumb_color_pressed="@color/green"
+       android:scrollbarSize="2dp"
+       android:layout_marginRight="8dp"
+       android:layout_centerInParent="true" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/seekbar"
+        android:text="hint"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:id="@+id/minPriceSeekbarText"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="8dp"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="asa"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="8dp"
+        android:id="@+id/maxPriceSeekbarText"
+        android:layout_alignBaseline="@+id/minPriceSeekbarText"
+        android:layout_alignBottom="@+id/minPriceSeekbarText"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+</RelativeLayout>

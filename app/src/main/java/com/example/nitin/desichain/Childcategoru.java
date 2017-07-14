@@ -726,6 +726,7 @@ mList=new ArrayList<>();
 
                 Intent intent=new Intent(Childcategoru.this,Childcategoru.class);
                 intent.putExtra("get",hashMap.get(arrayList.get(groupPosition).getPARENTCATEGORY()).get(childPosition));
+                intent.putExtra("getFilterName",String.valueOf(arrayList.get(groupPosition).getPARENTCATEGORY()));
                 startActivity(intent);
                 try {
                     Thread.sleep(200);
