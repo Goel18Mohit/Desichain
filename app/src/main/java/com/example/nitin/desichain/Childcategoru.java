@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.NestedScrollView;
@@ -42,16 +43,26 @@ import java.util.concurrent.ExecutionException;
 import static com.example.nitin.desichain.MainActivity.arrayList;
 
 
+public class Childcategoru extends AppCompatActivity implements View.OnClickListener {
 
-public class Childcategoru extends AppCompatActivity implements View.OnClickListener{
-
-    private RecyclerView newLaunchView,mPublisherView,mPriceView,mDiscountView,mPopularCategView;
-   private ArrayList<ChildCategoryBrand> SHOP_BY_PUBLISHER,mDummyList;
-    private ChildCategoryCardAdapter mnewLaunchAdapter,mPublisherAdapter,mPriceAdapter,mDiscountAdapter,mPopularCategAdapter;
+    private RecyclerView newLaunchView, mPublisherView, mPriceView, mDiscountView, mPopularCategView;
+    private ArrayList<ChildCategoryBrand> SHOP_BY_PUBLISHER, mDummyList;
+    private ChildCategoryCardAdapter mnewLaunchAdapter, mPublisherAdapter, mPriceAdapter, mDiscountAdapter, mPopularCategAdapter;
     ArrayList<ChildCategoryList> mGetList;
     ArrayList<ChildCategoryList> homedecor;
     ArrayList<ChildCategoryList> homefurnishing;
     ArrayList<ChildCategoryList> kitchenndinning;
+
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
+
     ArrayList<ChildCategoryList> agarbatti;
     ArrayList<ChildCategoryList> bells;
     ArrayList<ChildCategoryList> itemsofworship;
@@ -68,25 +79,25 @@ public class Childcategoru extends AppCompatActivity implements View.OnClickList
     ArrayList<ChildCategoryList> bags;
     ArrayList<ChildCategoryList> mobile;
 
-   private Helper listView;
-    TextView viewMoreLaunchText,viewMorePublisherText,viewMorePriceText,viewMoreDiscountText,viewMorePopularCategText;
+    private Helper listView;
+    TextView viewMoreLaunchText, viewMorePublisherText, viewMorePriceText, viewMoreDiscountText, viewMorePopularCategText;
     View headerView;
     DrawerLayout drawer;
     private String JSON_RESPONSE;
     ImageView toolbarcartimage;
     NestedScrollView nestedScrollView;
     public static ArrayList<String> Poojaitem;
-    public static  ArrayList<String> Books;
+    public static ArrayList<String> Books;
     public static ArrayList<String> Homecare;
-    public static   ArrayList<String> others;
-    public  static HashMap<String,ArrayList<String>> hashMap;
-    LinearLayout myorder,mycart,myaccount,helpcenter,ratedesichain,productPage,policy,facebook,google,twitter,pinterest,youtube,instagram,aboutus;
+    public static ArrayList<String> others;
+    public static HashMap<String, ArrayList<String>> hashMap;
+    LinearLayout myorder, mycart, myaccount, helpcenter, ratedesichain, productPage, policy, facebook, google, twitter, pinterest, youtube, instagram, aboutus;
     LinearLayout subscribe;
     private com.example.nitin.desichain.MyGridView gridView;
     ChildCategoryAdapter childCategoryAdapter;
     List<ChildCategoryBrand> mList;
     TextView txtViewCount;
-    int count=2;
+    int count = 2;
     int columns = 2;
 
     @Override
@@ -107,14 +118,14 @@ public class Childcategoru extends AppCompatActivity implements View.OnClickList
         newLaunchView.setItemAnimator(new DefaultItemAnimator());
         newLaunchView.setAdapter(mnewLaunchAdapter);
 */
-mList=new ArrayList<>();
-        JSON_RESPONSE=load("http://dc.desichain.in/DesiChainWeService.asmx/TotalPublisherDetail");
-        if(JSON_RESPONSE!=null) {
+        mList = new ArrayList<>();
+        JSON_RESPONSE = load("http://dc.desichain.in/DesiChainWeService.asmx/TotalPublisherDetail");
+        if (JSON_RESPONSE != null) {
             mDummyList = new ArrayList<>();
-            SHOP_BY_PUBLISHER=new ShopByPublisher(JSON_RESPONSE,Childcategoru.this).parsingShopByPublisher();
+            SHOP_BY_PUBLISHER = new ShopByPublisher(JSON_RESPONSE, Childcategoru.this).parsingShopByPublisher();
             newLaunchView = (RecyclerView) findViewById(R.id.newLaunchRecyclerView);
             mnewLaunchAdapter = new ChildCategoryCardAdapter(this, mDummyList);
-            final GridLayoutManager lm = new GridLayoutManager(this,2);
+            final GridLayoutManager lm = new GridLayoutManager(this, 2);
             newLaunchView.setLayoutManager(lm);
 
 /*
@@ -123,17 +134,16 @@ mList=new ArrayList<>();
             }
   */
 
-            for (int i=0;i<6;i++){
+            for (int i = 0; i < 6; i++) {
                 mDummyList.add(SHOP_BY_PUBLISHER.get(i));
             }
 
             newLaunchView.setNestedScrollingEnabled(false);
             newLaunchView.setItemAnimator(new DefaultItemAnimator());
-            viewMoreLaunchText =(TextView) findViewById(R.id.viewmoreLaunch);
+            viewMoreLaunchText = (TextView) findViewById(R.id.viewmoreLaunch);
             viewMoreLaunchText.setOnClickListener(this);
             newLaunchView.setFocusable(false);
             newLaunchView.setAdapter(mnewLaunchAdapter);
-
 
 
             mPublisherView = (RecyclerView) findViewById(R.id.publisherRecyclerView);
@@ -142,19 +152,19 @@ mList=new ArrayList<>();
             mPublisherView.setItemAnimator(new DefaultItemAnimator());
             mPublisherView.setLayoutManager(gm);
             mPublisherView.setFocusable(false);
-            viewMorePublisherText=(TextView)findViewById(R.id.viewmorePublisher);
+            viewMorePublisherText = (TextView) findViewById(R.id.viewmorePublisher);
             viewMorePublisherText.setOnClickListener(this);
             mPublisherView.setAdapter(mPublisherAdapter);
             mPublisherView.setNestedScrollingEnabled(false);
 
 
             mPriceView = (RecyclerView) findViewById(R.id.shopByPriceRecyclerView);
-            mPriceAdapter = new ChildCategoryCardAdapter(this,mDummyList);
+            mPriceAdapter = new ChildCategoryCardAdapter(this, mDummyList);
             GridLayoutManager gm1 = new GridLayoutManager(this, 2);
             mPriceView.setLayoutManager(gm1);
             mPriceView.setFocusable(false);
             mPriceView.setItemAnimator(new DefaultItemAnimator());
-            viewMorePriceText=(TextView)findViewById(R.id.viewmorePrice);
+            viewMorePriceText = (TextView) findViewById(R.id.viewmorePrice);
             viewMorePriceText.setOnClickListener(this);
             mPriceView.setAdapter(mPriceAdapter);
             mPriceView.setNestedScrollingEnabled(false);
@@ -166,11 +176,10 @@ mList=new ArrayList<>();
             mDiscountView.setLayoutManager(gm2);
             mDiscountView.setFocusable(false);
             mDiscountView.setItemAnimator(new DefaultItemAnimator());
-            viewMoreDiscountText=(TextView)findViewById(R.id.viewmoreDiscount);
+            viewMoreDiscountText = (TextView) findViewById(R.id.viewmoreDiscount);
             viewMoreDiscountText.setOnClickListener(this);
             mDiscountView.setAdapter(mDiscountAdapter);
             mDiscountView.setNestedScrollingEnabled(false);
-
 
             mPopularCategView = (RecyclerView) findViewById(R.id.popularCategoryRecyclerView);
             mPopularCategAdapter = new ChildCategoryCardAdapter(this, mDummyList);
@@ -178,173 +187,152 @@ mList=new ArrayList<>();
             mPopularCategView.setLayoutManager(gm3);
             mPopularCategView.setFocusable(false);
             mPopularCategView.setItemAnimator(new DefaultItemAnimator());
-            viewMorePopularCategText = (TextView)findViewById(R.id.viewmorePopularCateg);
+            viewMorePopularCategText = (TextView) findViewById(R.id.viewmorePopularCateg);
             viewMorePopularCategText.setOnClickListener(this);
             mPopularCategView.setAdapter(mPopularCategAdapter);
             mPopularCategView.setNestedScrollingEnabled(false);
 
         }
-         getSupportActionBar().setTitle(getIntent().getStringExtra("get"));
-        Log.i("get",getIntent().getStringExtra("get"));
+        getSupportActionBar().setTitle(getIntent().getStringExtra("get"));
+        Log.i("get", getIntent().getStringExtra("get"));
         inti();
-        gridView= (MyGridView) findViewById(R.id.singlechildlistview);
+        gridView = (MyGridView) findViewById(R.id.singlechildlistview);
         gridView.setFocusable(false);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             gridView.setNestedScrollingEnabled(false);
         }
         Intent intent = getIntent();
         String choice = intent.getStringExtra("get");
-         if(MainActivity.hashMap.get(arrayList.get(0).getPARENTCATEGORY()).get(0).equals(choice)){
-             setBhagavad();
-             childCategoryAdapter=new ChildCategoryAdapter(Childcategoru.this,bhagavad);
-             mGetList=bhagavad;
-             gridView.setAdapter(childCategoryAdapter);
+        if (MainActivity.hashMap.get(arrayList.get(0).getPARENTCATEGORY()).get(0).equals(choice)) {
+            setBhagavad();
+            childCategoryAdapter = new ChildCategoryAdapter(Childcategoru.this, bhagavad);
+            mGetList = bhagavad;
+            gridView.setAdapter(childCategoryAdapter);
             // setGridViewHeightBasedOnChildren(gridView,3);
 
 
-         }
-        else if(MainActivity.hashMap.get(arrayList.get(0).getPARENTCATEGORY()).get(1).equals(choice))
-         {
+        } else if (MainActivity.hashMap.get(arrayList.get(0).getPARENTCATEGORY()).get(1).equals(choice)) {
+            setPaperback();
+            childCategoryAdapter = new ChildCategoryAdapter(Childcategoru.this, paperback);
+            mGetList = paperback;
+            gridView.setAdapter(childCategoryAdapter);
+            //    setGridViewHeightBasedOnChildren(gridView,3);
+        } else if (MainActivity.hashMap.get(arrayList.get(0).getPARENTCATEGORY()).get(2).equals(choice)) {
 
-                setPaperback();
-             childCategoryAdapter=new ChildCategoryAdapter(Childcategoru.this,paperback);
-             mGetList=paperback;
-             gridView.setAdapter(childCategoryAdapter);
-         //    setGridViewHeightBasedOnChildren(gridView,3);
-         }
-        else if(MainActivity.hashMap.get(arrayList.get(0).getPARENTCATEGORY()).get(2).equals(choice)){
+            setMedia();
+            childCategoryAdapter = new ChildCategoryAdapter(Childcategoru.this, media);
+            mGetList = media;
+            gridView.setAdapter(childCategoryAdapter);
+            //   setGridViewHeightBasedOnChildren(gridView,3);
+        } else if (MainActivity.hashMap.get(arrayList.get(1).getPARENTCATEGORY()).get(0).equals(choice)) {
 
-             setMedia();
-             childCategoryAdapter=new ChildCategoryAdapter(Childcategoru.this,media);
-             mGetList=media;
-             gridView.setAdapter(childCategoryAdapter);
-          //   setGridViewHeightBasedOnChildren(gridView,3);
-         }
-        else if(MainActivity.hashMap.get(arrayList.get(1).getPARENTCATEGORY()).get(0).equals(choice)){
-
-             setItemsofworship();
-             childCategoryAdapter=new ChildCategoryAdapter(Childcategoru.this,itemsofworship);
-             mGetList=itemsofworship;
-             gridView.setAdapter(childCategoryAdapter);
+            setItemsofworship();
+            childCategoryAdapter = new ChildCategoryAdapter(Childcategoru.this, itemsofworship);
+            mGetList = itemsofworship;
+            gridView.setAdapter(childCategoryAdapter);
             // setGridViewHeightBasedOnChildren(gridView,3);
-         }
-        else if(MainActivity.hashMap.get(arrayList.get(1).getPARENTCATEGORY()).get(1).equals(choice)){
-             setOtheressentials();
-             childCategoryAdapter=new ChildCategoryAdapter(Childcategoru.this,otheressentials);
-             mGetList=otheressentials;
-             gridView.setAdapter(childCategoryAdapter);
-             //setGridViewHeightBasedOnChildren(gridView,3);
-         }
-        else if(MainActivity.hashMap.get(arrayList.get(1).getPARENTCATEGORY()).get(2).equals(choice)){
-             setBells();
-             childCategoryAdapter=new ChildCategoryAdapter(Childcategoru.this,bells);
-             mGetList=bells;
-             gridView.setAdapter(childCategoryAdapter);
-             //setGridViewHeightBasedOnChildren(gridView,3);
+        } else if (MainActivity.hashMap.get(arrayList.get(1).getPARENTCATEGORY()).get(1).equals(choice)) {
+            setOtheressentials();
+            childCategoryAdapter = new ChildCategoryAdapter(Childcategoru.this, otheressentials);
+            mGetList = otheressentials;
+            gridView.setAdapter(childCategoryAdapter);
+            //setGridViewHeightBasedOnChildren(gridView,3);
+        } else if (MainActivity.hashMap.get(arrayList.get(1).getPARENTCATEGORY()).get(2).equals(choice)) {
+            setBells();
+            childCategoryAdapter = new ChildCategoryAdapter(Childcategoru.this, bells);
+            mGetList = bells;
+            gridView.setAdapter(childCategoryAdapter);
+            //setGridViewHeightBasedOnChildren(gridView,3);
 
-         }
-        else if(MainActivity.hashMap.get(arrayList.get(1).getPARENTCATEGORY()).get(3).equals(choice)){
+        } else if (MainActivity.hashMap.get(arrayList.get(1).getPARENTCATEGORY()).get(3).equals(choice)) {
 
-             setAgarbatti();
-             childCategoryAdapter=new ChildCategoryAdapter(Childcategoru.this,agarbatti);
-             mGetList=agarbatti;
-             gridView.setAdapter(childCategoryAdapter);
-             //setGridViewHeightBasedOnChildren(gridView,3);
-         }
-        else if(MainActivity.hashMap.get(arrayList.get(1).getPARENTCATEGORY()).get(4).equals(choice)){
+            setAgarbatti();
+            childCategoryAdapter = new ChildCategoryAdapter(Childcategoru.this, agarbatti);
+            mGetList = agarbatti;
+            gridView.setAdapter(childCategoryAdapter);
+            //setGridViewHeightBasedOnChildren(gridView,3);
+        } else if (MainActivity.hashMap.get(arrayList.get(1).getPARENTCATEGORY()).get(4).equals(choice)) {
 
-             setMurtis();
-             childCategoryAdapter=new ChildCategoryAdapter(Childcategoru.this,murtis);
-             mGetList=murtis;
-             gridView.setAdapter(childCategoryAdapter);
-             //setGridViewHeightBasedOnChildren(gridView,3);
-         }
-        else if(MainActivity.hashMap.get(arrayList.get(2).getPARENTCATEGORY()).get(0).equals(choice)){
+            setMurtis();
+            childCategoryAdapter = new ChildCategoryAdapter(Childcategoru.this, murtis);
+            mGetList = murtis;
+            gridView.setAdapter(childCategoryAdapter);
+            //setGridViewHeightBasedOnChildren(gridView,3);
+        } else if (MainActivity.hashMap.get(arrayList.get(2).getPARENTCATEGORY()).get(0).equals(choice)) {
 
-             setHomedecor();
-             childCategoryAdapter=new ChildCategoryAdapter(Childcategoru.this,homedecor);
-             mGetList=homedecor;
-             gridView.setAdapter(childCategoryAdapter);
-             //setGridViewHeightBasedOnChildren(gridView,3);
-         }
-        else if(MainActivity.hashMap.get(arrayList.get(2).getPARENTCATEGORY()).get(1).equals(choice)){
+            setHomedecor();
+            childCategoryAdapter = new ChildCategoryAdapter(Childcategoru.this, homedecor);
+            mGetList = homedecor;
+            gridView.setAdapter(childCategoryAdapter);
+            //setGridViewHeightBasedOnChildren(gridView,3);
+        } else if (MainActivity.hashMap.get(arrayList.get(2).getPARENTCATEGORY()).get(1).equals(choice)) {
 
-             setHomefurnishing();
-             childCategoryAdapter=new ChildCategoryAdapter(Childcategoru.this,homefurnishing);
-             mGetList=homefurnishing;
-             gridView.setAdapter(childCategoryAdapter);
-             //setGridViewHeightBasedOnChildren(gridView,3);
-         }
-        else if(MainActivity.hashMap.get(arrayList.get(2).getPARENTCATEGORY()).get(2).equals(choice))
-         {
-             setKitchenndinning();
-             childCategoryAdapter=new ChildCategoryAdapter(Childcategoru.this,kitchenndinning);
-             mGetList=kitchenndinning;
-             gridView.setAdapter(childCategoryAdapter);
-             //setGridViewHeightBasedOnChildren(gridView,3);
+            setHomefurnishing();
+            childCategoryAdapter = new ChildCategoryAdapter(Childcategoru.this, homefurnishing);
+            mGetList = homefurnishing;
+            gridView.setAdapter(childCategoryAdapter);
+            //setGridViewHeightBasedOnChildren(gridView,3);
+        } else if (MainActivity.hashMap.get(arrayList.get(2).getPARENTCATEGORY()).get(2).equals(choice)) {
+            setKitchenndinning();
+            childCategoryAdapter = new ChildCategoryAdapter(Childcategoru.this, kitchenndinning);
+            mGetList = kitchenndinning;
+            gridView.setAdapter(childCategoryAdapter);
+            //setGridViewHeightBasedOnChildren(gridView,3);
 
-         }
-         else if(MainActivity.hashMap.get(arrayList.get(3).getPARENTCATEGORY()).get(0).equals(choice)){
+        } else if (MainActivity.hashMap.get(arrayList.get(3).getPARENTCATEGORY()).get(0).equals(choice)) {
 
-             setPersonalcare();
-             childCategoryAdapter=new ChildCategoryAdapter(Childcategoru.this,personalcare);
-             mGetList=personalcare;
-             gridView.setAdapter(childCategoryAdapter);
-             //setGridViewHeightBasedOnChildren(gridView,3);
-         }
-         else if(MainActivity.hashMap.get(arrayList.get(3).getPARENTCATEGORY()).get(1).equals(choice)){
+            setPersonalcare();
+            childCategoryAdapter = new ChildCategoryAdapter(Childcategoru.this, personalcare);
+            mGetList = personalcare;
+            gridView.setAdapter(childCategoryAdapter);
+            //setGridViewHeightBasedOnChildren(gridView,3);
+        } else if (MainActivity.hashMap.get(arrayList.get(3).getPARENTCATEGORY()).get(1).equals(choice)) {
 
-             setHealthandfood();
-             childCategoryAdapter=new ChildCategoryAdapter(Childcategoru.this,healthandfood);
-             mGetList=healthandfood;
-             gridView.setAdapter(childCategoryAdapter);
-             //setGridViewHeightBasedOnChildren(gridView,3);
-         }
-         else if(MainActivity.hashMap.get(arrayList.get(3).getPARENTCATEGORY()).get(2).equals(choice)){
+            setHealthandfood();
+            childCategoryAdapter = new ChildCategoryAdapter(Childcategoru.this, healthandfood);
+            mGetList = healthandfood;
+            gridView.setAdapter(childCategoryAdapter);
+            //setGridViewHeightBasedOnChildren(gridView,3);
+        } else if (MainActivity.hashMap.get(arrayList.get(3).getPARENTCATEGORY()).get(2).equals(choice)) {
 
-             setFashion();
-             childCategoryAdapter=new ChildCategoryAdapter(Childcategoru.this,fashion);
-             mGetList=fashion;
-             gridView.setAdapter(childCategoryAdapter);
-             //setGridViewHeightBasedOnChildren(gridView,3);
-         }
-         else if(MainActivity.hashMap.get(arrayList.get(3).getPARENTCATEGORY()).get(3).equals(choice)){
+            setFashion();
+            childCategoryAdapter = new ChildCategoryAdapter(Childcategoru.this, fashion);
+            mGetList = fashion;
+            gridView.setAdapter(childCategoryAdapter);
+            //setGridViewHeightBasedOnChildren(gridView,3);
+        } else if (MainActivity.hashMap.get(arrayList.get(3).getPARENTCATEGORY()).get(3).equals(choice)) {
 
-             setWomen();
-             childCategoryAdapter=new ChildCategoryAdapter(Childcategoru.this,women);
-             mGetList=women;
-             gridView.setAdapter(childCategoryAdapter);
-             //setGridViewHeightBasedOnChildren(gridView,3);
-         }
-         else if(MainActivity.hashMap.get(arrayList.get(3).getPARENTCATEGORY()).get(4).equals(choice)){
+            setWomen();
+            childCategoryAdapter = new ChildCategoryAdapter(Childcategoru.this, women);
+            mGetList = women;
+            gridView.setAdapter(childCategoryAdapter);
+            //setGridViewHeightBasedOnChildren(gridView,3);
+        } else if (MainActivity.hashMap.get(arrayList.get(3).getPARENTCATEGORY()).get(4).equals(choice)) {
 
-             setMen();
-             childCategoryAdapter=new ChildCategoryAdapter(Childcategoru.this,men);
-             mGetList=men;
-             gridView.setAdapter(childCategoryAdapter);
-             //setGridViewHeightBasedOnChildren(gridView,3);
-         }
-         else if(MainActivity.hashMap.get(arrayList.get(3).getPARENTCATEGORY()).get(5).equals(choice)){
-             setBags();
-             childCategoryAdapter=new ChildCategoryAdapter(Childcategoru.this,bags);
-             mGetList=bags;
-             gridView.setAdapter(childCategoryAdapter);
-             //setGridViewHeightBasedOnChildren(gridView,3);
+            setMen();
+            childCategoryAdapter = new ChildCategoryAdapter(Childcategoru.this, men);
+            mGetList = men;
+            gridView.setAdapter(childCategoryAdapter);
+            //setGridViewHeightBasedOnChildren(gridView,3);
+        } else if (MainActivity.hashMap.get(arrayList.get(3).getPARENTCATEGORY()).get(5).equals(choice)) {
+            setBags();
+            childCategoryAdapter = new ChildCategoryAdapter(Childcategoru.this, bags);
+            mGetList = bags;
+            gridView.setAdapter(childCategoryAdapter);
+            //setGridViewHeightBasedOnChildren(gridView,3);
 
-         }
-         else if(MainActivity.hashMap.get(arrayList.get(3).getPARENTCATEGORY()).get(6).equals(choice))
-         {
-             setMobile();
+        } else if (MainActivity.hashMap.get(arrayList.get(3).getPARENTCATEGORY()).get(6).equals(choice)) {
+            setMobile();
 
-             childCategoryAdapter=new ChildCategoryAdapter(Childcategoru.this,mobile);
-             mGetList=mobile;
-             gridView.setAdapter(childCategoryAdapter);
-             //setGridViewHeightBasedOnChildren(gridView,3);
+            childCategoryAdapter = new ChildCategoryAdapter(Childcategoru.this, mobile);
+            mGetList = mobile;
+            gridView.setAdapter(childCategoryAdapter);
+            //setGridViewHeightBasedOnChildren(gridView,3);
 
-           }
+        }
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, R.string.navigation_drawer_open, R.string.navigation_drawer_close){
+                this, drawer, R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
             @Override
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
@@ -356,8 +344,8 @@ mList=new ArrayList<>();
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         headerView = navigationView.inflateHeaderView(R.layout.nav_header_main);
         refferencetonavigationcategory(navigationView);
-        nestedScrollView= (NestedScrollView) navigationView.findViewById(R.id.scrollposition);
-        listView= (Helper) navigationView.findViewById(R.id.parentcategoryList);
+        nestedScrollView = (NestedScrollView) navigationView.findViewById(R.id.scrollposition);
+        listView = (Helper) navigationView.findViewById(R.id.parentcategoryList);
         initiaze();
         add();
 
@@ -370,21 +358,19 @@ mList=new ArrayList<>();
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                Intent intent1=new Intent(Childcategoru.this,CategoryPage.class);
-                intent1.putExtra("getFilterName",getIntent().getStringExtra("getFilterName"));
-                Log.i("getFilterName",String.valueOf(getIntent().getStringExtra("getFilterName")));
+                Intent intent1 = new Intent(Childcategoru.this, CategoryPage.class);
+                intent1.putExtra("getFilterName", getIntent().getStringExtra("getFilterName"));
+                Log.i("getFilterName", String.valueOf(getIntent().getStringExtra("getFilterName")));
                 startActivity(intent1);
+                DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+                if (drawer.isDrawerOpen(GravityCompat.START)) {
+                    drawer.closeDrawer(GravityCompat.START);
+                }
             }
         });
     }
 
-
-
-
-
-
-
-    public void inti(){
+    public void inti() {
         homedecor = new ArrayList<>();
         homefurnishing = new ArrayList<>();
         kitchenndinning = new ArrayList<>();
@@ -543,7 +529,6 @@ mList=new ArrayList<>();
     public void setPersonalcare() {
 
 
-
         personalcare.add(new ChildCategoryList("Baby Care", R.mipmap.ic_security_black_24dp));
         personalcare.add(new ChildCategoryList("Bath & Body", R.mipmap.ic_security_black_24dp));
         personalcare.add(new ChildCategoryList("Cosmetics/Skin Care", R.mipmap.ic_security_black_24dp));
@@ -606,22 +591,30 @@ mList=new ArrayList<>();
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
-        MenuItem menuItem=menu.findItem(R.id.my_cart);
-        MenuItemCompat.setActionView(menuItem,R.layout.cart_icon_for_toolbar);
-        RelativeLayout mycarttoolbar= (RelativeLayout) MenuItemCompat.getActionView(menuItem);
+        MenuItem menuItem = menu.findItem(R.id.my_cart);
+        MenuItemCompat.setActionView(menuItem, R.layout.cart_icon_for_toolbar);
+        RelativeLayout mycarttoolbar = (RelativeLayout) MenuItemCompat.getActionView(menuItem);
         txtViewCount = (TextView) mycarttoolbar.findViewById(R.id.badge_notification_1);
-        toolbarcartimage= (ImageView) mycarttoolbar.findViewById(R.id.badge_notification_image);
+        toolbarcartimage = (ImageView) mycarttoolbar.findViewById(R.id.badge_notification_image);
         count++;
         toolbarcartimage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Childcategoru.this,MyCart.class));
+                startActivity(new Intent(Childcategoru.this, MyCart.class));
+                DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+                if (drawer.isDrawerOpen(GravityCompat.START)) {
+                    drawer.closeDrawer(GravityCompat.START);
+                }
             }
         });
         txtViewCount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Childcategoru.this,MyCart.class));
+                startActivity(new Intent(Childcategoru.this, MyCart.class));
+                DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+                if (drawer.isDrawerOpen(GravityCompat.START)) {
+                    drawer.closeDrawer(GravityCompat.START);
+                }
             }
         });
 
@@ -631,15 +624,23 @@ mList=new ArrayList<>();
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case android.R.id.home:
                 finish();
                 break;
             case R.id.my_cart:
-                startActivity(new Intent(Childcategoru.this,MyCart.class));
+                startActivity(new Intent(Childcategoru.this, MyCart.class));
+                DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+                if (drawer.isDrawerOpen(GravityCompat.START)) {
+                    drawer.closeDrawer(GravityCompat.START);
+                }
                 break;
             case R.id.search_item:
-                startActivity(new Intent(this,SearchActivity.class));
+                startActivity(new Intent(this, SearchActivity.class));
+                drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+                if (drawer.isDrawerOpen(GravityCompat.START)) {
+                    drawer.closeDrawer(GravityCompat.START);
+                }
                 break;
         }
 
@@ -648,12 +649,11 @@ mList=new ArrayList<>();
     }
 
 
-    public void add()
-    {
-        arrayList.add(new CategoryHolder("Book and media",0,R.mipmap.book));
-        arrayList.add(new CategoryHolder("Pooja Item",0,R.mipmap.pooja));
-        arrayList.add(new CategoryHolder("Home Care",0,R.mipmap.homecare));
-        arrayList.add(new CategoryHolder("Others",0,R.mipmap.other));
+    public void add() {
+        arrayList.add(new CategoryHolder("Book and media", 0, R.mipmap.book));
+        arrayList.add(new CategoryHolder("Pooja Item", 0, R.mipmap.pooja));
+        arrayList.add(new CategoryHolder("Home Care", 0, R.mipmap.homecare));
+        arrayList.add(new CategoryHolder("Others", 0, R.mipmap.other));
         Books.add("Bhagavad-Gita As It Is");
         Books.add("Paperback/ Hardbound");
         Books.add("Media");
@@ -672,40 +672,37 @@ mList=new ArrayList<>();
         others.add("Men");
         others.add("BagsnStationery");
         others.add("MobileAccessiories");
-        hashMap.put(arrayList.get(0).getPARENTCATEGORY(),Books);
-        hashMap.put(arrayList.get(1).getPARENTCATEGORY(),Poojaitem);
-        hashMap.put(arrayList.get(2).getPARENTCATEGORY(),Homecare);
-        hashMap.put(arrayList.get(3).getPARENTCATEGORY(),others);
+        hashMap.put(arrayList.get(0).getPARENTCATEGORY(), Books);
+        hashMap.put(arrayList.get(1).getPARENTCATEGORY(), Poojaitem);
+        hashMap.put(arrayList.get(2).getPARENTCATEGORY(), Homecare);
+        hashMap.put(arrayList.get(3).getPARENTCATEGORY(), others);
         navigationCategoryList();
     }
 
-    public void initiaze(){
-        arrayList=new ArrayList<>();
-        hashMap=new HashMap<>();
-        Books=new ArrayList<>();
-        Poojaitem=new ArrayList<>();
-        Homecare=new ArrayList<>();
-        others=new ArrayList<>();
+    public void initiaze() {
+        arrayList = new ArrayList<>();
+        hashMap = new HashMap<>();
+        Books = new ArrayList<>();
+        Poojaitem = new ArrayList<>();
+        Homecare = new ArrayList<>();
+        others = new ArrayList<>();
 
     }
-    public void navigationCategoryList(){
-        final ShowCategoryAdapeter showCategoryAdapeter=new ShowCategoryAdapeter(Childcategoru.this,arrayList,hashMap,listView);
+
+    public void navigationCategoryList() {
+        final ShowCategoryAdapeter showCategoryAdapeter = new ShowCategoryAdapeter(Childcategoru.this, arrayList, hashMap, listView);
         listView.setAdapter(showCategoryAdapeter);
         listView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
             @Override
             public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
 
-                if(arrayList.get(groupPosition).getFLAG_INDICATOR()==1)
-                {
+                if (arrayList.get(groupPosition).getFLAG_INDICATOR() == 1) {
                     listView.collapseGroup(groupPosition);
                     arrayList.get(groupPosition).setFLAG_INDICATOR(0);
 
-                }
-                else{
-                    for(int i=0;i<arrayList.size();i++)
-                    {
-                        if(arrayList.get(i).getFLAG_INDICATOR()==1)
-                        {
+                } else {
+                    for (int i = 0; i < arrayList.size(); i++) {
+                        if (arrayList.get(i).getFLAG_INDICATOR() == 1) {
                             listView.collapseGroup(i);
                             arrayList.get(i).setFLAG_INDICATOR(0);
                         }
@@ -713,7 +710,7 @@ mList=new ArrayList<>();
                     }
                     listView.expandGroup(groupPosition);
                     listView.setSelectedGroup(groupPosition);
-                    nestedScrollView.smoothScrollTo(0,groupPosition);
+                    nestedScrollView.smoothScrollTo(0, groupPosition);
                     arrayList.get(groupPosition).setFLAG_INDICATOR(1);
 
                 }
@@ -733,14 +730,20 @@ mList=new ArrayList<>();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                for(int i=0;i<arrayList.size();i++)
-                {
-                    if(arrayList.get(i).getFLAG_INDICATOR()==1)
-                    {
+                for (int i = 0; i < arrayList.size(); i++) {
+                    if (arrayList.get(i).getFLAG_INDICATOR() == 1) {
                         listView.collapseGroup(i);
                         arrayList.get(i).setFLAG_INDICATOR(0);
                     }
 
+                }
+                if (drawer.isDrawerOpen(GravityCompat.START)) {
+                    drawer.closeDrawer(GravityCompat.START);
+                }
+                for (int i = 0; i < parent.getCount(); ++i) {
+                    if (parent.isGroupExpanded(i)) {
+                        parent.collapseGroup(i);
+                    }
                 }
                 return true;
             }
@@ -748,23 +751,22 @@ mList=new ArrayList<>();
 
     }
 
-    public void refferencetonavigationcategory(View view)
-    {
-        myorder= (LinearLayout) view.findViewById(R.id.myorders);
-        mycart= (LinearLayout) view.findViewById(R.id.mycart);
-        myaccount= (LinearLayout) view.findViewById(R.id.myaccount);
-        helpcenter= (LinearLayout) view.findViewById(R.id.helpcenter);
-        ratedesichain= (LinearLayout) view.findViewById(R.id.ratedesichain);
-        policy= (LinearLayout) view.findViewById(R.id.policy);
-        facebook= (LinearLayout) view.findViewById(R.id.facebook);
-        google=(LinearLayout) view.findViewById(R.id.googleplus);
-        twitter= (LinearLayout) view.findViewById(R.id.twitter);
-        productPage=(LinearLayout)view.findViewById(R.id.myProductLayout);
-        pinterest= (LinearLayout) view.findViewById(R.id.pinterest);
-        youtube= (LinearLayout) view.findViewById(R.id.youtube);
-        instagram= (LinearLayout) view.findViewById(R.id.instagram);
-        aboutus= (LinearLayout) view.findViewById(R.id.aboutus);
-        subscribe= (LinearLayout) findViewById(R.id.subscribe);
+    public void refferencetonavigationcategory(View view) {
+        myorder = (LinearLayout) view.findViewById(R.id.myorders);
+        mycart = (LinearLayout) view.findViewById(R.id.mycart);
+        myaccount = (LinearLayout) view.findViewById(R.id.myaccount);
+        helpcenter = (LinearLayout) view.findViewById(R.id.helpcenter);
+        ratedesichain = (LinearLayout) view.findViewById(R.id.ratedesichain);
+        policy = (LinearLayout) view.findViewById(R.id.policy);
+        facebook = (LinearLayout) view.findViewById(R.id.facebook);
+        google = (LinearLayout) view.findViewById(R.id.googleplus);
+        twitter = (LinearLayout) view.findViewById(R.id.twitter);
+        productPage = (LinearLayout) view.findViewById(R.id.myProductLayout);
+        pinterest = (LinearLayout) view.findViewById(R.id.pinterest);
+        youtube = (LinearLayout) view.findViewById(R.id.youtube);
+        instagram = (LinearLayout) view.findViewById(R.id.instagram);
+        aboutus = (LinearLayout) view.findViewById(R.id.aboutus);
+        subscribe = (LinearLayout) findViewById(R.id.subscribe);
         myorder.setOnClickListener(this);
         mycart.setOnClickListener(this);
         myaccount.setOnClickListener(this);
@@ -785,52 +787,51 @@ mList=new ArrayList<>();
 
     @Override
     public void onClick(View v) {
-        new Utility().openIntent(this,v.getId(),drawer);
+        new Utility().openIntent(this, v.getId(), drawer);
 
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.viewmoreLaunch:
-                for(int i=6;i<SHOP_BY_PUBLISHER.size();i++){
+                for (int i = 6; i < SHOP_BY_PUBLISHER.size(); i++) {
                     mDummyList.add(SHOP_BY_PUBLISHER.get(i));
                     viewMoreLaunchText.setVisibility(View.GONE);
                 }
                 mnewLaunchAdapter.notifyDataSetChanged();
                 break;
             case R.id.viewmorePublisher:
-                for(int i=6;i<SHOP_BY_PUBLISHER.size();i++){
+                for (int i = 6; i < SHOP_BY_PUBLISHER.size(); i++) {
                     mDummyList.add(SHOP_BY_PUBLISHER.get(i));
                     viewMorePublisherText.setVisibility(View.GONE);
                 }
                 mPublisherAdapter.notifyDataSetChanged();
                 break;
             case R.id.viewmorePrice:
-                for(int i=6;i<SHOP_BY_PUBLISHER.size();i++){
+                for (int i = 6; i < SHOP_BY_PUBLISHER.size(); i++) {
                     mDummyList.add(SHOP_BY_PUBLISHER.get(i));
                     viewMorePriceText.setVisibility(View.GONE);
                 }
                 mPriceAdapter.notifyDataSetChanged();
                 break;
             case R.id.viewmoreDiscount:
-                for(int i=6;i<SHOP_BY_PUBLISHER.size();i++){
+                for (int i = 6; i < SHOP_BY_PUBLISHER.size(); i++) {
                     mDummyList.add(SHOP_BY_PUBLISHER.get(i));
                     viewMoreDiscountText.setVisibility(View.GONE);
                 }
                 mDiscountAdapter.notifyDataSetChanged();
                 break;
             case R.id.viewmorePopularCateg:
-                Toast.makeText(this,"Clicked",Toast.LENGTH_LONG).show();
-                for(int i=6;i<SHOP_BY_PUBLISHER.size();i++){
+                Toast.makeText(this, "Clicked", Toast.LENGTH_LONG).show();
+                for (int i = 6; i < SHOP_BY_PUBLISHER.size(); i++) {
                     mDummyList.add(SHOP_BY_PUBLISHER.get(i));
-                      viewMorePopularCategText.setVisibility(View.GONE);
+                    viewMorePopularCategText.setVisibility(View.GONE);
                 }
                 mPopularCategAdapter.notifyDataSetChanged();
                 break;
         }
     }
 
-    public String load(String url)
-    {
+    public String load(String url) {
         try {
-            JSON_RESPONSE=new FetchingFromUrl().execute(url).get();
+            JSON_RESPONSE = new FetchingFromUrl().execute(url).get();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {

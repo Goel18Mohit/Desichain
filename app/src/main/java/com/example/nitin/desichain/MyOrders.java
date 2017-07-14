@@ -261,6 +261,14 @@ public class MyOrders extends AppCompatActivity implements View.OnClickListener 
                 intent.putExtra("get", hashMap.get(arrayList.get(groupPosition).getPARENTCATEGORY()).get(childPosition));
                 intent.putExtra("getFilterName", String.valueOf(arrayList.get(groupPosition).getPARENTCATEGORY()));
                 startActivity(intent);
+                if (drawer.isDrawerOpen(GravityCompat.START)) {
+                    drawer.closeDrawer(GravityCompat.START);
+                }
+                for (int i=0; i<parent.getCount(); ++i) {
+                    if (parent.isGroupExpanded(i)) {
+                        parent.collapseGroup(i);
+                    }
+                }
                 return true;
             }
         });
