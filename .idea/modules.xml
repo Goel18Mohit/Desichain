@@ -6,8 +6,6 @@
       <module fileurl="file://$PROJECT_DIR$/PGSDK_V2.1/PGSDK_V2.1.iml" filepath="$PROJECT_DIR$/PGSDK_V2.1/PGSDK_V2.1.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/payUMoneysdk/payUMoneysdk.iml" filepath="$PROJECT_DIR$/payUMoneysdk/payUMoneysdk.iml" />
-      <module fileurl="file://$PROJECT_DIR$/payUMoneysdk/payUMoneysdk.iml" filepath="$PROJECT_DIR$/payUMoneysdk/payUMoneysdk.iml" />
-      <module fileurl="file://$PROJECT_DIR$/sdkui/sdkui.iml" filepath="$PROJECT_DIR$/sdkui/sdkui.iml" />
       <module fileurl="file://$PROJECT_DIR$/sdkui/sdkui.iml" filepath="$PROJECT_DIR$/sdkui/sdkui.iml" />
     </modules>
   </component>
