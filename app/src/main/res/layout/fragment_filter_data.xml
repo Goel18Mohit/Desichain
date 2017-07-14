@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:id="@+id/filterDataLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
+<!--
 
     <CheckBox
         android:layout_width="match_parent"
@@ -54,6 +55,13 @@
         android:text="Rs 8000-9000"/>
 
 
+-->
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/filterSelectionDataRecycView"
+        android:scrollbars="vertical"/>
 
 
 </LinearLayout>

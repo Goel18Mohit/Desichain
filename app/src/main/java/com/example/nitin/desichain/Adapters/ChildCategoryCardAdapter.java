@@ -38,7 +38,8 @@ public class ChildCategoryCardAdapter extends RecyclerView.Adapter<ChildCategory
     public void onBindViewHolder(MyViewHolder holder, int position) {
 
         ChildCategoryBrand brand = mList.get(position);
-        Picasso.with(mContext).load("http://www.desichain.in/uploads/"+mList.get(position).getPRODUCT_IMAGE_URL()).into(holder.imageView);
+        Picasso.with(mContext).load("http://www.desichain.in/uploads/"+mList.get(position).getPRODUCT_IMAGE_URL())
+                .into(holder.imageView);
         holder.textView.setText(mList.get(position).getPRODUCT_NAME());
     }
 

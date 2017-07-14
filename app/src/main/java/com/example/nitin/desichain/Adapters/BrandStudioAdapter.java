@@ -2,6 +2,7 @@ package com.example.nitin.desichain.Adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,8 +39,9 @@ public class BrandStudioAdapter  extends RecyclerView.Adapter<BrandStudioAdapter
     @Override
     public void onBindViewHolder(BrandStudioAdapter.MyViewHolder holder, int position) {
 
-
-       Picasso.with(mContext).load("http://www.desichain.in/uploads/"+arrayList.get(position).getBRAND_IMAGE_URL()).into(holder.mBrandImage);
+        Log.i("Ashish","http://www.desichain.in/uploads/"+arrayList.get(position).getBRAND_IMAGE_URL());
+       Picasso.with(mContext).load("http://www.desichain.in/uploads/"+arrayList.get(position).getBRAND_IMAGE_URL())
+              .resizeDimen(R.dimen.header_logo_w,R.dimen.header_logo_h).into(holder.mBrandImage);
     }
 
     @Override

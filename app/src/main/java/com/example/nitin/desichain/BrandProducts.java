@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.LinearLayout;
 
+import com.example.nitin.desichain.Adapters.BrandStudioItemsAdapter;
 import com.example.nitin.desichain.Adapters.ProductHorizontalAdapter;
 import com.example.nitin.desichain.Adapters.SingleCartAdapter;
 import com.example.nitin.desichain.Contents.ProductHorizontal;
@@ -30,7 +31,7 @@ public class BrandProducts extends AppCompatActivity implements View.OnClickList
 
     private RecyclerView mBrandRecyclerView;
     private List<ProductHorizontal> mList;
-    private ProductHorizontalAdapter mAdapter;
+    private BrandStudioItemsAdapter mAdapter;
     DrawerLayout drawer;
     private Toolbar mToolbar;
     View headerView;
@@ -75,7 +76,7 @@ public class BrandProducts extends AppCompatActivity implements View.OnClickList
         getSupportActionBar().setHomeButtonEnabled(true);
 
 
-        mAdapter = new ProductHorizontalAdapter(this,mList);
+        mAdapter = new BrandStudioItemsAdapter(mList,this);
 
         GridLayoutManager manager = new GridLayoutManager(this,2);
         mBrandRecyclerView.setLayoutManager(manager);
@@ -170,6 +171,7 @@ public class BrandProducts extends AppCompatActivity implements View.OnClickList
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
                 Intent intent=new Intent(BrandProducts.this,Childcategoru.class);
                 intent.putExtra("get",hashMap.get(arrayList.get(groupPosition).getPARENTCATEGORY()).get(childPosition));
+                intent.putExtra("getFilterName",String.valueOf(arrayList.get(groupPosition).getPARENTCATEGORY()));
                 startActivity(intent);
                 return true;
             }
