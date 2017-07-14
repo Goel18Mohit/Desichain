@@ -44,62 +44,63 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.ExecutionException;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private int currentPage = 0;
     Timer timer;
     final long DELAY_MS = 500;
     final long PERIOD_MS = 3000;
     private Helper listView;
-    public  static ArrayList<CategoryHolder> arrayList;
-public static  ArrayList<String> Books;
+    public static ArrayList<CategoryHolder> arrayList;
+    public static ArrayList<String> Books;
     private CardView cardView;
     private NestedScrollView mNestedScrollView;
- public static ArrayList<String> Poojaitem;
+    public static ArrayList<String> Poojaitem;
     DrawerLayout drawer;
     NestedScrollView nestedScrollView;
     TextView txtViewCount;
-  public static ArrayList<String> Homecare;
+    public static ArrayList<String> Homecare;
     TextView TESTING;
     private ArrayList<BrandStudioList> BRAND_STUDIO_LIST;
-    int count=2;
+    int count = 2;
     String JSON_RESPONSE;
     private ViewPager viewPager;
     private CustomViewpagerAdapter mAdapter;
     private int images[] = {R.drawable.hitkary_small,
-                            R.drawable.hitkary2_small};
-  public static   ArrayList<String> others;
-      public  static HashMap<String,ArrayList<String>> hashMap;
+            R.drawable.hitkary2_small};
+    public static ArrayList<String> others;
+    public static HashMap<String, ArrayList<String>> hashMap;
     View headerView;
     private BrandStudioAdapter mBrandStudioAdapter;
-    private RecyclerView mLatestProductView,mBrandStudioView, mTopTenGameView,mTopTenGameView2, mFeaturedProductView,mAdvertisementView,mBestSellingView;
+    private RecyclerView mLatestProductView, mBrandStudioView, mTopTenGameView, mTopTenGameView2, mFeaturedProductView, mAdvertisementView, mBestSellingView;
     private ArrayList<ProductHorizontal> mProductsList;
-    private ProductHorizontalAdapter mLatestProductAdapter, mTopTenGameAdapter,mTopTenGameAdapter2, mFeaturedProductAdapter,mAdvertisementAdapter,mBestSellingProductAdapter;
-    LinearLayout myorder,mycart,myaccount,helpcenter,ratedesichain,productPage,policy,facebook,google,twitter,pinterest,youtube,instagram,aboutus,subscribe;
+    private ProductHorizontalAdapter mLatestProductAdapter, mTopTenGameAdapter, mTopTenGameAdapter2, mFeaturedProductAdapter, mAdvertisementAdapter, mBestSellingProductAdapter;
+    LinearLayout myorder, mycart, myaccount, helpcenter, ratedesichain, productPage, policy, facebook, google, twitter, pinterest, youtube, instagram, aboutus, subscribe;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar)findViewById(R.id.my_toolBar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.my_toolBar);
         setSupportActionBar(toolbar);
-        TESTING= (TextView) findViewById(R.id.testing);
+        TESTING = (TextView) findViewById(R.id.testing);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         invalidateOptionsMenu();
-        mNestedScrollView=(NestedScrollView)findViewById(R.id.content_main);
+        mNestedScrollView = (NestedScrollView) findViewById(R.id.content_main);
         mNestedScrollView.setFillViewport(true);
-        cardView= (CardView) findViewById(R.id.searchproduct);
-        viewPager=(ViewPager)findViewById(R.id.viewpager);
-        mAdapter=new CustomViewpagerAdapter(this,images);
+        cardView = (CardView) findViewById(R.id.searchproduct);
+        viewPager = (ViewPager) findViewById(R.id.viewpager);
+        mAdapter = new CustomViewpagerAdapter(this, images);
         viewPager.setAdapter(mAdapter);
         final Handler handler = new Handler();
         final Runnable update = new Runnable() {
             @Override
             public void run() {
-                if (currentPage==2){
-                    currentPage=0;
+                if (currentPage == 2) {
+                    currentPage = 0;
                 }
-                viewPager.setCurrentItem(currentPage++,true);
+                viewPager.setCurrentItem(currentPage++, true);
             }
         };
 
@@ -109,13 +110,13 @@ public static  ArrayList<String> Books;
             public void run() {
                 handler.post(update);
             }
-        },DELAY_MS,PERIOD_MS);
+        }, DELAY_MS, PERIOD_MS);
 
-      launchBestSellingProduct();
+        launchBestSellingProduct();
         loadBrandStudio();
-        mLatestProductView =(RecyclerView)findViewById(R.id.LatestProductRecyclerView);
-        mLatestProductAdapter = new ProductHorizontalAdapter(MainActivity.this,mProductsList);
-        LinearLayoutManager lm =new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
+        mLatestProductView = (RecyclerView) findViewById(R.id.LatestProductRecyclerView);
+        mLatestProductAdapter = new ProductHorizontalAdapter(MainActivity.this, mProductsList);
+        LinearLayoutManager lm = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         mLatestProductView.setLayoutManager(lm);
         mLatestProductView.setFocusable(false);
         mLatestProductView.setItemAnimator(new DefaultItemAnimator());
@@ -124,9 +125,9 @@ public static  ArrayList<String> Books;
             mLatestProductView.setScrollBarSize(0);
         }
 
-        mBrandStudioView=(RecyclerView)findViewById(R.id.brandStudioRecyclerView);
-        mBrandStudioAdapter=new BrandStudioAdapter(BRAND_STUDIO_LIST,MainActivity.this);
-        LinearLayoutManager lm6 = new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,true);
+        mBrandStudioView = (RecyclerView) findViewById(R.id.brandStudioRecyclerView);
+        mBrandStudioAdapter = new BrandStudioAdapter(BRAND_STUDIO_LIST, MainActivity.this);
+        LinearLayoutManager lm6 = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, true);
         mBrandStudioView.setLayoutManager(lm6);
         mBrandStudioView.setItemAnimator(new DefaultItemAnimator());
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
@@ -136,36 +137,36 @@ public static  ArrayList<String> Books;
         mBrandStudioView.addOnItemTouchListener(new RecyclerItemClickListener(this, new RecyclerItemClickListener.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                startActivity(new Intent(MainActivity.this,BrandProducts.class));
+                startActivity(new Intent(MainActivity.this, BrandProducts.class));
             }
         }));
 
-        mTopTenGameAdapter =new ProductHorizontalAdapter(MainActivity.this,mProductsList);
-        mTopTenGameView =(RecyclerView) findViewById(R.id.top_ten_game_view);
-        LinearLayoutManager lm1 = new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,true);
+        mTopTenGameAdapter = new ProductHorizontalAdapter(MainActivity.this, mProductsList);
+        mTopTenGameView = (RecyclerView) findViewById(R.id.top_ten_game_view);
+        LinearLayoutManager lm1 = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, true);
         mTopTenGameView.setLayoutManager(lm1);
         mTopTenGameView.setItemAnimator(new DefaultItemAnimator());
         mTopTenGameView.setAdapter(mTopTenGameAdapter);
 
 
-        mTopTenGameAdapter2 =new ProductHorizontalAdapter(MainActivity.this,mProductsList);
-        mTopTenGameView2 =(RecyclerView) findViewById(R.id.top_ten_game_second_RecyclerView);
-        LinearLayoutManager lm5 = new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,true);
+        mTopTenGameAdapter2 = new ProductHorizontalAdapter(MainActivity.this, mProductsList);
+        mTopTenGameView2 = (RecyclerView) findViewById(R.id.top_ten_game_second_RecyclerView);
+        LinearLayoutManager lm5 = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, true);
         mTopTenGameView2.setLayoutManager(lm5);
         mTopTenGameView2.setItemAnimator(new DefaultItemAnimator());
         mTopTenGameView2.setAdapter(mTopTenGameAdapter2);
 
 
-        mFeaturedProductAdapter =new ProductHorizontalAdapter(MainActivity.this,mProductsList);
-        mFeaturedProductView =(RecyclerView)findViewById(R.id.featuredProductRecyclerView);
-        LinearLayoutManager lm2 = new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,true);
+        mFeaturedProductAdapter = new ProductHorizontalAdapter(MainActivity.this, mProductsList);
+        mFeaturedProductView = (RecyclerView) findViewById(R.id.featuredProductRecyclerView);
+        LinearLayoutManager lm2 = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, true);
         mFeaturedProductView.setLayoutManager(lm2);
         mFeaturedProductView.setItemAnimator(new DefaultItemAnimator());
         mFeaturedProductView.setAdapter(mFeaturedProductAdapter);
 
-        mBestSellingProductAdapter=new ProductHorizontalAdapter(this,mProductsList);
-        mBestSellingView=(RecyclerView)findViewById(R.id.bestSellingRecyclerView);
-        LinearLayoutManager lm4 = new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,true);
+        mBestSellingProductAdapter = new ProductHorizontalAdapter(this, mProductsList);
+        mBestSellingView = (RecyclerView) findViewById(R.id.bestSellingRecyclerView);
+        LinearLayoutManager lm4 = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, true);
         mBestSellingView.setLayoutManager(lm4);
         mBestSellingView.setItemAnimator(new DefaultItemAnimator());
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
@@ -174,14 +175,9 @@ public static  ArrayList<String> Books;
         mBestSellingView.setAdapter(mBestSellingProductAdapter);
 
 
-
-
-
-
-
-         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, R.string.navigation_drawer_open, R.string.navigation_drawer_close){
+                this, drawer, R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
             @Override
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
@@ -193,38 +189,33 @@ public static  ArrayList<String> Books;
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         headerView = navigationView.inflateHeaderView(R.layout.nav_header_main);
         refferencetonavigationcategory(navigationView);
-        nestedScrollView= (NestedScrollView) navigationView.findViewById(R.id.scrollposition);
-        listView= (Helper) navigationView.findViewById(R.id.parentcategoryList);
+        nestedScrollView = (NestedScrollView) navigationView.findViewById(R.id.scrollposition);
+        listView = (Helper) navigationView.findViewById(R.id.parentcategoryList);
         initiaze();
         add();
-
-
 
 
         cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent intent=new Intent(MainActivity.this,SearchActivity.class);
+                Intent intent = new Intent(MainActivity.this, SearchActivity.class);
                 startActivity(intent);
             }
         });
     }
 
 
-
-    public void launchBestSellingProduct()
-    {
+    public void launchBestSellingProduct() {
         try {
-            JSON_RESPONSE=new FetchingFromUrl().execute("http://dc.desichain.in/DesiChainWeService.asmx/FeaturedProduct").get();
+            JSON_RESPONSE = new FetchingFromUrl().execute("http://dc.desichain.in/DesiChainWeService.asmx/FeaturedProduct").get();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
-        if(JSON_RESPONSE!=null)
-        {
-            mProductsList=new BsetSellingProduct(JSON_RESPONSE,MainActivity.this).parseBestSellingProduct();
+        if (JSON_RESPONSE != null) {
+            mProductsList = new BsetSellingProduct(JSON_RESPONSE, MainActivity.this).parseBestSellingProduct();
         }
     }
 
@@ -243,13 +234,13 @@ public static  ArrayList<String> Books;
         // Inflate the menu; this adds items to the action bar if it is present.
 
         getMenuInflater().inflate(R.menu.main, menu);
-        MenuItem menuItem=menu.findItem(R.id.my_cart);
+        MenuItem menuItem = menu.findItem(R.id.my_cart);
         MenuItem item = menu.findItem(R.id.search_item);
         item.setVisible(false);
-        MenuItemCompat.setActionView(menuItem,R.layout.cart_icon_for_toolbar);
-       RelativeLayout mycarttoolbar= (RelativeLayout) MenuItemCompat.getActionView(menuItem);
-      txtViewCount = (TextView) mycarttoolbar.findViewById(R.id.badge_notification_1);
-      count++;
+        MenuItemCompat.setActionView(menuItem, R.layout.cart_icon_for_toolbar);
+        RelativeLayout mycarttoolbar = (RelativeLayout) MenuItemCompat.getActionView(menuItem);
+        txtViewCount = (TextView) mycarttoolbar.findViewById(R.id.badge_notification_1);
+        count++;
         txtViewCount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -285,22 +276,22 @@ public static  ArrayList<String> Books;
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        switch (id){
+        switch (id) {
             case R.id.my_cart:
-                startActivity(new Intent(MainActivity.this,MyCart.class));
+                startActivity(new Intent(MainActivity.this, MyCart.class));
                 break;
             case R.id.notifications:
-                Toast.makeText(MainActivity.this,"Notifications item selected",Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "Notifications item selected", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.my_orders:
-                startActivity(new Intent(MainActivity.this,MyOrders.class));
+                startActivity(new Intent(MainActivity.this, MyOrders.class));
                 break;
             case android.R.id.home:
-                    if(drawer.isDrawerOpen(Gravity.LEFT)) {
-                        drawer.closeDrawer(Gravity.LEFT);
-                    }else{
-                        drawer.openDrawer(Gravity.LEFT);
-                    }
+                if (drawer.isDrawerOpen(Gravity.LEFT)) {
+                    drawer.closeDrawer(Gravity.LEFT);
+                } else {
+                    drawer.openDrawer(Gravity.LEFT);
+                }
 
 
         }
@@ -309,12 +300,11 @@ public static  ArrayList<String> Books;
         return super.onOptionsItemSelected(item);
     }
 
-    public void add()
-    {
-        arrayList.add(new CategoryHolder("Book and media",0,R.mipmap.book));
-        arrayList.add(new CategoryHolder("Pooja Item",0,R.mipmap.pooja));
-        arrayList.add(new CategoryHolder("Home Care",0,R.mipmap.homecare));
-        arrayList.add(new CategoryHolder("Others",0,R.mipmap.other));
+    public void add() {
+        arrayList.add(new CategoryHolder("Book and media", 0, R.mipmap.book));
+        arrayList.add(new CategoryHolder("Pooja Item", 0, R.mipmap.pooja));
+        arrayList.add(new CategoryHolder("Home Care", 0, R.mipmap.homecare));
+        arrayList.add(new CategoryHolder("Others", 0, R.mipmap.other));
         Books.add("Bhagavad-Gita As It Is");
         Books.add("Paperback/ Hardbound");
         Books.add("Media");
@@ -333,48 +323,45 @@ public static  ArrayList<String> Books;
         others.add("Men");
         others.add("BagsnStationery");
         others.add("MobileAccessiories");
-        hashMap.put(arrayList.get(0).getPARENTCATEGORY(),Books);
-        hashMap.put(arrayList.get(1).getPARENTCATEGORY(),Poojaitem);
-        hashMap.put(arrayList.get(2).getPARENTCATEGORY(),Homecare);
-        hashMap.put(arrayList.get(3).getPARENTCATEGORY(),others);
+        hashMap.put(arrayList.get(0).getPARENTCATEGORY(), Books);
+        hashMap.put(arrayList.get(1).getPARENTCATEGORY(), Poojaitem);
+        hashMap.put(arrayList.get(2).getPARENTCATEGORY(), Homecare);
+        hashMap.put(arrayList.get(3).getPARENTCATEGORY(), others);
         navigationCategoryList();
     }
 
-    public void initiaze(){
-        arrayList=new ArrayList<>();
-        hashMap=new HashMap<>();
-        Books=new ArrayList<>();
-        Poojaitem=new ArrayList<>();
-        Homecare=new ArrayList<>();
-        others=new ArrayList<>();
+    public void initiaze() {
+        arrayList = new ArrayList<>();
+        hashMap = new HashMap<>();
+        Books = new ArrayList<>();
+        Poojaitem = new ArrayList<>();
+        Homecare = new ArrayList<>();
+        others = new ArrayList<>();
 
     }
-    public void navigationCategoryList(){
-        final ShowCategoryAdapeter showCategoryAdapeter=new ShowCategoryAdapeter(MainActivity.this,arrayList,hashMap,listView);
+
+    public void navigationCategoryList() {
+        final ShowCategoryAdapeter showCategoryAdapeter = new ShowCategoryAdapeter(MainActivity.this, arrayList, hashMap, listView);
         listView.setAdapter(showCategoryAdapeter);
         listView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
             @Override
             public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
 
-                if(arrayList.get(groupPosition).getFLAG_INDICATOR()==1)
-                {
+                if (arrayList.get(groupPosition).getFLAG_INDICATOR() == 1) {
                     listView.collapseGroup(groupPosition);
                     arrayList.get(groupPosition).setFLAG_INDICATOR(0);
 
-                }
-                else{
-                    for(int i=0;i<arrayList.size();i++)
-                    {
-                        if(arrayList.get(i).getFLAG_INDICATOR()==1)
-                        {
+                } else {
+                    for (int i = 0; i < arrayList.size(); i++) {
+                        if (arrayList.get(i).getFLAG_INDICATOR() == 1) {
                             listView.collapseGroup(i);
                             arrayList.get(i).setFLAG_INDICATOR(0);
                         }
 
                     }
                     listView.expandGroup(groupPosition);
-                     listView.setSelectedGroup(groupPosition);
-                    nestedScrollView.smoothScrollTo(0,groupPosition);
+                    listView.setSelectedGroup(groupPosition);
+                    nestedScrollView.smoothScrollTo(0, groupPosition);
                     arrayList.get(groupPosition).setFLAG_INDICATOR(1);
 
                 }
@@ -384,8 +371,8 @@ public static  ArrayList<String> Books;
         listView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-                Intent intent=new Intent(MainActivity.this,Childcategoru.class);
-                intent.putExtra("get",hashMap.get(arrayList.get(groupPosition).getPARENTCATEGORY()).get(childPosition));
+                Intent intent = new Intent(MainActivity.this, Childcategoru.class);
+                intent.putExtra("get", hashMap.get(arrayList.get(groupPosition).getPARENTCATEGORY()).get(childPosition));
                 startActivity(intent);
                 return true;
             }
@@ -393,24 +380,23 @@ public static  ArrayList<String> Books;
 
     }
 
-    public void refferencetonavigationcategory(View view)
-    {
-        myorder= (LinearLayout) view.findViewById(R.id.myorders);
-        mycart= (LinearLayout) view.findViewById(R.id.mycart);
-        myaccount= (LinearLayout) view.findViewById(R.id.myaccount);
-        helpcenter= (LinearLayout) view.findViewById(R.id.helpcenter);
-        ratedesichain= (LinearLayout) view.findViewById(R.id.ratedesichain);
-        policy= (LinearLayout) view.findViewById(R.id.policy);
-        facebook= (LinearLayout) view.findViewById(R.id.facebook);
-        google=(LinearLayout) view.findViewById(R.id.googleplus);
-        twitter= (LinearLayout) view.findViewById(R.id.twitter);
-        productPage=(LinearLayout)view.findViewById(R.id.myProductLayout);
-        pinterest= (LinearLayout) view.findViewById(R.id.pinterest);
-        youtube= (LinearLayout) view.findViewById(R.id.youtube);
-        instagram= (LinearLayout) view.findViewById(R.id.instagram);
-        aboutus= (LinearLayout) view.findViewById(R.id.aboutus);
-        subscribe= (LinearLayout) findViewById(R.id.subscribe);
-            myorder.setOnClickListener(this);
+    public void refferencetonavigationcategory(View view) {
+        myorder = (LinearLayout) view.findViewById(R.id.myorders);
+        mycart = (LinearLayout) view.findViewById(R.id.mycart);
+        myaccount = (LinearLayout) view.findViewById(R.id.myaccount);
+        helpcenter = (LinearLayout) view.findViewById(R.id.helpcenter);
+        ratedesichain = (LinearLayout) view.findViewById(R.id.ratedesichain);
+        policy = (LinearLayout) view.findViewById(R.id.policy);
+        facebook = (LinearLayout) view.findViewById(R.id.facebook);
+        google = (LinearLayout) view.findViewById(R.id.googleplus);
+        twitter = (LinearLayout) view.findViewById(R.id.twitter);
+        productPage = (LinearLayout) view.findViewById(R.id.myProductLayout);
+        pinterest = (LinearLayout) view.findViewById(R.id.pinterest);
+        youtube = (LinearLayout) view.findViewById(R.id.youtube);
+        instagram = (LinearLayout) view.findViewById(R.id.instagram);
+        aboutus = (LinearLayout) view.findViewById(R.id.aboutus);
+        subscribe = (LinearLayout) findViewById(R.id.subscribe);
+        myorder.setOnClickListener(this);
         mycart.setOnClickListener(this);
         myaccount.setOnClickListener(this);
         helpcenter.setOnClickListener(this);
@@ -430,21 +416,19 @@ public static  ArrayList<String> Books;
 
     @Override
     public void onClick(View v) {
-        new Utility().openIntent(this,v.getId(),drawer);
+        new Utility().openIntent(this, v.getId(), drawer);
     }
 
-    public void loadBrandStudio()
-    {
+    public void loadBrandStudio() {
         try {
-            JSON_RESPONSE=new FetchingFromUrl().execute("http://dc.desichain.in/DesiChainWeService.asmx/BrandDetail").get();
+            JSON_RESPONSE = new FetchingFromUrl().execute("http://dc.desichain.in/DesiChainWeService.asmx/BrandDetail").get();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
-        if(JSON_RESPONSE!=null)
-        {
-            BRAND_STUDIO_LIST=new BrandStudio(JSON_RESPONSE,MainActivity.this).parseBestSellingProduct();
+        if (JSON_RESPONSE != null) {
+            BRAND_STUDIO_LIST = new BrandStudio(JSON_RESPONSE, MainActivity.this).parseBestSellingProduct();
         }
     }
 }

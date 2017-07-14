@@ -7,12 +7,13 @@
     android:background="#ffffff">
 
     <Button
+        android:id="@+id/goShopButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/walletImage"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="20dp"
-        android:text=" Go Shop ! "
+        android:text=" Go Shop "
         android:textSize="16sp"
         android:textColor="#ffffff"
         android:background="@color/green"/>
@@ -28,10 +29,10 @@
         android:id="@+id/walletTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/walletImage"
         android:textColor="@color/black"
         android:textSize="18sp"
-        android:layout_centerHorizontal="true"
-        android:text="Amount: ₹1500"/>
+        android:text="Amount: ₹1500"
+        android:layout_below="@+id/walletImage"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
