@@ -48,7 +48,7 @@ import java.util.concurrent.ExecutionException;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private int currentPage = 0,count=0;
+    private int currentPage = 0,count=0,currentCateg =0;
     Timer timer;
     final long DELAY_MS = 500;
     final long PERIOD_MS = 3000;
@@ -67,11 +67,17 @@ public static  ArrayList<String> Books;
     private ArrayList<BrandStudioList> BRAND_STUDIO_LIST;
   //  int count=2;
     String JSON_RESPONSE;
-    private ViewPager viewPager,mBrandStudioViewPager;
-    private CustomViewpagerAdapter mAdapter;
+    private int imagesAdvertisement[] = {R.drawable.bikano,
+                    R.drawable.mobile_covers,
+                    R.drawable.handicrafts};
+    private ViewPager viewPager,mAdvertisementViewpager;
+    private CustomViewpagerAdapter mAdapter,mAdvertisemetnAdapter;
     private BrandStudioAdapter mBrandStudioAdapter;
     private int images[] = {R.drawable.hitkary_small,
-            R.drawable.hitkary2_small};
+            R.drawable.books_small,
+            R.drawable.go_cashless_small,
+            R.drawable.handlooms_small,
+            R.drawable.ime9_small};
     public static ArrayList<String> others;
     public static HashMap<String, ArrayList<String>> hashMap;
     View headerView;
@@ -107,12 +113,34 @@ public static  ArrayList<String> Books;
         final Runnable update = new Runnable() {
             @Override
             public void run() {
-                if (currentPage==2){
+                if (currentPage==5){
                     currentPage=0;
                 }
                 viewPager.setCurrentItem(currentPage++,true);
             }
         };
+
+        mAdvertisementViewpager = (ViewPager)findViewById(R.id.viewpagerAdvertisement);
+        mAdvertisemetnAdapter = new CustomViewpagerAdapter(this,imagesAdvertisement);
+        mAdvertisementViewpager.setAdapter(mAdvertisemetnAdapter);
+        final Handler handler2 = new Handler();
+        final Runnable runnable2 = new Runnable() {
+            @Override
+            public void run() {
+                if (currentCateg==3){
+                    currentCateg=0;
+                }
+                mAdvertisementViewpager.setCurrentItem(currentCateg++,true);
+            }
+        };
+
+        timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                handler2.post(runnable2);
+            }
+        },DELAY_MS,PERIOD_MS);
 
         mLatestProdText.setOnClickListener(this);
         mTopTenText.setOnClickListener(this);
@@ -301,6 +329,7 @@ public static  ArrayList<String> Books;
             @Override
             public void onClick(View v) {
                 txtViewCount.setText(String.valueOf(count++));
+                startActivity(new Intent(MainActivity.this,MyCart.class));
             }
         });
 
@@ -435,6 +464,10 @@ public static  ArrayList<String> Books;
                 intent.putExtra("get",hashMap.get(arrayList.get(groupPosition).getPARENTCATEGORY()).get(childPosition));
                 intent.putExtra("getFilterName",String.valueOf(arrayList.get(groupPosition).getPARENTCATEGORY()));
                 startActivity(intent);
+                DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+                if (drawer.isDrawerOpen(GravityCompat.START)) {
+                    drawer.closeDrawer(GravityCompat.START);
+                }
                 return true;
             }
         });

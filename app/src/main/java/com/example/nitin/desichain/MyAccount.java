@@ -14,6 +14,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -69,6 +70,8 @@ public class MyAccount extends AppCompatActivity
         setContentView(R.layout.activity_my_account);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(false);
 
         Intent intent=getIntent();
 
@@ -222,6 +225,13 @@ public class MyAccount extends AppCompatActivity
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
+        }
+        else if (id == android.R.id.home){
+            if (drawer.isDrawerOpen(Gravity.LEFT)) {
+                drawer.closeDrawer(Gravity.LEFT);
+            } else {
+                drawer.openDrawer(Gravity.START);
+            }
         }
         else if (id==R.id.my_cart){
             startActivity(new Intent(MyAccount.this,MyCart.class));

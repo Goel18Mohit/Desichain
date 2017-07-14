@@ -64,9 +64,6 @@ public class MyAddress extends AppCompatActivity implements AddressAdapter.SaveA
         mAdapter = new AddressAdapter(this,mAddressList,0);
 
         mToolbar=(Toolbar)findViewById(R.id.myToolBar);
-        setSupportActionBar(mToolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(false);
 
 
 
@@ -98,6 +95,10 @@ public class MyAddress extends AppCompatActivity implements AddressAdapter.SaveA
 
         drawer.setDrawerListener(toggle);
         toggle.syncState();
+        setSupportActionBar(mToolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);
+
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         headerView = navigationView.inflateHeaderView(R.layout.nav_header_main);
         refferencetonavigationcategory(navigationView);
@@ -152,23 +153,24 @@ public class MyAddress extends AppCompatActivity implements AddressAdapter.SaveA
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-       if(requestCode==REQUEST_CODE_EDIT)
-        {
-            if(data.getBundleExtra("NEW ADDRESS")!=null) {
-                mAddressList.remove(POSITION);
-                Bundle bundle = data.getBundleExtra("NEW ADDRESS");
-                mAddressList.add(POSITION, new AddressList(bundle.getString("CUSTOMERNAME"), bundle.getString("CUSTOMERADDRESS"), bundle.getString("CUSTOMERMOBILE")));
-                mAdapter.notifyDataSetChanged();
-            }
-        }
-        else {
 
-            if(data.getBundleExtra("NEW ADDRESS")!=null) {
-                Bundle bundle = data.getBundleExtra("NEW ADDRESS");
-                mAddressList.add(new AddressList(bundle.getString("CUSTOMERNAME"), bundle.getString("CUSTOMERADDRESS"), bundle.getString("CUSTOMERMOBILE")));
-                mAdapter.notifyDataSetChanged();
-            }
+        if (data!=null) {
+            if (requestCode == REQUEST_CODE_EDIT) {
+                if (data.getBundleExtra("NEW ADDRESS") != null) {
+                    mAddressList.remove(POSITION);
+                    Bundle bundle = data.getBundleExtra("NEW ADDRESS");
+                    mAddressList.add(POSITION, new AddressList(bundle.getString("CUSTOMERNAME"), bundle.getString("CUSTOMERADDRESS"), bundle.getString("CUSTOMERMOBILE")));
+                    mAdapter.notifyDataSetChanged();
+                }
+            } else {
 
+                if (data.getBundleExtra("NEW ADDRESS") != null) {
+                    Bundle bundle = data.getBundleExtra("NEW ADDRESS");
+                    mAddressList.add(new AddressList(bundle.getString("CUSTOMERNAME"), bundle.getString("CUSTOMERADDRESS"), bundle.getString("CUSTOMERMOBILE")));
+                    mAdapter.notifyDataSetChanged();
+                }
+
+            }
         }
     }
 

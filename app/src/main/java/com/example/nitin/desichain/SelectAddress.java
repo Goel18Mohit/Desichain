@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
+import android.widget.TextView;
 
 import com.example.nitin.desichain.Adapters.AddressAdapter;
 import com.example.nitin.desichain.Contents.AddressList;
@@ -20,7 +21,7 @@ public class SelectAddress extends AppCompatActivity {
     private RecyclerView mSelectAddressView;
     private List<AddressList> mAddressList;
     private AddressAdapter mAdapter;
-    private Button mSelectAddress;
+    private TextView mSelectAddress;
 
 
     @Override
@@ -29,7 +30,7 @@ public class SelectAddress extends AppCompatActivity {
         setContentView(R.layout.activity_delivery_address);
 
         int FLAG = getIntent().getIntExtra("flagIntent",0);
-        mSelectAddress=(Button)findViewById(R.id.btnSelectAddress);
+        mSelectAddress=(TextView) findViewById(R.id.btnSelectAddress);
         mSelectAddressView=(RecyclerView)findViewById(R.id.selectAddressView);
         mAddressList =new ArrayList<>();
         mAdapter=new AddressAdapter(this, mAddressList,FLAG);

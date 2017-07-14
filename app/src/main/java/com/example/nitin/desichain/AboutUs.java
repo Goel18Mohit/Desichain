@@ -101,8 +101,9 @@ public class AboutUs extends AppCompatActivity implements View.OnClickListener {
                 if(drawer.isDrawerOpen(Gravity.LEFT)) {
                     drawer.closeDrawer(Gravity.LEFT);
                 }else{
-                    drawer.openDrawer(Gravity.LEFT);
+                    finish();
                 }
+                break;
             case R.id.search_item:
                 startActivity(new Intent(this,SearchActivity.class));
         }

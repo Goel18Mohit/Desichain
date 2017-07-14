@@ -40,7 +40,7 @@ public class MyOrders extends AppCompatActivity implements View.OnClickListener 
     private List<Orders> mOrders;
     private OrderAdapter mAdapter;
 
-    int count=2;
+    int count = 2;
     TextView txtViewCount;
     ImageView toolbarcartimage;
     private Helper listView;
@@ -134,22 +134,22 @@ public class MyOrders extends AppCompatActivity implements View.OnClickListener 
     public boolean onCreateOptionsMenu(Menu menu) {
 
         getMenuInflater().inflate(R.menu.main, menu);
-        MenuItem menuItem=menu.findItem(R.id.my_cart);
-        MenuItemCompat.setActionView(menuItem,R.layout.cart_icon_for_toolbar);
-        RelativeLayout mycarttoolbar= (RelativeLayout) MenuItemCompat.getActionView(menuItem);
+        MenuItem menuItem = menu.findItem(R.id.my_cart);
+        MenuItemCompat.setActionView(menuItem, R.layout.cart_icon_for_toolbar);
+        RelativeLayout mycarttoolbar = (RelativeLayout) MenuItemCompat.getActionView(menuItem);
         txtViewCount = (TextView) mycarttoolbar.findViewById(R.id.badge_notification_1);
-        toolbarcartimage= (ImageView) mycarttoolbar.findViewById(R.id.badge_notification_image);
+        toolbarcartimage = (ImageView) mycarttoolbar.findViewById(R.id.badge_notification_image);
         count++;
         toolbarcartimage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MyOrders.this,MyCart.class));
+                startActivity(new Intent(MyOrders.this, MyCart.class));
             }
         });
         txtViewCount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MyOrders.this,MyCart.class));
+                startActivity(new Intent(MyOrders.this, MyCart.class));
             }
         });
 
@@ -160,15 +160,16 @@ public class MyOrders extends AppCompatActivity implements View.OnClickListener 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case android.R.id.home:
-                if(drawer.isDrawerOpen(Gravity.LEFT)) {
+                if (drawer.isDrawerOpen(Gravity.LEFT)) {
                     drawer.closeDrawer(Gravity.LEFT);
-                }else{
-                    drawer.openDrawer(Gravity.LEFT);
+                } else {
+                    finish();
                 }
+                break;
             case R.id.search_item:
-                startActivity(new Intent(this,SearchActivity.class));
+                startActivity(new Intent(this, SearchActivity.class));
                 break;
         }
 
@@ -176,10 +177,10 @@ public class MyOrders extends AppCompatActivity implements View.OnClickListener 
     }
 
     public void add() {
-        arrayList.add(new CategoryHolder("Book and media",0,R.mipmap.book));
-        arrayList.add(new CategoryHolder("Pooja Item",0,R.mipmap.pooja));
-        arrayList.add(new CategoryHolder("Home Care",0,R.mipmap.homecare));
-        arrayList.add(new CategoryHolder("Others",0,R.mipmap.other));
+        arrayList.add(new CategoryHolder("Book and media", 0, R.mipmap.book));
+        arrayList.add(new CategoryHolder("Pooja Item", 0, R.mipmap.pooja));
+        arrayList.add(new CategoryHolder("Home Care", 0, R.mipmap.homecare));
+        arrayList.add(new CategoryHolder("Others", 0, R.mipmap.other));
         Books.add("Bhagavad-Gita As It Is");
         Books.add("Paperback/ Hardbound");
         Books.add("Media");
@@ -241,7 +242,8 @@ public class MyOrders extends AppCompatActivity implements View.OnClickListener 
 
                  /*   DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
                     drawer.closeDrawer(GravityCompat.START);
-                   */ return true;
+                   */
+                    return true;
                 }
 
                 /**
@@ -257,7 +259,7 @@ public class MyOrders extends AppCompatActivity implements View.OnClickListener 
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
                 Intent intent = new Intent(MyOrders.this, Childcategoru.class);
                 intent.putExtra("get", hashMap.get(arrayList.get(groupPosition).getPARENTCATEGORY()).get(childPosition));
-                intent.putExtra("getFilterName",String.valueOf(arrayList.get(groupPosition).getPARENTCATEGORY()));
+                intent.putExtra("getFilterName", String.valueOf(arrayList.get(groupPosition).getPARENTCATEGORY()));
                 startActivity(intent);
                 return true;
             }
@@ -299,7 +301,7 @@ public class MyOrders extends AppCompatActivity implements View.OnClickListener 
 
     @Override
     public void onClick(View v) {
-        new Utility().openIntent(this, v.getId(),drawer);
+        new Utility().openIntent(this, v.getId(), drawer);
     }
 
 
