@@ -106,6 +106,9 @@ public class AboutUs extends AppCompatActivity implements View.OnClickListener {
                 break;
             case R.id.search_item:
                 startActivity(new Intent(this,SearchActivity.class));
+                if (drawer.isDrawerOpen(GravityCompat.START)) {
+                    drawer.closeDrawer(GravityCompat.START);
+                }
         }
 
 
@@ -200,6 +203,14 @@ public class AboutUs extends AppCompatActivity implements View.OnClickListener {
                 intent.putExtra("get",hashMap.get(arrayList.get(groupPosition).getPARENTCATEGORY()).get(childPosition));
                 intent.putExtra("getFilterName",String.valueOf(arrayList.get(groupPosition).getPARENTCATEGORY()));
                 startActivity(intent);
+                if (drawer.isDrawerOpen(GravityCompat.START)) {
+                    drawer.closeDrawer(GravityCompat.START);
+                }
+                for (int i=0; i<parent.getCount(); ++i) {
+                    if (parent.isGroupExpanded(i)) {
+                        parent.collapseGroup(i);
+                    }
+                }
                 return true;
             }
         });
@@ -219,12 +230,18 @@ public class AboutUs extends AppCompatActivity implements View.OnClickListener {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(AboutUs.this,MyCart.class));
+                if (drawer.isDrawerOpen(GravityCompat.START)) {
+                    drawer.closeDrawer(GravityCompat.START);
+                }
             }
         });
         txtViewCount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(AboutUs.this,MyCart.class));
+                if (drawer.isDrawerOpen(GravityCompat.START)) {
+                    drawer.closeDrawer(GravityCompat.START);
+                }
             }
         });
 

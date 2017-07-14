@@ -1,38 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="#E0E0E0"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff">
+    tools:context="com.example.nitin.desichain.MyCart">
 
-    <Button
-        android:id="@+id/goShopButton"
-        android:layout_width="wrap_content"
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/walletImage"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="20dp"
-        android:text=" Go Shop "
-        android:textSize="16sp"
-        android:textColor="#ffffff"
-        android:background="@color/green"/>
-    <ImageView
-        android:id="@+id/walletImage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:scaleType="fitCenter"
-        android:src="@drawable/wallet" />
+        android:background="@drawable/side_nav_bar">
 
-    <TextView
-        android:id="@+id/walletTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        android:text="Amount: ₹1500"
-        android:layout_below="@+id/walletImage"
-        android:layout_centerHorizontal="true" />
+        <android.support.v7.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:id="@+id/myToolBar"/>
 
-</RelativeLayout>
+    </android.support.design.widget.AppBarLayout>
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:layout_below="@+id/appBarLayout">
+        <include layout="@layout/content_wallet" />
+    </FrameLayout>
+</android.support.design.widget.CoordinatorLayout>
