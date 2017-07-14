@@ -1,6 +1,7 @@
 package com.example.nitin.desichain.ParsingJson;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.example.nitin.desichain.Contents.ProductHorizontal;
 
@@ -30,6 +31,7 @@ public class BsetSellingProduct {
         this.JSON_RESPONSE = JSON_RESPONSE;
         mContent=context;
         BEST_SELLING_LIST=new ArrayList<>();
+        Log.i("ashish",JSON_RESPONSE);
     }
 
   public ArrayList<ProductHorizontal> parseBestSellingProduct()

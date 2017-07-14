@@ -8,4 +8,6 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="app_bar_height">180dp</dimen>
     <dimen name="text_margin">16dp</dimen>
+    <dimen name="header_logo_h">150px</dimen>
+    <dimen name="header_logo_w">@dimen/header_logo_h</dimen>
 </resources>

@@ -6,14 +6,18 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.graphics.Point;
 import android.net.Uri;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AlertDialog;
+import android.view.Display;
 import android.view.Gravity;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.nitin.desichain.AboutUs;
+import com.example.nitin.desichain.CategoryPage;
 import com.example.nitin.desichain.HelpCentre;
 import com.example.nitin.desichain.MyAccount;
 import com.example.nitin.desichain.MyCart;
@@ -98,6 +102,18 @@ public class Utility {
                 Intent ABOUTUS=new Intent(mContext, AboutUs.class);
                 mContext.startActivity(ABOUTUS);
                 closenavigation();
+                break;
+            case R.id.latestProdViewAll:
+                mContext.startActivity(new Intent(mContext, CategoryPage.class));
+                break;
+            case R.id.topTenGameViewAll:
+                mContext.startActivity(new Intent(mContext, CategoryPage.class));
+                break;
+            case R.id.featuredProductViewAll:
+                mContext.startActivity(new Intent(mContext, CategoryPage.class));
+                break;
+            case R.id.bestSellingProductViewAll:
+                mContext.startActivity(new Intent(mContext, CategoryPage.class));
                 break;
             case R.id.subscribe:
                 closenavigation();

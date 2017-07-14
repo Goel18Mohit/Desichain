@@ -10,6 +10,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -243,7 +244,10 @@ public class CategoryPage extends AppCompatActivity implements View.OnClickListe
         FILTER_OPTION.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(CategoryPage.this,Filters.class));
+                final String mGetFilterName = getIntent().getStringExtra("getFilterName");
+                Intent intent = new Intent(CategoryPage.this,Filters.class);
+                intent.putExtra("getFilterData",mGetFilterName);
+                startActivity(intent);
             }
         });
 
@@ -365,6 +369,7 @@ public class CategoryPage extends AppCompatActivity implements View.OnClickListe
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
                 Intent intent=new Intent(CategoryPage.this,Childcategoru.class);
                 intent.putExtra("get",hashMap.get(arrayList.get(groupPosition).getPARENTCATEGORY()).get(childPosition));
+                intent.putExtra("getFilterName",String.valueOf(arrayList.get(groupPosition).getPARENTCATEGORY()));
                 startActivity(intent);
                 return true;
             }

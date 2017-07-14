@@ -152,7 +152,7 @@ public class ProductPageActual extends AppCompatActivity implements View.OnClick
             }
         });
 
-
+/*
         mRecentlyViewed = (RecyclerView) findViewById(R.id.recentlyView);
         mProductsList = new ArrayList<>();
         mAdapter=new ProductHorizontalAdapter(this, mProductsList);
@@ -163,6 +163,7 @@ public class ProductPageActual extends AppCompatActivity implements View.OnClick
             mRecentlyViewed.setScrollBarSize(0);
         }
         mRecentlyViewed.setAdapter(mAdapter);
+        */
         mShareProduct=(ImageView)findViewById(R.id.shareProduct);
 
         //addItems();
@@ -377,6 +378,7 @@ public class ProductPageActual extends AppCompatActivity implements View.OnClick
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
                 Intent intent=new Intent(ProductPageActual.this,Childcategoru.class);
                 intent.putExtra("get",hashMap.get(arrayList.get(groupPosition).getPARENTCATEGORY()).get(childPosition));
+                intent.putExtra("getFilterName",String.valueOf(arrayList.get(groupPosition).getPARENTCATEGORY()));
                 startActivity(intent);
                 return true;
             }

@@ -62,37 +62,57 @@
                 android:layout_height="0dp"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="20dp"
-                android:layout_weight="2">
+                android:layout_weight="4">
 
-                <TableLayout
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:stretchColumns="0,1">
+                    android:orientation="vertical">
 
-                    <TableRow>
-
-                        <ImageView
-                            android:layout_margin="5dp"
-                            android:src="@mipmap/ic_launcher" />
-
-
-                        <ImageView
-                            android:layout_margin="5dp"
-                            android:src="@mipmap/ic_launcher" />
-                    </TableRow>
-
-
-                    <TableRow>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
 
                         <ImageView
-                            android:layout_margin="5dp"
-                            android:src="@mipmap/ic_launcher" />
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/jb1" />
+
 
                         <ImageView
-                            android:layout_margin="5dp"
-                            android:src="@mipmap/ic_launcher" />
-                    </TableRow>
-                </TableLayout>
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="match_parent"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/jb2" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="match_parent"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/jb3" />
+
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="match_parent"
+                            android:id="@+id/imageView2"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/jb4" />
+                    </LinearLayout>
+                </LinearLayout>
             </android.support.v7.widget.CardView>
 
             <LinearLayout
@@ -100,7 +120,7 @@
                 android:layout_height="0dp"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
-                android:layout_weight="2"
+                android:layout_weight="1"
                 android:orientation="horizontal"
                 android:weightSum="3">
 
@@ -115,7 +135,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:src="@mipmap/ic_launcher" />
+                        android:scaleType="fitXY"
+                        android:src="@drawable/bikano" />
 
                 </android.support.v7.widget.CardView>
 
@@ -131,7 +152,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:src="@mipmap/ic_launcher" />
+                        android:scaleType="fitXY"
+                        android:src="@drawable/mobile_covers" />
 
                 </android.support.v7.widget.CardView>
 
@@ -146,7 +168,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:src="@mipmap/ic_launcher" />
+                        android:scaleType="fitXY"
+                        android:src="@drawable/handicrafts" />
 
                 </android.support.v7.widget.CardView>
 
@@ -166,13 +189,34 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
-                    <TextView
+                    <LinearLayout
                         android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="2"
+                        android:layout_margin="10dp"
+                        android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:layout_margin="8dp"
                         android:layout_height="wrap_content"
                         android:text="Latest Products"
                         android:textAlignment="center"
-                        android:textSize="20sp" />
+                        android:textSize="16sp" />
 
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:clickable="true"
+                            android:id="@+id/latestProdViewAll"
+                            android:text="View all"
+                            android:textColor="@android:color/white"
+                            android:background="@color/green"/>
+
+
+                    </LinearLayout>
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
@@ -181,9 +225,10 @@
                     <android.support.v7.widget.RecyclerView
                         android:id="@+id/LatestProductRecyclerView"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:clipToPadding="true"
-                        android:scrollbars="horizontal" />
+                        android:layout_height="0dp"
+                        android:layout_weight="7"
+                        android:stretchMode="columnWidth"
+                        android:clipToPadding="true"/>
                 </LinearLayout>
             </android.support.v7.widget.CardView>
 
@@ -219,7 +264,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:src="@mipmap/ic_launcher" />
+                        android:scaleType="fitXY"
+                        android:src="@drawable/cow_big1" />
                 </android.support.v7.widget.CardView>
 
                 <LinearLayout
@@ -238,7 +284,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:src="@mipmap/ic_launcher" />
+                            android:scaleType="fitXY"
+                            android:src="@drawable/cow_b21" />
 
 
                     </android.support.v7.widget.CardView>
@@ -253,7 +300,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:src="@mipmap/ic_launcher" />
+                            android:scaleType="fitXY"
+                            android:src="@drawable/cow_b31" />
 
 
                     </android.support.v7.widget.CardView>
@@ -267,6 +315,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
                 android:layout_weight="3"
                 app:cardElevation="10dp">
 
@@ -275,12 +324,34 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
-                    <TextView
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="top 10 Game"
-                        android:textAlignment="center"
-                        android:textSize="20sp" />
+                        android:layout_height="0dp"
+                        android:layout_weight="2"
+                        android:layout_margin="10dp"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="2"
+                            android:layout_margin="8dp"
+                            android:layout_height="wrap_content"
+                            android:text="Top 10 game"
+                            android:textAlignment="center"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:clickable="true"
+                            android:id="@+id/topTenGameViewAll"
+                            android:text="View all"
+                            android:textColor="@android:color/white"
+                            android:background="@color/green"/>
+
+
+                    </LinearLayout>
 
                     <View
                         android:layout_width="match_parent"
@@ -292,7 +363,8 @@
                         android:id="@+id/top_ten_game_view"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:layout_weight="2" />
+                        android:layout_weight="7"
+                        android:clipToPadding="true"/>
                 </LinearLayout>
             </android.support.v7.widget.CardView>
 
@@ -331,7 +403,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:src="@mipmap/ic_launcher" />
+                        android:scaleType="fitXY"
+                        android:src="@drawable/bedsheets" />
 
                 </android.support.v7.widget.CardView>
 
@@ -347,7 +420,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:src="@mipmap/ic_launcher" />
+                        android:scaleType="fitXY"
+                        android:src="@drawable/best_of_gasstoves" />
 
                 </android.support.v7.widget.CardView>
 
@@ -367,12 +441,34 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
-                    <TextView
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="FeaturedProduct"
-                        android:textAlignment="center"
-                        android:textSize="20sp" />
+                        android:layout_height="0dp"
+                        android:layout_weight="2"
+                        android:layout_margin="10dp"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="2"
+                            android:layout_margin="8dp"
+                            android:layout_height="wrap_content"
+                            android:text="Featured Product"
+                            android:textAlignment="center"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:clickable="true"
+                            android:id="@+id/featuredProductViewAll"
+                            android:gravity="center"
+                            android:text="View all"
+                            android:textColor="@android:color/white"
+                            android:background="@color/green"/>
+
+
+                    </LinearLayout>
 
                     <View
                         android:layout_width="match_parent"
@@ -384,7 +480,8 @@
                         android:id="@+id/featuredProductRecyclerView"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:layout_weight="2" />
+                        android:layout_weight="7"
+                        android:clipToPadding="true"/>
                 </LinearLayout>
             </android.support.v7.widget.CardView>
 
@@ -400,12 +497,34 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
-                    <TextView
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Best Selling Product"
-                        android:textAlignment="center"
-                        android:textSize="20sp" />
+                        android:layout_height="0dp"
+                        android:layout_weight="2"
+                        android:layout_margin="10dp"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="2"
+                            android:layout_margin="8dp"
+                            android:layout_height="wrap_content"
+                            android:text="Best Selling Product"
+                            android:textAlignment="center"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:clickable="true"
+                            android:id="@+id/bestSellingProductViewAll"
+                            android:text="View all"
+                            android:textColor="@android:color/white"
+                            android:background="@color/green"/>
+
+
+                    </LinearLayout>
 
                     <View
                         android:layout_width="match_parent"
@@ -417,7 +536,7 @@
                         android:id="@+id/bestSellingRecyclerView"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:layout_weight="2" />
+                        android:layout_weight="7" />
                 </LinearLayout>
             </android.support.v7.widget.CardView>
 
@@ -435,8 +554,9 @@
                     android:orientation="vertical">
 
                     <android.support.v7.widget.CardView
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="0dp"
+                        android:layout_gravity="center"
                         android:layout_margin="8dp"
                         android:layout_weight="1">
 
@@ -444,13 +564,15 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:src="@mipmap/ic_launcher" />
+                            android:scaleType="fitXY"
+                            android:src="@drawable/army_one" />
 
 
                     </android.support.v7.widget.CardView>
 
                     <android.support.v7.widget.CardView
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
+                        android:layout_gravity="center"
                         android:layout_height="0dp"
                         android:layout_margin="8dp"
                         android:layout_weight="1">
@@ -459,7 +581,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:src="@mipmap/ic_launcher" />
+                            android:scaleType="fitXY"
+                            android:src="@drawable/army_3" />
 
 
                     </android.support.v7.widget.CardView>
@@ -467,7 +590,7 @@
                 </LinearLayout>
                 <android.support.v7.widget.CardView
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_margin="8dp"
                     android:layout_weight="1"
                     app:cardElevation="5dp">
@@ -476,7 +599,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:src="@mipmap/ic_launcher" />
+                        android:scaleType="fitXY"
+                        android:src="@drawable/army_big" />
                 </android.support.v7.widget.CardView>
 
 
@@ -495,12 +619,32 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
-                    <TextView
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Top 10 game part 2"
-                        android:textAlignment="center"
-                        android:textSize="20sp" />
+                        android:layout_height="0dp"
+                        android:layout_weight="2"
+                        android:layout_margin="10dp"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="2"
+                            android:layout_margin="8dp"
+                            android:layout_height="wrap_content"
+                            android:text="Top 10 game part 2"
+                            android:textAlignment="center"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="View all"
+                            android:textColor="@android:color/white"
+                            android:background="@color/green"/>
+
+
+                    </LinearLayout>
 
                     <View
                         android:layout_width="match_parent"
@@ -512,7 +656,8 @@
                         android:id="@+id/top_ten_game_second_RecyclerView"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:layout_weight="2" />
+                        android:layout_weight="7"
+                        android:clipToPadding="true"/>
                 </LinearLayout>
             </android.support.v7.widget.CardView>
 
@@ -557,12 +702,13 @@
                         android:layout_height="1dp"
                         android:background="#C0C0C0" />
 
-
                     <android.support.v7.widget.RecyclerView
                         android:id="@+id/brandStudioRecyclerView"
                         android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="2" />
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_height="wrap_content" />
+         />
                 </LinearLayout>
             </android.support.v7.widget.CardView>
         </LinearLayout>

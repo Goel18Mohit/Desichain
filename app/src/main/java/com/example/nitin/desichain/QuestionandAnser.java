@@ -245,6 +245,7 @@ public class QuestionandAnser extends AppCompatActivity implements View.OnClickL
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
                 Intent intent=new Intent(QuestionandAnser.this,Childcategoru.class);
                 intent.putExtra("get",hashMap.get(arrayList.get(groupPosition).getPARENTCATEGORY()).get(childPosition));
+                intent.putExtra("getFilterName",String.valueOf(arrayList.get(groupPosition).getPARENTCATEGORY()));
                 startActivity(intent);
                 return true;
             }

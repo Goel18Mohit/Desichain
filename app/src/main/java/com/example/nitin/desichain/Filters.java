@@ -9,11 +9,13 @@ import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ExpandableListView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.example.nitin.desichain.SubCategoryList.ShowCategoryAdapeter;
 import com.example.nitin.desichain.Utility.Utility;
@@ -25,7 +27,7 @@ public class Filters extends AppCompatActivity implements View.OnClickListener{
 
 
     private Toolbar toolbar;
-    private Button mApply;
+    private TextView mApply;
 
     private Helper listView;
     View headerView;
@@ -49,10 +51,14 @@ public class Filters extends AppCompatActivity implements View.OnClickListener{
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(false);
 
-
+        String mFilterName = getIntent().getStringExtra("getFilterData");
         FiltersFragment fFragment = new FiltersFragment();
 
-        mApply=(Button)findViewById(R.id.btnApplyFilter);
+        Bundle bundle = new Bundle();
+            bundle.putString("mFilterCategName",mFilterName);
+        fFragment.setArguments(bundle);
+
+        mApply=(TextView)findViewById(R.id.btnApplyFilter);
         FragmentManager fm =getSupportFragmentManager();
 
 
@@ -65,8 +71,6 @@ public class Filters extends AppCompatActivity implements View.OnClickListener{
             }
         });
 
-        FilterFragmentData fFragmentData = new FilterFragmentData();
-        fm.beginTransaction().add(R.id.filterSelectionFrame,fFragmentData).commit();
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, R.string.navigation_drawer_open, R.string.navigation_drawer_close){
@@ -174,6 +178,7 @@ public class Filters extends AppCompatActivity implements View.OnClickListener{
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
                 Intent intent=new Intent(Filters.this,Childcategoru.class);
                 intent.putExtra("get",hashMap.get(arrayList.get(groupPosition).getPARENTCATEGORY()).get(childPosition));
+                intent.putExtra("getFilterName",String.valueOf(arrayList.get(groupPosition).getPARENTCATEGORY()));
                 startActivity(intent);
                 return true;
             }

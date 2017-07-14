@@ -37,4 +37,5 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile project(':sdkui')
     compile project(':payUMoneysdk')
+    compile 'org.florescu.android.rangeseekbar:rangeseekbar-library:0.3.0'
 }
