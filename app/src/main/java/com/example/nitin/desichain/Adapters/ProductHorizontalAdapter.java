@@ -1,16 +1,20 @@
 package com.example.nitin.desichain.Adapters;
 
+import android.app.Activity;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.nitin.desichain.Contents.ProductHorizontal;
 import com.example.nitin.desichain.R;
+import com.example.nitin.desichain.Utility.Utility;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -20,8 +24,6 @@ import java.util.List;
  */
 
 public class ProductHorizontalAdapter extends RecyclerView.Adapter<ProductHorizontalAdapter.MyViewHolder>{
-
-
     private Context mContext;
     private List<ProductHorizontal> mProductHorizontalList;
 
@@ -32,9 +34,9 @@ public class ProductHorizontalAdapter extends RecyclerView.Adapter<ProductHorizo
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        LayoutInflater layoutInflater= (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view=layoutInflater.inflate(R.layout.single_category,null);
-        return new MyViewHolder(view);
+            LayoutInflater layoutInflater= (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            View view=layoutInflater.inflate(R.layout.single_category,null);
+            return new MyViewHolder(view);
     }
 
     @Override
@@ -45,7 +47,8 @@ public class ProductHorizontalAdapter extends RecyclerView.Adapter<ProductHorizo
         holder.mProductCost.setText(String.valueOf(mProduct.getmProductCost()));
         holder.mProductname.setText(mProduct.getmProductName());
         holder.mProductReviewsNo.setText(mProduct.getmProductNoOfReviews());
-        Picasso.with(mContext).load("http://www.desichain.in/uploads/thumb_"+mProductHorizontalList.get(position).getmProductImageId()).into(holder.mProductImage);
+        Picasso.with(mContext).load("http://www.desichain.in/uploads/thumb_"+mProductHorizontalList.
+                get(position).getmProductImageId()).resize(200,200).into(holder.mProductImage);
         holder.mAddToCartImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,7 +59,7 @@ public class ProductHorizontalAdapter extends RecyclerView.Adapter<ProductHorizo
 
     @Override
     public int getItemCount() {
-        return mProductHorizontalList.size();
+        return 4;
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
