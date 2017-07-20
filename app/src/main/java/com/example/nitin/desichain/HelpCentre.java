@@ -143,6 +143,12 @@ public class HelpCentre extends AppCompatActivity implements View.OnClickListene
         else if (item.getItemId()==R.id.search_item){
             startActivity(new Intent(this,SearchActivity.class));
         }
+        else if (item.getItemId()==R.id.my_orders){
+            startActivity(new Intent(this,MyOrders.class));
+        }
+        else if (item.getItemId()==R.id.notifications){
+            startActivity(new Intent(this,NotificationPage.class));
+        }
         return super.onOptionsItemSelected(item);
     }
 

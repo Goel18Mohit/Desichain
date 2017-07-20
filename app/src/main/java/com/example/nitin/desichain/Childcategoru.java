@@ -413,7 +413,7 @@ public class Childcategoru extends AppCompatActivity implements View.OnClickList
         homefurnishing.add(new ChildCategoryList("Bedsheets", R.mipmap.bedsheet));
         homefurnishing.add(new ChildCategoryList("Curtains", R.mipmap.curtain));
         homefurnishing.add(new ChildCategoryList("Cushion & Pillow Covers", R.mipmap.cushion_pillow));
-        homefurnishing.add(new ChildCategoryList("Blankets,Quilts & Dohars", R.mipmap.ic_add_alert_black_24dp));
+        homefurnishing.add(new ChildCategoryList("Blankets,Quilts & Dohars", R.mipmap.blankets));
         homefurnishing.add(new ChildCategoryList("Towels", R.mipmap.towel));
         homefurnishing.add(new ChildCategoryList("Mats Carpets & Rugs", R.mipmap.mats));
         homefurnishing.add(new ChildCategoryList("Bath Linen", R.mipmap.linen));
@@ -436,8 +436,8 @@ public class Childcategoru extends AppCompatActivity implements View.OnClickList
 
     public void setAgarbatti() {
 
-        agarbatti.add(new ChildCategoryList("Incense Sticks", R.mipmap.ic_security_black_24dp));
-        agarbatti.add(new ChildCategoryList("Natural Dhoops", R.mipmap.ic_security_black_24dp));
+        agarbatti.add(new ChildCategoryList("Incense Sticks", R.mipmap.incense));
+        agarbatti.add(new ChildCategoryList("Natural Dhoops", R.mipmap.dhoop));
     }
 
     public void setBells() {
@@ -448,30 +448,30 @@ public class Childcategoru extends AppCompatActivity implements View.OnClickList
 
     public void setItemsofworship() {
 
-        itemsofworship.add(new ChildCategoryList("Japa Mala & Bags", R.mipmap.ic_security_black_24dp));
+        itemsofworship.add(new ChildCategoryList("Japa Mala & Bags", R.mipmap.japa_mala));
         itemsofworship.add(new ChildCategoryList(" Mats/Assan", R.mipmap.mats));
-        itemsofworship.add(new ChildCategoryList("Other Items", R.mipmap.ic_security_black_24dp));
+        itemsofworship.add(new ChildCategoryList("Other Items", R.mipmap.other));
         itemsofworship.add(new ChildCategoryList("Pooja Lamps", R.mipmap.lamps));
-        itemsofworship.add(new ChildCategoryList("Pooja Thali", R.mipmap.ic_security_black_24dp));
-        itemsofworship.add(new ChildCategoryList("Pooja Vessels", R.mipmap.ic_security_black_24dp));
-        itemsofworship.add(new ChildCategoryList("Sacrifices(Havan)Items", R.mipmap.ic_security_black_24dp));
-        itemsofworship.add(new ChildCategoryList("Sindoor(Vermilion)", R.mipmap.ic_security_black_24dp));
-        itemsofworship.add(new ChildCategoryList("Wicks(Batti", R.mipmap.ic_security_black_24dp));
+        itemsofworship.add(new ChildCategoryList("Pooja Thali", R.mipmap.thali));
+        itemsofworship.add(new ChildCategoryList("Pooja Vessels", R.mipmap.vessel));
+        itemsofworship.add(new ChildCategoryList("Sacrifices(Havan)Items", R.mipmap.havan));
+        itemsofworship.add(new ChildCategoryList("Sindoor(Vermilion)", R.mipmap.sindoor));
+        itemsofworship.add(new ChildCategoryList("Wicks(Batti)", R.mipmap.wicks));
 
     }
 
     public void setMurtis() {
 
-        murtis.add(new ChildCategoryList("Brass", R.mipmap.ic_security_black_24dp));
-        murtis.add(new ChildCategoryList("Mini Temples", R.mipmap.ic_security_black_24dp));
+        murtis.add(new ChildCategoryList("Brass", R.mipmap.secure_payment));
+        murtis.add(new ChildCategoryList("Mini Temples", R.mipmap.temple));
 
     }
 
     public void setOtheressentials() {
 
-        otheressentials.add(new ChildCategoryList("Kanthi Mala/Neck Beads", R.mipmap.ic_security_black_24dp));
-        otheressentials.add(new ChildCategoryList("Khadaun/Slippers", R.mipmap.ic_security_black_24dp));
-        otheressentials.add(new ChildCategoryList("Scarf/Chadar", R.mipmap.ic_security_black_24dp));
+        otheressentials.add(new ChildCategoryList("Kanthi Mala/Neck Beads", R.mipmap.kanth_mala));
+        otheressentials.add(new ChildCategoryList("Khadaun/Slippers", R.mipmap.khadaun));
+        otheressentials.add(new ChildCategoryList("Scarf/Chadar", R.mipmap.scarf));
 
     }
 
@@ -498,32 +498,32 @@ public class Childcategoru extends AppCompatActivity implements View.OnClickList
 
     public void setMedia() {
 
-        media.add(new ChildCategoryList("Animation Movies", R.mipmap.ic_security_black_24dp));
-        media.add(new ChildCategoryList("Independent Cinema", R.mipmap.ic_security_black_24dp));
-        media.add(new ChildCategoryList("kirtans/Bhajans", R.mipmap.ic_security_black_24dp));
-        media.add(new ChildCategoryList("Lectures/Talks", R.mipmap.ic_security_black_24dp));
+        media.add(new ChildCategoryList("Animation Movies", R.mipmap.animation));
+        media.add(new ChildCategoryList("Independent Cinema", R.mipmap.cinema));
+        media.add(new ChildCategoryList("kirtans/Bhajans", R.mipmap.kirtan));
+        media.add(new ChildCategoryList("Lectures/Talks", R.mipmap.lecture));
 
     }
 
     public void setPaperback() {
 
-        paperback.add(new ChildCategoryList("Astrology", R.mipmap.ic_security_black_24dp));
-        paperback.add(new ChildCategoryList("Ayurveda & Health", R.mipmap.ic_security_black_24dp));
-        paperback.add(new ChildCategoryList("Biography", R.mipmap.ic_security_black_24dp));
-        paperback.add(new ChildCategoryList("Children", R.mipmap.ic_security_black_24dp));
-        paperback.add(new ChildCategoryList("Classic Text", R.mipmap.ic_security_black_24dp));
-        paperback.add(new ChildCategoryList("Cooking & Vegetariansim", R.mipmap.ic_security_black_24dp));
+        paperback.add(new ChildCategoryList("Astrology", R.mipmap.astrology));
+        paperback.add(new ChildCategoryList("Ayurveda & Health", R.mipmap.ayurveda));
+        paperback.add(new ChildCategoryList("Biography", R.mipmap.biography));
+        paperback.add(new ChildCategoryList("Children", R.mipmap.children));
+        paperback.add(new ChildCategoryList("Classic Text", R.mipmap.classic_text));
+        paperback.add(new ChildCategoryList("Cooking & Vegetariansim", R.mipmap.cooking));
         paperback.add(new ChildCategoryList("Cow Protection", R.mipmap.ic_security_black_24dp));
-        paperback.add(new ChildCategoryList("Magazines", R.mipmap.ic_security_black_24dp));
-        paperback.add(new ChildCategoryList("Personal Growth", R.mipmap.ic_security_black_24dp));
-        paperback.add(new ChildCategoryList("Philossophy", R.mipmap.ic_security_black_24dp));
-        paperback.add(new ChildCategoryList("Re-Incranation", R.mipmap.ic_security_black_24dp));
-        paperback.add(new ChildCategoryList("Religious/Spirtual", R.mipmap.ic_security_black_24dp));
-        paperback.add(new ChildCategoryList("Science", R.mipmap.ic_security_black_24dp));
-        paperback.add(new ChildCategoryList("Travel & Pilgrimage", R.mipmap.ic_security_black_24dp));
-        paperback.add(new ChildCategoryList("Vedic/Indian Culture", R.mipmap.ic_security_black_24dp));
-        paperback.add(new ChildCategoryList("Yoga and Meditation", R.mipmap.ic_security_black_24dp));
-        paperback.add(new ChildCategoryList("Language Learning", R.mipmap.ic_security_black_24dp));
+        paperback.add(new ChildCategoryList("Magazines", R.mipmap.magazine));
+        paperback.add(new ChildCategoryList("Personal Growth", R.mipmap.personal_growth));
+        paperback.add(new ChildCategoryList("Philossophy", R.mipmap.philosophy));
+        paperback.add(new ChildCategoryList("Re-Incranation", R.mipmap.reincarnation));
+        paperback.add(new ChildCategoryList("Religious/Spirtual", R.mipmap.religious));
+        paperback.add(new ChildCategoryList("Science", R.mipmap.science));
+        paperback.add(new ChildCategoryList("Travel & Pilgrimage", R.mipmap.pilgrimage));
+        paperback.add(new ChildCategoryList("Vedic/Indian Culture", R.mipmap.indian_culture));
+        paperback.add(new ChildCategoryList("Yoga and Meditation", R.mipmap.yoga));
+        paperback.add(new ChildCategoryList("Language Learning", R.mipmap.language));
     }
 
     public void setPersonalcare() {
@@ -637,6 +637,20 @@ public class Childcategoru extends AppCompatActivity implements View.OnClickList
                 break;
             case R.id.search_item:
                 startActivity(new Intent(this, SearchActivity.class));
+                drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+                if (drawer.isDrawerOpen(GravityCompat.START)) {
+                    drawer.closeDrawer(GravityCompat.START);
+                }
+                break;
+            case R.id.my_orders:
+                startActivity(new Intent(this, MyOrders.class));
+                drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+                if (drawer.isDrawerOpen(GravityCompat.START)) {
+                    drawer.closeDrawer(GravityCompat.START);
+                }
+                break;
+            case R.id.notifications:
+                startActivity(new Intent(this, NotificationPage.class));
                 drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
                 if (drawer.isDrawerOpen(GravityCompat.START)) {
                     drawer.closeDrawer(GravityCompat.START);
