@@ -100,7 +100,7 @@ public class BuyNow extends AppCompatActivity implements View.OnClickListener,Si
                     mGiftWrapRadioBtn.setChecked(false);
                     mGrandTotal.setText(String.valueOf(totalCost));
                 } else {
-                    mGiftWrapRadioBtn.setChecked(true);
+                    mGiftWrapRadioBtn.setChecked(false);
                     mGrandTotal.setText(String.valueOf(totalCost+25));
                 }
             }
@@ -110,10 +110,11 @@ public class BuyNow extends AppCompatActivity implements View.OnClickListener,Si
             @Override
             public void onClick(View v) {
                 if (mGiftWrapRadioBtn.isChecked()) {
+
                     mGrandTotal.setText(String.valueOf(totalCost+25));
 
                 } else {
-                    mGiftWrapRadioBtn.setChecked(true);
+                    mGiftWrapRadioBtn.setChecked(false);
                     mGrandTotal.setText(String.valueOf(totalCost+25));
 
                 }
@@ -238,6 +239,21 @@ public class BuyNow extends AppCompatActivity implements View.OnClickListener,Si
                         break;
                     case R.id.search_item:
                         startActivity(new Intent(this,SearchActivity.class));
+                        break;
+
+                    case R.id.my_orders:
+                        startActivity(new Intent(this, MyOrders.class));
+                        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+                        if (drawer.isDrawerOpen(GravityCompat.START)) {
+                            drawer.closeDrawer(GravityCompat.START);
+                        }
+                        break;
+                    case R.id.notifications:
+                        startActivity(new Intent(this, NotificationPage.class));
+                        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+                        if (drawer.isDrawerOpen(GravityCompat.START)) {
+                            drawer.closeDrawer(GravityCompat.START);
+                        }
                         break;
                 }
 

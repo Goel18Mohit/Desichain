@@ -148,6 +148,12 @@ public class MyAddress extends AppCompatActivity implements AddressAdapter.SaveA
 
             finish();
         }
+        else if (item.getItemId()==R.id.my_orders){
+            startActivity(new Intent(this,MyOrders.class));
+        }
+        else if (item.getItemId()==R.id.notifications){
+            startActivity(new Intent(this,NotificationPage.class));
+        }
         return super.onOptionsItemSelected(item);
     }
 

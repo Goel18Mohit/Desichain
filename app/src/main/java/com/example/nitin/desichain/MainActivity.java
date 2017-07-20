@@ -357,7 +357,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (id) {
             case R.id.my_cart:
                 startActivity(new Intent(MainActivity.this, MyCart.class));
-                break;
+                drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+                if (drawer.isDrawerOpen(GravityCompat.START)) {
+                    drawer.closeDrawer(GravityCompat.START);
+                }                break;
             case R.id.notifications:
                 Toast.makeText(MainActivity.this, "Notifications item selected", Toast.LENGTH_SHORT).show();
                 break;
