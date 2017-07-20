@@ -290,6 +290,21 @@ public class ProductPageActual extends AppCompatActivity implements View.OnClick
                 }else{
                     finish();
                 }
+                break;
+            case R.id.my_orders:
+                startActivity(new Intent(this, MyOrders.class));
+                drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+                if (drawer.isDrawerOpen(GravityCompat.START)) {
+                    drawer.closeDrawer(GravityCompat.START);
+                }
+                break;
+            case R.id.notifications:
+                startActivity(new Intent(this, NotificationPage.class));
+                drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+                if (drawer.isDrawerOpen(GravityCompat.START)) {
+                    drawer.closeDrawer(GravityCompat.START);
+                }
+                break;
         }
         if (item.getItemId()==R.id.search_item){
             startActivity(new Intent(this,SearchActivity.class));

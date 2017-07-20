@@ -136,6 +136,8 @@ public class MyOrders extends AppCompatActivity implements View.OnClickListener 
         getMenuInflater().inflate(R.menu.main, menu);
         MenuItem menuItem = menu.findItem(R.id.my_cart);
         MenuItemCompat.setActionView(menuItem, R.layout.cart_icon_for_toolbar);
+        MenuItem item = menu.findItem(R.id.my_orders);
+        item.setVisible(false);
         RelativeLayout mycarttoolbar = (RelativeLayout) MenuItemCompat.getActionView(menuItem);
         txtViewCount = (TextView) mycarttoolbar.findViewById(R.id.badge_notification_1);
         toolbarcartimage = (ImageView) mycarttoolbar.findViewById(R.id.badge_notification_image);
@@ -170,6 +172,13 @@ public class MyOrders extends AppCompatActivity implements View.OnClickListener 
                 break;
             case R.id.search_item:
                 startActivity(new Intent(this, SearchActivity.class));
+                break;
+            case R.id.notifications:
+                startActivity(new Intent(this, NotificationPage.class));
+                drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+                if (drawer.isDrawerOpen(GravityCompat.START)) {
+                    drawer.closeDrawer(GravityCompat.START);
+                }
                 break;
         }
 

@@ -109,6 +109,21 @@ public class AboutUs extends AppCompatActivity implements View.OnClickListener {
                 if (drawer.isDrawerOpen(GravityCompat.START)) {
                     drawer.closeDrawer(GravityCompat.START);
                 }
+                break;
+            case R.id.my_orders:
+                startActivity(new Intent(this, MyOrders.class));
+                drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+                if (drawer.isDrawerOpen(GravityCompat.START)) {
+                    drawer.closeDrawer(GravityCompat.START);
+                }
+                break;
+            case R.id.notifications:
+                startActivity(new Intent(this, NotificationPage.class));
+                drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+                if (drawer.isDrawerOpen(GravityCompat.START)) {
+                    drawer.closeDrawer(GravityCompat.START);
+                }
+                break;
         }
 
 
