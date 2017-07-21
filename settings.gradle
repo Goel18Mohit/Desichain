@@ -1,2 +1,3 @@
 include ':app', ':sdkui', ':payUMoneysdk'
 include ':app', ':PGSDK_V2.1'
+include ':app'

@@ -1,6 +1,7 @@
 package com.example.nitin.desichain.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.nitin.desichain.AllConstants;
+import com.example.nitin.desichain.BrandProducts;
 import com.example.nitin.desichain.Contents.ChildCategoryBrand;
 import com.example.nitin.desichain.R;
 import com.squareup.picasso.Picasso;
@@ -35,12 +38,32 @@ public class ChildCategoryCardAdapter extends RecyclerView.Adapter<ChildCategory
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
+    public void onBindViewHolder(MyViewHolder holder, final int position) {
 
         ChildCategoryBrand brand = mList.get(position);
         Picasso.with(mContext).load("http://www.desichain.in/uploads/"+mList.get(position).getPRODUCT_IMAGE_URL())
                 .into(holder.imageView);
         holder.textView.setText(mList.get(position).getPRODUCT_NAME());
+        holder.textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(mContext, BrandProducts.class);
+                intent.putExtra("PRODUCTID",mList.get(position).getPRODUCT_ID_SNO());
+                intent.putExtra(AllConstants.FLAG,AllConstants.CALLFROMSHOPBYPUBLISHERACTIVITY);
+                mContext.startActivity(intent);
+            }
+        });
+        holder.imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent=new Intent(mContext, BrandProducts.class);
+                intent.putExtra("PRODUCTID",mList.get(position).getPRODUCT_ID_SNO());
+                intent.putExtra(AllConstants.FLAG,AllConstants.CALLFROMSHOPBYPUBLISHERACTIVITY);
+                mContext.startActivity(intent);
+            }
+        });
+
     }
 
     @Override

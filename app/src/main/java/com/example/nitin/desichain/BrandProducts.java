@@ -15,18 +15,24 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ExpandableListView;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.example.nitin.desichain.Adapters.BrandStudioItemsAdapter;
 import com.example.nitin.desichain.Adapters.ProductHorizontalAdapter;
 import com.example.nitin.desichain.Adapters.SingleCartAdapter;
 import com.example.nitin.desichain.Contents.ProductHorizontal;
+import com.example.nitin.desichain.Internet.FetchingFromUrl;
+import com.example.nitin.desichain.ParsingJson.ParticularPublisherDetail;
 import com.example.nitin.desichain.SubCategoryList.ShowCategoryAdapeter;
 import com.example.nitin.desichain.Utility.Utility;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public class BrandProducts extends AppCompatActivity implements View.OnClickListener,SingleCartAdapter.ListChange {
 
@@ -37,6 +43,8 @@ public class BrandProducts extends AppCompatActivity implements View.OnClickList
     private Toolbar mToolbar;
     View headerView;
     private int FLAG=1;
+    private Bundle bundle;
+    private String JSON_RESPONSE;
     private Helper listView;
     NestedScrollView nestedScrollView;
     public static ArrayList<String> Poojaitem;
@@ -46,8 +54,8 @@ public class BrandProducts extends AppCompatActivity implements View.OnClickList
     public static   ArrayList<String> others;
     public  static HashMap<String,ArrayList<String>> hashMap;
     LinearLayout myorder,mycart,myaccount,helpcenter,ratedesichain,productPage,policy,facebook,google,twitter,pinterest,youtube,instagram,aboutus;
-
-
+    ImageView brandimage;
+    TextView brandname,branddescription;
 
 
 
@@ -77,6 +85,20 @@ public class BrandProducts extends AppCompatActivity implements View.OnClickList
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
+        Intent intent=getIntent();
+
+        if(intent.getIntExtra(AllConstants.FLAG,0)==AllConstants.CALLFROMSHOPBYPUBLISHERACTIVITY){
+            JSON_RESPONSE=load("http://dc.desichain.in/DesiChainWeService.asmx/PublisherDetail?ProId="+String.valueOf(intent.getIntExtra("PRODUCTID",0)));
+            bundle=new ParticularPublisherDetail(JSON_RESPONSE,BrandProducts.this).parseParticularPublisher();
+        }
+
+        brandimage= (ImageView) findViewById(R.id.brand_image);
+        brandname= (TextView) findViewById(R.id.brand_name);
+        branddescription= (TextView) findViewById(R.id.brand_description);
+
+        Picasso.with(BrandProducts.this).load("http://www.desichain.in/uploads/"+bundle.get(AllConstants.Brandimageurl)).into(brandimage);
+        brandname.setText(bundle.getString(AllConstants.Brandname));
+        branddescription.setText(bundle.getString(AllConstants.Branddescription));
 
         mAdapter = new BrandStudioItemsAdapter(mList,this);
 
@@ -271,6 +293,19 @@ public class BrandProducts extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void change() {
+
+    }
+
+    public String load(String url)
+    {
+        try {
+            JSON_RESPONSE=new FetchingFromUrl().execute(url).get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+        return JSON_RESPONSE;
 
     }
 }

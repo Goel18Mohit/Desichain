@@ -38,7 +38,7 @@ public class MyAccount extends AppCompatActivity
     private TextView editProfileText,CUSTOMER_FIRST_LETTER_NAME;
     private String CUSTOMERNAMEFIRSTLETTER;
     private LinearLayout mMyOrderLayout,mMyAddressLayout,mMyWallet,
-            mNotificationLayout,mHelpCenterLayout,
+            mNotificationLayout,mHelpCenterLayout,mRefer,
             mRateAppLayout,mFeedBackLayout,mPoliciesLayout;
 
     TextView txtViewCount;
@@ -85,6 +85,7 @@ public class MyAccount extends AppCompatActivity
         mRateAppLayout =(LinearLayout)findViewById(R.id.rateAppPlayStoreLayout);
         mFeedBackLayout =(LinearLayout)findViewById(R.id.appFeedbackLayout);
         mPoliciesLayout=(LinearLayout)findViewById(R.id.policiesLayout);
+        mRefer= (LinearLayout) findViewById(R.id.refer);
        CUSTOMER_FIRST_LETTER_NAME= (TextView) findViewById(R.id.customerfirstlettername);
         if(intent!=null)
         {
@@ -108,6 +109,7 @@ public class MyAccount extends AppCompatActivity
         });
 
 
+
         mMyOrderLayout.setOnClickListener(this);
         mMyAddressLayout.setOnClickListener(this);
         mMyWallet.setOnClickListener(this);
@@ -117,6 +119,42 @@ public class MyAccount extends AppCompatActivity
         mFeedBackLayout.setOnClickListener(this);
         mPoliciesLayout.setOnClickListener(this);
 
+
+        mRefer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final AlertDialog.Builder alertDialog=new AlertDialog.Builder(MyAccount.this);
+                alertDialog.setTitle("Friends email Id");
+                alertDialog.setMessage("Terms and Condition");
+                USER_EMAIL_ID=new EditText(MyAccount.this);
+                alertDialog.setView(USER_EMAIL_ID);
+                alertDialog.setPositiveButton("Submit", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        if(USER_EMAIL_ID.getText().toString().isEmpty())
+                        {
+
+                            USER_EMAIL_ID.setError("field cant be empty");
+                        }
+                        else {
+                            dialog.dismiss();
+                            Toast.makeText(MyAccount.this, "Email has been seet", Toast.LENGTH_SHORT).show();
+
+                        }
+                    }
+                });
+                alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+
+                alertDialog.create().show();
+
+            }
+        });
 
         LOGOUT= (LinearLayout) findViewById(R.id.logout);
         RESET= (LinearLayout) findViewById(R.id.reset);
