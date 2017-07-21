@@ -2,8 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.nitin.desichain">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/logo"
@@ -18,6 +19,8 @@
             android:theme="@style/status_bar"
             android:launchMode="singleTop">
 
+            android:theme="@style/status_bar">
+            >
         </activity>
         <activity
             android:name=".MyOrders"
@@ -42,17 +45,20 @@
 
 
         </activity>
+            android:theme="@style/status_bar" />
         <activity
             android:name=".AboutUs"
             android:label="About Us"
             android:theme="@style/status_bar"
             android:launchMode="singleTop"/>
+            android:theme="@style/status_bar" />
         <activity
             android:name=".Policy"
             android:label="@string/policy_label"
             android:theme="@style/status_bar"
             android:launchMode="singleTop"/>
 
+            android:theme="@style/status_bar" />
         <activity
             android:name=".Payment"
             android:label="Payment"
@@ -88,41 +94,53 @@
             android:label="My Address"
             android:theme="@style/status_bar"
             android:launchMode="singleTop"/>
+            android:theme="@style/status_bar" />
         <activity
             android:name=".FullOrder"
             android:theme="@style/status_bar"
             android:launchMode="singleTop"/>
+            android:theme="@style/status_bar" />
         <activity
             android:name=".ProductPageActual"
             android:label="ProductPage"
             android:theme="@style/status_bar"
             android:launchMode="singleTop"/>
+            android:theme="@style/status_bar" />
         <activity
             android:name=".AddNewAddress"
             android:label="Add an Address"
             android:theme="@style/status_bar"
             android:launchMode="singleTop"/>
+            android:theme="@style/status_bar" />
         <activity
             android:name=".CategoryPage"
             android:label="CategoryPage"
             android:theme="@style/status_bar"
             android:launchMode="singleTop"/>
+            android:theme="@style/status_bar" />
         <activity
             android:name=".SearchActivity"
             android:theme="@style/status_bar"
             android:launchMode="singleTop"/>
+            android:theme="@style/status_bar" />
         <activity
             android:name=".NotificationPage"
             android:theme="@style/status_bar"
             android:parentActivityName=".MyAccount"
             android:launchMode="singleTop"/>
 
+            android:parentActivityName=".MyAccount"
+            android:theme="@style/status_bar" />
         <activity
             android:name=".CouponsPage"
             android:theme="@style/status_bar"
             android:launchMode="singleTop"/>
+            android:parentActivityName=".MyCart"
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".Wallet_page"
+            android:parentActivityName=".MyAccount"
+            android:theme="@style/AppTheme" />
             android:theme="@style/status_bar"
             android:launchMode="singleTop"/>
         <activity android:name=".BankDeposit" />
@@ -137,21 +155,20 @@
         <activity
             android:name=".QuestionandAnser"
             android:theme="@style/status_bar"
-            android:windowSoftInputMode="stateHidden|adjustResize"/>
-
+            android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
             android:name=".SingleQuesMultiAnswerList"
-            android:theme="@style/status_bar"/>
+            android:theme="@style/status_bar" />
         <activity
             android:name=".RatingReviews"
-            android:theme="@style/status_bar"/>
+            android:theme="@style/status_bar" />
         <activity
             android:name=".WriteReview"
-            android:theme="@style/status_bar"/>
+            android:theme="@style/status_bar" />
         <activity
             android:name=".Childcategoru"
             android:label="@string/title_activity_childcategoru"
-            android:theme="@style/status_bar"/>
+            android:theme="@style/status_bar" />
         <activity
             android:name=".SelectAddress"
             android:label="Select Delivery Address"
@@ -163,11 +180,12 @@
         <activity
             android:name=".BrandProducts"
             android:label="BrandName"
-            android:theme="@style/status_bar"/>
-
-        <activity android:name=".Filters"
-            android:theme="@style/status_bar"/>
-        <activity android:name=".MainScreen"
+            android:theme="@style/status_bar" />
+        <activity
+            android:name=".Filters"
+            android:theme="@style/status_bar" />
+        <activity
+            android:name=".MainScreen"
             android:theme="@style/splashscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -176,14 +194,14 @@
             </intent-filter>
         </activity>
 
-
-
         <activityPaytmPGActivity
-        android:name="com.paytm.pgsdk.PaytmPGActivity"
-        android:screenOrientation="portrait"
-        android:configChanges="keyboardHidden|orientation|keyboard"/>
-
-
-         </application>
+            android:name="com.paytm.pgsdk.PaytmPGActivity"
+            android:configChanges="keyboardHidden|orientation|keyboard"
+            android:screenOrientation="portrait" />
+        -keepclassmembers class com.paytm.pgsdk.PaytmWebView$PaytmJavaScriptInterface {
+        public *;
+        }
+        <activity android:name=".Gateway.Mobikwik"></activity>
+    </application>
 
 </manifest>

@@ -1,10 +1,8 @@
 package com.example.nitin.desichain;
 
 import android.app.AlertDialog;
-import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -13,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -22,34 +21,15 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.nitin.desichain.Gateway.Mobikwik;
+import com.example.nitin.desichain.Gateway.Paytm;
 import com.payUMoney.sdk.PayUmoneySdkInitilizer;
 import com.payUMoney.sdk.SdkConstants;
-import com.payu.india.Extras.PayUChecksum;
-import com.payu.india.Model.PaymentParams;
-import com.payu.india.Model.PayuConfig;
-import com.payu.india.Model.PayuHashes;
-import com.payu.india.Model.PostData;
-import com.payu.india.Payu.Payu;
-import com.payu.india.Payu.PayuConstants;
-import com.payu.india.Payu.PayuErrors;
-import com.payu.payuui.Activity.PayUBaseActivity;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.UnsupportedEncodingException;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.ProtocolException;
-import java.net.URL;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
-
-import android.widget.RadioGroup;
 
 public class Payment extends AppCompatActivity {
 
@@ -57,9 +37,10 @@ public class Payment extends AppCompatActivity {
     public static final String TAG = "PayUMoney";
 
 
-    RadioButton bankdeposit, mPaytm, mPayU;
+
     private RadioGroup radioGroup;
     private Button submit;
+    RadioButton bankdeposit,paytm,mobikwik,mPayU;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,13 +52,16 @@ public class Payment extends AppCompatActivity {
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//        getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(false);
+//     getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(false);
         submit=(Button)findViewById(R.id.continueBtn);
 
         radioGroup=(RadioGroup)findViewById(R.id.paymentRadiogroup);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         bankdeposit= (RadioButton) findViewById(R.id.bankdeposit);
+        paytm= (RadioButton) findViewById(R.id.paytm);
+        mobikwik= (RadioButton) findViewById(R.id.mobikwik);
+
         mPayU = (RadioButton) findViewById(R.id.creditRadioButton);
 
         submit.setOnClickListener(new View.OnClickListener() {
@@ -86,6 +70,16 @@ public class Payment extends AppCompatActivity {
                 int id = radioGroup.getCheckedRadioButtonId();
                 if (id == bankdeposit.getId()){
                     startActivity(new Intent(Payment.this,BankDeposit.class));
+                }
+                else if(id==paytm.getId())
+                {
+
+                    Toast.makeText(Payment.this,"clekd",Toast.LENGTH_SHORT).show();
+                    new Paytm(Payment.this).onStartTransaction(v);
+                }
+                else if(id==mobikwik.getId())
+                {
+                         startActivity(new Intent(Payment.this, Mobikwik.class));
                 }
                 else if(id == mPayU.getId())
                 {
