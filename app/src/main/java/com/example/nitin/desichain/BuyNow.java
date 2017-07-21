@@ -17,9 +17,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ExpandableListView;
 import android.widget.LinearLayout;
-import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.example.nitin.desichain.Adapters.SingleCartAdapter;
@@ -36,7 +36,7 @@ public class BuyNow extends AppCompatActivity implements View.OnClickListener,Si
     private static  String LOG_TAG = BuyNow.class.getSimpleName();
     Button b1;
     private int totalCost = 1520,FLAG=1;
-    private RadioButton mGiftWrapRadioBtn;
+    private CheckBox mGiftWrapCheckBox;
     private LinearLayout mGiftWrapLayout;
     private RecyclerView mDeliveryView;
     private List<SingleCart> mList;
@@ -89,34 +89,19 @@ public class BuyNow extends AppCompatActivity implements View.OnClickListener,Si
                 startActivity(i);
             }
         });
-        mGiftWrapRadioBtn =(RadioButton)findViewById(R.id.giftWrapRadioButton);
-        mGiftWrapLayout=(LinearLayout)findViewById(R.id.giftWrapLayout);
+        mGiftWrapCheckBox =(CheckBox)findViewById(R.id.giftWrapCheckBox);
 
-        mGiftWrapLayout.setOnClickListener(new View.OnClickListener() {
+        mGiftWrapCheckBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                if (mGiftWrapRadioBtn.isChecked()) {
-                    mGiftWrapRadioBtn.setChecked(false);
+                if (mGiftWrapCheckBox.isChecked()) {
+                    totalCost = totalCost+25;
                     mGrandTotal.setText(String.valueOf(totalCost));
-                } else {
-                    mGiftWrapRadioBtn.setChecked(false);
-                    mGrandTotal.setText(String.valueOf(totalCost+25));
-                }
-            }
-        });
-
-        mGiftWrapRadioBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (mGiftWrapRadioBtn.isChecked()) {
-
-                    mGrandTotal.setText(String.valueOf(totalCost+25));
 
                 } else {
-                    mGiftWrapRadioBtn.setChecked(false);
-                    mGrandTotal.setText(String.valueOf(totalCost+25));
-
+                    mGiftWrapCheckBox.setChecked(false);
+                    totalCost = totalCost-25;
+                    mGrandTotal.setText(String.valueOf(totalCost));
                 }
             }
         });
