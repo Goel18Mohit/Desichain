@@ -32,37 +32,17 @@
                     android:maxLines="1"/>
             </android.support.design.widget.TextInputLayout>
 
-            <LinearLayout
+
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:clickable="true"
-                android:id="@+id/selectCountry"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
+                android:layout_marginTop="10dp">
+                <Spinner
+                    android:id="@+id/spinner_select_country"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginTop="8dp"
-                    android:text="Country/Region"
-                    android:textColor="#000"
-                    android:textSize="20sp" />
+                    android:layout_height="match_parent" />
+            </FrameLayout>
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:text="India"
-                    android:id="@+id/countryName"
-                    android:layout_marginBottom="8dp"
-                    android:textSize="18sp" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="#d0d0d0" />
-
-            </LinearLayout>
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
@@ -123,6 +103,8 @@
                     android:inputType="text"
                     android:singleLine="true" />
             </android.support.design.widget.TextInputLayout>
+
+
 <!--
             <LinearLayout
                 android:layout_width="match_parent"
@@ -146,16 +128,32 @@
 
             </LinearLayout>
 -->
-            <FrameLayout
+            <!--<FrameLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="0dp"-->
+                <!--android:layout_marginTop="16dp"-->
+                <!--android:layout_weight="1">-->
+            <!--<Spinner-->
+                <!--android:id="@+id/spinner_select_state"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent" />-->
+            <!--</FrameLayout>-->
+
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_marginTop="16dp"
                 android:layout_weight="1">
-            <Spinner
-                android:id="@+id/spinner_select_state"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-            </FrameLayout>
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/edit_state"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:maxLength="10"
+                    android:hapticFeedbackEnabled="false"
+                    android:hint="State*"
+                    android:inputType="text"
+                    android:singleLine="true" />
+            </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
@@ -181,7 +179,6 @@
         android:layout_height="wrap_content"
         android:text="Save"
         android:id="@+id/btnSaveAddress"
-        android:textColor="@android:color/white"
-        android:background="@color/green"
+        android:enabled="false"
         android:layout_alignParentBottom="true"/>
 </RelativeLayout>

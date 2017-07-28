@@ -1,6 +1,7 @@
 package com.example.nitin.desichain;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
@@ -16,6 +17,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 /**
  * Created by ashis on 6/20/2017.
@@ -24,48 +26,87 @@ import java.util.ArrayList;
 public class AddNewAddress extends AppCompatActivity {
 
 
-    TextInputEditText name,pincode,address,landmark,city,mobile;
-    String state[] = {"Select your state",
-            "Andaman and Nicobar Islands",
-            "Andhra Pradesh",
-            "Arunachal Pradesh",
-            "Assam",
-        "Bihar",
-        "Chandigarh",
-        "Chhattisgarh",
-        "Dadra and Nagar Haveli",
-        "Daman and Diu",
-        "Delhi",
-        "Goa",
-        "Gujrat",
-        "Haryana",
-        "Himachal Pradesh",
-        "Jammu and Kashmir",
-        "Jharkand",
-        "Karnataka",
-        "Kerala",
-        "Lakshadweep",
-        "Madhya Pradesh",
-        "Maharashtra",
-        "Manipur",
-        "Meghalaya",
-        "Mizoram",
-        "Nagaland",
-        "Orissa",
-        "Pondicherry",
-        "Punjab",
-        "Rajasthan",
-        "Sikkim",
-        "Tamil Nadu",
-        "Telangana",
-        "Tripura",
-        "Uttar Pradesh",
-        "Uttarakhand",
-        "West Bengal"};
-    private Spinner spinner;
+    private String[] countryName = Locale.getISOCountries();
+
+
+    TextInputEditText name,pincode,address,landmark,city,mobile,state;
+//    String state[] = {"Select your state",
+//            "Andaman and Nicobar Islands",
+//            "Andhra Pradesh",
+//            "Arunachal Pradesh",
+//            "Assam",
+//        "Bihar",
+//        "Chandigarh",
+//        "Chhattisgarh",
+//        "Dadra and Nagar Haveli",
+//        "Daman and Diu",
+//        "Delhi",
+//        "Goa",
+//        "Gujrat",
+//        "Haryana",
+//        "Himachal Pradesh",
+//        "Jammu and Kashmir",
+//        "Jharkand",
+//        "Karnataka",
+//        "Kerala",
+//        "Lakshadweep",
+//        "Madhya Pradesh",
+//        "Maharashtra",
+//        "Manipur",
+//        "Meghalaya",
+//        "Mizoram",
+//        "Nagaland",
+//        "Orissa",
+//        "Pondicherry",
+//        "Punjab",
+//        "Rajasthan",
+//        "Sikkim",
+//        "Tamil Nadu",
+//        "Telangana",
+//        "Tripura",
+//        "Uttar Pradesh",
+//        "Uttarakhand",
+//        "West Bengal"};
+    private Spinner spinner, countrySpinner;
     private Toolbar mToolbar;
     Button save;
     ArrayList<String> statelist;
+
+    private TextWatcher mTextWatcher = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+            checkForEmptyValues();
+        }
+    };
+
+    private void checkForEmptyValues() {
+
+        String nameString = name.getText().toString();
+        String pincodeString = pincode.getText().toString();
+        String addressString = address.getText().toString();
+        String mobileString = mobile.getText().toString();
+        String cityString = city.getText().toString();
+        String stateString = state.getText().toString();
+
+        if (nameString.equals("") || pincodeString.equals("")||addressString.equals("")||mobileString.equals("")||cityString.equals("")||stateString.equals("")){
+            save.setEnabled(false);
+        }else {
+            save.setEnabled(true);
+            save.setBackgroundColor(getResources().getColor(R.color.green));
+            save.setTextColor(Color.WHITE);
+        }
+    }
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,10 +119,18 @@ public class AddNewAddress extends AppCompatActivity {
         getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(false);
 
 
-        spinner=(Spinner)findViewById(R.id.spinner_select_state);
-        ArrayAdapter<CharSequence> mAdapter = new ArrayAdapter<CharSequence>(AddNewAddress.this,android.R.layout.simple_spinner_dropdown_item,state);
-        spinner.setAdapter(mAdapter);
+//        spinner=(Spinner)findViewById(R.id.spinner_select_state);
+//        ArrayAdapter<CharSequence> mAdapter = new ArrayAdapter<CharSequence>(AddNewAddress.this,android.R.layout.simple_spinner_dropdown_item,state);
+//        spinner.setAdapter(mAdapter);
 
+        countrySpinner=(Spinner) findViewById(R.id.spinner_select_country);
+        final ArrayAdapter<String> mAdapterCountry = new ArrayAdapter<String>(this,android.R.layout.simple_selectable_list_item);
+        mAdapterCountry.add("Select Country");
+        for (String countryCode : countryName){
+            Locale locale = new Locale("",countryCode);
+            mAdapterCountry.add(locale.getDisplayCountry());
+        }
+        countrySpinner.setAdapter(mAdapterCountry);
         final int position=getIntent().getIntExtra("REQUESTCODE",000);
    //     String mCustName = getIntent().getStringExtra("mCustName");
      //   String mCustAdd = getIntent().getStringExtra("mCustAdd");
@@ -92,15 +141,17 @@ public class AddNewAddress extends AppCompatActivity {
         city=(TextInputEditText) findViewById(R.id.edit_city);
         mobile= (TextInputEditText) findViewById(R.id.edit_mobile);
         save= (Button) findViewById(R.id.btnSaveAddress);
-        final Spinner mSpinner = (Spinner)findViewById(R.id.spinner_select_state);
+        state= (TextInputEditText) findViewById(R.id.edit_state);
+
+//        final Spinner mSpinner = (Spinner)findViewById(R.id.spinner_select_state);
 
 
-
-        statelist =new ArrayList<>();
-        statelist.add("DELHI");
-        statelist.add("haryana");
-        statelist.add("punjab");
-
+        name.addTextChangedListener(mTextWatcher);
+        pincode.addTextChangedListener(mTextWatcher);
+        address.addTextChangedListener(mTextWatcher);
+        city.addTextChangedListener(mTextWatcher);
+        mobile.addTextChangedListener(mTextWatcher);
+        state.addTextChangedListener(mTextWatcher);
 
         save.setOnClickListener(new View.OnClickListener() {
             @Override

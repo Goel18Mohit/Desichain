@@ -139,7 +139,7 @@
                             android:layout_height="0dp"
                             android:layout_weight="1"
                             android:clickable="true"
-                            android:id="@+id/changeCountrylayout"
+                            android:id="@+id/country"
                             android:orientation="horizontal"
                             android:background="?attr/selectableItemBackground"
                             android:paddingTop="10dp"
@@ -157,6 +157,7 @@
                                 android:layout_height="match_parent"
                                 android:layout_weight="4"
                                 android:textSize="20sp"
+
                                 android:text="Country/Region"
                                 android:padding="5dp"
                                 android:textColor="@color/black"/>
@@ -169,6 +170,7 @@
 
                 <include
                     layout="@layout/card_my_account"/>
+
 
 
             </LinearLayout>
