@@ -112,7 +112,7 @@ public class AddNewAddress extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.app_bar_new_address);
 
-
+        
         mToolbar=(Toolbar)findViewById(R.id.myToolBar);
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

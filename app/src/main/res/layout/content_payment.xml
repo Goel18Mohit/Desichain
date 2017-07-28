@@ -14,7 +14,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minHeight="50dp"
-        android:layout_marginTop="20dp">
+        android:layout_marginTop="20dp"
+        android:id="@+id/cardView">
 
         <TextView
             android:layout_width="match_parent"
@@ -29,13 +30,22 @@
     </android.support.v7.widget.CardView>
 
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/continueBtn"
+        android:background="@color/green"
+        android:text="Continue"
+        android:textColor="@android:color/white" />
+
     <android.support.v7.widget.CardView
         android:id="@+id/paymentOption"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="100dp">
+        android:layout_marginTop="31dp"
+        android:layout_below="@+id/cardView"
+        android:layout_centerHorizontal="true">
 
 
         <LinearLayout
@@ -101,6 +111,7 @@
                     android:layout_margin="10dp"
                     android:drawableRight="@mipmap/paytm"
                     android:text="Paytm"
+                    android:id="@+id/paytm"
                     android:textSize="16sp"
                     android:textColor="@color/black"
                     android:textAlignment="center" />
@@ -115,6 +126,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:textSize="16sp"
+                    android:id="@+id/mobikwik"
                     android:textColor="@color/black"
                     android:drawableRight="@mipmap/mobikwik"
                     android:text="Mobikwik"
@@ -127,15 +139,6 @@
             </RadioGroup>
         </LinearLayout>
     </android.support.v7.widget.CardView>
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:id="@+id/continueBtn"
-        android:background="@color/green"
-        android:text="Continue"
-        android:textColor="@android:color/white" />
 
 
 </RelativeLayout>

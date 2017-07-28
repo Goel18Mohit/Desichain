@@ -129,6 +129,35 @@
                                 android:layout_height="match_parent"
                                 android:layout_weight="4"
                                 android:textSize="20sp"
+                                android:text="Refer a Friend"
+                                android:padding="5dp"
+                                android:textColor="@color/black"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:clickable="true"
+                            android:id="@+id/changeCountrylayout"
+                            android:orientation="horizontal"
+                            android:background="?attr/selectableItemBackground"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="10dp"
+                            android:weightSum="5">
+
+                            <ImageView
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:src="@mipmap/region"/>
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="4"
+                                android:textSize="20sp"
+
                                 android:text="Country/Region"
                                 android:padding="5dp"
                                 android:textColor="@color/black"/>
