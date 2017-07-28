@@ -39,7 +39,7 @@ public class MyAccount extends AppCompatActivity
     private String CUSTOMERNAMEFIRSTLETTER;
     private LinearLayout mMyOrderLayout,mMyAddressLayout,mMyWallet,
             mNotificationLayout,mHelpCenterLayout,
-            mRateAppLayout,mFeedBackLayout,mPoliciesLayout;
+            mRateAppLayout,mFeedBackLayout,mPoliciesLayout, mCountry;
 
     TextView txtViewCount;
     int count=2;
@@ -85,6 +85,7 @@ public class MyAccount extends AppCompatActivity
         mRateAppLayout =(LinearLayout)findViewById(R.id.rateAppPlayStoreLayout);
         mFeedBackLayout =(LinearLayout)findViewById(R.id.appFeedbackLayout);
         mPoliciesLayout=(LinearLayout)findViewById(R.id.policiesLayout);
+        mCountry=(LinearLayout)findViewById(R.id.country);
        CUSTOMER_FIRST_LETTER_NAME= (TextView) findViewById(R.id.customerfirstlettername);
         if(intent!=null)
         {
@@ -116,6 +117,7 @@ public class MyAccount extends AppCompatActivity
         mRateAppLayout.setOnClickListener(this);
         mFeedBackLayout.setOnClickListener(this);
         mPoliciesLayout.setOnClickListener(this);
+        mCountry.setOnClickListener(this);
 
 
         LOGOUT= (LinearLayout) findViewById(R.id.logout);
@@ -125,7 +127,7 @@ public class MyAccount extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 Toast.makeText(MyAccount.this,"You have been logged out ",Toast.LENGTH_LONG).show();
-                Intent intent=new Intent(MyAccount.this,MainActivity.class);
+                Intent intent=new Intent(MyAccount.this,LoginActivity.class);
                 startActivity(intent);
                 finish();
             }
@@ -263,6 +265,9 @@ public class MyAccount extends AppCompatActivity
                 break;
             case R.id.walletLayout:
                 startActivity(new Intent(this, Wallet_page.class));
+                break;
+            case R.id.country:
+                startActivity(new Intent(this, Location.class));
                 break;
             case R.id.notificationLayout:
                 startActivity(new Intent(this, NotificationPage.class));

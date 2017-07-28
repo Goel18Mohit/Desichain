@@ -1,6 +1,7 @@
 package com.example.nitin.desichain;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.MenuItemCompat;
@@ -10,11 +11,14 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -41,6 +45,7 @@ public class WriteReview extends AppCompatActivity implements View.OnClickListen
     public static ArrayList<String> Homecare;
     int count = 2;
     TextView txtViewCount;
+    private EditText editReview;
     ImageView toolbarcartimage;
     LinearLayout subscribe;
     public static ArrayList<String> others;
@@ -56,6 +61,7 @@ public class WriteReview extends AppCompatActivity implements View.OnClickListen
         RelativeLayout mycarttoolbar = (RelativeLayout) MenuItemCompat.getActionView(menuItem);
         txtViewCount = (TextView) mycarttoolbar.findViewById(R.id.badge_notification_1);
         toolbarcartimage = (ImageView) mycarttoolbar.findViewById(R.id.badge_notification_image);
+
 
         toolbarcartimage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,17 +99,43 @@ public class WriteReview extends AppCompatActivity implements View.OnClickListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_write_review);
-
+        editReview=(EditText)findViewById(R.id.editReview);
         mToolbar = (Toolbar) findViewById(R.id.myToolBar);
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(false);
 
 
+        editReview.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                if (s.toString().length()>0){
+                    mSubmitReview.setEnabled(true);
+                    mSubmitReview.setBackgroundColor(getResources().getColor(R.color.green));
+                    mSubmitReview.setTextColor(Color.WHITE);
+                }
+                else {
+                    mSubmitReview.setEnabled(false);
+                }
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
         mSubmitReview = (Button) findViewById(R.id.submitReview);
         mSubmitReview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
                 finish();
             }
         });

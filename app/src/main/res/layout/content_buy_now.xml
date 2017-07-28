@@ -61,23 +61,26 @@
                         android:orientation="horizontal"
                         android:weightSum="4">
 
-                        <ImageView
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:src="@mipmap/ic_card_giftcard_black_24dp" />
+                        <!--<ImageView-->
+                            <!--android:layout_width="0dp"-->
+                            <!--android:layout_height="match_parent"-->
+                            <!--android:layout_weight="1"-->
+                            <!--android:src="@mipmap/ic_card_giftcard_black_24dp" />-->
 
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="3"
-                            android:gravity="center"
-                            android:text="Gift Wrap for Rs 25"
-                            android:textAlignment="center" />
+                        <!--<TextView-->
+                            <!--android:layout_width="0dp"-->
+                            <!--android:layout_height="match_parent"-->
+                            <!--android:layout_weight="3"-->
+                            <!--android:gravity="center"-->
+                            <!--android:text="Gift Wrap for Rs 25"-->
+                            <!--android:textAlignment="center" />-->
 
-                        <RadioButton
+                        <CheckBox
                             android:id="@+id/giftWrapRadioButton"
-                            android:layout_width="wrap_content"
+                            android:text="Gift wrap for Rs 25"
+                            android:drawableRight="@mipmap/ic_card_giftcard_black_24dp"
+                            android:layout_width="match_parent"
+                            android:textAlignment="center"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:checked="false" />

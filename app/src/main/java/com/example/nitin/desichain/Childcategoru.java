@@ -477,8 +477,8 @@ public class Childcategoru extends AppCompatActivity implements View.OnClickList
 
     public void setBhagavad() {
 
-        bhagavad.add(new ChildCategoryList("Bengali", R.mipmap.showcase));
-        bhagavad.add(new ChildCategoryList("Chinese", R.mipmap.gifts));
+        bhagavad.add(new ChildCategoryList("Bengali", R.mipmap.ic_security_black_24dp));
+        bhagavad.add(new ChildCategoryList("Chinese", R.mipmap.ic_security_black_24dp));
         bhagavad.add(new ChildCategoryList("English", R.mipmap.ic_security_black_24dp));
         bhagavad.add(new ChildCategoryList("Gujarati", R.mipmap.ic_security_black_24dp));
         bhagavad.add(new ChildCategoryList("Hindi", R.mipmap.ic_security_black_24dp));
@@ -513,7 +513,7 @@ public class Childcategoru extends AppCompatActivity implements View.OnClickList
         paperback.add(new ChildCategoryList("Children", R.mipmap.children));
         paperback.add(new ChildCategoryList("Classic Text", R.mipmap.classic_text));
         paperback.add(new ChildCategoryList("Cooking & Vegetariansim", R.mipmap.cooking));
-        paperback.add(new ChildCategoryList("Cow Protection", R.mipmap.ic_security_black_24dp));
+        paperback.add(new ChildCategoryList("Cow Protection", R.mipmap.cow));
         paperback.add(new ChildCategoryList("Magazines", R.mipmap.magazine));
         paperback.add(new ChildCategoryList("Personal Growth", R.mipmap.personal_growth));
         paperback.add(new ChildCategoryList("Philossophy", R.mipmap.philosophy));
@@ -529,26 +529,26 @@ public class Childcategoru extends AppCompatActivity implements View.OnClickList
     public void setPersonalcare() {
 
 
-        personalcare.add(new ChildCategoryList("Baby Care", R.mipmap.ic_security_black_24dp));
-        personalcare.add(new ChildCategoryList("Bath & Body", R.mipmap.ic_security_black_24dp));
-        personalcare.add(new ChildCategoryList("Cosmetics/Skin Care", R.mipmap.ic_security_black_24dp));
-        personalcare.add(new ChildCategoryList("Hair Cair", R.mipmap.ic_security_black_24dp));
-        personalcare.add(new ChildCategoryList("Miscellaneous", R.mipmap.ic_security_black_24dp));
-        personalcare.add(new ChildCategoryList("Oral Care", R.mipmap.ic_security_black_24dp));
+        personalcare.add(new ChildCategoryList("Baby Care", R.mipmap.babycare));
+        personalcare.add(new ChildCategoryList("Bath & Body", R.mipmap.bath_body));
+        personalcare.add(new ChildCategoryList("Cosmetics/Skin Care", R.mipmap.cosmetic_skincare));
+        personalcare.add(new ChildCategoryList("Hair Cair", R.mipmap.haircare));
+        personalcare.add(new ChildCategoryList("Miscellaneous", R.mipmap.other));
+        personalcare.add(new ChildCategoryList("Oral Care", R.mipmap.oralcare));
 
     }
 
     public void setHealthandfood() {
 
 
-        healthandfood.add(new ChildCategoryList("Rice/Flour/Cereal", R.mipmap.ic_security_black_24dp));
-        healthandfood.add(new ChildCategoryList("Spices(Masalas) & Herbs", R.mipmap.ic_security_black_24dp));
-        healthandfood.add(new ChildCategoryList("Snacks", R.mipmap.ic_security_black_24dp));
-        healthandfood.add(new ChildCategoryList("Herbal Tea/Coffee", R.mipmap.ic_security_black_24dp));
-        healthandfood.add(new ChildCategoryList("DryFruits,Nuts,Seeds", R.mipmap.ic_security_black_24dp));
-        healthandfood.add(new ChildCategoryList("Food Suplements", R.mipmap.ic_security_black_24dp));
-        healthandfood.add(new ChildCategoryList("Cow Products", R.mipmap.ic_security_black_24dp));
-        healthandfood.add(new ChildCategoryList("Miscellaneous", R.mipmap.ic_security_black_24dp));
+        healthandfood.add(new ChildCategoryList("Rice/Flour/Cereal", R.mipmap.rice_wheat_cereal));
+        healthandfood.add(new ChildCategoryList("Spices(Masalas) & Herbs", R.mipmap.spices_herbs));
+        healthandfood.add(new ChildCategoryList("Snacks", R.mipmap.snacks));
+        healthandfood.add(new ChildCategoryList("Herbal Tea/Coffee", R.mipmap.tea));
+        healthandfood.add(new ChildCategoryList("DryFruits,Nuts,Seeds", R.mipmap.nuts));
+        healthandfood.add(new ChildCategoryList("Food Suplements", R.mipmap.supplements));
+        healthandfood.add(new ChildCategoryList("Cow Products", R.mipmap.cow));
+        healthandfood.add(new ChildCategoryList("Miscellaneous", R.mipmap.other));
 
 
     }
@@ -556,34 +556,34 @@ public class Childcategoru extends AppCompatActivity implements View.OnClickList
     public void setFashion() {
 
 
-        fashion.add(new ChildCategoryList("Fashion Accessiories", R.mipmap.ic_security_black_24dp));
-        fashion.add(new ChildCategoryList("JewelLery", R.mipmap.ic_security_black_24dp));
-        fashion.add(new ChildCategoryList("Eye Wear", R.mipmap.ic_security_black_24dp));
+        fashion.add(new ChildCategoryList("Fashion Accessiories", R.mipmap.fashion_acc));
+        fashion.add(new ChildCategoryList("JewelLery", R.mipmap.jewellery));
+        fashion.add(new ChildCategoryList("Eye Wear", R.mipmap.eyewear));
     }
 
     public void setMen() {
 
-        men.add(new ChildCategoryList("Footwear", R.mipmap.ic_security_black_24dp));
+        men.add(new ChildCategoryList("Footwear", R.mipmap.men_foot));
 
     }
 
     private void setWomen() {
 
-        women.add(new ChildCategoryList("Footwear", R.mipmap.ic_security_black_24dp));
+        women.add(new ChildCategoryList("Footwear", R.mipmap.women_foot));
     }
 
     public void setBags() {
 
 
-        bags.add(new ChildCategoryList("Footwear", R.mipmap.ic_security_black_24dp));
-        bags.add(new ChildCategoryList("Bags", R.mipmap.ic_security_black_24dp));
-        bags.add(new ChildCategoryList("School Stationery", R.mipmap.ic_security_black_24dp));
+        bags.add(new ChildCategoryList("Footwear", R.mipmap.men_foot));
+        bags.add(new ChildCategoryList("Bags", R.mipmap.bags));
+        bags.add(new ChildCategoryList("School Stationery", R.mipmap.stationery));
 
     }
 
     public void setMobile() {
 
-        mobile.add(new ChildCategoryList("Mobile & Accessiories", R.mipmap.ic_security_black_24dp));
+        mobile.add(new ChildCategoryList("Mobile & Accessiories", R.mipmap.mobile));
 
     }
 
