@@ -2,6 +2,7 @@ package com.example.nitin.desichain;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -12,6 +13,8 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -59,6 +62,45 @@ public class HelpCentre extends AppCompatActivity implements View.OnClickListene
     public static   ArrayList<String> others;
     public  static HashMap<String,ArrayList<String>> hashMap;
     LinearLayout subscribe;
+    private String mNameString,mContactString,mEmailString,mQueryString,mCaptchaString;
+
+
+    private TextWatcher mTextWatcher = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+            checkForEmptyValues();
+        }
+    };
+
+    private void checkForEmptyValues() {
+        mNameString = editName.getText().toString();
+        mContactString = editNumber.getText().toString();
+        mEmailString = editEmail.getText().toString();
+        mQueryString = editQuery.getText().toString();
+        mCaptchaString = editCaptcha.getText().toString();
+
+        if (mNameString.equals("")|| mContactString.equals("")||mEmailString.equals("")||mQueryString.equals("")||mCaptchaString.equals("")){
+            mSubmit.setEnabled(false);
+        }
+        else {
+            mSubmit.setEnabled(true);
+            mSubmit.setBackgroundColor(getResources().getColor(R.color.green));
+            mSubmit.setTextColor(Color.WHITE);
+        }
+
+
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +130,14 @@ public class HelpCentre extends AppCompatActivity implements View.OnClickListene
 
         generateCaptcha();
 
+      //  mSubmit.setEnabled(false);
+
+        mNameString = editName.getText().toString();
+        mContactString = editNumber.getText().toString();
+        mEmailString = editEmail.getText().toString();
+        mQueryString = editQuery.getText().toString();
+        mCaptchaString = editCaptcha.getText().toString();
+
         mSubmit.setOnClickListener(this);
 
         bulkOrderCard.setOnClickListener(this);
@@ -96,6 +146,13 @@ public class HelpCentre extends AppCompatActivity implements View.OnClickListene
         mCallImage.setOnClickListener(this);
         mWhatsappImage.setOnClickListener(this);
         mRetryCaptcha.setOnClickListener(this);
+
+
+        editName.addTextChangedListener(mTextWatcher);
+        editEmail.addTextChangedListener(mTextWatcher);
+        editNumber.addTextChangedListener(mTextWatcher);
+        editQuery.addTextChangedListener(mTextWatcher);
+        editCaptcha.addTextChangedListener(mTextWatcher);
 
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
@@ -107,6 +164,8 @@ public class HelpCentre extends AppCompatActivity implements View.OnClickListene
                 super.onDrawerOpened(drawerView);
             }
         };
+
+
 
         //drawer.setDrawerListener(toggle);
         // toggle.syncState();
@@ -228,11 +287,6 @@ public class HelpCentre extends AppCompatActivity implements View.OnClickListene
             case R.id.submit:
 
 
-                String mNameString = editName.getText().toString();
-                String mContactString = editNumber.getText().toString();
-                String mEmailString = editEmail.getText().toString();
-                String mQueryString = editQuery.getText().toString();
-                String mCaptchaString = editCaptcha.getText().toString();
 
 
                  if (mNameString.isEmpty()){

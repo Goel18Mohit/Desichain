@@ -21,6 +21,8 @@
     <string name="about_us">About Us</string>
     <string name="shipping">Shipping Policy</string>
     <string name="state">Select your state</string>
+    <string name="skipSignIn"><u>Skip>></u>.</string>
+
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="ques2">Q. What all items can I return?</string>
@@ -148,5 +150,9 @@
     <string name="title_activity_questionand_anser">QuestionandAnser</string>
     <string name="title_activity_childcategoru">Childcategoru</string>
     <string name="title_activity_search">SearchActivity</string>
+    <string name="btn_forgot_password">Forgot password</string>
+    <string name="action_sign_in_short">Register</string>
+    <string name="forgot_password_msg">We just need your registered Email Id to send you password reset instructions.</string>
+    <string name="lbl_forgot_password">Forgot Password</string>
 
 </resources>

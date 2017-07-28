@@ -5,6 +5,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
@@ -362,7 +363,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     drawer.closeDrawer(GravityCompat.START);
                 }                break;
             case R.id.notifications:
-                Toast.makeText(MainActivity.this, "Notifications item selected", Toast.LENGTH_SHORT).show();
+               Toast.makeText(MainActivity.this, "Notifications item selected", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.my_orders:
                 startActivity(new Intent(MainActivity.this, MyOrders.class));
