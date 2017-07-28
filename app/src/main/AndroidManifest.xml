@@ -143,6 +143,11 @@
             android:theme="@style/AppTheme" />
             android:theme="@style/status_bar"
             android:launchMode="singleTop"/>
+        <activity
+            android:name=".BookProductPage"
+            android:label="Product Page"
+            android:theme="@style/status_bar"
+            android:launchMode="singleTop"/>
         <activity android:name=".BankDeposit" />
         <!--
  ATTENTION: This was auto-generated to add Google Play services to your project for
