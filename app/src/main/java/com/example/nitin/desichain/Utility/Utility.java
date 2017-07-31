@@ -52,12 +52,7 @@ public class Utility {
                 mContext.startActivity(MYCART);
                 closenavigation();
                 break;
-            case R.id.myProductLayout:
-                Intent mProductIntent = new Intent(mContext, ProductPageActual.class);
-                mContext.startActivity(mProductIntent);
-                closenavigation();
-                break;
-            case R.id.myaccount:
+             case R.id.myaccount:
                 Intent MYACCOUNT=new Intent(mContext, MyAccount.class);
                 mContext.startActivity(MYACCOUNT);
                 closenavigation();
