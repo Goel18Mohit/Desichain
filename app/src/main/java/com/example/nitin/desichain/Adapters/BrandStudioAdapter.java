@@ -18,7 +18,7 @@ import java.util.ArrayList;
  * Created by NITIN on 07-Jul-17.
  */
 
-public class BrandStudioAdapter  extends RecyclerView.Adapter<BrandStudioAdapter.MyViewHolder>{
+public class BrandStudioAdapter extends RecyclerView.Adapter<BrandStudioAdapter.MyViewHolder> {
 
     private ArrayList<BrandStudioList> arrayList;
     private Context mContext;
@@ -31,32 +31,38 @@ public class BrandStudioAdapter  extends RecyclerView.Adapter<BrandStudioAdapter
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        LayoutInflater layoutInflater= (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view=layoutInflater.inflate(R.layout.single_brand,null);
+        LayoutInflater layoutInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View view = layoutInflater.inflate(R.layout.single_brand, null);
         return new MyViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(BrandStudioAdapter.MyViewHolder holder, int position) {
 
-        Log.i("Ashish","http://www.desichain.in/uploads/"+arrayList.get(position).getBRAND_IMAGE_URL());
-       Picasso.with(mContext).load("http://www.desichain.in/uploads/"+arrayList.get(position).getBRAND_IMAGE_URL())
-              .resizeDimen(R.dimen.header_logo_w,R.dimen.header_logo_h).into(holder.mBrandImage);
+        Log.i("Ashish", "http://www.desichain.in/uploads/" + arrayList.get(position).getBRAND_IMAGE_URL());
+        Picasso.with(mContext).load("http://www.desichain.in/uploads/" + arrayList.get(position).getBRAND_IMAGE_URL())
+                .resizeDimen(R.dimen.header_logo_w, R.dimen.header_logo_h).into(holder.mBrandImage);
     }
 
     @Override
     public int getItemCount() {
-        return arrayList.size();
+        if (arrayList == null) {
+            return 0;
+        } else {
+
+            return arrayList.size();
+
+        }
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder{
+    public class MyViewHolder extends RecyclerView.ViewHolder {
 
         private ImageView mBrandImage;
 
 
         public MyViewHolder(View itemView) {
             super(itemView);
-           mBrandImage= (ImageView) itemView.findViewById(R.id.brandimage);
+            mBrandImage = (ImageView) itemView.findViewById(R.id.brandimage);
         }
     }
 }

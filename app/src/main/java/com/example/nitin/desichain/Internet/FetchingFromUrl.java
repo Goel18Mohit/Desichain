@@ -3,6 +3,7 @@ package com.example.nitin.desichain.Internet;
 import android.os.AsyncTask;
 
 import com.example.nitin.desichain.Contents.ProductHorizontal;
+import com.example.nitin.desichain.Utility.Utility;
 
 import java.io.BufferedReader;
 import java.io.IOException;
