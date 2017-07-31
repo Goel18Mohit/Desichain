@@ -283,7 +283,6 @@ public class AboutUs extends AppCompatActivity implements View.OnClickListener {
         mycart.setOnClickListener(this);
         myaccount.setOnClickListener(this);
         helpcenter.setOnClickListener(this);
-        productPage.setOnClickListener(this);
         ratedesichain.setOnClickListener(this);
         policy.setOnClickListener(this);
         facebook.setOnClickListener(this);

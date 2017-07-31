@@ -274,7 +274,6 @@ public class RatingReviews extends AppCompatActivity  implements View.OnClickLis
         mycart.setOnClickListener(this);
         myaccount.setOnClickListener(this);
         helpcenter.setOnClickListener(this);
-        productPage.setOnClickListener(this);
         ratedesichain.setOnClickListener(this);
         policy.setOnClickListener(this);
         facebook.setOnClickListener(this);
