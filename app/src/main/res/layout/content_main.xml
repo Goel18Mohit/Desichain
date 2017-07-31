@@ -236,13 +236,22 @@
                         android:layout_height="1dp"
                         android:background="#C0C0C0" />
 
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="7">
                     <android.support.v7.widget.RecyclerView
                         android:id="@+id/LatestProductRecyclerView"
                         android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="7"
+                        android:layout_height="match_parent"
                         android:stretchMode="columnWidth"
                         android:clipToPadding="true"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:id="@+id/emptyLatestProduct"/>
+                    </FrameLayout>
                 </LinearLayout>
             </android.support.v7.widget.CardView>
 

@@ -265,7 +265,6 @@ public class RatingReviews extends AppCompatActivity  implements View.OnClickLis
         facebook= (LinearLayout) view.findViewById(R.id.facebook);
         google=(LinearLayout) view.findViewById(R.id.googleplus);
         twitter= (LinearLayout) view.findViewById(R.id.twitter);
-        productPage=(LinearLayout)view.findViewById(R.id.myProductLayout);
         pinterest= (LinearLayout) view.findViewById(R.id.pinterest);
         youtube= (LinearLayout) view.findViewById(R.id.youtube);
         instagram= (LinearLayout) view.findViewById(R.id.instagram);

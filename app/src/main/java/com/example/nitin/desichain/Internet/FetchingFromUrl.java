@@ -3,6 +3,7 @@ package com.example.nitin.desichain.Internet;
 import android.os.AsyncTask;
 
 import com.example.nitin.desichain.Contents.ProductHorizontal;
+import com.example.nitin.desichain.Utility.Utility;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -47,6 +48,9 @@ public class FetchingFromUrl extends AsyncTask<String,String,String> {
         }
 
         String s1=JSON_RESPONSE.toString();
+        if(s1.contains("Mail Id Already exist.")){
+            return "Mail Id Already exist.";
+        }
         String s2=s1.substring(s1.indexOf("["),s1.length()-9);
         return s2;
     }

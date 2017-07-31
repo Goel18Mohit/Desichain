@@ -80,6 +80,13 @@ SearchAdapter mAdapter = new SearchAdapter(PREVIOUS_SEARCHED,this);
         listView.setAdapter(mAdapter);
 
 
+
+
+
+
+
+
+
     }
 
     @Override

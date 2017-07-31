@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.graphics.Point;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AlertDialog;
@@ -50,12 +52,7 @@ public class Utility {
                 mContext.startActivity(MYCART);
                 closenavigation();
                 break;
-            case R.id.myProductLayout:
-                Intent mProductIntent = new Intent(mContext, ProductPageActual.class);
-                mContext.startActivity(mProductIntent);
-                closenavigation();
-                break;
-            case R.id.myaccount:
+             case R.id.myaccount:
                 Intent MYACCOUNT=new Intent(mContext, MyAccount.class);
                 mContext.startActivity(MYACCOUNT);
                 closenavigation();
@@ -147,6 +144,13 @@ public void closenavigation(){
         } catch (PackageManager.NameNotFoundException e) {
             return FACEBOOK_URL;
         }
+    }
+
+    public static boolean isNetworkAvailable(Context context){
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
     public static String getTwitterUrl(Context mContext){
