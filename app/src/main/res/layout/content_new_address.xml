@@ -28,8 +28,21 @@
                     android:hapticFeedbackEnabled="false"
                     android:hint="Name*"
                     android:inputType="textPersonName"
-                    android:singleLine="true" />
+                    android:singleLine="true"
+                    android:maxLines="1"/>
             </android.support.design.widget.TextInputLayout>
+
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+                <Spinner
+                    android:id="@+id/spinner_select_country"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </FrameLayout>
+
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
@@ -44,7 +57,8 @@
                     android:maxLength="6"
                     android:hint="Pincode*"
                     android:inputType="number"
-                    android:singleLine="true" />
+                    android:singleLine="true"
+                    android:maxLines="1"/>
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -89,6 +103,8 @@
                     android:inputType="text"
                     android:singleLine="true" />
             </android.support.design.widget.TextInputLayout>
+
+
 <!--
             <LinearLayout
                 android:layout_width="match_parent"
@@ -112,16 +128,32 @@
 
             </LinearLayout>
 -->
-            <FrameLayout
+            <!--<FrameLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="0dp"-->
+                <!--android:layout_marginTop="16dp"-->
+                <!--android:layout_weight="1">-->
+            <!--<Spinner-->
+                <!--android:id="@+id/spinner_select_state"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent" />-->
+            <!--</FrameLayout>-->
+
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_marginTop="16dp"
                 android:layout_weight="1">
-            <Spinner
-                android:id="@+id/spinner_select_state"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-            </FrameLayout>
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/edit_state"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:maxLength="10"
+                    android:hapticFeedbackEnabled="false"
+                    android:hint="State*"
+                    android:inputType="text"
+                    android:singleLine="true" />
+            </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
@@ -147,7 +179,6 @@
         android:layout_height="wrap_content"
         android:text="Save"
         android:id="@+id/btnSaveAddress"
-        android:textColor="@android:color/white"
-        android:background="@color/green"
+        android:enabled="false"
         android:layout_alignParentBottom="true"/>
 </RelativeLayout>

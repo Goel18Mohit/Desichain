@@ -35,12 +35,15 @@ public class MyAccount extends AppCompatActivity
         implements View.OnClickListener {
 
     int flag=0;
+    String referChoiceSelected;
     private TextView editProfileText,CUSTOMER_FIRST_LETTER_NAME;
     private String CUSTOMERNAMEFIRSTLETTER;
     private LinearLayout mMyOrderLayout,mMyAddressLayout,mMyWallet,
             mNotificationLayout,mHelpCenterLayout,mRefer,
-            mRateAppLayout,mFeedBackLayout,mPoliciesLayout;
+            mRateAppLayout,mFeedBackLayout,mPoliciesLayout,mCountry;
 
+
+    public String grpname[] = {"Email","SMS","Whatsapp"};
     TextView txtViewCount;
     int count=2;
     LinearLayout LOGOUT,RESET;
@@ -86,6 +89,8 @@ public class MyAccount extends AppCompatActivity
         mFeedBackLayout =(LinearLayout)findViewById(R.id.appFeedbackLayout);
         mPoliciesLayout=(LinearLayout)findViewById(R.id.policiesLayout);
         mRefer= (LinearLayout) findViewById(R.id.refer);
+
+        mCountry=(LinearLayout)findViewById(R.id.country);
        CUSTOMER_FIRST_LETTER_NAME= (TextView) findViewById(R.id.customerfirstlettername);
         if(intent!=null)
         {
@@ -118,29 +123,73 @@ public class MyAccount extends AppCompatActivity
         mRateAppLayout.setOnClickListener(this);
         mFeedBackLayout.setOnClickListener(this);
         mPoliciesLayout.setOnClickListener(this);
+        mCountry.setOnClickListener(this);
 
 
         mRefer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 final AlertDialog.Builder alertDialog=new AlertDialog.Builder(MyAccount.this);
-                alertDialog.setTitle("Friends email Id");
-                alertDialog.setMessage("Terms and Condition");
-                USER_EMAIL_ID=new EditText(MyAccount.this);
-                alertDialog.setView(USER_EMAIL_ID);
+//                alertDialog.setTitle("Friends email Id");
+//                alertDialog.setMessage("Terms and Condition");
+//                USER_EMAIL_ID=new EditText(MyAccount.this);
+//                alertDialog.setView(USER_EMAIL_ID);
+//                alertDialog.setPositiveButton("Submit", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//
+//                        if(USER_EMAIL_ID.getText().toString().isEmpty())
+//                        {
+//
+//                            USER_EMAIL_ID.setError("field cant be empty");
+//                        }
+//                        else {
+//                            dialog.dismiss();
+//                            Toast.makeText(MyAccount.this, "Email has been set", Toast.LENGTH_SHORT).show();
+//
+//                        }
+//                    }
+//                });
+//                alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        dialog.dismiss();
+//                    }
+//                });
+//
+//                alertDialog.create().show();
+
+                alertDialog.setTitle("Choose Option");
+                alertDialog.setSingleChoiceItems(grpname, -1, new DialogInterface
+                        .OnClickListener() {
+                    public void onClick(DialogInterface dialog, int item) {
+                        switch (item){
+                            case 0 : referChoiceSelected = "Email";
+                                break;
+                            case 1 : referChoiceSelected = "SMS";
+                                break;
+                            case 2 : referChoiceSelected = "Whatsapp";
+                                break;
+                        }
+                    }
+                });
                 alertDialog.setPositiveButton("Submit", new DialogInterface.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                        if(USER_EMAIL_ID.getText().toString().isEmpty())
-                        {
-
-                            USER_EMAIL_ID.setError("field cant be empty");
+                    public void onClick(DialogInterface dialog, int item) {
+                        if (referChoiceSelected.equals("Email")){
+                            Toast.makeText(getApplicationContext(),
+                                    "Group Name1 = "+referChoiceSelected, Toast.LENGTH_SHORT).show();
+                            dialog.dismiss();// dismiss the alertbox after chose option
                         }
-                        else {
-                            dialog.dismiss();
-                            Toast.makeText(MyAccount.this, "Email has been seet", Toast.LENGTH_SHORT).show();
-
+                        if (referChoiceSelected.equals("SMS")){
+                            Toast.makeText(getApplicationContext(),
+                                    "Group Name2 = "+referChoiceSelected, Toast.LENGTH_SHORT).show();
+                            dialog.dismiss();// dismiss the alertbox after chose option
+                        }
+                        if (referChoiceSelected.equals("Whatsapp")){
+                            Toast.makeText(getApplicationContext(),
+                                    "Group Name3 = "+referChoiceSelected, Toast.LENGTH_SHORT).show();
+                            dialog.dismiss();// dismiss the alertbox after chose option
                         }
                     }
                 });
@@ -150,8 +199,8 @@ public class MyAccount extends AppCompatActivity
                         dialog.dismiss();
                     }
                 });
-
-                alertDialog.create().show();
+                AlertDialog alert = alertDialog.create();
+                alert.show();
 
             }
         });
@@ -163,7 +212,7 @@ public class MyAccount extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 Toast.makeText(MyAccount.this,"You have been logged out ",Toast.LENGTH_LONG).show();
-                Intent intent=new Intent(MyAccount.this,MainActivity.class);
+                Intent intent=new Intent(MyAccount.this,LoginActivity.class);
                 startActivity(intent);
                 finish();
             }
@@ -301,6 +350,9 @@ public class MyAccount extends AppCompatActivity
                 break;
             case R.id.walletLayout:
                 startActivity(new Intent(this, Wallet_page.class));
+                break;
+            case R.id.country:
+                startActivity(new Intent(this, Location.class));
                 break;
             case R.id.notificationLayout:
                 startActivity(new Intent(this, NotificationPage.class));

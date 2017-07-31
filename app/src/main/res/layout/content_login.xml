@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:animateLayoutChanges="true"
+    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+    android:layout_marginRight="@dimen/activity_horizontal_margin"
+    android:layout_marginTop="50dp"
+    android:elevation="10dp"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/editTextEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:ems="10"
+            android:hint="@string/email"
+            android:inputType="textEmailAddress"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="121dp" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/editTextPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:ems="10"
+            android:hint="@string/password"
+            android:inputType="textPassword" />
+    </android.support.design.widget.TextInputLayout>
+
+    <ImageButton
+        android:id="@+id/img_sign_in_button"
+        style="?android:textAppearanceSmall"
+        android:layout_width="50dp"
+        android:elevation="10dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:contentDescription="@string/login"
+        android:src="@mipmap/ic_done_white_24dp"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:background="@drawable/insta_circle"
+        android:textColor="@android:color/black"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btn_reset_password_main"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:background="@null"
+        android:text="@string/btn_forgot_password"
+        android:textAllCaps="false"
+        android:textColor="@color/colorAccent" />
+
+    <Button
+        android:id="@+id/sign_up_button"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorAccent"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:background="@null"
+        android:text="@string/action_sign_in_short"
+        android:textAllCaps="false"
+        android:textSize="15dp" />
+</LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/skipSignIn"
+        android:layout_alignParentBottom="true"
+        android:textSize="20sp"
+        android:textAlignment="center"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:textColor="#000"
+        />
+
+</RelativeLayout>

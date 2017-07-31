@@ -14,11 +14,14 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -44,12 +47,13 @@ public class SingleQuesMultiAnswerList extends AppCompatActivity implements View
     private FrameLayout mAnswerQuesFrame;
     private Toolbar mToolbar;
     private Button mCancelBtn;
-
+private EditText answerText;
     int count=2;
     TextView txtViewCount;
     ImageView  toolbarcartimage;
     private Helper listView;
     View headerView;
+    Button answerBtn;
     DrawerLayout drawer;
     NestedScrollView nestedScrollView;
     public static ArrayList<String> Poojaitem;
@@ -85,7 +89,39 @@ public class SingleQuesMultiAnswerList extends AppCompatActivity implements View
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(false);
+        answerText=(EditText)findViewById(R.id.answerText);
+        answerBtn=(Button)findViewById(R.id.answerBtn);
+        answerText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                if (s.toString().trim().length()>0){
+                    answerBtn.setEnabled(true);
+                    answerBtn.setBackgroundColor(getResources().getColor(R.color.green));
+                    answerBtn.setTextColor(Color.WHITE);
+                }
+                else {
+                    answerBtn.setEnabled(false);
+                }
+            }
 
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (s.toString().trim().length()>0){
+                    answerBtn.setEnabled(true);
+                    answerBtn.setBackgroundColor(getResources().getColor(R.color.green));
+                    answerBtn.setTextColor(Color.WHITE);
+                }
+                else {
+                    answerBtn.setEnabled(false);
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
 
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(

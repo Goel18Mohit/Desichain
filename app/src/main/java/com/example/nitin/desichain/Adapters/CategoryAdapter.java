@@ -1,17 +1,23 @@
 package com.example.nitin.desichain.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Paint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.nitin.desichain.Contents.CategoryList;
+import com.example.nitin.desichain.MyCart;
+import com.example.nitin.desichain.MyOrders;
+import com.example.nitin.desichain.ProductPageActual;
 import com.example.nitin.desichain.R;
+import com.example.nitin.desichain.Utility.Utility;
 
 import java.util.ArrayList;
 
@@ -62,17 +68,68 @@ public class CategoryAdapter extends BaseAdapter {
         viewHolder= (ViewHolder) convertView.getTag();
 
         viewHolder.productImage.setImageResource(arrayList.get(position).getImageUrl());
+        viewHolder.productImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, ProductPageActual.class);
+                context.startActivity(intent);
+            }
+        });
         viewHolder.productname.setText(arrayList.get(position).getPRODUCT_NAME());
-        viewHolder.productprice.setText(arrayList.get(position).getPRICE());;
+        viewHolder.productname.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, ProductPageActual.class);
+                context.startActivity(intent);
+            }
+        });
+        viewHolder.productprice.setText(arrayList.get(position).getPRICE());
+        viewHolder.productprice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, ProductPageActual.class);
+                context.startActivity(intent);
+            }
+        });
         viewHolder.productratings.setText(arrayList.get(position).getRATINGS());
+        viewHolder.productratings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, ProductPageActual.class);
+                context.startActivity(intent);
+            }
+        });
         viewHolder.productnofratings.setText(arrayList.get(position).getNUMBER_OF_REVIEWS());
+        viewHolder.productnofratings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, ProductPageActual.class);
+                context.startActivity(intent);
+            }
+        });
         viewHolder.productcut.setText("Rs.7490");
+        viewHolder.productcut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, ProductPageActual.class);
+                context.startActivity(intent);
+            }
+        });
         viewHolder.productcut.setPaintFlags(viewHolder.productcut.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+        viewHolder.productcut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, ProductPageActual.class);
+                context.startActivity(intent);
+            }
+        });
 
         return convertView;
     }
+
     public class ViewHolder{
         ImageView productImage;
         TextView productname,productprice,productratings,productnofratings,productcut;
+        LinearLayout lm;
     }
 }
