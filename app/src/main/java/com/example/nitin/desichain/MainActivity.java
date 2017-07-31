@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     View headerView;
     //  private BrandStudioAdapter mBrandStudioAdapter;
     private RecyclerView mLatestProductView, mBrandStudioView, mTopTenGameView, mTopTenGameView2, mFeaturedProductView, mAdvertisementView, mBestSellingView;
-    private ArrayList<ProductHorizontal> mLatestProductList, mFeaturedProductList,mBestSellingProductList;
+    private ArrayList<ProductHorizontal> mLatestProductList, mFeaturedProductList,mBestSellingProductList, mDummmyBestSelling,mDeummyLatest,mDummyFeatured;
     private ProductHorizontalAdapter mLatestProductAdapter, mTopTenGameAdapter, mTopTenGameAdapter2, mFeaturedProductAdapter, mAdvertisementAdapter, mBestSellingProductAdapter;
     LinearLayout myorder, mycart, myaccount, helpcenter, ratedesichain, productPage, policy, facebook, google, twitter, pinterest, youtube, instagram, aboutus, subscribe;
 
@@ -113,7 +113,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
         mFeaturedProductList =new ArrayList<>();
+        mDeummyLatest=new ArrayList<>();
+        mDummyFeatured=new ArrayList<>();
         mBestSellingProductList=new ArrayList<>();
+        mDummmyBestSelling =new ArrayList<>();
         mLatestProdText = (TextView) findViewById(R.id.latestProdViewAll);
         mTopTenText = (TextView) findViewById(R.id.topTenGameViewAll);
         mFeaturedText = (TextView) findViewById(R.id.featuredProductViewAll);
@@ -159,10 +162,40 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         },DELAY_MS,PERIOD_MS);
 
-        mLatestProdText.setOnClickListener(this);
-        mTopTenText.setOnClickListener(this);
-        mFeaturedText.setOnClickListener(this);
-        mBestSellText.setOnClickListener(this);
+        mLatestProdText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(MainActivity.this,CategoryPage.class);
+                intent1.putExtra("featuredProdKey",mLatestProductList);
+                startActivity(intent1);
+            }
+        });
+        mTopTenText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(MainActivity.this,CategoryPage.class);
+                intent1.putExtra("featuredProdKey",mLatestProductList);
+                startActivity(intent1);
+
+            }
+        });
+        mFeaturedText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(MainActivity.this,CategoryPage.class);
+                intent1.putExtra("featuredProdKey",mFeaturedProductList);
+                startActivity(intent1);
+            }
+        });
+        mBestSellText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(MainActivity.this,CategoryPage.class);
+                intent1.putExtra("featuredProdKey",mBestSellingProductList);
+                startActivity(intent1);
+
+            }
+        });
 
         timer = new Timer();
         timer.schedule(new TimerTask() {
@@ -178,7 +211,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         loadBestSellingProducts();
 
         mLatestProductView = (RecyclerView) findViewById(R.id.LatestProductRecyclerView);
-        mLatestProductAdapter = new ProductHorizontalAdapter(MainActivity.this, mLatestProductList);
+        mLatestProductAdapter = new ProductHorizontalAdapter(MainActivity.this, mDeummyLatest);
         GridLayoutManager lm = new GridLayoutManager(this, 2);
         mLatestProductView.setLayoutManager(lm);
         mLatestProductView.setHasFixedSize(true);
@@ -233,7 +266,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }, 0, PERIOD_MS);
         }
 
-        mTopTenGameAdapter = new ProductHorizontalAdapter(MainActivity.this, mLatestProductList);
+        mTopTenGameAdapter = new ProductHorizontalAdapter(MainActivity.this, mDeummyLatest);
         mTopTenGameView = (RecyclerView) findViewById(R.id.top_ten_game_view);
         GridLayoutManager lm1 = new GridLayoutManager(this, 2);
         mTopTenGameView.setLayoutManager(lm1);
@@ -242,7 +275,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mTopTenGameView.setAdapter(mTopTenGameAdapter);
 
 
-        mTopTenGameAdapter2 = new ProductHorizontalAdapter(MainActivity.this, mLatestProductList);
+        mTopTenGameAdapter2 = new ProductHorizontalAdapter(MainActivity.this, mDeummyLatest);
         mTopTenGameView2 = (RecyclerView) findViewById(R.id.top_ten_game_second_RecyclerView);
         GridLayoutManager lm5 = new GridLayoutManager(this, 2);
         mTopTenGameView2.setLayoutManager(lm5);
@@ -251,7 +284,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mTopTenGameView2.setAdapter(mTopTenGameAdapter2);
 
 
-        mFeaturedProductAdapter = new ProductHorizontalAdapter(MainActivity.this, mFeaturedProductList);
+        mFeaturedProductAdapter = new ProductHorizontalAdapter(MainActivity.this, mDummyFeatured);
         mFeaturedProductView = (RecyclerView) findViewById(R.id.featuredProductRecyclerView);
         GridLayoutManager lm2 = new GridLayoutManager(this, 2);
         mFeaturedProductView.setLayoutManager(lm2);
@@ -259,7 +292,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mFeaturedProductView.setItemAnimator(new DefaultItemAnimator());
         mFeaturedProductView.setAdapter(mFeaturedProductAdapter);
 
-        mBestSellingProductAdapter = new ProductHorizontalAdapter(this, mBestSellingProductList);
+        mBestSellingProductAdapter = new ProductHorizontalAdapter(this, mDummmyBestSelling);
         mBestSellingView = (RecyclerView) findViewById(R.id.bestSellingRecyclerView);
         GridLayoutManager lm4 = new GridLayoutManager(this, 2);
         mBestSellingView.setLayoutManager(lm4);
@@ -317,6 +350,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
             if (JSON_RESPONSE != null) {
                 mLatestProductList = new BsetSellingProduct(JSON_RESPONSE, MainActivity.this).parseBestSellingProduct();
+                for (int i=0;i<4;i++){
+                    mDeummyLatest.add(mLatestProductList.get(i));
+                }
              }
         }
 
@@ -336,6 +372,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
             if (JSON_RESPONSE != null) {
                 mBestSellingProductList = new BsetSellingProduct(JSON_RESPONSE, MainActivity.this).parseBestSellingProduct();
+                for (int i=0;i<4;i++){
+                    mDummmyBestSelling.add(mBestSellingProductList.get(i));
+                }
             }
         }
     }
@@ -357,6 +396,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
             if (JSON_RESPONSE != null) {
                 mFeaturedProductList = new BsetSellingProduct(JSON_RESPONSE, MainActivity.this).parseBestSellingProduct();
+                for (int i=0;i<4;i++){
+                    mDummyFeatured.add(mFeaturedProductList.get(i));
+                }
                 }
         }
     }

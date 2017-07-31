@@ -106,10 +106,7 @@ public class Utility {
             case R.id.topTenGameViewAll:
                 mContext.startActivity(new Intent(mContext, CategoryPage.class));
                 break;
-            case R.id.featuredProductViewAll:
-                mContext.startActivity(new Intent(mContext, CategoryPage.class));
-                break;
-            case R.id.bestSellingProductViewAll:
+             case R.id.bestSellingProductViewAll:
                 mContext.startActivity(new Intent(mContext, CategoryPage.class));
                 break;
             case R.id.subscribe:
