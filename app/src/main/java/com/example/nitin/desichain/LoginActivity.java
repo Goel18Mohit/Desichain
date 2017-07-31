@@ -1,10 +1,8 @@
 package com.example.nitin.desichain;
 
+import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,7 +15,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private Button forgotPwdBtn,registerAccBtn;
     private ForgotPassword forgotPassword = new ForgotPassword();
-    private RegisterFragment registerFragment = new RegisterFragment();
+    private RegisterFragment registerFragment;
     private FrameLayout frameLayout;
     private ImageView logoImage;
     private ImageButton mSignInImg;
@@ -28,7 +26,6 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
         editEmail=(EditText)findViewById(R.id.editTextEmail);
         editPassword=(EditText)findViewById(R.id.editTextPassword);
         mSignInImg=(ImageButton)findViewById(R.id.img_sign_in_button);
@@ -66,6 +63,7 @@ public class LoginActivity extends AppCompatActivity {
         registerAccBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                registerFragment = new RegisterFragment(LoginActivity.this);
                 fm = getSupportFragmentManager();
                 fm.beginTransaction().replace(R.id.framePassword,registerFragment).commit();
                // logoImage.setVisibility(View.GONE);

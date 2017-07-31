@@ -1,8 +1,8 @@
 package com.example.nitin.desichain;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
@@ -12,13 +12,24 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import com.example.nitin.desichain.Internet.FetchingFromUrl;
+import com.example.nitin.desichain.ParsingJson.GetSnoOfNewCustome;
+
+import java.util.concurrent.ExecutionException;
 
 
 public class RegisterFragment extends Fragment {
 
     private EditText editName, editEmail, editPassword, editNumber;
     private Button mRegister;
-
+    private String  JSON_RESPONSE;
+    private Context mContext;
+    private String SNO;
+    public RegisterFragment(Context mContext) {
+        this.mContext = mContext;
+    }
 
     private TextWatcher mTextWatcher = new TextWatcher() {
         @Override
@@ -38,10 +49,10 @@ public class RegisterFragment extends Fragment {
     };
 
     private void checkForEmptyValues() {
-        String name = editName.getText().toString();
-        String email = editEmail.getText().toString();
+        final String name = editName.getText().toString();
+        final String email = editEmail.getText().toString();
         String pwd = editPassword.getText().toString();
-        String number = editNumber.getText().toString();
+        final String number = editNumber.getText().toString();
 
         if (name.equals("") ||email.equals("")|| pwd.equals("")|| number.equals("")){
             mRegister.setEnabled(false);
@@ -50,6 +61,30 @@ public class RegisterFragment extends Fragment {
             mRegister.setEnabled(true);
             mRegister.setBackgroundColor(getResources().getColor(R.color.green));
             mRegister.setTextColor(Color.WHITE);
+            mRegister.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    JSON_RESPONSE=load("http://dc.desichain.in/DesiChainWeService.asmx/Register?"+"Name="+name+"&"+"Emailid="+email+"&"+"Password="+number);
+                    if(JSON_RESPONSE.contains("Mail Id Already exist."))
+                    {
+                        Toast.makeText(mContext,"Mail Id Already exist.",Toast.LENGTH_SHORT).show();
+                    }
+                    else
+                    {
+                        if(JSON_RESPONSE!=null) {
+                            SNO=new GetSnoOfNewCustome(JSON_RESPONSE,mContext).getSno();
+                            Intent intent = new Intent(mContext, MainActivity.class);
+                            intent.putExtra("CALLINGFROMREGISTERACTIVITY","CALLINGFROMREGISTERACTIVITY");
+                            intent.putExtra("SNO",SNO);
+                            startActivity(intent);
+                        }
+                        else {
+                            Toast.makeText(mContext,"Something Went Wrong",Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }
+            });
+
         }
 
     }
@@ -115,6 +150,17 @@ public class RegisterFragment extends Fragment {
 
 
         return view;
+    }
+    public String load(String Url) {
+        try {
+            JSON_RESPONSE = new FetchingFromUrl().execute(Url).get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+        return JSON_RESPONSE;
+
     }
 
 }

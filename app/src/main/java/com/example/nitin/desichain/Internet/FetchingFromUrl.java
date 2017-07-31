@@ -48,6 +48,9 @@ public class FetchingFromUrl extends AsyncTask<String,String,String> {
         }
 
         String s1=JSON_RESPONSE.toString();
+        if(s1.contains("Mail Id Already exist.")){
+            return "Mail Id Already exist.";
+        }
         String s2=s1.substring(s1.indexOf("["),s1.length()-9);
         return s2;
     }
