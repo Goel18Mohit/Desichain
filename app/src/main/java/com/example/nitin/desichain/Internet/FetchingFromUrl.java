@@ -51,6 +51,9 @@ public class FetchingFromUrl extends AsyncTask<String,String,String> {
         if(s1.contains("Mail Id Already exist.")){
             return "Mail Id Already exist.";
         }
+        if (s1.contains("invalid argument")){
+            return null;
+        }
         String s2=s1.substring(s1.indexOf("["),s1.length()-9);
         return s2;
     }

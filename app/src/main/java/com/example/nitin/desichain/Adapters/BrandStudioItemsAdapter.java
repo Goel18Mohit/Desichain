@@ -65,7 +65,6 @@ public class BrandStudioItemsAdapter extends RecyclerView.Adapter<BrandStudioIte
         private ImageView mProductImage,mAddToCartImage;
         private TextView mProductname,mProductCost,mProductRating, mProductReviewsNo;
 
-
         public MyViewHolder(View itemView) {
             super(itemView);
             mAddToCartImage=(ImageView)itemView.findViewById(R.id.addToCart);

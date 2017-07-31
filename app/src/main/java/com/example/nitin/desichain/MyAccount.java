@@ -214,7 +214,7 @@ public class MyAccount extends AppCompatActivity
                 Toast.makeText(MyAccount.this,"You have been logged out ",Toast.LENGTH_LONG).show();
                 Intent intent=new Intent(MyAccount.this,LoginActivity.class);
                 startActivity(intent);
-                finish();
+//                finish();
             }
         });
         RESET.setOnClickListener(new View.OnClickListener() {
@@ -491,7 +491,6 @@ public class MyAccount extends AppCompatActivity
         mycart.setOnClickListener(this);
         myaccount.setOnClickListener(this);
         helpcenter.setOnClickListener(this);
-        productPage.setOnClickListener(this);
         ratedesichain.setOnClickListener(this);
         policy.setOnClickListener(this);
         facebook.setOnClickListener(this);
