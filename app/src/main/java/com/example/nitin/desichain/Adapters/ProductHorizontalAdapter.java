@@ -37,10 +37,7 @@ public class ProductHorizontalAdapter extends RecyclerView.Adapter<ProductHorizo
             LayoutInflater layoutInflater= (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             View view=layoutInflater.inflate(R.layout.single_category,null);
 
-        MyViewHolder viewHolder = new MyViewHolder(view);
-        if (mProductHorizontalList == null){
-            viewHolder.mEmptyView.setText("No Internet Connection");
-        }
+
             return new MyViewHolder(view);
     }
 
@@ -64,7 +61,7 @@ public class ProductHorizontalAdapter extends RecyclerView.Adapter<ProductHorizo
 
     @Override
     public int getItemCount() {
-        return 4;
+        return mProductHorizontalList.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
