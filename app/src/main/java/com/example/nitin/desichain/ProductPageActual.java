@@ -436,7 +436,6 @@ public class ProductPageActual extends AppCompatActivity implements View.OnClick
         mycart.setOnClickListener(this);
         myaccount.setOnClickListener(this);
         helpcenter.setOnClickListener(this);
-        productPage.setOnClickListener(this);
         ratedesichain.setOnClickListener(this);
         policy.setOnClickListener(this);
         facebook.setOnClickListener(this);

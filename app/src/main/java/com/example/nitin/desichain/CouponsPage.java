@@ -209,7 +209,6 @@ public class CouponsPage extends AppCompatActivity implements View.OnClickListen
         mycart.setOnClickListener(this);
         myaccount.setOnClickListener(this);
         helpcenter.setOnClickListener(this);
-        productPage.setOnClickListener(this);
         ratedesichain.setOnClickListener(this);
         policy.setOnClickListener(this);
         facebook.setOnClickListener(this);
