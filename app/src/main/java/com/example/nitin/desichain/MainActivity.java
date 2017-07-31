@@ -4,8 +4,8 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.PersistableBundle;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
@@ -19,7 +19,6 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -67,6 +66,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     TextView TESTING;
     private ArrayList<BrandStudioList> BRAND_STUDIO_LIST;
     //  int count=2;
+    private String FLAG_FOR_CALLING=null;
+    private String CUSTOMER_SNO;
     String JSON_RESPONSE;
     private int imagesAdvertisement[] = {R.drawable.bikano,
                     R.drawable.mobile_covers,
@@ -99,6 +100,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         getSupportActionBar().setHomeButtonEnabled(true);
         invalidateOptionsMenu();
 
+        Intent intent=getIntent();
+        if(intent!=null){
+            FLAG_FOR_CALLING=intent.getStringExtra("CALLINGFROMREGISTERACTIVITY");
+            if(FLAG_FOR_CALLING!=null)
+            {
+                CUSTOMER_SNO=intent.getStringExtra("SNO");
+                Toast.makeText(MainActivity.this,CUSTOMER_SNO,Toast.LENGTH_SHORT).show();
+                //savedInstanceState.putString("SNO",CUSTOMER_SNO);
+            }
+        }
         mLatestProdText = (TextView) findViewById(R.id.latestProdViewAll);
         mTopTenText = (TextView) findViewById(R.id.topTenGameViewAll);
         mFeaturedText = (TextView) findViewById(R.id.featuredProductViewAll);
@@ -522,6 +533,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         if (JSON_RESPONSE != null) {
             BRAND_STUDIO_LIST = new BrandStudio(JSON_RESPONSE, MainActivity.this).parseBestSellingProduct();
+        }
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
+        super.onSaveInstanceState(outState, outPersistentState);
+        if(CUSTOMER_SNO!=null)
+        {
+            outState.putString("CUSTOMER_SNO",CUSTOMER_SNO);
         }
     }
 }
