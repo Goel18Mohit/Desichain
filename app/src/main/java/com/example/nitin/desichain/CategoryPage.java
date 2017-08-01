@@ -1,5 +1,4 @@
 package com.example.nitin.desichain;
-
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,9 +9,6 @@ import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -25,9 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.nitin.desichain.Adapters.CategoryAdapter;
-import com.example.nitin.desichain.Adapters.ProductHorizontalAdapter;
 import com.example.nitin.desichain.Contents.CategoryList;
-import com.example.nitin.desichain.Contents.ProductHorizontal;
 import com.example.nitin.desichain.SubCategoryList.ShowCategoryAdapeter;
 import com.example.nitin.desichain.Utility.Utility;
 
@@ -36,11 +30,11 @@ import java.util.HashMap;
 
 public class CategoryPage extends AppCompatActivity implements View.OnClickListener {
 
-    
+
     GridView listView1;
     TextView SORT_OPTION,FILTER_OPTION;
     private Toolbar mToolbar;
-    private ArrayList<ProductHorizontal> arrayList1;
+    private ArrayList<CategoryList> arrayList1;
 
     private Helper listView;
     View headerView;
@@ -51,9 +45,9 @@ public class CategoryPage extends AppCompatActivity implements View.OnClickListe
     public static  ArrayList<String> Books;
     public static ArrayList<String> Homecare;
     public static   ArrayList<String> others;
+    public ArrayList<CategoryList> mList;
     public  static HashMap<String,ArrayList<String>> hashMap;
     LinearLayout subscribe;
-    private RecyclerView recyclerView;
     LinearLayout myorder,mycart,myaccount,helpcenter,ratedesichain,productPage,policy,facebook,google,twitter,pinterest,youtube,instagram,aboutus;
 
     final CharSequence[] sortoption={"Relevance","Popularity","Price Low To High","Price High To Low","Discount","Fresh Arrivals"};
@@ -64,21 +58,31 @@ public class CategoryPage extends AppCompatActivity implements View.OnClickListe
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        mList = new ArrayList<>();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        recyclerView=(RecyclerView)findViewById(R.id.recyclerViewAll);
+
         FILTER_OPTION=(TextView)findViewById(R.id.filter);
-        //listView1= (GridView) findViewById(R.id.categorygridview);
+        listView1= (GridView) findViewById(R.id.categorygridview);
         SORT_OPTION= (TextView) findViewById(R.id.sort);
         arrayList1=new ArrayList<>();
-        ArrayList<ProductHorizontal> list = (ArrayList<ProductHorizontal>)getIntent().getSerializableExtra("featuredProdKey");
-        ProductHorizontalAdapter adapter = new ProductHorizontalAdapter(this,list);
-        GridLayoutManager gm = new GridLayoutManager(this,2);
-        recyclerView.setLayoutManager(gm);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(adapter);
-//        CategoryAdapter categoryAdapter=new CategoryAdapter(this,arrayList1);
-        //listView1.setAdapter(categoryAdapter);
-        SORT_OPTION.setOnClickListener(new View.OnClickListener() {
+
+        arrayList1 = (ArrayList<CategoryList>)getIntent().getSerializableExtra("featuredProdKey");
+
+
+        for (int i=0;i<10;i++){
+                mList.add(new CategoryList("https://www.logogarden.com/wp-content/uploads/lg-index/Example-Logo-6.jpg",
+                        "aaa",1200,"4.0","1200"));
+            }
+
+            if (arrayList1!=null) {
+                CategoryAdapter categoryAdapter = new CategoryAdapter(this, arrayList1);
+                listView1.setAdapter(categoryAdapter);
+
+            } else {
+                CategoryAdapter categoryAdapter = new CategoryAdapter(this,mList);
+                listView1.setAdapter(categoryAdapter);
+            }
+            SORT_OPTION.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 final AlertDialog.Builder alertdialog=new AlertDialog.Builder(CategoryPage.this);

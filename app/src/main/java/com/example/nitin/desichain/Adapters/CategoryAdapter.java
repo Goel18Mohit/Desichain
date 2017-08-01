@@ -18,6 +18,7 @@ import com.example.nitin.desichain.MyOrders;
 import com.example.nitin.desichain.ProductPageActual;
 import com.example.nitin.desichain.R;
 import com.example.nitin.desichain.Utility.Utility;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -67,7 +68,8 @@ public class CategoryAdapter extends BaseAdapter {
         }
         viewHolder= (ViewHolder) convertView.getTag();
 
-        viewHolder.productImage.setImageResource(arrayList.get(position).getImageUrl());
+       // viewHolder.productImage.setImageResource(arrayList.get(position).getImageUrl());
+        Picasso.with(parent.getContext()).load("http://www.desichain.in/uploads/thumb_"+arrayList.get(position).getImageUrl()).resize(200,200).into(viewHolder.productImage);
         viewHolder.productImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -83,7 +85,7 @@ public class CategoryAdapter extends BaseAdapter {
                 context.startActivity(intent);
             }
         });
-        viewHolder.productprice.setText(arrayList.get(position).getPRICE());
+        viewHolder.productprice.setText(String.valueOf(arrayList.get(position).getPRICE()));
         viewHolder.productprice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
