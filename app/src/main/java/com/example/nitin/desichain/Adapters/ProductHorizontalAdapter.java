@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.nitin.desichain.CategoryList;
 import com.example.nitin.desichain.Contents.ProductHorizontal;
 import com.example.nitin.desichain.R;
 import com.example.nitin.desichain.Utility.Utility;
@@ -25,9 +26,9 @@ import java.util.List;
 
 public class ProductHorizontalAdapter extends RecyclerView.Adapter<ProductHorizontalAdapter.MyViewHolder>{
     private Context mContext;
-    private List<ProductHorizontal> mProductHorizontalList;
+    private List<com.example.nitin.desichain.Contents.CategoryList> mProductHorizontalList;
 
-    public ProductHorizontalAdapter(Context mContext, List<ProductHorizontal> mProductHorizontalList) {
+    public ProductHorizontalAdapter(Context mContext, List<com.example.nitin.desichain.Contents.CategoryList> mProductHorizontalList) {
         this.mContext = mContext;
         this.mProductHorizontalList = mProductHorizontalList;
     }
@@ -44,13 +45,14 @@ public class ProductHorizontalAdapter extends RecyclerView.Adapter<ProductHorizo
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
 
-        ProductHorizontal mProduct = mProductHorizontalList.get(position);
-        holder.mProductRating.setText(mProduct.getmProductRating());
-        holder.mProductCost.setText(String.valueOf(mProduct.getmProductCost()));
-        holder.mProductname.setText(mProduct.getmProductName());
-        holder.mProductReviewsNo.setText(mProduct.getmProductNoOfReviews());
+        com.example.nitin.desichain.Contents.CategoryList mProduct = mProductHorizontalList.get(position);
+      //  CategoryList mProduct = mProductHorizontalList.get(position);
+        holder.mProductRating.setText(mProduct.getRATINGS());
+        holder.mProductCost.setText(String.valueOf(mProduct.getPRICE()));
+        holder.mProductname.setText(mProduct.getPRODUCT_NAME());
+        holder.mProductReviewsNo.setText(mProduct.getNUMBER_OF_REVIEWS());
         Picasso.with(mContext).load("http://www.desichain.in/uploads/thumb_"+mProductHorizontalList.
-                get(position).getmProductImageId()).resize(200,200).into(holder.mProductImage);
+                get(position).getImageUrl()).resize(200,200).into(holder.mProductImage);
         holder.mAddToCartImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

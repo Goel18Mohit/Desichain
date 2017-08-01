@@ -32,8 +32,7 @@ import android.widget.Toast;
 import com.example.nitin.desichain.Adapters.BrandStudioAdapter;
 import com.example.nitin.desichain.Adapters.CustomViewpagerAdapter;
 import com.example.nitin.desichain.Adapters.ProductHorizontalAdapter;
-import com.example.nitin.desichain.Contents.BrandStudioList;
-import com.example.nitin.desichain.Contents.ProductHorizontal;
+import com.example.nitin.desichain.Contents.*;
 import com.example.nitin.desichain.Internet.FetchingFromUrl;
 import com.example.nitin.desichain.ParsingJson.BrandStudio;
 import com.example.nitin.desichain.ParsingJson.BsetSellingProduct;
@@ -85,7 +84,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     View headerView;
     //  private BrandStudioAdapter mBrandStudioAdapter;
     private RecyclerView mLatestProductView, mBrandStudioView, mTopTenGameView, mTopTenGameView2, mFeaturedProductView, mAdvertisementView, mBestSellingView;
-    private ArrayList<ProductHorizontal> mLatestProductList, mFeaturedProductList,mBestSellingProductList, mDummmyBestSelling,mDeummyLatest,mDummyFeatured;
+    private ArrayList<com.example.nitin.desichain.Contents.CategoryList> mLatestProductList, mFeaturedProductList,mBestSellingProductList, mDummmyBestSelling,mDeummyLatest,mDummyFeatured;
     private ProductHorizontalAdapter mLatestProductAdapter, mTopTenGameAdapter, mTopTenGameAdapter2, mFeaturedProductAdapter, mAdvertisementAdapter, mBestSellingProductAdapter;
     LinearLayout myorder, mycart, myaccount, helpcenter, ratedesichain, productPage, policy, facebook, google, twitter, pinterest, youtube, instagram, aboutus, subscribe;
 
