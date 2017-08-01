@@ -30,7 +30,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.nitin.desichain.Adapters.ProductHorizontalAdapter;
-import com.example.nitin.desichain.Contents.ProductHorizontal;
+import com.example.nitin.desichain.Contents.*;
+import com.example.nitin.desichain.Contents.CategoryList;
 import com.example.nitin.desichain.ParsingJson.BrandStudio;
 import com.example.nitin.desichain.SubCategoryList.ShowCategoryAdapeter;
 import com.example.nitin.desichain.Utility.Utility;
@@ -50,7 +51,7 @@ public class ProductPageActual extends AppCompatActivity implements View.OnClick
     int count=2;
     TextView txtViewCount;
     ImageView  toolbarcartimage;
-    private List<ProductHorizontal> mProductsList;
+    private List<com.example.nitin.desichain.Contents.CategoryList> mProductsList;
     private CheckBox mSecCheckBox,mThirdCheckBox;
     private ProductHorizontalAdapter mAdapter;
     private LinearLayout mQuesnAnswer,mReviewsLayout,mReviewsProductLayout;
@@ -317,8 +318,8 @@ public class ProductPageActual extends AppCompatActivity implements View.OnClick
 
 
         for (int i=0;i<5;i++){
-            mProductsList.add(new ProductHorizontal("product name",1200,"data:image/png;base64,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"
-            ,"12","4.0",17));
+            mProductsList.add(new CategoryList("https://www.logogarden.com/wp-content/uploads/lg-index/Example-Logo-6.jpg","aaa",
+                    1200,"4.0","1200"));
         }
 
     }

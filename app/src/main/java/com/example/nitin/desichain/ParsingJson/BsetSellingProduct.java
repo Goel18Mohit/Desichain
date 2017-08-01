@@ -3,6 +3,7 @@ package com.example.nitin.desichain.ParsingJson;
 import android.content.Context;
 import android.util.Log;
 
+import com.example.nitin.desichain.CategoryList;
 import com.example.nitin.desichain.Contents.ProductHorizontal;
 
 import org.json.JSONArray;
@@ -26,7 +27,7 @@ public class BsetSellingProduct {
     private int SELLING_PRICE;
     private int DISCOUNT;
     private String IMAGE_URL;
-    private ArrayList<ProductHorizontal> BEST_SELLING_LIST;
+    private ArrayList<com.example.nitin.desichain.Contents.CategoryList> BEST_SELLING_LIST;
     public BsetSellingProduct(String JSON_RESPONSE,Context context) {
         this.JSON_RESPONSE = JSON_RESPONSE;
         mContent=context;
@@ -34,20 +35,21 @@ public class BsetSellingProduct {
         Log.i("ashish",JSON_RESPONSE);
     }
 
-  public ArrayList<ProductHorizontal> parseBestSellingProduct()
+  public ArrayList<com.example.nitin.desichain.Contents.CategoryList> parseBestSellingProduct()
   {
       try {
           JSONArray MAIN_JSON_ARRAY=new JSONArray(JSON_RESPONSE);
           for(int i=0;i<MAIN_JSON_ARRAY.length();i++)
           {
+
               PRODUCT_json_OBJECCT=MAIN_JSON_ARRAY.getJSONObject(i);
               PRODUCT_NAME=PRODUCT_json_OBJECCT.getString("productname");
               ACTUAL_PRICE=PRODUCT_json_OBJECCT.getInt("price");
               SELLING_PRICE=PRODUCT_json_OBJECCT.getInt("sprice");
               IMAGE_URL=PRODUCT_json_OBJECCT.getString("productImg");
               DISCOUNT=(ACTUAL_PRICE-SELLING_PRICE)/100;
-              BEST_SELLING_LIST.add(new ProductHorizontal(PRODUCT_NAME,SELLING_PRICE,IMAGE_URL,"12","4",DISCOUNT));
-
+              BEST_SELLING_LIST.add(new com.example.nitin.desichain.Contents.CategoryList(IMAGE_URL,PRODUCT_NAME,ACTUAL_PRICE,"4.0","1200"));
+        //      BEST_SELLING_LIST.add(new CategoryList());
           }
       } catch (JSONException e) {
           e.printStackTrace();

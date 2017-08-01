@@ -9,18 +9,18 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.nitin.desichain.CategoryPage">
 
-    <!--<GridView-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:numColumns="2"-->
-        <!--android:layout_margin="8dp"-->
-        <!--android:id="@+id/categorygridview"></GridView>-->
-
-
-    <android.support.v7.widget.RecyclerView
+    <GridView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/recyclerViewAll"
-        android:stretchMode="columnWidth"
-        android:clipToPadding="true"/>
+        android:numColumns="2"
+        android:layout_margin="8dp"
+        android:id="@+id/categorygridview"></GridView>
+
+
+    <!--<android.support.v7.widget.RecyclerView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:id="@+id/recyclerViewAll"-->
+        <!--android:stretchMode="columnWidth"-->
+        <!--android:clipToPadding="true"/>-->
 </FrameLayout>

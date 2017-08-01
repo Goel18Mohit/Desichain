@@ -1,47 +1,30 @@
 package com.example.nitin.desichain.Contents;
 
+import java.io.Serializable;
+
 /**
  * Created by NITIN on 20-Jun-17.
  */
 
-public class CategoryList {
+public class CategoryList implements Serializable{
 
-    private int ImageUrl;
+    private String ImageUrl;
     private String PRODUCT_NAME;
-    private String PRICE;
+    private int PRICE;
     private String RATINGS;
     private String NUMBER_OF_REVIEWS;
 
-    public CategoryList(int imageUrl, String PRODUCT_NAME, String PRICE, String RATINGS, String NUMBER_OF_REVIEWS) {
-        ImageUrl = imageUrl;
+
+
+    public CategoryList(String imageUrl, String PRODUCT_NAME, int PRICE, String RATINGS, String NUMBER_OF_REVIEWS) {
+        this.ImageUrl = imageUrl;
         this.PRODUCT_NAME = PRODUCT_NAME;
         this.PRICE = PRICE;
         this.RATINGS = RATINGS;
         this.NUMBER_OF_REVIEWS = NUMBER_OF_REVIEWS;
     }
 
-    public void setImageUrl(int imageUrl) {
-        ImageUrl = imageUrl;
-    }
-
-    public void setPRODUCT_NAME(String PRODUCT_NAME) {
-        this.PRODUCT_NAME = PRODUCT_NAME;
-    }
-
-    public void setPRICE(String PRICE) {
-        this.PRICE = PRICE;
-    }
-
-    public void setNUMBER_OF_REVIEWS(String NUMBER_OF_REVIEWS) {
-        this.NUMBER_OF_REVIEWS = NUMBER_OF_REVIEWS;
-    }
-
-    public void setRATINGS(String RATINGS) {
-        this.RATINGS = RATINGS;
-    }
-
-    public int getImageUrl() {
-
+    public String getImageUrl() {
         return ImageUrl;
     }
 
@@ -49,12 +32,12 @@ public class CategoryList {
         return PRODUCT_NAME;
     }
 
-    public String getRATINGS() {
-        return RATINGS;
+    public int getPRICE() {
+        return PRICE;
     }
 
-    public String getPRICE() {
-        return PRICE;
+    public String getRATINGS() {
+        return RATINGS;
     }
 
     public String getNUMBER_OF_REVIEWS() {
