@@ -83,7 +83,7 @@ public class Childcategoru extends AppCompatActivity implements View.OnClickList
     TextView viewMoreLaunchText, viewMorePublisherText, viewMorePriceText, viewMoreDiscountText, viewMorePopularCategText;
     View headerView;
     DrawerLayout drawer;
-    private String JSON_RESPONSE;
+    private String JSON_RESPONSE,JSON_RESPONSE_NEW_LAUNCH;
     ImageView toolbarcartimage;
     NestedScrollView nestedScrollView;
     public static ArrayList<String> Poojaitem;
@@ -123,10 +123,6 @@ public class Childcategoru extends AppCompatActivity implements View.OnClickList
         if (JSON_RESPONSE != null) {
             mDummyList = new ArrayList<>();
             SHOP_BY_PUBLISHER = new ShopByPublisher(JSON_RESPONSE, Childcategoru.this).parsingShopByPublisher();
-            newLaunchView = (RecyclerView) findViewById(R.id.newLaunchRecyclerView);
-            mnewLaunchAdapter = new ChildCategoryCardAdapter(this, mDummyList);
-            final GridLayoutManager lm = new GridLayoutManager(this, 2);
-            newLaunchView.setLayoutManager(lm);
 
 /*
             for (int i=0;i<12;i++){
@@ -137,13 +133,6 @@ public class Childcategoru extends AppCompatActivity implements View.OnClickList
             for (int i = 0; i < 6; i++) {
                 mDummyList.add(SHOP_BY_PUBLISHER.get(i));
             }
-
-            newLaunchView.setNestedScrollingEnabled(false);
-            newLaunchView.setItemAnimator(new DefaultItemAnimator());
-            viewMoreLaunchText = (TextView) findViewById(R.id.viewmoreLaunch);
-            viewMoreLaunchText.setOnClickListener(this);
-            newLaunchView.setFocusable(false);
-            newLaunchView.setAdapter(mnewLaunchAdapter);
 
 
             mPublisherView = (RecyclerView) findViewById(R.id.publisherRecyclerView);
@@ -191,8 +180,20 @@ public class Childcategoru extends AppCompatActivity implements View.OnClickList
             viewMorePopularCategText.setOnClickListener(this);
             mPopularCategView.setAdapter(mPopularCategAdapter);
             mPopularCategView.setNestedScrollingEnabled(false);
-
         }
+            newLaunchView = (RecyclerView) findViewById(R.id.newLaunchRecyclerView);
+            mnewLaunchAdapter = new ChildCategoryCardAdapter(this, mDummyList);
+            final GridLayoutManager lm = new GridLayoutManager(this, 2);
+            newLaunchView.setLayoutManager(lm);
+            newLaunchView.setNestedScrollingEnabled(false);
+            newLaunchView.setItemAnimator(new DefaultItemAnimator());
+            viewMoreLaunchText = (TextView) findViewById(R.id.viewmoreLaunch);
+            viewMoreLaunchText.setOnClickListener(this);
+            newLaunchView.setFocusable(false);
+            newLaunchView.setAdapter(mnewLaunchAdapter);
+
+
+
         getSupportActionBar().setTitle(getIntent().getStringExtra("get"));
         Log.i("get", getIntent().getStringExtra("get"));
         inti();
@@ -795,7 +796,6 @@ public class Childcategoru extends AppCompatActivity implements View.OnClickList
         facebook = (LinearLayout) view.findViewById(R.id.facebook);
         google = (LinearLayout) view.findViewById(R.id.googleplus);
         twitter = (LinearLayout) view.findViewById(R.id.twitter);
-        productPage = (LinearLayout) view.findViewById(R.id.myProductLayout);
         pinterest = (LinearLayout) view.findViewById(R.id.pinterest);
         youtube = (LinearLayout) view.findViewById(R.id.youtube);
         instagram = (LinearLayout) view.findViewById(R.id.instagram);
@@ -805,7 +805,6 @@ public class Childcategoru extends AppCompatActivity implements View.OnClickList
         mycart.setOnClickListener(this);
         myaccount.setOnClickListener(this);
         helpcenter.setOnClickListener(this);
-        productPage.setOnClickListener(this);
         ratedesichain.setOnClickListener(this);
         policy.setOnClickListener(this);
         facebook.setOnClickListener(this);

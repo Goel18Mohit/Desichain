@@ -1,10 +1,13 @@
 package com.example.nitin.desichain.Contents;
 
+import java.io.Serializable;
+
 /**
  * Created by NITIN on 20-Jun-17.
  */
 
-public class CategoryList {
+public class CategoryList implements Serializable{
+
 
     private String PRODUCT_NAME;
     private int   ACTUAL_PRICE;

@@ -32,8 +32,7 @@ import android.widget.Toast;
 import com.example.nitin.desichain.Adapters.BrandStudioAdapter;
 import com.example.nitin.desichain.Adapters.CustomViewpagerAdapter;
 import com.example.nitin.desichain.Adapters.ProductHorizontalAdapter;
-import com.example.nitin.desichain.Contents.BrandStudioList;
-import com.example.nitin.desichain.Contents.ProductHorizontal;
+import com.example.nitin.desichain.Contents.*;
 import com.example.nitin.desichain.Internet.FetchingFromUrl;
 import com.example.nitin.desichain.ParsingJson.BrandStudio;
 import com.example.nitin.desichain.ParsingJson.BsetSellingProduct;
@@ -85,7 +84,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     View headerView;
     //  private BrandStudioAdapter mBrandStudioAdapter;
     private RecyclerView mLatestProductView, mBrandStudioView, mTopTenGameView, mTopTenGameView2, mFeaturedProductView, mAdvertisementView, mBestSellingView;
-    private ArrayList<ProductHorizontal> mProductsList;
+    private ArrayList<com.example.nitin.desichain.Contents.CategoryList> mLatestProductList, mFeaturedProductList,mBestSellingProductList, mDummmyBestSelling,mDeummyLatest,mDummyFeatured;
     private ProductHorizontalAdapter mLatestProductAdapter, mTopTenGameAdapter, mTopTenGameAdapter2, mFeaturedProductAdapter, mAdvertisementAdapter, mBestSellingProductAdapter;
     LinearLayout myorder, mycart, myaccount, helpcenter, ratedesichain, productPage, policy, facebook, google, twitter, pinterest, youtube, instagram, aboutus, subscribe;
 
@@ -100,6 +99,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         getSupportActionBar().setHomeButtonEnabled(true);
         invalidateOptionsMenu();
 
+
         Intent intent=getIntent();
         if(intent!=null){
             FLAG_FOR_CALLING=intent.getStringExtra("CALLINGFROMREGISTERACTIVITY");
@@ -110,6 +110,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 //savedInstanceState.putString("SNO",CUSTOMER_SNO);
             }
         }
+
+        mFeaturedProductList =new ArrayList<>();
+        mDeummyLatest=new ArrayList<>();
+        mDummyFeatured=new ArrayList<>();
+        mBestSellingProductList=new ArrayList<>();
+        mDummmyBestSelling =new ArrayList<>();
         mLatestProdText = (TextView) findViewById(R.id.latestProdViewAll);
         mTopTenText = (TextView) findViewById(R.id.topTenGameViewAll);
         mFeaturedText = (TextView) findViewById(R.id.featuredProductViewAll);
@@ -155,10 +161,40 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         },DELAY_MS,PERIOD_MS);
 
-        mLatestProdText.setOnClickListener(this);
-        mTopTenText.setOnClickListener(this);
-        mFeaturedText.setOnClickListener(this);
-        mBestSellText.setOnClickListener(this);
+        mLatestProdText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(MainActivity.this,CategoryPage.class);
+                intent1.putExtra("featuredProdKey",mLatestProductList);
+                startActivity(intent1);
+            }
+        });
+        mTopTenText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(MainActivity.this,CategoryPage.class);
+                intent1.putExtra("featuredProdKey",mLatestProductList);
+                startActivity(intent1);
+
+            }
+        });
+        mFeaturedText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(MainActivity.this,CategoryPage.class);
+                intent1.putExtra("featuredProdKey",mFeaturedProductList);
+                startActivity(intent1);
+            }
+        });
+        mBestSellText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(MainActivity.this,CategoryPage.class);
+                intent1.putExtra("featuredProdKey",mBestSellingProductList);
+                startActivity(intent1);
+
+            }
+        });
 
         timer = new Timer();
         timer.schedule(new TimerTask() {
@@ -168,10 +204,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         }, DELAY_MS, PERIOD_MS);
 
-        launchBestSellingProduct();
+        launchFeaturedProducts();
         loadBrandStudio();
+        loadLatestProduct();
+        loadBestSellingProducts();
+
         mLatestProductView = (RecyclerView) findViewById(R.id.LatestProductRecyclerView);
-        mLatestProductAdapter = new ProductHorizontalAdapter(MainActivity.this, mProductsList);
+        mLatestProductAdapter = new ProductHorizontalAdapter(MainActivity.this, mDeummyLatest);
         GridLayoutManager lm = new GridLayoutManager(this, 2);
         mLatestProductView.setLayoutManager(lm);
         mLatestProductView.setHasFixedSize(true);
@@ -204,28 +243,29 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         }));
 
-        final Handler handler1 = new Handler();
-        final Runnable runnable = new Runnable() {
-            int count;
+        if (BRAND_STUDIO_LIST!=null) {
+            final Handler handler1 = new Handler();
+            final Runnable runnable = new Runnable() {
+                int count;
 
-            @Override
-            public void run() {
-                if (count == BRAND_STUDIO_LIST.size()) {
-                    count = 0;
+                @Override
+                public void run() {
+                    if (count == BRAND_STUDIO_LIST.size()) {
+                        count = 0;
+                    }
+                    mBrandStudioView.smoothScrollToPosition(count++);
                 }
-                mBrandStudioView.smoothScrollToPosition(count++);
-            }
-        };
-        timer = new Timer();
-        timer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                handler1.post(runnable);
-            }
-        }, 0, PERIOD_MS);
+            };
+            timer = new Timer();
+            timer.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    handler1.post(runnable);
+                }
+            }, 0, PERIOD_MS);
+        }
 
-
-        mTopTenGameAdapter = new ProductHorizontalAdapter(MainActivity.this, mProductsList);
+        mTopTenGameAdapter = new ProductHorizontalAdapter(MainActivity.this, mDeummyLatest);
         mTopTenGameView = (RecyclerView) findViewById(R.id.top_ten_game_view);
         GridLayoutManager lm1 = new GridLayoutManager(this, 2);
         mTopTenGameView.setLayoutManager(lm1);
@@ -234,7 +274,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mTopTenGameView.setAdapter(mTopTenGameAdapter);
 
 
-        mTopTenGameAdapter2 = new ProductHorizontalAdapter(MainActivity.this, mProductsList);
+        mTopTenGameAdapter2 = new ProductHorizontalAdapter(MainActivity.this, mDeummyLatest);
         mTopTenGameView2 = (RecyclerView) findViewById(R.id.top_ten_game_second_RecyclerView);
         GridLayoutManager lm5 = new GridLayoutManager(this, 2);
         mTopTenGameView2.setLayoutManager(lm5);
@@ -243,7 +283,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mTopTenGameView2.setAdapter(mTopTenGameAdapter2);
 
 
-        mFeaturedProductAdapter = new ProductHorizontalAdapter(MainActivity.this, mProductsList);
+        mFeaturedProductAdapter = new ProductHorizontalAdapter(MainActivity.this, mDummyFeatured);
         mFeaturedProductView = (RecyclerView) findViewById(R.id.featuredProductRecyclerView);
         GridLayoutManager lm2 = new GridLayoutManager(this, 2);
         mFeaturedProductView.setLayoutManager(lm2);
@@ -251,7 +291,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mFeaturedProductView.setItemAnimator(new DefaultItemAnimator());
         mFeaturedProductView.setAdapter(mFeaturedProductAdapter);
 
-        mBestSellingProductAdapter = new ProductHorizontalAdapter(this, mProductsList);
+        mBestSellingProductAdapter = new ProductHorizontalAdapter(this, mDummmyBestSelling);
         mBestSellingView = (RecyclerView) findViewById(R.id.bestSellingRecyclerView);
         GridLayoutManager lm4 = new GridLayoutManager(this, 2);
         mBestSellingView.setLayoutManager(lm4);
@@ -295,16 +335,70 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
-    public void launchBestSellingProduct() {
-        try {
-            JSON_RESPONSE = new FetchingFromUrl().execute("http://dc.desichain.in/DesiChainWeService.asmx/FeaturedProduct").get();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
+    public void loadLatestProduct(){
+        if (!(Utility.isNetworkAvailable(this))) {
+
+            Toast.makeText(this,"No Internet Connection",Toast.LENGTH_SHORT).show();
+        } else {
+            try {
+                JSON_RESPONSE = new FetchingFromUrl().execute("http://dc.desichain.in/DesiChainWeService.asmx/LatestProduct").get();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            }
+            if (JSON_RESPONSE != null) {
+                mLatestProductList = new BsetSellingProduct(JSON_RESPONSE, MainActivity.this).parseBestSellingProduct();
+                for (int i=0;i<4;i++){
+                    mDeummyLatest.add(mLatestProductList.get(i));
+                }
+             }
         }
-        if (JSON_RESPONSE != null) {
-            mProductsList = new BsetSellingProduct(JSON_RESPONSE, MainActivity.this).parseBestSellingProduct();
+
+    }
+
+    public void loadBestSellingProducts(){
+        if (!(Utility.isNetworkAvailable(this))) {
+
+            Toast.makeText(this,"No Internet Connection",Toast.LENGTH_SHORT).show();
+        } else {
+            try {
+                JSON_RESPONSE = new FetchingFromUrl().execute("http://dc.desichain.in/DesiChainWeService.asmx/BestsellingProduct").get();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            }
+            if (JSON_RESPONSE != null) {
+                mBestSellingProductList = new BsetSellingProduct(JSON_RESPONSE, MainActivity.this).parseBestSellingProduct();
+                for (int i=0;i<4;i++){
+                    mDummmyBestSelling.add(mBestSellingProductList.get(i));
+                }
+            }
+        }
+    }
+
+
+
+    public void launchFeaturedProducts() {
+
+        if (!(Utility.isNetworkAvailable(this))) {
+
+            Toast.makeText(this,"No Internet Connection",Toast.LENGTH_SHORT).show();
+        } else {
+            try {
+                JSON_RESPONSE = new FetchingFromUrl().execute("http://dc.desichain.in/DesiChainWeService.asmx/FeaturedProduct").get();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            }
+            if (JSON_RESPONSE != null) {
+                mFeaturedProductList = new BsetSellingProduct(JSON_RESPONSE, MainActivity.this).parseBestSellingProduct();
+                for (int i=0;i<4;i++){
+                    mDummyFeatured.add(mFeaturedProductList.get(i));
+                }
+                }
         }
     }
 
@@ -493,7 +587,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         facebook = (LinearLayout) view.findViewById(R.id.facebook);
         google = (LinearLayout) view.findViewById(R.id.googleplus);
         twitter = (LinearLayout) view.findViewById(R.id.twitter);
-        productPage = (LinearLayout) view.findViewById(R.id.myProductLayout);
         pinterest = (LinearLayout) view.findViewById(R.id.pinterest);
         youtube = (LinearLayout) view.findViewById(R.id.youtube);
         instagram = (LinearLayout) view.findViewById(R.id.instagram);
@@ -503,7 +596,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mycart.setOnClickListener(this);
         myaccount.setOnClickListener(this);
         helpcenter.setOnClickListener(this);
-        productPage.setOnClickListener(this);
         ratedesichain.setOnClickListener(this);
         policy.setOnClickListener(this);
         facebook.setOnClickListener(this);
@@ -522,17 +614,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         new Utility().openIntent(this, v.getId(), drawer);
     }
 
-    public void loadBrandStudio() {
-        try {
-            JSON_RESPONSE = new FetchingFromUrl().execute("http://dc.desichain.in/DesiChainWeService.asmx/BrandDetail").get();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        }
 
-        if (JSON_RESPONSE != null) {
-            BRAND_STUDIO_LIST = new BrandStudio(JSON_RESPONSE, MainActivity.this).parseBestSellingProduct();
+
+    public void loadBrandStudio() {
+        if (!(Utility.isNetworkAvailable(this))) {
+
+            Toast.makeText(this, "No Internet Connection", Toast.LENGTH_SHORT).show();
+        } else {
+            try {
+                JSON_RESPONSE = new FetchingFromUrl().execute("http://dc.desichain.in/DesiChainWeService.asmx/BrandDetail").get();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            }
+
+            if (JSON_RESPONSE != null) {
+                BRAND_STUDIO_LIST = new BrandStudio(JSON_RESPONSE, MainActivity.this).parseBestSellingProduct();
+            }
         }
     }
 

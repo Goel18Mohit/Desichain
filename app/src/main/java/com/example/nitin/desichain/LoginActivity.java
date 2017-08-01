@@ -1,8 +1,10 @@
 package com.example.nitin.desichain;
 
 import android.os.Bundle;
+import android.content.Intent;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -10,6 +12,13 @@ import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import com.example.nitin.desichain.Contents.LoginData;
+import com.example.nitin.desichain.Internet.FetchingFromUrl;
+import com.example.nitin.desichain.ParsingJson.LoginParse;
+
+import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -19,6 +28,8 @@ public class LoginActivity extends AppCompatActivity {
     private FrameLayout frameLayout;
     private ImageView logoImage;
     private ImageButton mSignInImg;
+    private ArrayList<LoginData> LOGIN_CONTENT_LIST;
+    private String JSON_RESPONSE, email, password;
     private EditText editEmail,editPassword;
 
     private FragmentManager fm;
@@ -31,6 +42,7 @@ public class LoginActivity extends AppCompatActivity {
         mSignInImg=(ImageButton)findViewById(R.id.img_sign_in_button);
         frameLayout=(FrameLayout)findViewById(R.id.frameLayout2);
         logoImage=(ImageView)findViewById(R.id.desichainLogo);
+
         forgotPwdBtn=(Button)findViewById(R.id.btn_reset_password_main);
         forgotPwdBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,9 +66,22 @@ public class LoginActivity extends AppCompatActivity {
 
                 }
                 else if (!editEmail.getText().toString().equals("") && !editPassword.getText().toString().equals("")){
-                    Toast.makeText(getApplicationContext(),"sign in logic",Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getApplicationContext(),"sign in logic",Toast.LENGTH_SHORT).show();
+                    email = editEmail.getText().toString();
+                    password = editPassword.getText().toString();
+                    JSON_RESPONSE = load("http://dc.desichain.in/DesiChainWeService.asmx/login?loginid="
+                            +email+"&password="+password);
+                    if (JSON_RESPONSE != null && ! JSON_RESPONSE.contains("invalid argument")) {
+//                        LOGIN_CONTENT_LIST = new LoginParse(JSON_RESPONSE, LoginActivity.this).parsingLogin();
+                        Toast.makeText(LoginActivity.this, "Successfull login", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                        startActivity(intent);
+                    }
+                    else {
+                        Toast.makeText(LoginActivity.this, "Invalid username and password", Toast.LENGTH_SHORT).show();
+                    }
                 }
-            }
+           }
         });
 
         registerAccBtn=(Button)findViewById(R.id.sign_up_button);
@@ -71,8 +96,16 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
-
-
+    }
+    public String load(String url) {
+        try {
+            JSON_RESPONSE = new FetchingFromUrl().execute(url).get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+        return JSON_RESPONSE;
 
     }
 }

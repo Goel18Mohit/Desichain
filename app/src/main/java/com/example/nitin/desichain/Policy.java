@@ -363,7 +363,6 @@ public class Policy extends AppCompatActivity implements View.OnClickListener {
         facebook = (LinearLayout) view.findViewById(R.id.facebook);
         google = (LinearLayout) view.findViewById(R.id.googleplus);
         twitter = (LinearLayout) view.findViewById(R.id.twitter);
-        productPage = (LinearLayout) view.findViewById(R.id.myProductLayout);
         pinterest = (LinearLayout) view.findViewById(R.id.pinterest);
         youtube = (LinearLayout) view.findViewById(R.id.youtube);
         instagram = (LinearLayout) view.findViewById(R.id.instagram);
@@ -373,7 +372,6 @@ public class Policy extends AppCompatActivity implements View.OnClickListener {
         mycart.setOnClickListener(this);
         myaccount.setOnClickListener(this);
         helpcenter.setOnClickListener(this);
-        productPage.setOnClickListener(this);
         ratedesichain.setOnClickListener(this);
         policy.setOnClickListener(this);
         facebook.setOnClickListener(this);

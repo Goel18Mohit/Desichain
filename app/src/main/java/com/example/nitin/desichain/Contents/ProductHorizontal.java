@@ -1,10 +1,12 @@
 package com.example.nitin.desichain.Contents;
 
+import java.io.Serializable;
+
 /**
  * Created by ashis on 6/20/2017.
  */
 
-public class ProductHorizontal {
+public class ProductHorizontal implements Serializable {
 
     private String mProductName,mProductNoOfReviews,mProductRating;
     private String mProductImageId;
