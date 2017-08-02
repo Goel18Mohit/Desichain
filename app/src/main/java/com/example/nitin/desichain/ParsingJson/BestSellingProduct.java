@@ -76,7 +76,9 @@ public class BestSellingProduct {
                   HOW_TO_USE = PRODUCT_json_OBJECCT.getString("direction");
               }
               NET_WEIGTH=PRODUCT_json_OBJECCT.getString("netweight");
-              GROSS_WEIGHHT=PRODUCT_json_OBJECCT.getInt("GrossWeight");
+              if (PRODUCT_json_OBJECCT.has("GrossWeight")) {
+                  GROSS_WEIGHHT = PRODUCT_json_OBJECCT.getInt("GrossWeight");
+              }
               DISCOUNT=(ACTUAL_PRICE-SELLING_PRICE)/100;
               BEST_SELLING_LIST.add(new CategoryList(IMAGE_URL,PRODUCT_NAME,SELLING_PRICE,"4.0","1200",GROSS_WEIGHHT,Ingredients));
           }
