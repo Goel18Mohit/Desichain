@@ -28,11 +28,11 @@ public class BsetSellingProduct {
     private int DISCOUNT;
     private String IMAGE_URL;
     private ArrayList<com.example.nitin.desichain.Contents.CategoryList> BEST_SELLING_LIST;
+
     public BsetSellingProduct(String JSON_RESPONSE,Context context) {
         this.JSON_RESPONSE = JSON_RESPONSE;
         mContent=context;
         BEST_SELLING_LIST=new ArrayList<>();
-        Log.i("ashish",JSON_RESPONSE);
     }
 
   public ArrayList<com.example.nitin.desichain.Contents.CategoryList> parseBestSellingProduct()
