@@ -318,8 +318,8 @@ public class ProductPageActual extends AppCompatActivity implements View.OnClick
 
 
         for (int i=0;i<5;i++){
-            mProductsList.add(new CategoryList("https://www.logogarden.com/wp-content/uploads/lg-index/Example-Logo-6.jpg","aaa",
-                    1200,"4.0","1200"));
+            mProductsList.add(new CategoryList("5836599apple.jpg","aaa",
+                    1200,"4.0","1200",2,"aaaa"));
         }
 
     }

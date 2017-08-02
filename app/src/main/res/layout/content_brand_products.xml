@@ -20,6 +20,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:scaleType="fitXY"
             android:id="@+id/brand_image"
             android:src="@mipmap/ic_launcher"/>
 
@@ -41,8 +42,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="3"
-                android:textAlignment="center"
-                android:gravity="center"
+                android:textAlignment="viewStart"
+                android:layout_marginLeft="8dp"
+                android:gravity="start"
                 android:layout_marginBottom="8dp"
                 android:id="@+id/brand_description"
                 android:text="“Purity Quality“ is the second name adjoined with the organization named Swadeshi Ayurveda Private Limited. Swadeshi Ayurveda is one of "/>

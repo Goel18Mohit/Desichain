@@ -45,7 +45,7 @@ public class BrandStudioItemsAdapter extends RecyclerView.Adapter<BrandStudioIte
 //        ProductHorizontal mProduct = mList.get(position);
         CategoryList mProduct = mList.get(position);
          holder.mProductRating.setText(mProduct.getRATINGS());
-        holder.mProductCost.setText( "Rs " + mProduct.getPRICE());
+        holder.mProductCost.setText( "Rs " + mProduct.getACTUAL_PRICE());
         holder.mProductname.setText(mProduct.getPRODUCT_NAME());
         holder.mProductReviewsNo.setText(mProduct.getNUMBER_OF_REVIEWS());
         Picasso.with(mContext).load("http://www.desichain.in/uploads/thumb_"+mList.get(position).getImageUrl())
