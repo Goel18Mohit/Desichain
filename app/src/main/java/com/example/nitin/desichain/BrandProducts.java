@@ -95,7 +95,8 @@ public class BrandProducts extends AppCompatActivity implements View.OnClickList
         brandimage= (ImageView) findViewById(R.id.brand_image);
         brandname= (TextView) findViewById(R.id.brand_name);
         branddescription= (TextView) findViewById(R.id.brand_description);
-
+        ndle.get(AllConstants.Brandimageurl)).into(brandimage);
+        brandname.setText(bundle.getString(AllConstants.Brandname));
         Picasso.with(BrandProducts.this).load("http://www.desichain.in/uploads/"+bundle.get(AllConstants.Brandimageurl)).into(brandimage);
         brandname.setText(bundle.getString(AllConstants.Brandname));
         branddescription.setText(bundle.getString(AllConstants.Branddescription));

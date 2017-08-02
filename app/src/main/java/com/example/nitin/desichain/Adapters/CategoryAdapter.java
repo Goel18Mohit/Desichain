@@ -31,6 +31,12 @@ public class CategoryAdapter extends BaseAdapter {
     public CategoryAdapter(Context context, ArrayList<CategoryList> arrayList) {
         this.context = context;
         this.arrayList = arrayList;
+
+
+
+
+
+
     }
 
     @Override
