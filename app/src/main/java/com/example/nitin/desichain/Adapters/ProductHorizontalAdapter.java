@@ -42,11 +42,11 @@ public class ProductHorizontalAdapter extends RecyclerView.Adapter<ProductHorizo
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
+    public void onBindViewHolder(final MyViewHolder holder, int position) {
 
-        com.example.nitin.desichain.Contents.CategoryList mProduct = mProductHorizontalList.get(position);
+        final com.example.nitin.desichain.Contents.CategoryList mProduct = mProductHorizontalList.get(position);
         holder.mProductRating.setText(mProduct.getRATINGS());
-        holder.mProductCost.setText(String.valueOf(mProduct.getPRICE()));
+        holder.mProductCost.setText("Rs." + mProduct.getACTUAL_PRICE());
         holder.mProductname.setText(mProduct.getPRODUCT_NAME());
         holder.mProductReviewsNo.setText(mProduct.getNUMBER_OF_REVIEWS());
         Picasso.with(mContext).load("http://www.desichain.in/uploads/thumb_"+mProductHorizontalList.
@@ -55,6 +55,7 @@ public class ProductHorizontalAdapter extends RecyclerView.Adapter<ProductHorizo
             @Override
             public void onClick(View v) {
                 Toast.makeText(mContext,"product added to cart successfully",Toast.LENGTH_SHORT).show();
+        holder.mNetWeightText.setText("Net wt:"+mProduct.getmNetWeight());
             }
         });
     }
@@ -67,11 +68,12 @@ public class ProductHorizontalAdapter extends RecyclerView.Adapter<ProductHorizo
     public class MyViewHolder extends RecyclerView.ViewHolder{
 
         private ImageView mProductImage,mAddToCartImage;
-        private TextView mProductname,mProductCost,mProductRating, mProductReviewsNo,mEmptyView;
+        private TextView mProductname,mProductCost,mProductRating, mProductReviewsNo,mEmptyView,mNetWeightText;
 
 
         public MyViewHolder(View itemView) {
             super(itemView);
+            mNetWeightText=(TextView)itemView.findViewById(R.id.netWeightText);
             mEmptyView=(TextView)itemView.findViewById(R.id.emptyLatestProduct);
             mAddToCartImage=(ImageView)itemView.findViewById(R.id.addToCart);
             mProductImage=(ImageView)itemView.findViewById(R.id.product_image);

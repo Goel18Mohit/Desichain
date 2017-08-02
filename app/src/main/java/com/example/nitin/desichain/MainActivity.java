@@ -36,7 +36,7 @@ import com.example.nitin.desichain.Adapters.ProductHorizontalAdapter;
 import com.example.nitin.desichain.Contents.*;
 import com.example.nitin.desichain.Internet.FetchingFromUrl;
 import com.example.nitin.desichain.ParsingJson.BrandStudio;
-import com.example.nitin.desichain.ParsingJson.BsetSellingProduct;
+import com.example.nitin.desichain.ParsingJson.BestSellingProduct;
 import com.example.nitin.desichain.SubCategoryList.ShowCategoryAdapeter;
 import com.example.nitin.desichain.Utility.Utility;
 
@@ -186,6 +186,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onClick(View v) {
                 Intent intent1 = new Intent(MainActivity.this,CategoryPage.class);
                 intent1.putExtra("featuredProdKey",mFeaturedProductList);
+                for (int i=0;i<mFeaturedProductList.size();i++) {
+                    CategoryList categoryList = mFeaturedProductList.get(i);
+                    Log.i("ashish", categoryList.getPRODUCT_NAME());
+                }
                 startActivity(intent1);
             }
         });
@@ -365,7 +369,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 e.printStackTrace();
             }
             if (JSON_RESPONSE != null) {
-                mLatestProductList = new BsetSellingProduct(JSON_RESPONSE, MainActivity.this).parseBestSellingProduct();
+                mLatestProductList = new BestSellingProduct(JSON_RESPONSE, MainActivity.this).parseBestSellingProduct();
                 for (int i=0;i<4;i++){
                     mDeummyLatest.add(mLatestProductList.get(i));
                 }
@@ -387,7 +391,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 e.printStackTrace();
             }
             if (JSON_RESPONSE != null) {
-                mBestSellingProductList = new BsetSellingProduct(JSON_RESPONSE, MainActivity.this).parseBestSellingProduct();
+                mBestSellingProductList = new BestSellingProduct(JSON_RESPONSE, MainActivity.this).parseBestSellingProduct();
                 for (int i=0;i<4;i++){
                     mDummmyBestSelling.add(mBestSellingProductList.get(i));
                 }
@@ -411,7 +415,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 e.printStackTrace();
             }
             if (JSON_RESPONSE != null) {
-                mFeaturedProductList = new BsetSellingProduct(JSON_RESPONSE, MainActivity.this).parseBestSellingProduct();
+                mFeaturedProductList = new BestSellingProduct(JSON_RESPONSE, MainActivity.this).parseBestSellingProduct();
                 for (int i=0;i<4;i++){
                     mDummyFeatured.add(mFeaturedProductList.get(i));
                 }

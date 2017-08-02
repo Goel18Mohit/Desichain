@@ -8,7 +8,7 @@ import java.io.Serializable;
 
 public class CategoryList implements Serializable{
 
-
+    private String ImageUrl;
     private String PRODUCT_NAME;
     private int   ACTUAL_PRICE;
     private int SELLING_PRICE;
@@ -22,9 +22,13 @@ public class CategoryList implements Serializable{
     private String NET_WEIGTH;
     private int GROSS_WEIGHHT;
     private String RATINGS;
-    private String REVIEWS;
+    private String NUMBER_OF_REVIEWS;
+    private int mNetWeight;
 
-    public CategoryList(String PRODUCT_NAME, int ACTUAL_PRICE, int SELLING_PRICE, String IMAGE_URL, int DISCOUNT, int PRODUCT_ID, String PRODUCT_DESCRIPTION, int BRAND_ID, String ingredients, String HOW_TO_USE, String NET_WEIGTH, int GROSS_WEIGHHT,String RATINGS,String REVIEWS) {
+
+
+    public CategoryList(String imageUrl, String PRODUCT_NAME, int PRICE, String RATINGS, String NUMBER_OF_REVIEWS , int mNetWeight,String ingredients) {
+        this.ImageUrl = imageUrl;
         this.PRODUCT_NAME = PRODUCT_NAME;
         this.ACTUAL_PRICE = ACTUAL_PRICE;
         this.SELLING_PRICE = SELLING_PRICE;
@@ -38,7 +42,19 @@ public class CategoryList implements Serializable{
         this.NET_WEIGTH = NET_WEIGTH;
         this.GROSS_WEIGHHT = GROSS_WEIGHHT;
         this.RATINGS=RATINGS;
-        this.REVIEWS=REVIEWS;
+        this.NUMBER_OF_REVIEWS=NUMBER_OF_REVIEWS;
+        this.ACTUAL_PRICE = PRICE;
+        this.RATINGS = RATINGS;
+        this.NUMBER_OF_REVIEWS = NUMBER_OF_REVIEWS;
+        this.mNetWeight = mNetWeight;
+    }
+
+    public int getmNetWeight() {
+        return mNetWeight;
+    }
+
+    public String getImageUrl() {
+        return ImageUrl;
     }
 
     public String getPRODUCT_NAME() {
@@ -93,7 +109,7 @@ public class CategoryList implements Serializable{
         return RATINGS;
     }
 
-    public String getREVIEWS() {
-        return REVIEWS;
+    public String getNUMBER_OF_REVIEWS() {
+        return NUMBER_OF_REVIEWS;
     }
 }

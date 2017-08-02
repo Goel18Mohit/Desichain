@@ -1,5 +1,4 @@
 package com.example.nitin.desichain;
-
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -59,6 +58,7 @@ public class CategoryPage extends AppCompatActivity implements View.OnClickListe
     public static  ArrayList<String> Books;
     public static ArrayList<String> Homecare;
     public static   ArrayList<String> others;
+    public ArrayList<CategoryList> mList;
     public  static HashMap<String,ArrayList<String>> hashMap;
     LinearLayout subscribe;
     LinearLayout myorder,mycart,myaccount,helpcenter,ratedesichain,productPage,policy,facebook,google,twitter,pinterest,youtube,instagram,aboutus;
@@ -77,10 +77,20 @@ public class CategoryPage extends AppCompatActivity implements View.OnClickListe
         FILTER_OPTION=(TextView)findViewById(R.id.filter);
         listView1= (GridView) findViewById(R.id.categorygridview);
         SORT_OPTION= (TextView) findViewById(R.id.sort);
+
+       // arrayList1 = new ArrayList<>();
+        mList = (ArrayList<CategoryList>)getIntent().getSerializableExtra("featuredProdKey");
+
+
+        if (mList!=null){
+            CategoryAdapter categoryAdapter = new CategoryAdapter(this,mList);
+            listView1.setAdapter(categoryAdapter);
+        }
+
         intent1=getIntent();
-            String CHILDCATEGORYNAME=intent1.getStringExtra("Topic");
+        String CHILDCATEGORYNAME=intent1.getStringExtra("Topic");
         Toast.makeText(CategoryPage.this,CHILDCATEGORYNAME,Toast.LENGTH_SHORT).show();
-            int CATEGORY_FLAG=intent1.getIntExtra("CATEGORYFLAG",-1);
+        int CATEGORY_FLAG=intent1.getIntExtra("CATEGORYFLAG",-1);
 
             if(CATEGORY_FLAG==1)
             {

@@ -12,21 +12,20 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.nitin.desichain.Adapters.BrandStudioItemsAdapter;
 import com.example.nitin.desichain.Adapters.SingleCartAdapter;
 import com.example.nitin.desichain.Contents.CategoryList;
 import com.example.nitin.desichain.Contents.ProductHorizontal;
-import com.example.nitin.desichain.Contents.*;
 import com.example.nitin.desichain.Internet.FetchingFromUrl;
-import com.example.nitin.desichain.ParsingJson.BsetSellingProduct;
+import com.example.nitin.desichain.ParsingJson.BestSellingProduct;
 import com.example.nitin.desichain.ParsingJson.ParticularPublisherDetail;
 import com.example.nitin.desichain.SubCategoryList.ShowCategoryAdapeter;
 import com.example.nitin.desichain.Utility.Utility;
@@ -176,6 +175,25 @@ public class BrandProducts extends AppCompatActivity implements View.OnClickList
         add();
         
 
+    }
+
+    public void loadProducts(String url,int sno) {
+        if (!(Utility.isNetworkAvailable(this))) {
+
+            Toast.makeText(this, "No Internet Connection", Toast.LENGTH_SHORT).show();
+        } else {
+            try {
+                JSON_RESPONSE = new FetchingFromUrl().execute(url+sno).get();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            }
+
+            if (JSON_RESPONSE != null) {
+                mBrandProdList = new BestSellingProduct(JSON_RESPONSE, BrandProducts.this).parseBestSellingProduct();
+            }
+        }
     }
 
     private void add() {

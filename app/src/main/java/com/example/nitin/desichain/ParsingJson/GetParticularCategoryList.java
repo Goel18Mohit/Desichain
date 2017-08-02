@@ -57,8 +57,8 @@ public class GetParticularCategoryList {
                 NET_WEIGTH=PRODUCT_json_OBJECCT.getString("netweight");
                 GROSS_WEIGHHT=PRODUCT_json_OBJECCT.getInt("GrossWeight");
                 DISCOUNT=(ACTUAL_PRICE-SELLING_PRICE)/100;
-                arrayList1.add(new CategoryList(PRODUCT_NAME,ACTUAL_PRICE,SELLING_PRICE,IMAGE_URL,DISCOUNT,PRODUCT_ID,PRODUCT_DESCRIPTION,BRAND_ID,Ingredients,HOW_TO_USE,NET_WEIGTH,GROSS_WEIGHHT,"4","12"));
-
+               // arrayList1.add(new CategoryList(PRODUCT_NAME,ACTUAL_PRICE,SELLING_PRICE,IMAGE_URL,DISCOUNT,PRODUCT_ID,PRODUCT_DESCRIPTION,BRAND_ID,Ingredients,HOW_TO_USE,NET_WEIGTH,GROSS_WEIGHHT,"4","12"));
+                arrayList1.add(new CategoryList(IMAGE_URL,PRODUCT_NAME,SELLING_PRICE,"4.0","1200",GROSS_WEIGHHT,Ingredients));
 
             }
         } catch (JSONException e) {

@@ -25,11 +25,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.nitin.desichain.Adapters.BrandStudioItemsAdapter;
-import com.example.nitin.desichain.Contents.*;
 import com.example.nitin.desichain.Contents.CategoryList;
 import com.example.nitin.desichain.Internet.FetchingFromUrl;
-import com.example.nitin.desichain.ParsingJson.BrandStudio;
-import com.example.nitin.desichain.ParsingJson.BsetSellingProduct;
+import com.example.nitin.desichain.ParsingJson.BestSellingProduct;
 import com.example.nitin.desichain.SubCategoryList.ShowCategoryAdapeter;
 import com.example.nitin.desichain.Utility.Utility;
 
@@ -298,7 +296,7 @@ public class ShowSearchResult extends AppCompatActivity implements View.OnClickL
             }
 
             if (JSON_RESPONSE != null) {
-                searchList = new BsetSellingProduct(JSON_RESPONSE, ShowSearchResult.this).parseBestSellingProduct();
+                searchList = new BestSellingProduct(JSON_RESPONSE, ShowSearchResult.this).parseBestSellingProduct();
             }
         }
     }
