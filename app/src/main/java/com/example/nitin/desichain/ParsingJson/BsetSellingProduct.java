@@ -3,9 +3,6 @@ package com.example.nitin.desichain.ParsingJson;
 import android.content.Context;
 import android.util.Log;
 
-import com.example.nitin.desichain.CategoryList;
-import com.example.nitin.desichain.Contents.ProductHorizontal;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -28,11 +25,11 @@ public class BsetSellingProduct {
     private int DISCOUNT;
     private String IMAGE_URL;
     private ArrayList<com.example.nitin.desichain.Contents.CategoryList> BEST_SELLING_LIST;
+
     public BsetSellingProduct(String JSON_RESPONSE,Context context) {
         this.JSON_RESPONSE = JSON_RESPONSE;
         mContent=context;
         BEST_SELLING_LIST=new ArrayList<>();
-        Log.i("ashish",JSON_RESPONSE);
     }
 
   public ArrayList<com.example.nitin.desichain.Contents.CategoryList> parseBestSellingProduct()
@@ -49,7 +46,6 @@ public class BsetSellingProduct {
               IMAGE_URL=PRODUCT_json_OBJECCT.getString("productImg");
               DISCOUNT=(ACTUAL_PRICE-SELLING_PRICE)/100;
               BEST_SELLING_LIST.add(new com.example.nitin.desichain.Contents.CategoryList(IMAGE_URL,PRODUCT_NAME,ACTUAL_PRICE,"4.0","1200"));
-        //      BEST_SELLING_LIST.add(new CategoryList());
           }
       } catch (JSONException e) {
           e.printStackTrace();

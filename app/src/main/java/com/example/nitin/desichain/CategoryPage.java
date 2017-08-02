@@ -38,7 +38,7 @@ import java.util.concurrent.ExecutionException;
 
 public class CategoryPage extends AppCompatActivity implements View.OnClickListener {
 
-    
+
     GridView listView1;
     TextView SORT_OPTION,FILTER_OPTION;
     private Toolbar mToolbar;
@@ -70,7 +70,10 @@ public class CategoryPage extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_category_page);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        mList = new ArrayList<>();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         FILTER_OPTION=(TextView)findViewById(R.id.filter);
         listView1= (GridView) findViewById(R.id.categorygridview);
         SORT_OPTION= (TextView) findViewById(R.id.sort);

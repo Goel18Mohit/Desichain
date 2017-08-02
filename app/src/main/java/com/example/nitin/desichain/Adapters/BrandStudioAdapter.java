@@ -1,6 +1,7 @@
 package com.example.nitin.desichain.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -8,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.example.nitin.desichain.AllConstants;
+import com.example.nitin.desichain.BrandProducts;
 import com.example.nitin.desichain.Contents.BrandStudioList;
 import com.example.nitin.desichain.R;
 import com.squareup.picasso.Picasso;
@@ -39,9 +42,18 @@ public class BrandStudioAdapter extends RecyclerView.Adapter<BrandStudioAdapter.
     @Override
     public void onBindViewHolder(BrandStudioAdapter.MyViewHolder holder, int position) {
 
-        Log.i("Ashish", "http://www.desichain.in/uploads/" + arrayList.get(position).getBRAND_IMAGE_URL());
         Picasso.with(mContext).load("http://www.desichain.in/uploads/" + arrayList.get(position).getBRAND_IMAGE_URL())
                 .resizeDimen(R.dimen.header_logo_w, R.dimen.header_logo_h).into(holder.mBrandImage);
+        holder.mBrandImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Intent intent=new Intent(mContext, BrandProducts.class);
+//                intent.putExtra("PRODUCTID",mList.get(position).getPRODUCT_ID_SNO());
+//                intent.putExtra(AllConstants.FLAG,AllConstants.CALLFROMSHOPBYPUBLISHERACTIVITY);
+//                mContext.startActivity(intent);
+
+            }
+        });
     }
 
     @Override

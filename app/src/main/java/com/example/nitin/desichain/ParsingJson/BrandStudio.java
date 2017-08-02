@@ -21,6 +21,8 @@ public class BrandStudio {
     private JSONArray MAIN_JSON_ARRAY;
     private String BRAND_IMAGE;
     private String BRAND_PAGE_URL;
+    private String BRAND_PAGE_DESCRIPTION;
+    private int BRAND_SNO;
     private ArrayList<BrandStudioList> BRAND_PRODUCT_LIST;
     public BrandStudio(String JSON_RESPONSE, Context context) {
         this.JSON_RESPONSE = JSON_RESPONSE;
@@ -35,8 +37,10 @@ public class BrandStudio {
             {
                 PRODUCT_json_OBJECCT=MAIN_JSON_ARRAY.getJSONObject(i);
                 BRAND_IMAGE=PRODUCT_json_OBJECCT.getString("BrandImage");
-                BRAND_PAGE_URL=PRODUCT_json_OBJECCT.getString("pagename");
-                BRAND_PRODUCT_LIST.add(new BrandStudioList(BRAND_IMAGE,BRAND_PAGE_URL));
+                BRAND_PAGE_URL=PRODUCT_json_OBJECCT.getString("BrandName");
+                BRAND_PAGE_DESCRIPTION = PRODUCT_json_OBJECCT.getString("BrandDiscription");
+                BRAND_SNO = PRODUCT_json_OBJECCT.getInt("sno");
+                BRAND_PRODUCT_LIST.add(new BrandStudioList(BRAND_IMAGE,BRAND_PAGE_URL,BRAND_PAGE_DESCRIPTION,BRAND_SNO));
 
             }
         } catch (JSONException e) {

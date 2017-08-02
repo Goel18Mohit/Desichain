@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 
+<android.support.v4.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 <LinearLayout android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:orientation="vertical">
 
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_weight="2"
         android:background="#F5F5F5"
         android:orientation="horizontal">
@@ -28,30 +31,43 @@
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
+                android:layout_height="wrap_content"
                 android:id="@+id/brand_name"
-                android:layout_marginTop="@dimen/activity_horizontal_margin"
                 android:text="Brand Name"
                 android:textSize="20sp"
                 android:textAlignment="center"/>
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="3"
+                android:textAlignment="center"
                 android:gravity="center"
+                android:layout_marginBottom="8dp"
                 android:id="@+id/brand_description"
                 android:text="“Purity Quality“ is the second name adjoined with the organization named Swadeshi Ayurveda Private Limited. Swadeshi Ayurveda is one of "/>
         </LinearLayout>
 
     </LinearLayout>
 
-    <android.support.v7.widget.RecyclerView
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:clipToPadding="true"
-        android:id="@+id/brandRecyclerView"
-        android:layout_weight="4"/>
+        android:layout_weight="4">
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/emptyViewText"
+            android:text="No Data"
+            android:gravity="center"/>
+
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="true"
+        android:id="@+id/brandRecyclerView" />
+    </FrameLayout>
 </LinearLayout>
+</android.support.v4.widget.NestedScrollView>

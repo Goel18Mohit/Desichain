@@ -12,6 +12,7 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ExpandableListView;
@@ -20,10 +21,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.nitin.desichain.Adapters.BrandStudioItemsAdapter;
-import com.example.nitin.desichain.Adapters.ProductHorizontalAdapter;
 import com.example.nitin.desichain.Adapters.SingleCartAdapter;
+import com.example.nitin.desichain.Contents.CategoryList;
 import com.example.nitin.desichain.Contents.ProductHorizontal;
+import com.example.nitin.desichain.Contents.*;
 import com.example.nitin.desichain.Internet.FetchingFromUrl;
+import com.example.nitin.desichain.ParsingJson.BsetSellingProduct;
 import com.example.nitin.desichain.ParsingJson.ParticularPublisherDetail;
 import com.example.nitin.desichain.SubCategoryList.ShowCategoryAdapeter;
 import com.example.nitin.desichain.Utility.Utility;
@@ -36,33 +39,36 @@ import java.util.concurrent.ExecutionException;
 
 public class BrandProducts extends AppCompatActivity implements View.OnClickListener,SingleCartAdapter.ListChange {
 
+    private static final String TAG = BrandProducts.class.getSimpleName();
     private RecyclerView mBrandRecyclerView;
     private List<ProductHorizontal> mList;
     private BrandStudioItemsAdapter mAdapter;
+    private String mJsonResponse;
     DrawerLayout drawer;
     private Toolbar mToolbar;
+    private TextView mEmptyText;
     View headerView;
-    private int FLAG=1;
+    private int FLAG = 1;
+    private ArrayList<CategoryList> mBrandProdList;
     private Bundle bundle;
     private String JSON_RESPONSE;
     private Helper listView;
     NestedScrollView nestedScrollView;
     public static ArrayList<String> Poojaitem;
-    public  static ArrayList<CategoryHolder> arrayList;
-    public static  ArrayList<String> Books;
+    public static ArrayList<CategoryHolder> arrayList;
+    public static ArrayList<String> Books;
     public static ArrayList<String> Homecare;
-    public static   ArrayList<String> others;
-    public  static HashMap<String,ArrayList<String>> hashMap;
-    LinearLayout myorder,mycart,myaccount,helpcenter,ratedesichain,productPage,policy,facebook,google,twitter,pinterest,youtube,instagram,aboutus;
+    public static ArrayList<String> others;
+    public static HashMap<String, ArrayList<String>> hashMap;
+    LinearLayout myorder, mycart, myaccount, helpcenter, ratedesichain, productPage, policy, facebook, google, twitter, pinterest, youtube, instagram, aboutus;
     ImageView brandimage;
-    TextView brandname,branddescription;
-
+    TextView brandname, branddescription;
 
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case android.R.id.home:
                 finish();
                 break;
@@ -76,37 +82,82 @@ public class BrandProducts extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_brand_products);
-        mList=new ArrayList<>();
-        mBrandRecyclerView=(RecyclerView)findViewById(R.id.brandRecyclerView);
+        mBrandRecyclerView = (RecyclerView) findViewById(R.id.brandRecyclerView);
 
-        mToolbar = (Toolbar)findViewById(R.id.myToolBar);
+        mToolbar = (Toolbar) findViewById(R.id.myToolBar);
         setSupportActionBar(mToolbar);
         getSupportActionBar().setTitle("Brand Name");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
-        Intent intent=getIntent();
+        Intent intent = getIntent();
+        int prodId = intent.getIntExtra("PRODUCTID",0);
 
-        if(intent.getIntExtra(AllConstants.FLAG,0)==AllConstants.CALLFROMSHOPBYPUBLISHERACTIVITY){
-            JSON_RESPONSE=load("http://dc.desichain.in/DesiChainWeService.asmx/PublisherDetail?ProId="+String.valueOf(intent.getIntExtra("PRODUCTID",0)));
-            bundle=new ParticularPublisherDetail(JSON_RESPONSE,BrandProducts.this).parseParticularPublisher();
+        mEmptyText=(TextView)findViewById(R.id.emptyViewText);
+
+        brandimage = (ImageView) findViewById(R.id.brand_image);
+        brandname = (TextView) findViewById(R.id.brand_name);
+        branddescription = (TextView) findViewById(R.id.brand_description);
+
+//        Log.i(TAG,bundle.getString(AllConstants.Brandname));
+//
+
+        mBrandProdList = new ArrayList<>();
+
+        Bundle extras = getIntent().getExtras();
+        String imageUrl = extras.getString("bundleImageUrl");
+        String prodName = extras.getString("bundleProdName");
+        String prodDesc = extras.getString("bundleProdDesc");
+        int sno = extras.getInt("bundleBrandSno");
+
+
+
+        if (intent.getIntExtra(AllConstants.FLAG, 0) == AllConstants.CALLFROMSHOPBYPUBLISHERACTIVITY) {
+            JSON_RESPONSE = load("http://dc.desichain.in/DesiChainWeService.asmx/PublisherDetail?ProId=" + String.valueOf(intent.getIntExtra("PRODUCTID", 0)));
+           String url = "http://dc.desichain.in/DesiChainWeService.asmx/PublisherProductDetail?CatId=";
+            loadProducts(url,prodId);
+            bundle = new ParticularPublisherDetail(JSON_RESPONSE, BrandProducts.this).parseParticularPublisher();
+            Picasso.with(BrandProducts.this).load("http://www.desichain.in/uploads/" + bundle.get(AllConstants.Brandimageurl)).into(brandimage);
+            brandname.setText(bundle.getString(AllConstants.Brandname));
+            branddescription.setText(bundle.getString(AllConstants.Branddescription));
+
+        } else if (intent.getIntExtra(AllConstants.FLAG,0)==AllConstants.CALLFROMBRANDPRODUCTMAINACTIVITY){
+            String url = "http://dc.desichain.in/DesiChainWeService.asmx/BrandProductDetail?catid=";
+            loadProducts(url,sno);
+            Picasso.with(BrandProducts.this).load("http://www.desichain.in/uploads/" + getIntent().getStringExtra("bundleImageUrl")).into(brandimage);
+            brandname.setText(prodName);
+            branddescription.setText(prodDesc);
+
         }
 
-        brandimage= (ImageView) findViewById(R.id.brand_image);
-        brandname= (TextView) findViewById(R.id.brand_name);
-        branddescription= (TextView) findViewById(R.id.brand_description);
-        ndle.get(AllConstants.Brandimageurl)).into(brandimage);
-        brandname.setText(bundle.getString(AllConstants.Brandname));
-        Picasso.with(BrandProducts.this).load("http://www.desichain.in/uploads/"+bundle.get(AllConstants.Brandimageurl)).into(brandimage);
-        brandname.setText(bundle.getString(AllConstants.Brandname));
-        branddescription.setText(bundle.getString(AllConstants.Branddescription));
 
-        mAdapter = new BrandStudioItemsAdapter(mList,this);
+        if (mBrandProdList.size() != 0) {
+            mAdapter = new BrandStudioItemsAdapter(mBrandProdList, this);
 
-        GridLayoutManager manager = new GridLayoutManager(this,2);
-        mBrandRecyclerView.setLayoutManager(manager);
-        mBrandRecyclerView.setItemAnimator(new DefaultItemAnimator());
-        mBrandRecyclerView.setAdapter(mAdapter);
+            mEmptyText.setVisibility(View.GONE);
+            GridLayoutManager manager = new GridLayoutManager(this, 2);
+            mBrandRecyclerView.setLayoutManager(manager);
+            mBrandRecyclerView.setItemAnimator(new DefaultItemAnimator());
+            mBrandRecyclerView.setNestedScrollingEnabled(false);
+            mBrandRecyclerView.setFocusable(false);
+            mBrandRecyclerView.setAdapter(mAdapter);
+        } else {
+            mBrandRecyclerView.setVisibility(View.GONE);
+            mEmptyText.setVisibility(View.VISIBLE);
+        }
+
+//        if (!imageUrl.isEmpty() && !prodName.isEmpty() && !prodDesc.isEmpty()) {
+//            Picasso.with(BrandProducts.this).load("http://www.desichain.in/uploads/" + getIntent().getStringExtra("bundleImageUrl")).into(brandimage);
+//            brandname.setText(prodName);
+//            branddescription.setText(prodDesc);
+//        }
+//        } else {
+//            Picasso.with(BrandProducts.this).load("http://www.desichain.in/uploads/" + bundle.get(AllConstants.Brandimageurl)).into(brandimage);
+//            brandname.setText(bundle.getString(AllConstants.Brandname));
+//            branddescription.setText(bundle.getString(AllConstants.Branddescription));
+//        }
+
+
 
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
