@@ -19,6 +19,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -100,7 +101,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         invalidateOptionsMenu();
 
 
-        Intent intent=getIntent();
+        final Intent intent=getIntent();
         if(intent!=null){
             FLAG_FOR_CALLING=intent.getStringExtra("CALLINGFROMREGISTERACTIVITY");
             if(FLAG_FOR_CALLING!=null)
@@ -239,7 +240,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mBrandStudioView.addOnItemTouchListener(new RecyclerItemClickListener(this, new RecyclerItemClickListener.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                startActivity(new Intent(MainActivity.this, BrandProducts.class));
+                Intent intent1 = new Intent(MainActivity.this,BrandProducts.class);
+                BrandStudioList brandStudioList = BRAND_STUDIO_LIST.get(position);
+                Bundle bundle = new Bundle();
+//
+//                bundle.putString("bundleImageUrl",brandStudioList.getBRAND_IMAGE_URL());
+//                bundle.putString("bundleProdName",brandStudioList.getBRAND_PAGE_URL());
+//                bundle.putString("bundleProdDesc",brandStudioList.getBRAND_PAGE_DESCRIPTION());
+//                intent1.putExtras(bundle);
+                intent1.putExtra(AllConstants.FLAG,AllConstants.CALLFROMBRANDPRODUCTMAINACTIVITY);
+                intent1.putExtra("bundleImageUrl",brandStudioList.getBRAND_IMAGE_URL());
+                intent1.putExtra("bundleProdName",brandStudioList.getBRAND_PAGE_URL());
+                intent1.putExtra("bundleProdDesc",brandStudioList.getBRAND_PAGE_DESCRIPTION());
+                intent1.putExtra("bundleBrandSno",brandStudioList.getBRAND_SNO());
+                Log.i("aaa",String.valueOf(brandStudioList.getBRAND_SNO()));
+                startActivity(intent1);
             }
         }));
 
@@ -622,7 +637,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Toast.makeText(this, "No Internet Connection", Toast.LENGTH_SHORT).show();
         } else {
             try {
-                JSON_RESPONSE = new FetchingFromUrl().execute("http://dc.desichain.in/DesiChainWeService.asmx/BrandDetail").get();
+                JSON_RESPONSE = new FetchingFromUrl().execute("http://dc.desichain.in/DesiChainWeService.asmx/TotalBrandDetail").get();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             } catch (ExecutionException e) {

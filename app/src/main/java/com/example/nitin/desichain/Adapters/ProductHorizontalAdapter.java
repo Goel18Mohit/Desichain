@@ -12,7 +12,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.nitin.desichain.CategoryList;
 import com.example.nitin.desichain.Contents.ProductHorizontal;
 import com.example.nitin.desichain.R;
 import com.example.nitin.desichain.Utility.Utility;
@@ -46,7 +45,6 @@ public class ProductHorizontalAdapter extends RecyclerView.Adapter<ProductHorizo
     public void onBindViewHolder(MyViewHolder holder, int position) {
 
         com.example.nitin.desichain.Contents.CategoryList mProduct = mProductHorizontalList.get(position);
-      //  CategoryList mProduct = mProductHorizontalList.get(position);
         holder.mProductRating.setText(mProduct.getRATINGS());
         holder.mProductCost.setText(String.valueOf(mProduct.getPRICE()));
         holder.mProductname.setText(mProduct.getPRODUCT_NAME());

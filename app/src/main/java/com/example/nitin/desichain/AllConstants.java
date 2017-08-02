@@ -11,4 +11,6 @@ public interface AllConstants {
     public String Brandname="brandname";
     public String Brandimageurl="image";
     public String Branddescription="description";
+    public  int CALLFROMBRANDPRODUCTMAINACTIVITY = 2;
+
 }
