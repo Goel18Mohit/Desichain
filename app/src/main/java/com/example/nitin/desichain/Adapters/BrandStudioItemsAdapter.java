@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.nitin.desichain.Contents.CategoryList;
 import com.example.nitin.desichain.Contents.ProductHorizontal;
 import com.example.nitin.desichain.R;
 import com.squareup.picasso.Picasso;
@@ -21,11 +22,11 @@ import java.util.List;
 
 public class BrandStudioItemsAdapter extends RecyclerView.Adapter<BrandStudioItemsAdapter.MyViewHolder> {
 
-    private List<ProductHorizontal> mList;
+    private List<CategoryList> mList;
     private Context mContext;
 
 
-    public BrandStudioItemsAdapter(List<ProductHorizontal> mList, Context mContext) {
+    public BrandStudioItemsAdapter(List<CategoryList> mList, Context mContext) {
         this.mList = mList;
         this.mContext = mContext;
     }
@@ -40,12 +41,12 @@ public class BrandStudioItemsAdapter extends RecyclerView.Adapter<BrandStudioIte
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
 
-        ProductHorizontal mProduct = mList.get(position);
-        holder.mProductRating.setText(mProduct.getmProductRating());
-        holder.mProductCost.setText(String.valueOf(mProduct.getmProductCost()));
-        holder.mProductname.setText(mProduct.getmProductName());
-        holder.mProductReviewsNo.setText(mProduct.getmProductNoOfReviews());
-        Picasso.with(mContext).load("http://www.desichain.in/uploads/thumb_"+mList.get(position).getmProductImageId())
+        CategoryList mProduct = mList.get(position);
+        holder.mProductRating.setText(mProduct.getRATINGS());
+        holder.mProductCost.setText(String.valueOf(mProduct.getPRICE()));
+        holder.mProductname.setText(mProduct.getPRODUCT_NAME());
+        holder.mProductReviewsNo.setText(mProduct.getNUMBER_OF_REVIEWS());
+        Picasso.with(mContext).load("http://www.desichain.in/uploads/thumb_"+mList.get(position).getImageUrl())
                 .resize(100,100).into(holder.mProductImage);
         holder.mAddToCartImage.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -22,7 +22,7 @@ import android.widget.TextView;
 import com.example.nitin.desichain.Adapters.BrandStudioItemsAdapter;
 import com.example.nitin.desichain.Adapters.ProductHorizontalAdapter;
 import com.example.nitin.desichain.Adapters.SingleCartAdapter;
-import com.example.nitin.desichain.Contents.ProductHorizontal;
+import com.example.nitin.desichain.Contents.*;
 import com.example.nitin.desichain.Internet.FetchingFromUrl;
 import com.example.nitin.desichain.ParsingJson.ParticularPublisherDetail;
 import com.example.nitin.desichain.SubCategoryList.ShowCategoryAdapeter;
@@ -37,7 +37,7 @@ import java.util.concurrent.ExecutionException;
 public class BrandProducts extends AppCompatActivity implements View.OnClickListener,SingleCartAdapter.ListChange {
 
     private RecyclerView mBrandRecyclerView;
-    private List<ProductHorizontal> mList;
+    private List<com.example.nitin.desichain.Contents.CategoryList> mList;
     private BrandStudioItemsAdapter mAdapter;
     DrawerLayout drawer;
     private Toolbar mToolbar;
