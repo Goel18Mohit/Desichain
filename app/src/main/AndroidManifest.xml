@@ -107,6 +107,10 @@
             android:name=".SearchActivity"
             android:theme="@style/status_bar"
             android:launchMode="singleTop"/>
+        <activity
+            android:name=".ShowSearchResult"
+            android:theme="@style/status_bar"
+            android:launchMode="singleTop"/>
            <activity
             android:name=".NotificationPage"
             android:parentActivityName=".MyAccount"
