@@ -52,7 +52,7 @@ public class Childcategoru extends AppCompatActivity implements View.OnClickList
     ArrayList<ChildCategoryList> homedecor;
     ArrayList<ChildCategoryList> homefurnishing;
     ArrayList<ChildCategoryList> kitchenndinning;
-
+    private int CATEGORY_FLAG=-1;
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -206,6 +206,7 @@ public class Childcategoru extends AppCompatActivity implements View.OnClickList
         String choice = intent.getStringExtra("get");
         if (MainActivity.hashMap.get(arrayList.get(0).getPARENTCATEGORY()).get(0).equals(choice)) {
             setBhagavad();
+            CATEGORY_FLAG=1;
             childCategoryAdapter = new ChildCategoryAdapter(Childcategoru.this, bhagavad);
             mGetList = bhagavad;
             gridView.setAdapter(childCategoryAdapter);
@@ -214,6 +215,7 @@ public class Childcategoru extends AppCompatActivity implements View.OnClickList
 
         } else if (MainActivity.hashMap.get(arrayList.get(0).getPARENTCATEGORY()).get(1).equals(choice)) {
             setPaperback();
+            CATEGORY_FLAG=1;
             childCategoryAdapter = new ChildCategoryAdapter(Childcategoru.this, paperback);
             mGetList = paperback;
             gridView.setAdapter(childCategoryAdapter);
@@ -221,6 +223,7 @@ public class Childcategoru extends AppCompatActivity implements View.OnClickList
         } else if (MainActivity.hashMap.get(arrayList.get(0).getPARENTCATEGORY()).get(2).equals(choice)) {
 
             setMedia();
+            CATEGORY_FLAG=1;
             childCategoryAdapter = new ChildCategoryAdapter(Childcategoru.this, media);
             mGetList = media;
             gridView.setAdapter(childCategoryAdapter);
@@ -228,18 +231,21 @@ public class Childcategoru extends AppCompatActivity implements View.OnClickList
         } else if (MainActivity.hashMap.get(arrayList.get(1).getPARENTCATEGORY()).get(0).equals(choice)) {
 
             setItemsofworship();
+            CATEGORY_FLAG=0;
             childCategoryAdapter = new ChildCategoryAdapter(Childcategoru.this, itemsofworship);
             mGetList = itemsofworship;
             gridView.setAdapter(childCategoryAdapter);
             // setGridViewHeightBasedOnChildren(gridView,3);
         } else if (MainActivity.hashMap.get(arrayList.get(1).getPARENTCATEGORY()).get(1).equals(choice)) {
             setOtheressentials();
+            CATEGORY_FLAG=0;
             childCategoryAdapter = new ChildCategoryAdapter(Childcategoru.this, otheressentials);
             mGetList = otheressentials;
             gridView.setAdapter(childCategoryAdapter);
             //setGridViewHeightBasedOnChildren(gridView,3);
         } else if (MainActivity.hashMap.get(arrayList.get(1).getPARENTCATEGORY()).get(2).equals(choice)) {
             setBells();
+            CATEGORY_FLAG=0;
             childCategoryAdapter = new ChildCategoryAdapter(Childcategoru.this, bells);
             mGetList = bells;
             gridView.setAdapter(childCategoryAdapter);
@@ -248,6 +254,7 @@ public class Childcategoru extends AppCompatActivity implements View.OnClickList
         } else if (MainActivity.hashMap.get(arrayList.get(1).getPARENTCATEGORY()).get(3).equals(choice)) {
 
             setAgarbatti();
+            CATEGORY_FLAG=0;
             childCategoryAdapter = new ChildCategoryAdapter(Childcategoru.this, agarbatti);
             mGetList = agarbatti;
             gridView.setAdapter(childCategoryAdapter);
@@ -262,6 +269,7 @@ public class Childcategoru extends AppCompatActivity implements View.OnClickList
         } else if (MainActivity.hashMap.get(arrayList.get(2).getPARENTCATEGORY()).get(0).equals(choice)) {
 
             setHomedecor();
+            CATEGORY_FLAG=0;
             childCategoryAdapter = new ChildCategoryAdapter(Childcategoru.this, homedecor);
             mGetList = homedecor;
             gridView.setAdapter(childCategoryAdapter);
@@ -269,12 +277,14 @@ public class Childcategoru extends AppCompatActivity implements View.OnClickList
         } else if (MainActivity.hashMap.get(arrayList.get(2).getPARENTCATEGORY()).get(1).equals(choice)) {
 
             setHomefurnishing();
+            CATEGORY_FLAG=0;
             childCategoryAdapter = new ChildCategoryAdapter(Childcategoru.this, homefurnishing);
             mGetList = homefurnishing;
             gridView.setAdapter(childCategoryAdapter);
             //setGridViewHeightBasedOnChildren(gridView,3);
         } else if (MainActivity.hashMap.get(arrayList.get(2).getPARENTCATEGORY()).get(2).equals(choice)) {
             setKitchenndinning();
+            CATEGORY_FLAG=0;
             childCategoryAdapter = new ChildCategoryAdapter(Childcategoru.this, kitchenndinning);
             mGetList = kitchenndinning;
             gridView.setAdapter(childCategoryAdapter);
@@ -283,6 +293,7 @@ public class Childcategoru extends AppCompatActivity implements View.OnClickList
         } else if (MainActivity.hashMap.get(arrayList.get(3).getPARENTCATEGORY()).get(0).equals(choice)) {
 
             setPersonalcare();
+            CATEGORY_FLAG=0;
             childCategoryAdapter = new ChildCategoryAdapter(Childcategoru.this, personalcare);
             mGetList = personalcare;
             gridView.setAdapter(childCategoryAdapter);
@@ -290,6 +301,7 @@ public class Childcategoru extends AppCompatActivity implements View.OnClickList
         } else if (MainActivity.hashMap.get(arrayList.get(3).getPARENTCATEGORY()).get(1).equals(choice)) {
 
             setHealthandfood();
+            CATEGORY_FLAG=0;
             childCategoryAdapter = new ChildCategoryAdapter(Childcategoru.this, healthandfood);
             mGetList = healthandfood;
             gridView.setAdapter(childCategoryAdapter);
@@ -297,6 +309,7 @@ public class Childcategoru extends AppCompatActivity implements View.OnClickList
         } else if (MainActivity.hashMap.get(arrayList.get(3).getPARENTCATEGORY()).get(2).equals(choice)) {
 
             setFashion();
+            CATEGORY_FLAG=0;
             childCategoryAdapter = new ChildCategoryAdapter(Childcategoru.this, fashion);
             mGetList = fashion;
             gridView.setAdapter(childCategoryAdapter);
@@ -311,12 +324,14 @@ public class Childcategoru extends AppCompatActivity implements View.OnClickList
         } else if (MainActivity.hashMap.get(arrayList.get(3).getPARENTCATEGORY()).get(4).equals(choice)) {
 
             setMen();
+            CATEGORY_FLAG=0;
             childCategoryAdapter = new ChildCategoryAdapter(Childcategoru.this, men);
             mGetList = men;
             gridView.setAdapter(childCategoryAdapter);
             //setGridViewHeightBasedOnChildren(gridView,3);
         } else if (MainActivity.hashMap.get(arrayList.get(3).getPARENTCATEGORY()).get(5).equals(choice)) {
             setBags();
+            CATEGORY_FLAG=0;
             childCategoryAdapter = new ChildCategoryAdapter(Childcategoru.this, bags);
             mGetList = bags;
             gridView.setAdapter(childCategoryAdapter);
@@ -324,7 +339,7 @@ public class Childcategoru extends AppCompatActivity implements View.OnClickList
 
         } else if (MainActivity.hashMap.get(arrayList.get(3).getPARENTCATEGORY()).get(6).equals(choice)) {
             setMobile();
-
+            CATEGORY_FLAG=0;
             childCategoryAdapter = new ChildCategoryAdapter(Childcategoru.this, mobile);
             mGetList = mobile;
             gridView.setAdapter(childCategoryAdapter);
@@ -359,10 +374,15 @@ public class Childcategoru extends AppCompatActivity implements View.OnClickList
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                Intent intent1 = new Intent(Childcategoru.this, CategoryPage.class);
-                intent1.putExtra("getFilterName", getIntent().getStringExtra("getFilterName"));
-                Log.i("getFilterName", String.valueOf(getIntent().getStringExtra("getFilterName")));
-                startActivity(intent1);
+                Toast.makeText(Childcategoru.this,String.valueOf(CATEGORY_FLAG),Toast.LENGTH_SHORT).show();
+                if(CATEGORY_FLAG!=-1) {
+                    Intent intent1 = new Intent(Childcategoru.this, CategoryPage.class);
+                    intent1.putExtra("CATEGORYFLAG", CATEGORY_FLAG);
+                    intent1.putExtra("Topic", mGetList.get(position).getCHILDCATEGORYNAME());
+                    intent1.putExtra("getFilterName", getIntent().getStringExtra("getFilterName"));
+                    Log.i("getFilterName", String.valueOf(getIntent().getStringExtra("getFilterName")));
+                    startActivity(intent1);
+                }
                 DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
                 if (drawer.isDrawerOpen(GravityCompat.START)) {
                     drawer.closeDrawer(GravityCompat.START);

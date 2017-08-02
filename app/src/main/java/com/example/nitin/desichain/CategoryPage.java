@@ -1,4 +1,5 @@
 package com.example.nitin.desichain;
+
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,13 +21,20 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.nitin.desichain.Adapters.BookCategoryAdapter;
 import com.example.nitin.desichain.Adapters.CategoryAdapter;
+import com.example.nitin.desichain.Contents.BookCategoryList;
 import com.example.nitin.desichain.Contents.CategoryList;
+import com.example.nitin.desichain.Internet.FetchingFromUrl;
+import com.example.nitin.desichain.ParsingJson.GetCategoryId;
+import com.example.nitin.desichain.ParsingJson.GetParticularBookList;
+import com.example.nitin.desichain.ParsingJson.GetParticularCategoryList;
 import com.example.nitin.desichain.SubCategoryList.ShowCategoryAdapeter;
 import com.example.nitin.desichain.Utility.Utility;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.concurrent.ExecutionException;
 
 public class CategoryPage extends AppCompatActivity implements View.OnClickListener {
 
@@ -35,17 +43,22 @@ public class CategoryPage extends AppCompatActivity implements View.OnClickListe
     TextView SORT_OPTION,FILTER_OPTION;
     private Toolbar mToolbar;
     private ArrayList<CategoryList> arrayList1;
+    private ArrayList<BookCategoryList> arrayList2;
 
     private Helper listView;
     View headerView;
+    private String JSON_RESPONSE;
+    CategoryAdapter categoryAdapterOthers;
+    BookCategoryAdapter categoryAdapter;
     DrawerLayout drawer;
     NestedScrollView nestedScrollView;
     public static ArrayList<String> Poojaitem;
+    private Intent intent1;
+    private int CATEGORY_ID;
     public  static ArrayList<CategoryHolder> arrayList;
     public static  ArrayList<String> Books;
     public static ArrayList<String> Homecare;
     public static   ArrayList<String> others;
-    public ArrayList<CategoryList> mList;
     public  static HashMap<String,ArrayList<String>> hashMap;
     LinearLayout subscribe;
     LinearLayout myorder,mycart,myaccount,helpcenter,ratedesichain,productPage,policy,facebook,google,twitter,pinterest,youtube,instagram,aboutus;
@@ -64,25 +77,91 @@ public class CategoryPage extends AppCompatActivity implements View.OnClickListe
         FILTER_OPTION=(TextView)findViewById(R.id.filter);
         listView1= (GridView) findViewById(R.id.categorygridview);
         SORT_OPTION= (TextView) findViewById(R.id.sort);
-        arrayList1=new ArrayList<>();
+        intent1=getIntent();
+            String CHILDCATEGORYNAME=intent1.getStringExtra("Topic");
+        Toast.makeText(CategoryPage.this,CHILDCATEGORYNAME,Toast.LENGTH_SHORT).show();
+            int CATEGORY_FLAG=intent1.getIntExtra("CATEGORYFLAG",-1);
 
-        arrayList1 = (ArrayList<CategoryList>)getIntent().getSerializableExtra("featuredProdKey");
+            if(CATEGORY_FLAG==1)
+            {
 
+               JSON_RESPONSE=load("http://dc.desichain.in/DesiChainWeService.asmx/BooksCategory");
+                if(JSON_RESPONSE!=null)
+                {
+                    CATEGORY_ID=new GetCategoryId(JSON_RESPONSE,CHILDCATEGORYNAME,CategoryPage.this).getCategoryId();
 
-        for (int i=0;i<10;i++){
-                mList.add(new CategoryList("5836599apple.jpg",
-                        "aaa",1200,"4.0","1200"));
+                    if(CATEGORY_ID==-1)
+                    {
+                        Toast.makeText(CategoryPage.this,"No Such Category Exist",Toast.LENGTH_SHORT).show();
+                    }
+                    else
+                    {
+                        JSON_RESPONSE=load("http://dc.desichain.in/DesiChainWeService.asmx/ProductsOfBookCategory?catid="+CATEGORY_ID);
+                        if(JSON_RESPONSE!=null)
+                        {
+
+                          arrayList2=new GetParticularBookList(JSON_RESPONSE,CategoryPage.this).getParticularBookList();
+                            if(arrayList2==null)
+                            {
+                                Toast.makeText(CategoryPage.this,"No Such Products EXis",Toast.LENGTH_SHORT).show();
+                            }
+                            else
+                            {
+
+                            categoryAdapter=new BookCategoryAdapter(this,arrayList2);
+                                categoryAdapter.notifyDataSetChanged();
+                                listView1.setAdapter(categoryAdapter);
+
+                            }
+                        }
+
+                    }
+
+                }
             }
+          else if(CATEGORY_FLAG==1)
+            {
+                if(JSON_RESPONSE!=null)
+                {
+                    JSON_RESPONSE=load("http://dc.desichain.in/DesiChainWeService.asmx/OthersCategory");
+                    if(JSON_RESPONSE!=null)
+                    {
+                        CATEGORY_ID=new GetCategoryId(JSON_RESPONSE,CHILDCATEGORYNAME,CategoryPage.this).getCategoryId();
+                        if(CATEGORY_ID==-1)
+                        {
+                            Toast.makeText(CategoryPage.this,"No Such Category Exist",Toast.LENGTH_SHORT).show();
+                        }
+                        else
+                        {
+                            JSON_RESPONSE=load("http://dc.desichain.in/DesiChainWeService.asmx/ProductsOfOtherCategory?catid="+CATEGORY_ID);
+                            if(JSON_RESPONSE!=null){
+                                arrayList1=new GetParticularCategoryList(JSON_RESPONSE,CategoryPage.this).getParticularCategoryList();
+                                if(arrayList1==null)
+                                {
+                                    Toast.makeText(CategoryPage.this,"No Such Products EXis",Toast.LENGTH_SHORT).show();
+                                }
+                                else
+                                {
+                                    categoryAdapterOthers=new CategoryAdapter(this,arrayList1);
+                                }
+                            }
+                        }
+                    }
+                }
 
-            if (arrayList1!=null) {
-                CategoryAdapter categoryAdapter = new CategoryAdapter(this, arrayList1);
-                listView1.setAdapter(categoryAdapter);
 
-            } else {
-                CategoryAdapter categoryAdapter = new CategoryAdapter(this,mList);
-                listView1.setAdapter(categoryAdapter);
-            }
-            SORT_OPTION.setOnClickListener(new View.OnClickListener() {
+        }
+
+if(categoryAdapterOthers!=null)
+{
+    listView1.setAdapter(categoryAdapter);
+}
+        else if(categoryAdapter!=null)
+{
+    listView1.setAdapter(categoryAdapter);
+}
+
+        SORT_OPTION.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 final AlertDialog.Builder alertdialog=new AlertDialog.Builder(CategoryPage.this);
@@ -101,7 +180,7 @@ public class CategoryPage extends AppCompatActivity implements View.OnClickListe
         FILTER_OPTION.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final String mGetFilterName = getIntent().getStringExtra("getFilterName");
+                final String mGetFilterName = intent1.getStringExtra("getFilterName");
                 Intent intent = new Intent(CategoryPage.this,Filters.class);
                 intent.putExtra("getFilterData",mGetFilterName);
                 startActivity(intent);
@@ -285,5 +364,16 @@ public class CategoryPage extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         new Utility().openIntent(this,v.getId(),drawer);
+    }
+    public String load(String Url) {
+        try {
+            JSON_RESPONSE = new FetchingFromUrl().execute(Url).get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+        return JSON_RESPONSE;
+
     }
 }
