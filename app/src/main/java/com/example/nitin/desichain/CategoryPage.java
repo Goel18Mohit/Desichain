@@ -70,7 +70,7 @@ public class CategoryPage extends AppCompatActivity implements View.OnClickListe
 
 
         for (int i=0;i<10;i++){
-                mList.add(new CategoryList("https://www.logogarden.com/wp-content/uploads/lg-index/Example-Logo-6.jpg",
+                mList.add(new CategoryList("5836599apple.jpg",
                         "aaa",1200,"4.0","1200"));
             }
 

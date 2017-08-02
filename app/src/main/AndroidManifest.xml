@@ -120,7 +120,7 @@
             android:name=".CouponsPage"
             android:launchMode="singleTop"
             android:parentActivityName=".MyCart"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/status_bar" />
         <activity
             android:name=".Wallet_page"
             android:parentActivityName=".MyAccount"

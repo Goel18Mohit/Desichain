@@ -2,6 +2,7 @@ package com.example.nitin.desichain.Adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,9 +42,10 @@ public class BrandStudioItemsAdapter extends RecyclerView.Adapter<BrandStudioIte
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
 
+//        ProductHorizontal mProduct = mList.get(position);
         CategoryList mProduct = mList.get(position);
-        holder.mProductRating.setText(mProduct.getRATINGS());
-        holder.mProductCost.setText(String.valueOf(mProduct.getPRICE()));
+         holder.mProductRating.setText(mProduct.getRATINGS());
+        holder.mProductCost.setText( "Rs " + mProduct.getPRICE());
         holder.mProductname.setText(mProduct.getPRODUCT_NAME());
         holder.mProductReviewsNo.setText(mProduct.getNUMBER_OF_REVIEWS());
         Picasso.with(mContext).load("http://www.desichain.in/uploads/thumb_"+mList.get(position).getImageUrl())
