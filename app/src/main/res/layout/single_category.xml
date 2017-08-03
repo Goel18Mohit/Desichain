@@ -4,6 +4,7 @@
     android:layout_height="wrap_content"
     android:background="@drawable/border"
     android:id="@+id/myLinearLayoutCateg"
+    android:clickable="true"
     android:padding="10dp"
     android:weightSum="14"
     android:orientation="vertical">
@@ -78,7 +79,7 @@
         android:layout_marginTop="2dp"/>
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/discountText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"

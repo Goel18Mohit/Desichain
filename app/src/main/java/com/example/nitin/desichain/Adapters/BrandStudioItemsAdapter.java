@@ -1,6 +1,7 @@
 package com.example.nitin.desichain.Adapters;
 
 import android.content.Context;
+import android.graphics.Paint;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -35,7 +36,7 @@ public class BrandStudioItemsAdapter extends RecyclerView.Adapter<BrandStudioIte
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater= (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view=layoutInflater.inflate(R.layout.single_category,null);
+        View view=layoutInflater.inflate(R.layout.category,null);
         return new MyViewHolder(view);
     }
 
@@ -45,17 +46,21 @@ public class BrandStudioItemsAdapter extends RecyclerView.Adapter<BrandStudioIte
 //        ProductHorizontal mProduct = mList.get(position);
         CategoryList mProduct = mList.get(position);
          holder.mProductRating.setText(mProduct.getRATINGS());
-        holder.mProductCost.setText( "Rs " + mProduct.getACTUAL_PRICE());
+        holder.mProductCost.setText( "Rs " + mProduct.getSELLING_PRICE());
         holder.mProductname.setText(mProduct.getPRODUCT_NAME());
         holder.mProductReviewsNo.setText(mProduct.getNUMBER_OF_REVIEWS());
         Picasso.with(mContext).load("http://www.desichain.in/uploads/thumb_"+mList.get(position).getImageUrl())
                 .resize(100,100).into(holder.mProductImage);
-        holder.mAddToCartImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(mContext,"product added to cart successfully",Toast.LENGTH_SHORT).show();
-            }
-        });
+//        holder.mAddToCartImage.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Toast.makeText(mContext,"product added to cart successfully",Toast.LENGTH_SHORT).show();
+//            }
+//        });
+        holder.mProdGrossWt.setText("Net Wt: "+mProduct.getNET_WEIGTH());
+        holder.mProdDiscountText.setText(mProduct.getDISCOUNT()+" % off");
+        holder.mProdCut.setText("Rs " + mProduct.getACTUAL_PRICE());
+        holder.mProdCut.setPaintFlags(holder.mProdCut.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
 
     }
 
@@ -66,16 +71,19 @@ public class BrandStudioItemsAdapter extends RecyclerView.Adapter<BrandStudioIte
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         private ImageView mProductImage,mAddToCartImage;
-        private TextView mProductname,mProductCost,mProductRating, mProductReviewsNo;
+        private TextView mProductname,mProductCost,mProductRating, mProductReviewsNo,mProdGrossWt,mProdDiscountText,mProdCut;
 
         public MyViewHolder(View itemView) {
             super(itemView);
+            mProdDiscountText=(TextView)itemView.findViewById(R.id.discountText);
             mAddToCartImage=(ImageView)itemView.findViewById(R.id.addToCart);
             mProductImage=(ImageView)itemView.findViewById(R.id.product_image);
             mProductname=(TextView)itemView.findViewById(R.id.productname);
             mProductCost=(TextView)itemView.findViewById(R.id.product_price);
             mProductRating=(TextView)itemView.findViewById(R.id.product_ratings);
             mProductReviewsNo=(TextView)itemView.findViewById(R.id.no_of_reviews);
+            mProdGrossWt=(TextView)itemView.findViewById(R.id.netWeightText);
+            mProdCut=(TextView)itemView.findViewById(R.id.productnamecut);
         }
     }
 }

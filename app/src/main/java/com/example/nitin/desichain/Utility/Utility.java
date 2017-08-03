@@ -100,15 +100,15 @@ public class Utility {
                 mContext.startActivity(ABOUTUS);
                 closenavigation();
                 break;
-            case R.id.latestProdViewAll:
-                mContext.startActivity(new Intent(mContext, CategoryPage.class));
-                break;
-            case R.id.topTenGameViewAll:
-                mContext.startActivity(new Intent(mContext, CategoryPage.class));
-                break;
-             case R.id.bestSellingProductViewAll:
-                mContext.startActivity(new Intent(mContext, CategoryPage.class));
-                break;
+//            case R.id.latestProdViewAll:
+//                mContext.startActivity(new Intent(mContext, CategoryPage.class));
+//                break;
+//            case R.id.topTenGameViewAll:
+//                mContext.startActivity(new Intent(mContext, CategoryPage.class));
+//                break;
+//             case R.id.bestSellingProductViewAll:
+//                mContext.startActivity(new Intent(mContext, CategoryPage.class));
+//                break;
             case R.id.subscribe:
                 closenavigation();
                 openDialogBox();
@@ -255,6 +255,16 @@ public void closenavigation(){
         builder.create().show();
 
 
+    }
+
+
+    public static int getDiscount(int ACTUAL_PRICE,int SELLING_PRICE) {
+
+        float diff = ACTUAL_PRICE-SELLING_PRICE;
+        diff = diff/ACTUAL_PRICE;
+        diff*=100;
+
+        return Math.round(diff);
     }
 
 }

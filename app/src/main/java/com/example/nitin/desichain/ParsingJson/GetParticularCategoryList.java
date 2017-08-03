@@ -3,6 +3,7 @@ package com.example.nitin.desichain.ParsingJson;
 import android.content.Context;
 
 import com.example.nitin.desichain.Contents.CategoryList;
+import com.example.nitin.desichain.Utility.Utility;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -56,9 +57,9 @@ public class GetParticularCategoryList {
                 HOW_TO_USE=PRODUCT_json_OBJECCT.getString("direction");
                 NET_WEIGTH=PRODUCT_json_OBJECCT.getString("netweight");
                 GROSS_WEIGHHT=PRODUCT_json_OBJECCT.getInt("GrossWeight");
-                DISCOUNT=(ACTUAL_PRICE-SELLING_PRICE)/100;
+                DISCOUNT= Utility.getDiscount(ACTUAL_PRICE,SELLING_PRICE);
                // arrayList1.add(new CategoryList(PRODUCT_NAME,ACTUAL_PRICE,SELLING_PRICE,IMAGE_URL,DISCOUNT,PRODUCT_ID,PRODUCT_DESCRIPTION,BRAND_ID,Ingredients,HOW_TO_USE,NET_WEIGTH,GROSS_WEIGHHT,"4","12"));
-                arrayList1.add(new CategoryList(IMAGE_URL,PRODUCT_NAME,SELLING_PRICE,"4.0","1200",GROSS_WEIGHHT,Ingredients));
+                arrayList1.add(new CategoryList(IMAGE_URL,PRODUCT_NAME,SELLING_PRICE,ACTUAL_PRICE,"4.0","1200",GROSS_WEIGHHT,Ingredients,DISCOUNT,NET_WEIGTH));
 
             }
         } catch (JSONException e) {

@@ -3,6 +3,7 @@ package com.example.nitin.desichain.ParsingJson;
 import android.content.Context;
 
 import com.example.nitin.desichain.Contents.BookCategoryList;
+import com.example.nitin.desichain.Utility.Utility;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -57,7 +58,7 @@ public class GetParticularBookList {
                 AUTHORNAME=PRODUCT_json_OBJECCT.getString("Author");
                 NET_WEIGTH=PRODUCT_json_OBJECCT.getString("netweight");
                 GROSS_WEIGHHT=PRODUCT_json_OBJECCT.getInt("GrossWeight");
-                DISCOUNT=(ACTUAL_PRICE-SELLING_PRICE)/100;
+                DISCOUNT= Utility.getDiscount(ACTUAL_PRICE,SELLING_PRICE);
                 BOOKS_LIST.add(new BookCategoryList(PRODUCT_NAME,ACTUAL_PRICE,SELLING_PRICE,IMAGE_URL,DISCOUNT,PRODUCT_ID,PRODUCT_DESCRIPTION,PUBLISHERNAME,AUTHORNAME,BRAND_ID,NET_WEIGTH,GROSS_WEIGHHT,"4","12"));
 
             }
@@ -68,4 +69,5 @@ public class GetParticularBookList {
 
         return BOOKS_LIST;
     }
+
 }

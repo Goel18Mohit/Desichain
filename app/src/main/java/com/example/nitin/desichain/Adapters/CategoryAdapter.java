@@ -3,6 +3,7 @@ package com.example.nitin.desichain.Adapters;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Paint;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +25,7 @@ import java.util.ArrayList;
 
 
 public class CategoryAdapter extends BaseAdapter {
+    private static final String TAG = CategoryAdapter.class.getSimpleName();
 
     private Context context;
     private ArrayList<CategoryList> arrayList;
@@ -51,12 +53,12 @@ public class CategoryAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, final ViewGroup parent) {
+    public View getView( int position, View convertView, final ViewGroup parent) {
         ViewHolder viewHolder;
         if(convertView==null)
         {
             LayoutInflater layoutInflater= (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView=layoutInflater.inflate(R.layout.single_category,null);
+            convertView=layoutInflater.inflate(R.layout.category,null);
             viewHolder=new ViewHolder();
             viewHolder.productImage= (ImageView) convertView.findViewById(R.id.product_image);
             viewHolder.productname= (TextView) convertView.findViewById(R.id.productname);
@@ -64,15 +66,29 @@ public class CategoryAdapter extends BaseAdapter {
             viewHolder.productratings= (TextView) convertView.findViewById(R.id.product_ratings);
             viewHolder.productnofratings= (TextView) convertView.findViewById(R.id.no_of_reviews);
             viewHolder.productcut= (TextView) convertView.findViewById(R.id.productnamecut);
-
+            viewHolder.lm = (LinearLayout)convertView.findViewById(R.id.myLinearLayoutCateg);
+            viewHolder.mProdDiscountText=(TextView)convertView.findViewById(R.id.discountText);
+            viewHolder.mProdNetWt=(TextView)convertView.findViewById(R.id.netWeightText);
             convertView.setTag(viewHolder);
 
         }
         viewHolder= (ViewHolder) convertView.getTag();
 
        // viewHolder.productImage.setImageResource(arrayList.get(position).getImageUrl());
-        Picasso.with(parent.getContext()).load("http://www.desichain.in/uploads/thumb_"+arrayList.get(position).getImageUrl()).resize(200,200).into(viewHolder.productImage);
+        Picasso.with(parent.getContext()).load("http://www.desichain.in/uploads/thumb_"+arrayList.get(position).getImageUrl()).into(viewHolder.productImage);
      //   Picasso.with(context).load("http://www.desichain.in/uploads/"+arrayList.get(position).getIMAGE_URL()).into(viewHolder.productImage);
+
+        final String imgUrl = "http://www.desichain.in/uploads/thumb_"+arrayList.get(position).getImageUrl();
+        final String prodName = arrayList.get(position).getPRODUCT_NAME();
+        final int prodPrice = arrayList.get(position).getACTUAL_PRICE();
+
+
+
+        Log.i(TAG,imgUrl+"\n"+prodName+"\n"+prodPrice);
+
+
+        viewHolder.mProdNetWt.setText("Net Wt: "+arrayList.get(position).getNET_WEIGTH());
+
         viewHolder.productImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -88,7 +104,7 @@ public class CategoryAdapter extends BaseAdapter {
                 context.startActivity(intent);
             }
         });
-        viewHolder.productprice.setText("Rs. " +arrayList.get(position).getACTUAL_PRICE());
+        viewHolder.productprice.setText("Rs. " +arrayList.get(position).getSELLING_PRICE());
         viewHolder.productprice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -96,6 +112,7 @@ public class CategoryAdapter extends BaseAdapter {
                 context.startActivity(intent);
             }
         });
+
         viewHolder.productratings.setText(arrayList.get(position).getRATINGS());
         viewHolder.productratings.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,7 +129,8 @@ public class CategoryAdapter extends BaseAdapter {
                 context.startActivity(intent);
             }
         });
-        viewHolder.productcut.setText("Rs.7490");
+        viewHolder.mProdDiscountText.setText(arrayList.get(position).getDISCOUNT()+"% off");
+        viewHolder.productcut.setText("Rs. " +arrayList.get(position).getACTUAL_PRICE());
         viewHolder.productcut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -134,7 +152,7 @@ public class CategoryAdapter extends BaseAdapter {
 
     public class ViewHolder{
         ImageView productImage;
-        TextView productname,productprice,productratings,productnofratings,productcut;
+        TextView productname,productprice,productratings,productnofratings,productcut,mProdDiscountText,mProdNetWt;
         LinearLayout lm;
     }
 }

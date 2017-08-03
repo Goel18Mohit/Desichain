@@ -35,6 +35,7 @@ import com.example.nitin.desichain.Contents.CategoryList;
 import com.example.nitin.desichain.ParsingJson.BrandStudio;
 import com.example.nitin.desichain.SubCategoryList.ShowCategoryAdapeter;
 import com.example.nitin.desichain.Utility.Utility;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -55,8 +56,8 @@ public class ProductPageActual extends AppCompatActivity implements View.OnClick
     private CheckBox mSecCheckBox,mThirdCheckBox;
     private ProductHorizontalAdapter mAdapter;
     private LinearLayout mQuesnAnswer,mReviewsLayout,mReviewsProductLayout;
-    private ImageView mShareProduct,mPlusForSecImage,mPlusForThirdImage,mSecImage,mThirdImage;
-
+    private ImageView mShareProduct,mPlusForSecImage,mPlusForThirdImage,mSecImage,mThirdImage,mProdImage;
+    private TextView mProdNameText,mProdCost;
     LinearLayout subscribe;
     private ImageButton ADD_PRODUCT_BUTTON,MINUS_PRODUCT_BUTTON;
 
@@ -93,7 +94,11 @@ public class ProductPageActual extends AppCompatActivity implements View.OnClick
             }
         };
 
-        //drawer.setDrawerListener(toggle);
+        mProdNameText = (TextView)findViewById(R.id.prodName);
+        mProdImage=(ImageView)findViewById(R.id.prodImage);
+        mProdCost=(TextView)findViewById(R.id.prodCost);
+
+      //drawer.setDrawerListener(toggle);
         // toggle.syncState();
         mBrandName = (TextView)findViewById(R.id.brandName);
         mBrandName.setOnClickListener(new View.OnClickListener() {
@@ -170,6 +175,8 @@ public class ProductPageActual extends AppCompatActivity implements View.OnClick
         mAdapter=new ProductHorizontalAdapter(this, mProductsList);
         GridLayoutManager lm = new GridLayoutManager(this,2);
         mRecentlyViewed.setLayoutManager(lm);
+        mRecentlyViewed.setFocusable(false);
+        mRecentlyViewed.setNestedScrollingEnabled(false);
         mRecentlyViewed.setItemAnimator(new DefaultItemAnimator());
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             mRecentlyViewed.setScrollBarSize(0);
@@ -319,7 +326,7 @@ public class ProductPageActual extends AppCompatActivity implements View.OnClick
 
         for (int i=0;i<5;i++){
             mProductsList.add(new CategoryList("5836599apple.jpg","aaa",
-                    1200,"4.0","1200",2,"aaaa"));
+                    1200,1400,"4.0","1200",2,"aaaa",10,"20 gm"));
         }
 
     }

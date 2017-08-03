@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.Log;
 
 import com.example.nitin.desichain.Contents.CategoryList;
+import com.example.nitin.desichain.Utility.Utility;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -79,8 +80,8 @@ public class BestSellingProduct {
               if (PRODUCT_json_OBJECCT.has("GrossWeight")) {
                   GROSS_WEIGHHT = PRODUCT_json_OBJECCT.getInt("GrossWeight");
               }
-              DISCOUNT=(ACTUAL_PRICE-SELLING_PRICE)/100;
-              BEST_SELLING_LIST.add(new CategoryList(IMAGE_URL,PRODUCT_NAME,SELLING_PRICE,"4.0","1200",GROSS_WEIGHHT,Ingredients));
+              DISCOUNT= Utility.getDiscount(ACTUAL_PRICE,SELLING_PRICE);
+              BEST_SELLING_LIST.add(new CategoryList(IMAGE_URL,PRODUCT_NAME,SELLING_PRICE,ACTUAL_PRICE,"4.0","1200",GROSS_WEIGHHT,Ingredients,DISCOUNT,NET_WEIGTH));
           }
       } catch (JSONException e) {
           e.printStackTrace();
