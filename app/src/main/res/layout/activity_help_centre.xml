@@ -522,7 +522,6 @@
                         android:background="#C0C0C0"/>
 
 
-
                 </LinearLayout>
             </android.support.v4.widget.NestedScrollView>
         </LinearLayout>

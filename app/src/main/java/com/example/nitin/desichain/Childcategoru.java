@@ -374,9 +374,15 @@ public class Childcategoru extends AppCompatActivity implements View.OnClickList
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                Toast.makeText(Childcategoru.this,String.valueOf(CATEGORY_FLAG),Toast.LENGTH_SHORT).show();
                 if(CATEGORY_FLAG!=-1) {
                     Intent intent1 = new Intent(Childcategoru.this, CategoryPage.class);
+
+                    if (getIntent().getStringExtra("getFilterName").equals("Book and media")){
+                        CATEGORY_FLAG=1;
+                    } else {
+                        CATEGORY_FLAG=2;
+                    }
+
                     intent1.putExtra("CATEGORYFLAG", CATEGORY_FLAG);
                     intent1.putExtra("Topic", mGetList.get(position).getCHILDCATEGORYNAME());
                     intent1.putExtra("getFilterName", getIntent().getStringExtra("getFilterName"));
@@ -852,7 +858,6 @@ public class Childcategoru extends AppCompatActivity implements View.OnClickList
                 mDiscountAdapter.notifyDataSetChanged();
                 break;
             case R.id.viewmorePopularCateg:
-                Toast.makeText(this, "Clicked", Toast.LENGTH_LONG).show();
                 for (int i = 6; i < SHOP_BY_PUBLISHER.size(); i++) {
                     mDummyList.add(SHOP_BY_PUBLISHER.get(i));
                     viewMorePopularCategText.setVisibility(View.GONE);

@@ -27,7 +27,7 @@ public class CategoryList implements Serializable{
 
 
 
-    public CategoryList(String imageUrl, String PRODUCT_NAME, int PRICE, String RATINGS, String NUMBER_OF_REVIEWS , int mNetWeight,String ingredients) {
+    public CategoryList(String imageUrl, String PRODUCT_NAME, int SELLING_PRICE,int ACTUAL_PRICE, String RATINGS, String NUMBER_OF_REVIEWS , int mNetWeight,String ingredients,int DISCOUNT,String NET_WEIGTH) {
         this.ImageUrl = imageUrl;
         this.PRODUCT_NAME = PRODUCT_NAME;
         this.ACTUAL_PRICE = ACTUAL_PRICE;
@@ -43,10 +43,9 @@ public class CategoryList implements Serializable{
         this.GROSS_WEIGHHT = GROSS_WEIGHHT;
         this.RATINGS=RATINGS;
         this.NUMBER_OF_REVIEWS=NUMBER_OF_REVIEWS;
-        this.ACTUAL_PRICE = PRICE;
+      //  this.ACTUAL_PRICE = PRICE;
         this.RATINGS = RATINGS;
         this.NUMBER_OF_REVIEWS = NUMBER_OF_REVIEWS;
-        this.mNetWeight = mNetWeight;
     }
 
     public int getmNetWeight() {

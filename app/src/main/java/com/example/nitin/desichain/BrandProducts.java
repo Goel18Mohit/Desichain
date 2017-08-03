@@ -47,6 +47,8 @@ public class BrandProducts extends AppCompatActivity implements View.OnClickList
     private Toolbar mToolbar;
     private TextView mEmptyText;
     View headerView;
+    String prodName,imageUrl,prodDesc;
+    int sno;
     private int FLAG = 1;
     private ArrayList<CategoryList> mBrandProdList;
     private Bundle bundle;
@@ -104,11 +106,12 @@ public class BrandProducts extends AppCompatActivity implements View.OnClickList
         mBrandProdList = new ArrayList<>();
 
         Bundle extras = getIntent().getExtras();
-        String imageUrl = extras.getString("bundleImageUrl");
-        String prodName = extras.getString("bundleProdName");
-        String prodDesc = extras.getString("bundleProdDesc");
-        int sno = extras.getInt("bundleBrandSno");
-
+        if (extras!=null) {
+             imageUrl = extras.getString("bundleImageUrl");
+             prodName = extras.getString("bundleProdName");
+             prodDesc = extras.getString("bundleProdDesc");
+             sno = extras.getInt("bundleBrandSno");
+        }
 
 
         if (intent.getIntExtra(AllConstants.FLAG, 0) == AllConstants.CALLFROMSHOPBYPUBLISHERACTIVITY) {

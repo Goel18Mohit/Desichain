@@ -73,6 +73,7 @@ public class CategoryPage extends AppCompatActivity implements View.OnClickListe
 
         mList = new ArrayList<>();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setTitle(getIntent().getStringExtra("Topic"));
 
         FILTER_OPTION=(TextView)findViewById(R.id.filter);
         listView1= (GridView) findViewById(R.id.categorygridview);
@@ -89,10 +90,11 @@ public class CategoryPage extends AppCompatActivity implements View.OnClickListe
 
         intent1=getIntent();
         String CHILDCATEGORYNAME=intent1.getStringExtra("Topic");
-        Toast.makeText(CategoryPage.this,CHILDCATEGORYNAME,Toast.LENGTH_SHORT).show();
+        //Toast.makeText(CategoryPage.this,CHILDCATEGORYNAME,Toast.LENGTH_SHORT).show();
         int CATEGORY_FLAG=intent1.getIntExtra("CATEGORYFLAG",-1);
 
-            if(CATEGORY_FLAG==1)
+
+        if(CATEGORY_FLAG==1)
             {
 
                JSON_RESPONSE=load("http://dc.desichain.in/DesiChainWeService.asmx/BooksCategory");
@@ -102,7 +104,7 @@ public class CategoryPage extends AppCompatActivity implements View.OnClickListe
 
                     if(CATEGORY_ID==-1)
                     {
-                        Toast.makeText(CategoryPage.this,"No Such Category Exist",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(CategoryPage.this,"No Such Products Exist",Toast.LENGTH_SHORT).show();
                     }
                     else
                     {
@@ -113,10 +115,11 @@ public class CategoryPage extends AppCompatActivity implements View.OnClickListe
                           arrayList2=new GetParticularBookList(JSON_RESPONSE,CategoryPage.this).getParticularBookList();
                             if(arrayList2==null)
                             {
-                                Toast.makeText(CategoryPage.this,"No Such Products EXis",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(CategoryPage.this,"No Such Products Exist",Toast.LENGTH_SHORT).show();
                             }
                             else
                             {
+
 
                             categoryAdapter=new BookCategoryAdapter(this,arrayList2);
                                 categoryAdapter.notifyDataSetChanged();
@@ -129,10 +132,8 @@ public class CategoryPage extends AppCompatActivity implements View.OnClickListe
 
                 }
             }
-          else if(CATEGORY_FLAG==1)
+          else if(CATEGORY_FLAG==2)
             {
-                if(JSON_RESPONSE!=null)
-                {
                     JSON_RESPONSE=load("http://dc.desichain.in/DesiChainWeService.asmx/OthersCategory");
                     if(JSON_RESPONSE!=null)
                     {
@@ -153,23 +154,25 @@ public class CategoryPage extends AppCompatActivity implements View.OnClickListe
                                 else
                                 {
                                     categoryAdapterOthers=new CategoryAdapter(this,arrayList1);
+                                 //   categoryAdapterOthers.notifyDataSetChanged();
+                                    listView1.setAdapter(categoryAdapterOthers);
                                 }
                             }
                         }
                     }
-                }
+
 
 
         }
-
-if(categoryAdapterOthers!=null)
-{
-    listView1.setAdapter(categoryAdapter);
-}
-        else if(categoryAdapter!=null)
-{
-    listView1.setAdapter(categoryAdapter);
-}
+//
+//if(categoryAdapterOthers!=null)
+//{
+//    listView1.setAdapter(categoryAdapter);
+//}
+//        else if(categoryAdapter!=null)
+//{
+//    listView1.setAdapter(categoryAdapter);
+//}
 
         SORT_OPTION.setOnClickListener(new View.OnClickListener() {
             @Override

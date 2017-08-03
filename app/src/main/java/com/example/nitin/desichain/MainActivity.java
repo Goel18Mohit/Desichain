@@ -168,6 +168,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onClick(View v) {
                 Intent intent1 = new Intent(MainActivity.this,CategoryPage.class);
+                intent1.putExtra("Topic","Latest Products");
                 intent1.putExtra("featuredProdKey",mLatestProductList);
                 startActivity(intent1);
             }
@@ -176,6 +177,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onClick(View v) {
                 Intent intent1 = new Intent(MainActivity.this,CategoryPage.class);
+                intent1.putExtra("Topic","Top ten game");
                 intent1.putExtra("featuredProdKey",mLatestProductList);
                 startActivity(intent1);
 
@@ -185,11 +187,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onClick(View v) {
                 Intent intent1 = new Intent(MainActivity.this,CategoryPage.class);
+                intent1.putExtra("Topic","Featured Products");
                 intent1.putExtra("featuredProdKey",mFeaturedProductList);
-                for (int i=0;i<mFeaturedProductList.size();i++) {
-                    CategoryList categoryList = mFeaturedProductList.get(i);
-                    Log.i("ashish", categoryList.getPRODUCT_NAME());
-                }
                 startActivity(intent1);
             }
         });
@@ -197,6 +196,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onClick(View v) {
                 Intent intent1 = new Intent(MainActivity.this,CategoryPage.class);
+                intent1.putExtra("Topic","Best Selling products");
                 intent1.putExtra("featuredProdKey",mBestSellingProductList);
                 startActivity(intent1);
 

@@ -53,7 +53,7 @@ public class BookCategoryAdapter extends BaseAdapter {
         if(convertView==null)
         {
             LayoutInflater layoutInflater= (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView=layoutInflater.inflate(R.layout.single_category,null);
+            convertView=layoutInflater.inflate(R.layout.category,null);
             viewHolder=new ViewHolder();
             viewHolder.productImage= (ImageView) convertView.findViewById(R.id.product_image);
             viewHolder.productname= (TextView) convertView.findViewById(R.id.productname);
@@ -61,6 +61,8 @@ public class BookCategoryAdapter extends BaseAdapter {
             viewHolder.productratings= (TextView) convertView.findViewById(R.id.product_ratings);
             viewHolder.productnofratings= (TextView) convertView.findViewById(R.id.no_of_reviews);
             viewHolder.productcut= (TextView) convertView.findViewById(R.id.productnamecut);
+            viewHolder.mProdNetWt=(TextView)convertView.findViewById(R.id.netWeightText);
+            viewHolder.mProdDiscountText=(TextView)convertView.findViewById(R.id.discountText);
 
             convertView.setTag(viewHolder);
 
@@ -84,7 +86,7 @@ public class BookCategoryAdapter extends BaseAdapter {
                 context.startActivity(intent);
             }
         });
-        viewHolder.productprice.setText(String.valueOf(arrayList.get(position).getACTUAL_PRICE()));
+        viewHolder.productprice.setText("Rs. "+arrayList.get(position).getSELLING_PRICE());
         viewHolder.productprice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -108,7 +110,33 @@ public class BookCategoryAdapter extends BaseAdapter {
                 context.startActivity(intent);
             }
         });
-        viewHolder.productcut.setText("Rs.7490");
+        viewHolder.mProdDiscountText.setText(arrayList.get(position).getDISCOUNT()+"% off");
+        viewHolder.mProdDiscountText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, ProductPageActual.class);
+                context.startActivity(intent);
+            }
+        });
+
+
+
+        viewHolder.mProdNetWt.setText("Net Wt: "+arrayList.get(position).getGROSS_WEIGHHT()+ " gm");
+        viewHolder.mProdNetWt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, ProductPageActual.class);
+                context.startActivity(intent);
+            }
+        });
+        viewHolder.productcut.setText("Rs. "+arrayList.get(position).getACTUAL_PRICE());
+        viewHolder.productcut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, ProductPageActual.class);
+                context.startActivity(intent);
+            }
+        });
         viewHolder.productcut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -130,7 +158,7 @@ public class BookCategoryAdapter extends BaseAdapter {
 
     public class ViewHolder{
         ImageView productImage;
-        TextView productname,productprice,productratings,productnofratings,productcut;
+        TextView productname,productprice,productratings,productnofratings,productcut,mProdNetWt,mProdDiscountText;
         LinearLayout lm;
     }
 }

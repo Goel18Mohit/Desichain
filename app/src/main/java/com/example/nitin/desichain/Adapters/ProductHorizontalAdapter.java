@@ -2,8 +2,10 @@ package com.example.nitin.desichain.Adapters;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Paint;
 import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +28,7 @@ import java.util.List;
 public class ProductHorizontalAdapter extends RecyclerView.Adapter<ProductHorizontalAdapter.MyViewHolder>{
     private Context mContext;
     private List<com.example.nitin.desichain.Contents.CategoryList> mProductHorizontalList;
+    private static final String TAG  = ProductHorizontalAdapter.class.getSimpleName();
 
     public ProductHorizontalAdapter(Context mContext, List<com.example.nitin.desichain.Contents.CategoryList> mProductHorizontalList) {
         this.mContext = mContext;
@@ -35,7 +38,7 @@ public class ProductHorizontalAdapter extends RecyclerView.Adapter<ProductHorizo
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             LayoutInflater layoutInflater= (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            View view=layoutInflater.inflate(R.layout.single_category,null);
+            View view=layoutInflater.inflate(R.layout.category,null);
 
 
             return new MyViewHolder(view);
@@ -45,19 +48,29 @@ public class ProductHorizontalAdapter extends RecyclerView.Adapter<ProductHorizo
     public void onBindViewHolder(final MyViewHolder holder, int position) {
 
         final com.example.nitin.desichain.Contents.CategoryList mProduct = mProductHorizontalList.get(position);
+        Log.i(TAG,mProduct.getPRODUCT_NAME() + " "+ mProduct.getGROSS_WEIGHHT() + " "+
+                    mProduct.getNET_WEIGTH() + " "+
+                    mProduct.getDISCOUNT());
         holder.mProductRating.setText(mProduct.getRATINGS());
-        holder.mProductCost.setText("Rs." + mProduct.getACTUAL_PRICE());
+        holder.mProductCost.setText("Rs." + mProduct.getSELLING_PRICE());
+        holder.mProdCut.setText("Rs." + mProduct.getACTUAL_PRICE());
+        holder.mProdCut.setPaintFlags(holder.mProdCut.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
         holder.mProductname.setText(mProduct.getPRODUCT_NAME());
         holder.mProductReviewsNo.setText(mProduct.getNUMBER_OF_REVIEWS());
         Picasso.with(mContext).load("http://www.desichain.in/uploads/thumb_"+mProductHorizontalList.
-                get(position).getImageUrl()).resize(200,200).into(holder.mProductImage);
-        holder.mAddToCartImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(mContext,"product added to cart successfully",Toast.LENGTH_SHORT).show();
-        holder.mNetWeightText.setText("Net wt:"+mProduct.getmNetWeight());
-            }
-        });
+                get(position).getImageUrl()).into(holder.mProductImage);
+//        holder.mAddToCartImage.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Toast.makeText(mContext,"product added to cart successfully",Toast.LENGTH_SHORT).show();
+//       // holder.mNetWeightText.setText("Net wt:"+mProduct.getNET_WEIGTH());
+//             }
+//        });
+
+        holder.mNetWeightText.setText("Net Wt: " + mProduct.getNET_WEIGTH());
+        holder.mProdDiscountText.setText(mProduct.getDISCOUNT()+" % off");
+
+
     }
 
     @Override
@@ -68,13 +81,15 @@ public class ProductHorizontalAdapter extends RecyclerView.Adapter<ProductHorizo
     public class MyViewHolder extends RecyclerView.ViewHolder{
 
         private ImageView mProductImage,mAddToCartImage;
-        private TextView mProductname,mProductCost,mProductRating, mProductReviewsNo,mEmptyView,mNetWeightText;
+        private TextView mProductname,mProductCost,mProductRating, mProductReviewsNo,mEmptyView,mNetWeightText,mProdCut,mProdDiscountText;
 
 
         public MyViewHolder(View itemView) {
             super(itemView);
+            mProdDiscountText=(TextView)itemView.findViewById(R.id.discountText);
+            mProdCut=(TextView)itemView.findViewById(R.id.productnamecut);
             mNetWeightText=(TextView)itemView.findViewById(R.id.netWeightText);
-            mEmptyView=(TextView)itemView.findViewById(R.id.emptyLatestProduct);
+            //mEmptyView=(TextView)itemView.findViewById(R.id.emptyLatestProduct);
             mAddToCartImage=(ImageView)itemView.findViewById(R.id.addToCart);
             mProductImage=(ImageView)itemView.findViewById(R.id.product_image);
             mProductname=(TextView)itemView.findViewById(R.id.productname);

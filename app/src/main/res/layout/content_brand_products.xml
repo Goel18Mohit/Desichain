@@ -16,14 +16,19 @@
         android:background="#F5F5F5"
         android:orientation="horizontal">
 
-        <ImageView
+        <FrameLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:scaleType="fitXY"
+            android:layout_weight="2">
+
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
             android:id="@+id/brand_image"
             android:src="@mipmap/ic_launcher"/>
-
+        </FrameLayout>
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
