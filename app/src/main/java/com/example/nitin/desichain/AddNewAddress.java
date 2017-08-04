@@ -30,43 +30,6 @@ public class AddNewAddress extends AppCompatActivity {
 
 
     TextInputEditText name,pincode,address,landmark,city,mobile,state;
-//    String state[] = {"Select your state",
-//            "Andaman and Nicobar Islands",
-//            "Andhra Pradesh",
-//            "Arunachal Pradesh",
-//            "Assam",
-//        "Bihar",
-//        "Chandigarh",
-//        "Chhattisgarh",
-//        "Dadra and Nagar Haveli",
-//        "Daman and Diu",
-//        "Delhi",
-//        "Goa",
-//        "Gujrat",
-//        "Haryana",
-//        "Himachal Pradesh",
-//        "Jammu and Kashmir",
-//        "Jharkand",
-//        "Karnataka",
-//        "Kerala",
-//        "Lakshadweep",
-//        "Madhya Pradesh",
-//        "Maharashtra",
-//        "Manipur",
-//        "Meghalaya",
-//        "Mizoram",
-//        "Nagaland",
-//        "Orissa",
-//        "Pondicherry",
-//        "Punjab",
-//        "Rajasthan",
-//        "Sikkim",
-//        "Tamil Nadu",
-//        "Telangana",
-//        "Tripura",
-//        "Uttar Pradesh",
-//        "Uttarakhand",
-//        "West Bengal"};
     private Spinner spinner, countrySpinner;
     private Toolbar mToolbar;
     Button save;
@@ -119,9 +82,6 @@ public class AddNewAddress extends AppCompatActivity {
         getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(false);
 
 
-//        spinner=(Spinner)findViewById(R.id.spinner_select_state);
-//        ArrayAdapter<CharSequence> mAdapter = new ArrayAdapter<CharSequence>(AddNewAddress.this,android.R.layout.simple_spinner_dropdown_item,state);
-//        spinner.setAdapter(mAdapter);
 
         countrySpinner=(Spinner) findViewById(R.id.spinner_select_country);
         final ArrayAdapter<String> mAdapterCountry = new ArrayAdapter<String>(this,android.R.layout.simple_selectable_list_item);
@@ -132,8 +92,6 @@ public class AddNewAddress extends AppCompatActivity {
         }
         countrySpinner.setAdapter(mAdapterCountry);
         final int position=getIntent().getIntExtra("REQUESTCODE",000);
-   //     String mCustName = getIntent().getStringExtra("mCustName");
-     //   String mCustAdd = getIntent().getStringExtra("mCustAdd");
         name= (TextInputEditText) findViewById(R.id.edit_name);
         pincode= (TextInputEditText) findViewById(R.id.edit_pincode);
         address= (TextInputEditText) findViewById(R.id.edit_address);
@@ -143,7 +101,6 @@ public class AddNewAddress extends AppCompatActivity {
         save= (Button) findViewById(R.id.btnSaveAddress);
         state= (TextInputEditText) findViewById(R.id.edit_state);
 
-//        final Spinner mSpinner = (Spinner)findViewById(R.id.spinner_select_state);
 
 
         name.addTextChangedListener(mTextWatcher);

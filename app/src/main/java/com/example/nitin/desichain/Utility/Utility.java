@@ -224,7 +224,7 @@ public void closenavigation(){
 
     }
 
-    private void openDialogBox(){
+    public void openDialogBox(){
         AlertDialog.Builder builder=new AlertDialog.Builder(mContext);
         builder.setTitle("Enter The Email");
         final EditText USER_EMAIL_SUBSCRIBE=new EditText(mContext);

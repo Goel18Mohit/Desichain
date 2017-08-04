@@ -89,10 +89,9 @@ public class Wallet_page extends AppCompatActivity implements View.OnClickListen
 
         switch (item.getItemId()){
             case android.R.id.home:
+                finish();
                 if(drawer.isDrawerOpen(Gravity.LEFT)) {
                     drawer.closeDrawer(Gravity.LEFT);
-                }else{
-                    drawer.openDrawer(Gravity.LEFT);
                 }
         }
 

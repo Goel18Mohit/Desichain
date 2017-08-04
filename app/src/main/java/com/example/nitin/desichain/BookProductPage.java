@@ -95,8 +95,6 @@ public class BookProductPage extends AppCompatActivity implements View.OnClickLi
             }
         };
 
-        //drawer.setDrawerListener(toggle);
-        // toggle.syncState();
         mBrandName = (TextView)findViewById(R.id.brandName);
         mBrandName.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -180,7 +178,6 @@ public class BookProductPage extends AppCompatActivity implements View.OnClickLi
 
         mShareProduct=(ImageView)findViewById(R.id.shareProduct);
 
-        //addItems();
 
         mReviewsProductLayout.setOnClickListener(new View.OnClickListener() {
             @Override
