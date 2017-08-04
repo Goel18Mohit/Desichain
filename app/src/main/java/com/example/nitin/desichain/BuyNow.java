@@ -33,7 +33,6 @@ import java.util.List;
 
 public class BuyNow extends AppCompatActivity implements View.OnClickListener,SingleCartAdapter.ListChange{
 
-    private static  String LOG_TAG = BuyNow.class.getSimpleName();
     Button b1;
     private int totalCost = 1520,FLAG=1;
     private CheckBox mGiftWrapCheckBox;
@@ -154,8 +153,6 @@ public class BuyNow extends AppCompatActivity implements View.OnClickListener,Si
             }
         };
 
-        //drawer.setDrawerListener(toggle);
-        // toggle.syncState();
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         headerView = navigationView.inflateHeaderView(R.layout.nav_header_main);
         refferencetonavigationcategory(navigationView);

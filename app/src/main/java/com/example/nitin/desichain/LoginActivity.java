@@ -75,6 +75,8 @@ public class LoginActivity extends AppCompatActivity {
 //                        LOGIN_CONTENT_LIST = new LoginParse(JSON_RESPONSE, LoginActivity.this).parsingLogin();
                         Toast.makeText(LoginActivity.this, "Successfull login", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                        intent.putExtra("emailId",email);
+                        intent.putExtra("password",password);
                         startActivity(intent);
                     }
                     else {

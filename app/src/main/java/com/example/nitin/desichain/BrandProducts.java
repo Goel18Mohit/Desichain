@@ -100,8 +100,7 @@ public class BrandProducts extends AppCompatActivity implements View.OnClickList
         brandname = (TextView) findViewById(R.id.brand_name);
         branddescription = (TextView) findViewById(R.id.brand_description);
 
-//        Log.i(TAG,bundle.getString(AllConstants.Brandname));
-//
+
 
         mBrandProdList = new ArrayList<>();
 
@@ -147,17 +146,6 @@ public class BrandProducts extends AppCompatActivity implements View.OnClickList
             mBrandRecyclerView.setVisibility(View.GONE);
             mEmptyText.setVisibility(View.VISIBLE);
         }
-
-//        if (!imageUrl.isEmpty() && !prodName.isEmpty() && !prodDesc.isEmpty()) {
-//            Picasso.with(BrandProducts.this).load("http://www.desichain.in/uploads/" + getIntent().getStringExtra("bundleImageUrl")).into(brandimage);
-//            brandname.setText(prodName);
-//            branddescription.setText(prodDesc);
-//        }
-//        } else {
-//            Picasso.with(BrandProducts.this).load("http://www.desichain.in/uploads/" + bundle.get(AllConstants.Brandimageurl)).into(brandimage);
-//            brandname.setText(bundle.getString(AllConstants.Brandname));
-//            branddescription.setText(bundle.getString(AllConstants.Branddescription));
-//        }
 
 
 
@@ -326,21 +314,6 @@ public class BrandProducts extends AppCompatActivity implements View.OnClickList
 
     }
 
-   /* private void prepareItems() {
-
-        mList.add(new ProductHorizontal("MICROMAX SPARK VDEO(8GB) 4G VOLTE","Rs. 50000",R.mipmap.ic_launcher, "4.0","12"));
-
-        mList.add(new ProductHorizontal("MICROMAX SPARK VDEO(8GB) 4G VOLTE","Rs. 50000",R.mipmap.ic_launcher, "4.0","12"));
-
-        mList.add(new ProductHorizontal("MICROMAX SPARK VDEO(8GB) 4G VOLTE","Rs. 50000",R.mipmap.ic_launcher, "4.0","12"));
-
-        mList.add(new ProductHorizontal("MICROMAX SPARK VDEO(8GB) 4G VOLTE","Rs. 50000",R.mipmap.ic_launcher, "4.0","12"));
-        mList.add(new ProductHorizontal("MICROMAX SPARK VDEO(8GB) 4G VOLTE","Rs. 50000",R.mipmap.ic_launcher, "4.0","12"));
-
-        mList.add(new ProductHorizontal("MICROMAX SPARK VDEO(8GB) 4G VOLTE","Rs. 50000",R.mipmap.ic_launcher, "4.0","12"));
-
-
-    }*/
 
     @Override
     public void onClick(View v) {

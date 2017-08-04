@@ -190,7 +190,12 @@
         <activity
             android:name=".LoginActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Location"></activity>
+        <activity android:name=".Location"
+            android:parentActivityName=".MyAccount">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MyAccount"/>
+        </activity>
     </application>
 
 </manifest>

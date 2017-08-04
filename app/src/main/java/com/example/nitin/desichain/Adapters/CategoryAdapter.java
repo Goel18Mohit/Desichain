@@ -66,7 +66,6 @@ public class CategoryAdapter extends BaseAdapter {
             viewHolder.productratings= (TextView) convertView.findViewById(R.id.product_ratings);
             viewHolder.productnofratings= (TextView) convertView.findViewById(R.id.no_of_reviews);
             viewHolder.productcut= (TextView) convertView.findViewById(R.id.productnamecut);
-            viewHolder.lm = (LinearLayout)convertView.findViewById(R.id.myLinearLayoutCateg);
             viewHolder.mProdDiscountText=(TextView)convertView.findViewById(R.id.discountText);
             viewHolder.mProdNetWt=(TextView)convertView.findViewById(R.id.netWeightText);
             convertView.setTag(viewHolder);
@@ -153,6 +152,5 @@ public class CategoryAdapter extends BaseAdapter {
     public class ViewHolder{
         ImageView productImage;
         TextView productname,productprice,productratings,productnofratings,productcut,mProdDiscountText,mProdNetWt;
-        LinearLayout lm;
     }
 }

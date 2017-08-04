@@ -79,7 +79,6 @@ public class CategoryPage extends AppCompatActivity implements View.OnClickListe
         listView1= (GridView) findViewById(R.id.categorygridview);
         SORT_OPTION= (TextView) findViewById(R.id.sort);
 
-       // arrayList1 = new ArrayList<>();
         mList = (ArrayList<CategoryList>)getIntent().getSerializableExtra("featuredProdKey");
 
 
@@ -90,7 +89,6 @@ public class CategoryPage extends AppCompatActivity implements View.OnClickListe
 
         intent1=getIntent();
         String CHILDCATEGORYNAME=intent1.getStringExtra("Topic");
-        //Toast.makeText(CategoryPage.this,CHILDCATEGORYNAME,Toast.LENGTH_SHORT).show();
         int CATEGORY_FLAG=intent1.getIntExtra("CATEGORYFLAG",-1);
 
 
@@ -154,7 +152,6 @@ public class CategoryPage extends AppCompatActivity implements View.OnClickListe
                                 else
                                 {
                                     categoryAdapterOthers=new CategoryAdapter(this,arrayList1);
-                                 //   categoryAdapterOthers.notifyDataSetChanged();
                                     listView1.setAdapter(categoryAdapterOthers);
                                 }
                             }
@@ -209,8 +206,6 @@ public class CategoryPage extends AppCompatActivity implements View.OnClickListe
             }
         };
 
-        //drawer.setDrawerListener(toggle);
-        // toggle.syncState();
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         headerView = navigationView.inflateHeaderView(R.layout.nav_header_main);
         refferencetonavigationcategory(navigationView);

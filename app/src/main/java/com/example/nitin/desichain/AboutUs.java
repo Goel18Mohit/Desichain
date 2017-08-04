@@ -68,9 +68,6 @@ public class AboutUs extends AppCompatActivity implements View.OnClickListener {
                 super.onDrawerOpened(drawerView);
             }
         };
-//commn=ent
-        //drawer.setDrawerListener(toggle);
-       // toggle.syncState();
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         headerView = navigationView.inflateHeaderView(R.layout.nav_header_main);
         refferencetonavigationcategory(navigationView);

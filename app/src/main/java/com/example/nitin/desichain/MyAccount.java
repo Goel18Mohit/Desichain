@@ -6,6 +6,7 @@ import android.icu.util.Calendar;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.ShareCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -177,18 +178,28 @@ public class MyAccount extends AppCompatActivity
                     @Override
                     public void onClick(DialogInterface dialog, int item) {
                         if (referChoiceSelected.equals("Email")){
-                            Toast.makeText(getApplicationContext(),
-                                    "Group Name1 = "+referChoiceSelected, Toast.LENGTH_SHORT).show();
+                            Intent shareIntent = ShareCompat.IntentBuilder.from(MyAccount.this)
+                                    .setType("text/plain")
+                                    .setText("referal link")
+                                    .getIntent();
+                            startActivity(shareIntent);
+
                             dialog.dismiss();// dismiss the alertbox after chose option
                         }
                         if (referChoiceSelected.equals("SMS")){
-                            Toast.makeText(getApplicationContext(),
-                                    "Group Name2 = "+referChoiceSelected, Toast.LENGTH_SHORT).show();
+                            Intent shareIntent = ShareCompat.IntentBuilder.from(MyAccount.this)
+                                    .setType("text/plain")
+                                    .setText("referal link")
+                                    .getIntent();
+                            startActivity(shareIntent);
                             dialog.dismiss();// dismiss the alertbox after chose option
                         }
                         if (referChoiceSelected.equals("Whatsapp")){
-                            Toast.makeText(getApplicationContext(),
-                                    "Group Name3 = "+referChoiceSelected, Toast.LENGTH_SHORT).show();
+                            Intent shareIntent = ShareCompat.IntentBuilder.from(MyAccount.this)
+                                    .setType("text/plain")
+                                    .setText("referal link")
+                                    .getIntent();
+                            startActivity(shareIntent);
                             dialog.dismiss();// dismiss the alertbox after chose option
                         }
                     }

@@ -1,6 +1,7 @@
 package com.example.nitin.desichain;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
@@ -14,6 +15,7 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -40,6 +42,7 @@ import java.util.concurrent.ExecutionException;
  */
 
 public class ShowSearchResult extends AppCompatActivity implements View.OnClickListener{
+    private static final String TAG = ShowSearchResult.class.getSimpleName();
     private String intentHolder;
     private RecyclerView searchRecycler;
     private String JSON_RESPONSE;
@@ -60,6 +63,7 @@ public class ShowSearchResult extends AppCompatActivity implements View.OnClickL
     private NestedScrollView nestedScrollView;
     LinearLayout myorder,mycart,myaccount,helpcenter,ratedesichain,productPage,policy,facebook,google,twitter,pinterest,youtube,instagram,aboutus,subscribe;
     private int totalProductsSearched;
+
 
 
     @Override
@@ -104,6 +108,13 @@ public class ShowSearchResult extends AppCompatActivity implements View.OnClickL
                 break;
             case R.id.notifications:
                 startActivity(new Intent(this, NotificationPage.class));
+                drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+                if (drawer.isDrawerOpen(GravityCompat.START)) {
+                    drawer.closeDrawer(GravityCompat.START);
+                }
+                break;
+            case R.id.search_item:
+                startActivity(new Intent(this, SearchActivity.class));
                 drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
                 if (drawer.isDrawerOpen(GravityCompat.START)) {
                     drawer.closeDrawer(GravityCompat.START);
@@ -288,7 +299,14 @@ public class ShowSearchResult extends AppCompatActivity implements View.OnClickL
             Toast.makeText(this, "No Internet Connection", Toast.LENGTH_SHORT).show();
         } else {
             try {
-                JSON_RESPONSE = new FetchingFromUrl().execute("http://dc.desichain.in/DesiChainWeService.asmx/SearchData?keywords="+query).get();
+                Uri.Builder builder = new Uri.Builder();
+                builder.scheme("http").authority("dc.desichain.in")
+                        .appendPath("DesiChainWeService.asmx")
+                        .appendPath("SearchData")
+                        .appendQueryParameter("keywords",query);
+                String url = builder.build().toString();
+                Log.i(TAG,url);
+                JSON_RESPONSE = new FetchingFromUrl().execute(url).get();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             } catch (ExecutionException e) {
