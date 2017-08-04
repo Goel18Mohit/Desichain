@@ -110,8 +110,8 @@ public class SearchActivity extends AppCompatActivity {
 
         if(item.getItemId()==android.R.id.home)
         {
-            Intent intent=new Intent(SearchActivity.this,MainActivity.class);
-            startActivity(intent);
+//            Intent intent=new Intent(SearchActivity.this,MainActivity.class);
+//            startActivity(intent);
             finish();
         }
 
