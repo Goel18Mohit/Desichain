@@ -87,6 +87,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/skipSignIn"
+        android:id="@+id/skipLogin"
         android:layout_alignParentBottom="true"
         android:textSize="20sp"
         android:textAlignment="center"
