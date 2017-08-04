@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.nitin.desichain.Contents.LoginData;
@@ -31,6 +32,7 @@ public class LoginActivity extends AppCompatActivity {
     private ArrayList<LoginData> LOGIN_CONTENT_LIST;
     private String JSON_RESPONSE, email, password;
     private EditText editEmail,editPassword;
+    private TextView mSkipLogin;
 
     private FragmentManager fm;
     @Override
@@ -42,7 +44,7 @@ public class LoginActivity extends AppCompatActivity {
         mSignInImg=(ImageButton)findViewById(R.id.img_sign_in_button);
         frameLayout=(FrameLayout)findViewById(R.id.frameLayout2);
         logoImage=(ImageView)findViewById(R.id.desichainLogo);
-
+        mSkipLogin = (TextView)findViewById(R.id.skipLogin);
         forgotPwdBtn=(Button)findViewById(R.id.btn_reset_password_main);
         forgotPwdBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,6 +98,13 @@ public class LoginActivity extends AppCompatActivity {
                // logoImage.setVisibility(View.GONE);
                 frameLayout.setVisibility(View.GONE);
 
+            }
+        });
+
+        mSkipLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LoginActivity.this,MainActivity.class));
             }
         });
     }
