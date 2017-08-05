@@ -1,5 +1,7 @@
 package com.example.nitin.desichain;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.content.Intent;
 import android.support.v4.app.FragmentManager;
@@ -79,6 +81,11 @@ public class LoginActivity extends AppCompatActivity {
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                         intent.putExtra("emailId",email);
                         intent.putExtra("password",password);
+                        SharedPreferences sharedPreferences = getSharedPreferences("myPref",MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putString("emailId",email);
+                        editor.putString("password",password);
+                        editor.apply();
                         startActivity(intent);
                     }
                     else {

@@ -1,7 +1,9 @@
 package com.example.nitin.desichain;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.icu.util.Calendar;
 import android.net.Uri;
 import android.os.Bundle;
@@ -15,6 +17,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -67,6 +70,7 @@ public class MyAccount extends AppCompatActivity
     public  static HashMap<String,ArrayList<String>> hashMap;
     LinearLayout myorder,mycart,myaccount,helpcenter,ratedesichain,productPage,policy,facebook,google,twitter,pinterest,youtube,instagram,aboutus;
     LinearLayout subscribe;
+    private TextView mLogInLogOut;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,10 +80,19 @@ public class MyAccount extends AppCompatActivity
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(false);
+        mLogInLogOut=(TextView)findViewById(R.id.logInLogOut);
 
         Intent intent=getIntent();
 
+        SharedPreferences sharedPreferences = getSharedPreferences("myPref",MODE_PRIVATE);
+        String email = sharedPreferences.getString("emailId","none");
+        String pwd = sharedPreferences.getString("password","none");
 
+        if (email.equals("none") && pwd.equals("none")){
+            mLogInLogOut.setText("Log In");
+        } else {
+            mLogInLogOut.setText("Log Out");
+        }
 
         mMyOrderLayout = (LinearLayout)findViewById(R.id.myOrderLayout);
         mMyAddressLayout=(LinearLayout)findViewById(R.id.myAddressLayout);
@@ -222,9 +235,19 @@ public class MyAccount extends AppCompatActivity
         LOGOUT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MyAccount.this,"You have been logged out ",Toast.LENGTH_LONG).show();
-                Intent intent=new Intent(MyAccount.this,LoginActivity.class);
-                startActivity(intent);
+                if (mLogInLogOut.getText().toString().equals("Log Out")) {
+                    SharedPreferences sharedPreferences1 = getSharedPreferences("myPref",MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences1.edit();
+                    editor.clear();
+                    editor.apply();
+                    Toast.makeText(MyAccount.this, "You have been logged out ", Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(MyAccount.this, LoginActivity.class);
+                    startActivity(intent);
+                }else {
+                    Intent intent = new Intent(MyAccount.this, LoginActivity.class);
+                    startActivity(intent);
+
+                }
 //                finish();
             }
         });
