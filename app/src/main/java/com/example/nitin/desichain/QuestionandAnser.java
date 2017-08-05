@@ -1,6 +1,7 @@
 package com.example.nitin.desichain;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -295,7 +296,22 @@ public class QuestionandAnser extends AppCompatActivity implements View.OnClickL
         subscribe= (LinearLayout) findViewById(R.id.subscribe);
         myorder.setOnClickListener(this);
         mycart.setOnClickListener(this);
-        myaccount.setOnClickListener(this);
+        myaccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedPreferences preferences = getSharedPreferences("myPref",MODE_PRIVATE);
+                String email = preferences.getString("emailId","none");
+                String pwd = preferences.getString("password","none");
+
+                if (email.equals("none") && pwd.equals("none")){
+                    startActivity(new Intent(QuestionandAnser.this,LoginActivity.class));
+                    finish();
+                } else {
+                    startActivity(new Intent(QuestionandAnser.this,MyAccount.class));
+
+                }
+            }
+        });
         helpcenter.setOnClickListener(this);
         ratedesichain.setOnClickListener(this);
         policy.setOnClickListener(this);

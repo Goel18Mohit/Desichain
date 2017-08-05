@@ -1,7 +1,9 @@
 package com.example.nitin.desichain;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -104,6 +106,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         invalidateOptionsMenu();
+
 
         Boolean isFirstRun = getSharedPreferences("PREFERENCE", MODE_PRIVATE)
                 .getBoolean("isFirstRun", true);
@@ -631,7 +634,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         subscribe = (LinearLayout) findViewById(R.id.subscribe);
         myorder.setOnClickListener(this);
         mycart.setOnClickListener(this);
-        myaccount.setOnClickListener(this);
+        myaccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedPreferences preferences = getSharedPreferences("myPref",MODE_PRIVATE);
+                String email = preferences.getString("emailId","none");
+                String pwd = preferences.getString("password","none");
+
+                if (email.equals("none") && pwd.equals("none")){
+                    startActivity(new Intent(MainActivity.this,LoginActivity.class));
+                    finish();
+                } else {
+                    startActivity(new Intent(MainActivity.this,MyAccount.class));
+
+                }
+            }
+        });
         helpcenter.setOnClickListener(this);
         ratedesichain.setOnClickListener(this);
         policy.setOnClickListener(this);
